@@ -1,8 +1,11 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">4V GO</string>
+    <string name="emailQuestion">¿Cuál es tu correo electronico?</string>
     <string name="name">Nombre</string>
     <string name="hint_write">Escribe aqui…</string>
     <string name="email">Correo electronico</string>
+    <string name="disclaimerEmail">No quiero recibir noticias, promociones ni contenido gratiuito de 4V GO.</string>
+    <string name="disclaimerEmailSuscription" tools:ignore="Typos">Una vez suscrito, puedo cancelar mi suscripción en cualquier momento contactando con 4V GO o a través del enlace que se encuentra en el boletin del noticias.</string>
     <string name="password">Contraseña</string>
     <string name="rePassword">Introduce tu contraseña</string>
     <string name="register">Registrar</string>
@@ -23,6 +26,7 @@
     <string name="whiteString" />
     <string name="errorLogName">El nombre tiene que tener mas de 3 caracteres</string>
     <string name="descriptionBackButton">Boton para ir atras</string>
+    <string name="descriptionNext">Boton de Siguiente</string>
 
     <!-- Description -->
     <string name="background">background</string>

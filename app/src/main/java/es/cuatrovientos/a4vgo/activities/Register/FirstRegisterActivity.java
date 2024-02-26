@@ -3,25 +3,113 @@ package es.cuatrovientos.a4vgo.activities.Register;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+
+import com.google.android.material.snackbar.Snackbar;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import es.cuatrovientos.a4vgo.R;
 import es.cuatrovientos.a4vgo.activities.MainActivity;
 
 public class FirstRegisterActivity extends AppCompatActivity {
-    Button register, back;
+    Button back;
+    ImageButton next;
+    EditText email;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_first_register);
 
-        register = findViewById(R.id.btnRegister);
         back = findViewById(R.id.btnBack);
+        next = findViewById(R.id.btnNext);
+        email = findViewById(R.id.txtEmail);
 
         back.setOnClickListener(view -> {
             Intent intent = new Intent(FirstRegisterActivity.this, MainActivity.class);
             startActivity(intent);
         });
+
+        email.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String emailText = email.getText().toString();
+                if (emailText.length() > 2) {
+                    next.setVisibility(View.VISIBLE);
+                } else {
+                    next.setVisibility(View.INVISIBLE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        next.setOnClickListener(view -> {
+            String emailText = email.getText().toString();
+
+            if (validateEmail(emailText)){
+                if (validateDomain(emailText)) {
+
+                } else {
+                    next.setVisibility(View.INVISIBLE);
+                    View contentView = findViewById(android.R.id.content); // Obtén la vista raíz del layout
+                    Snackbar snackbar = Snackbar.make(contentView, "Dominio no válido.", Snackbar.LENGTH_SHORT);
+                    snackbar.setTextColor(Color.RED);
+                    snackbar.setBackgroundTint(Color.BLACK);
+                    snackbar.show();
+                }
+            }else {
+                next.setVisibility(View.INVISIBLE);
+                View contentView = findViewById(android.R.id.content); // Obtén la vista raíz del layout
+                Snackbar snackbar = Snackbar.make(contentView, "Email no válido o dominio no permitido.", Snackbar.LENGTH_SHORT);
+                snackbar.setTextColor(Color.RED);
+                snackbar.setBackgroundTint(Color.BLACK);
+                snackbar.show();
+            }
+        });
+    }
+
+    private boolean validateDomain(String validEmail) {
+        String[] validDomains = {"gmail.com", "hotmail.com"};
+
+        String[] emailParts = validEmail.split("@");
+        if (emailParts.length == 2) {
+            String domain = emailParts[1].toLowerCase();
+
+            for (String validDomain : validDomains) {
+                if (domain.equals(validDomain)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private boolean validateEmail(String email) {
+        String emailPattern = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+
+        Pattern pattern = Pattern.compile(emailPattern);
+
+        Matcher matcher = pattern.matcher(email);
+
+        return matcher.matches();
     }
 }
