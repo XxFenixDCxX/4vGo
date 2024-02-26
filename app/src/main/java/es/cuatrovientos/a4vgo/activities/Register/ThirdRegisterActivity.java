@@ -71,7 +71,7 @@ public class ThirdRegisterActivity extends AppCompatActivity {
                 long differenceInMillis = currentDate.getTime() - date.getTime();
                 long years = differenceInMillis / (365L * 24 * 60 * 60 * 1000);
                 if(years >= 16){
-                    Intent intent = new Intent(ThirdRegisterActivity.this, ThirdRegisterActivity.class);
+                    Intent intent = new Intent(ThirdRegisterActivity.this, FourthRegisterActivity.class);
                     intent.putExtra("name", sendName);
                     intent.putExtra("surname", sendSurname);
                     intent.putExtra("dni", sendDni);
