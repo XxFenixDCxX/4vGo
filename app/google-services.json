@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "88104562322",
+    "firebase_url": "https://v-go-6ce57-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "v-go-6ce57",
+    "storage_bucket": "v-go-6ce57.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:88104562322:android:f6e32601fed56d16a5c04b",
+        "android_client_info": {
+          "package_name": "es.cuatrovientos.a4vgo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAWMIJjkFC9WVwhyoyCozFU9JRFbRSBRU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
