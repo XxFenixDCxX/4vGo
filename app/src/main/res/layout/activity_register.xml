@@ -39,7 +39,8 @@
         android:padding="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3">
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        tools:ignore="VisualLintBounds">
 
         <TextView
             android:id="@+id/textView9"
@@ -160,6 +161,15 @@
             android:textSize="25sp"
             android:textStyle="bold"
             tools:ignore="VisualLintButtonSize" />
+
+        <TextView
+            android:id="@+id/txtErrorLog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/whiteString"
+            android:textColor="#E60F0F"
+            android:textSize="20sp" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
