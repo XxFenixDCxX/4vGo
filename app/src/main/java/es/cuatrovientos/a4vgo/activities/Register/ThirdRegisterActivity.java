@@ -76,7 +76,7 @@ public class ThirdRegisterActivity extends AppCompatActivity {
                     intent.putExtra("surname", sendSurname);
                     intent.putExtra("dni", sendDni);
                     intent.putExtra( "email", sendEmail);
-                    intent.putExtra("birthdate", date);
+                    intent.putExtra("birthdate", dateString);
                     intent.putExtra("spam", sendSpam);
                     startActivity(intent);
                 }else {

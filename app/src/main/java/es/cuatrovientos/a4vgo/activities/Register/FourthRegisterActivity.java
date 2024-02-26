@@ -12,11 +12,15 @@ import android.widget.ImageButton;
 
 import com.google.android.material.snackbar.Snackbar;
 
+
 import es.cuatrovientos.a4vgo.R;
 
 public class FourthRegisterActivity extends AppCompatActivity {
     EditText password, rePassword;
     ImageButton next;
+    Bundle bundle;
+    String sendName, sendSurname, sendDni, sendEmail, sendBirthdate;
+    Boolean sendSpam;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +29,15 @@ public class FourthRegisterActivity extends AppCompatActivity {
         password = findViewById(R.id.txtPassword);
         rePassword = findViewById(R.id.txtRePassword);
         next = findViewById(R.id.btnNext);
+        bundle = getIntent().getExtras();
+        assert bundle != null;
+        sendName = bundle.getString("name");
+        sendSurname = bundle.getString("surname");
+        sendDni = bundle.getString("dni");
+        sendEmail = bundle.getString("email");
+        sendBirthdate = bundle.getString("birthdate");
+        sendSpam = bundle.getBoolean("spam");
+
 
         password.addTextChangedListener(new TextWatcher() {
             @Override
