@@ -3,29 +3,6 @@
     <style name="Base.Theme._4vGo" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-        <!-- Dark Primary Color -->
-        <color name="dark_primary_color">#388E3C</color>
-
-        <!-- Light Primary Color -->
-        <color name="light_primary_color">#C8E6C9</color>
-
-        <!-- Primary Color -->
-        <color name="primary_color">#4CAF50</color>
-
-        <!-- Text / Icons Color -->
-        <color name="text_icons_color">#FFFFFF</color>
-
-        <!-- Accent Color -->
-        <color name="accent_color">#8BC34A</color>
-
-        <!-- Primary Text Color -->
-        <color name="primary_text_color">#212121</color>
-
-        <!-- Secondary Text Color -->
-        <color name="secondary_text_color">#757575</color>
-
-        <!-- Divider Color -->
-        <color name="divider_color">#BDBDBD</color>
     </style>
 
     <style name="Theme._4vGo" parent="Base.Theme._4vGo" />
