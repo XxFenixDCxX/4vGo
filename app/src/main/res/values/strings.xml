@@ -1,3 +1,19 @@
 <resources>
-    <string name="app_name">4vGo</string>
+    <string name="app_name">4V GO</string>
+    <string name="Login">Inicia sesión</string>
+    <string name="Email">Email</string>
+    <string name="PutEmail">Introduzca el correo electrónico</string>
+    <string name="Password">Contraseña</string>
+    <string name="PutPassword">Introduzca la contraseña</string>
+    <string name="ForgotPassword">¿Olvidaste la contraseña? Recuperarla</string>
+    <string name="OtherLogin">O iniciar sesión con</string>
+    <string name="Facebook">Facebook</string>
+    <string name="Google">Google</string>
+    <string name="LoginButton">Iniciar sesión</string>
+
+    <!-- Description -->
+    <string name="background">background</string>
+
+    <!-- Hint -->
+    <string name="hint_email">Email</string>
 </resources>
