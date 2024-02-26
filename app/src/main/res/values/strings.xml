@@ -21,6 +21,7 @@
     <string name="Facebook">Facebook</string>
     <string name="Google">Google</string>
     <string name="LoginButton">Iniciar sesión</string>
+    <string name="whiteString"></string>
 
     <!-- Description -->
     <string name="background">background</string>
