@@ -1,11 +1,17 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">4V GO</string>
+    <string name="emailQuestion">¿Cuál es tu correo electronico?</string>
     <string name="name">Nombre</string>
+    <string name="birthdate">Fecha de Nacimiento</string>
+    <string name="surname">Apellido(s)</string>
+    <string name="dni">DNI</string>
     <string name="hint_write">Escribe aqui…</string>
-    <string name="registerAccount">Crear\ncuenta</string>
     <string name="email">Correo electronico</string>
+    <string name="disclaimerEmail">No quiero recibir noticias, promociones ni contenido gratiuito de 4V GO.</string>
+    <string name="disclaimerEmailSuscription" tools:ignore="Typos">Una vez suscrito, puedo cancelar mi suscripción en cualquier momento contactando con 4V GO o a través del enlace que se encuentra en el boletin del noticias.</string>
     <string name="password">Contraseña</string>
-    <string name="rePassword">Introduce tu contraseña</string>
+    <string name="rePassword">Repite tu contraseña</string>
+    <string name="disclaimerPassword">Debe tener al menos 8 caracteres e incluir 1 letra y 1 número</string>
     <string name="register">Registrar</string>
     <string name="descriptionHeader">Imagen de cabecera</string>
     <string name="descriptionCuatrovientos">Imagen de cuatrovientos</string>
@@ -21,6 +27,18 @@
     <string name="Facebook">Facebook</string>
     <string name="Google">Google</string>
     <string name="LoginButton">Iniciar sesión</string>
+    <string name="whiteString" />
+    <string name="errorLogName">El nombre tiene que tener mas de 3 caracteres</string>
+    <string name="descriptionBackButton">Boton para ir atras</string>
+    <string name="descriptionNext">Boton de Siguiente</string>
+    <string name="nameSurnameQuestionDNI">¿Cual es tu nombre y DNI?</string>
+    <string name="errorLogEmail">Email no válido o dominio no permitido</string>
+    <string name="errorLogDomain">Dominio no válido</string>
+    <string name="errorLogDNI">DNI no válido</string>
+    <string name="birthdateQuestion">¿Cual es tu fecha de nacimiento?</string>
+    <string name="errorLogDate">Fecha no valida</string>
+    <string name="errorLogYears">Tienes que tener al menos 16 años</string>
+    <string name="errorLogPassword">Las contraseñas no coinciden</string>
 
     <!-- Description -->
     <string name="background">background</string>
