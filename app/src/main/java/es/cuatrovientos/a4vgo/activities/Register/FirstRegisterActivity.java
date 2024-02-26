@@ -35,7 +35,7 @@ public class FirstRegisterActivity extends AppCompatActivity {
         back = findViewById(R.id.btnBack);
         next = findViewById(R.id.btnNext);
         spam = findViewById(R.id.chcSpam);
-        email = findViewById(R.id.txtName);
+        email = findViewById(R.id.txtEmail);
 
         back.setOnClickListener(view -> {
             Intent intent = new Intent(FirstRegisterActivity.this, MainActivity.class);
@@ -74,10 +74,10 @@ public class FirstRegisterActivity extends AppCompatActivity {
                     intent.putExtra("spam", spam.isChecked());
                     startActivity(intent);
                 } else {
-                    errorMessage(String.valueOf(R.string.errorLogDomain));
+                    errorMessage(getString(R.string.errorLogDomain));
                 }
             }else {
-                errorMessage(String.valueOf(R.string.errorLogEmail));
+                errorMessage(getString(R.string.errorLogEmail));
             }
         });
     }
