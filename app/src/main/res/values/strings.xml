@@ -22,6 +22,7 @@
     <string name="Google">Google</string>
     <string name="LoginButton">Iniciar sesión</string>
     <string name="whiteString"></string>
+    <string name="errorLogName">El nombre tiene que tener mas de 3 caracteres</string>
 
     <!-- Description -->
     <string name="background">background</string>
