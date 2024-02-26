@@ -2,7 +2,6 @@
     <string name="app_name">4V GO</string>
     <string name="name">Nombre</string>
     <string name="hint_write">Escribe aqui…</string>
-    <string name="registerAccount">Crear\ncuenta</string>
     <string name="email">Correo electronico</string>
     <string name="password">Contraseña</string>
     <string name="rePassword">Introduce tu contraseña</string>
@@ -21,8 +20,9 @@
     <string name="Facebook">Facebook</string>
     <string name="Google">Google</string>
     <string name="LoginButton">Iniciar sesión</string>
-    <string name="whiteString"></string>
+    <string name="whiteString" />
     <string name="errorLogName">El nombre tiene que tener mas de 3 caracteres</string>
+    <string name="descriptionBackButton">Boton para ir atras</string>
 
     <!-- Description -->
     <string name="background">background</string>
