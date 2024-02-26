@@ -2,6 +2,8 @@
     <string name="app_name">4V GO</string>
     <string name="emailQuestion">¿Cuál es tu correo electronico?</string>
     <string name="name">Nombre</string>
+    <string name="surname">Apellido(s)</string>
+    <string name="dni">DNI</string>
     <string name="hint_write">Escribe aqui…</string>
     <string name="email">Correo electronico</string>
     <string name="disclaimerEmail">No quiero recibir noticias, promociones ni contenido gratiuito de 4V GO.</string>
@@ -27,6 +29,10 @@
     <string name="errorLogName">El nombre tiene que tener mas de 3 caracteres</string>
     <string name="descriptionBackButton">Boton para ir atras</string>
     <string name="descriptionNext">Boton de Siguiente</string>
+    <string name="nameSurnameQuestionDNI">¿Cual es tu nombre y DNI?</string>
+    <string name="errorLogEmail">Email no válido o dominio no permitido</string>
+    <string name="errorLogDomain">Dominio no válido</string>
+    <string name="errorLogDNI">DNI no válido</string>
 
     <!-- Description -->
     <string name="background">background</string>

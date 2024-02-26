@@ -35,7 +35,7 @@ public class FirstRegisterActivity extends AppCompatActivity {
         back = findViewById(R.id.btnBack);
         next = findViewById(R.id.btnNext);
         spam = findViewById(R.id.chcSpam);
-        email = findViewById(R.id.txtEmail);
+        email = findViewById(R.id.txtName);
 
         back.setOnClickListener(view -> {
             Intent intent = new Intent(FirstRegisterActivity.this, MainActivity.class);
@@ -71,27 +71,13 @@ public class FirstRegisterActivity extends AppCompatActivity {
                 if (validateDomain(emailText)) {
                     Intent intent = new Intent(FirstRegisterActivity.this, SecondRegisterActivity.class);
                     intent.putExtra( "email", emailText);
-                    if(spam.isChecked()){
-                        intent.putExtra("spam", true);
-                    }else {
-                        intent.putExtra("spam", false);
-                    }
+                    intent.putExtra("spam", spam.isChecked());
                     startActivity(intent);
                 } else {
-                    next.setVisibility(View.INVISIBLE);
-                    View contentView = findViewById(android.R.id.content);
-                    Snackbar snackbar = Snackbar.make(contentView, "Dominio no válido.", Snackbar.LENGTH_SHORT);
-                    snackbar.setTextColor(Color.RED);
-                    snackbar.setBackgroundTint(Color.BLACK);
-                    snackbar.show();
+                    errorMessage(String.valueOf(R.string.errorLogDomain));
                 }
             }else {
-                next.setVisibility(View.INVISIBLE);
-                View contentView = findViewById(android.R.id.content);
-                Snackbar snackbar = Snackbar.make(contentView, "Email no válido o dominio no permitido.", Snackbar.LENGTH_SHORT);
-                snackbar.setTextColor(Color.RED);
-                snackbar.setBackgroundTint(Color.BLACK);
-                snackbar.show();
+                errorMessage(String.valueOf(R.string.errorLogEmail));
             }
         });
     }
@@ -121,5 +107,14 @@ public class FirstRegisterActivity extends AppCompatActivity {
         Matcher matcher = pattern.matcher(email);
 
         return matcher.matches();
+    }
+
+    private void errorMessage(String text){
+        next.setVisibility(View.INVISIBLE);
+        View contentView = findViewById(android.R.id.content);
+        Snackbar snackbar = Snackbar.make(contentView, text, Snackbar.LENGTH_SHORT);
+        snackbar.setTextColor(Color.RED);
+        snackbar.setBackgroundTint(Color.BLACK);
+        snackbar.show();
     }
 }
