@@ -91,7 +91,7 @@
         tools:ignore="TextSizeCheck" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/chcSpam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"

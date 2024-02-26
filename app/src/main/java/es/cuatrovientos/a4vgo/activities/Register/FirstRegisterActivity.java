@@ -9,6 +9,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -23,6 +24,7 @@ import es.cuatrovientos.a4vgo.activities.MainActivity;
 public class FirstRegisterActivity extends AppCompatActivity {
     Button back;
     ImageButton next;
+    CheckBox spam;
     EditText email;
 
     @Override
@@ -32,6 +34,7 @@ public class FirstRegisterActivity extends AppCompatActivity {
 
         back = findViewById(R.id.btnBack);
         next = findViewById(R.id.btnNext);
+        spam = findViewById(R.id.chcSpam);
         email = findViewById(R.id.txtEmail);
 
         back.setOnClickListener(view -> {
@@ -66,10 +69,17 @@ public class FirstRegisterActivity extends AppCompatActivity {
 
             if (validateEmail(emailText)){
                 if (validateDomain(emailText)) {
-
+                    Intent intent = new Intent(FirstRegisterActivity.this, SecondRegisterActivity.class);
+                    intent.putExtra( "email", emailText);
+                    if(spam.isChecked()){
+                        intent.putExtra("spam", true);
+                    }else {
+                        intent.putExtra("spam", false);
+                    }
+                    startActivity(intent);
                 } else {
                     next.setVisibility(View.INVISIBLE);
-                    View contentView = findViewById(android.R.id.content); // Obtén la vista raíz del layout
+                    View contentView = findViewById(android.R.id.content);
                     Snackbar snackbar = Snackbar.make(contentView, "Dominio no válido.", Snackbar.LENGTH_SHORT);
                     snackbar.setTextColor(Color.RED);
                     snackbar.setBackgroundTint(Color.BLACK);
@@ -77,7 +87,7 @@ public class FirstRegisterActivity extends AppCompatActivity {
                 }
             }else {
                 next.setVisibility(View.INVISIBLE);
-                View contentView = findViewById(android.R.id.content); // Obtén la vista raíz del layout
+                View contentView = findViewById(android.R.id.content);
                 Snackbar snackbar = Snackbar.make(contentView, "Email no válido o dominio no permitido.", Snackbar.LENGTH_SHORT);
                 snackbar.setTextColor(Color.RED);
                 snackbar.setBackgroundTint(Color.BLACK);
