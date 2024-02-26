@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "es.cuatrovientos.a4vgo"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "es.cuatrovientos.a4vgo"

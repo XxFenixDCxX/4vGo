@@ -1,4 +1,4 @@
-package es.cuatrovientos.a4vgo;
+package es.cuatrovientos.a4vgo.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -6,6 +6,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import es.cuatrovientos.a4vgo.R;
 
 public class MainActivity extends AppCompatActivity {
 
