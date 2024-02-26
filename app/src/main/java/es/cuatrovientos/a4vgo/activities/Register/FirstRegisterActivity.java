@@ -69,6 +69,7 @@ public class FirstRegisterActivity extends AppCompatActivity {
 
             if (validateEmail(emailText)){
                 if (validateDomain(emailText)) {
+                    //toDo antes de enviar queda verificar si existe ya un usuario con ese email, si lo existe no deja registrar
                     Intent intent = new Intent(FirstRegisterActivity.this, SecondRegisterActivity.class);
                     intent.putExtra( "email", emailText);
                     intent.putExtra("spam", spam.isChecked());

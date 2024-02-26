@@ -85,7 +85,7 @@ public class FourthRegisterActivity extends AppCompatActivity {
             String rePasswordString = rePassword.getText().toString();
 
             if(passwordString.equals(rePasswordString)){
-
+                //toDo Mandar a la pantalla principal y registrar datos en la base de datos, queda decidir cual sera el id
             }else{
                 next.setVisibility(View.INVISIBLE);
                 View contentView = findViewById(android.R.id.content);
