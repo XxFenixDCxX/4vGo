@@ -1,3 +1,30 @@
 <resources>
-    <string name="app_name">4vGo</string>
+    <string name="app_name">4V GO</string>
+    <string name="name">Nombre</string>
+    <string name="hint_write">Escribe aqui…</string>
+    <string name="registerAccount">Crear\ncuenta</string>
+    <string name="email">Correo electronico</string>
+    <string name="password">Contraseña</string>
+    <string name="rePassword">Introduce tu contraseña</string>
+    <string name="register">Registrar</string>
+    <string name="descriptionHeader">Imagen de cabecera</string>
+    <string name="descriptionCuatrovientos">Imagen de cuatrovientos</string>
+    <string name="doneBy">Realizado por:</string>
+    <string name="appDescription">Fomentar el transporte compartido, la eficiencia energética y la reducción de emisiones de CO2</string>
+    <string name="login">Inicia sesión</string>
+    <string name="Email">Email</string>
+    <string name="PutEmail">Introduzca el correo electrónico</string>
+    <string name="Password">Contraseña</string>
+    <string name="PutPassword">Introduzca la contraseña</string>
+    <string name="ForgotPassword">¿Olvidaste la contraseña? Recuperarla</string>
+    <string name="OtherLogin">O iniciar sesión con</string>
+    <string name="Facebook">Facebook</string>
+    <string name="Google">Google</string>
+    <string name="LoginButton">Iniciar sesión</string>
+
+    <!-- Description -->
+    <string name="background">background</string>
+
+    <!-- Hint -->
+    <string name="hint_email">Email</string>
 </resources>
