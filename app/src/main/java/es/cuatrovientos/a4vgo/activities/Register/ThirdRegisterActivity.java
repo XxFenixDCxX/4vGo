@@ -67,6 +67,7 @@ public class ThirdRegisterActivity extends AppCompatActivity {
             try {
                 Date date = dateFormat.parse(dateString);
                 Date currentDate = new Date();
+                assert date != null;
                 long differenceInMillis = currentDate.getTime() - date.getTime();
                 long years = differenceInMillis / (365L * 24 * 60 * 60 * 1000);
                 if(years >= 16){
