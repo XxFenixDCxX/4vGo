@@ -39,6 +39,8 @@
     <string name="errorLogDate">Fecha no valida</string>
     <string name="errorLogYears">Tienes que tener al menos 16 años</string>
     <string name="errorLogPassword">Las contraseñas no coinciden</string>
+    <string name="errorLoginTitle">¡Ups!</string>
+    <string name="errorLoginMessage">Error al iniciar sesión, Vuelva a intentarlo.</string>
 
     <!-- Description -->
     <string name="background">background</string>
