@@ -26,7 +26,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import es.cuatrovientos.a4vgo.R;
 import es.cuatrovientos.a4vgo.Utils.DialogUtils;
 
-public class loginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private GoogleSignInClient mGoogleSignInClient;
 
@@ -102,7 +102,7 @@ public class loginActivity extends AppCompatActivity {
     }
 
     private void navigateToMain() {
-        Intent intent = new Intent(loginActivity.this, MainRoutesActivity.class);
+        Intent intent = new Intent(LoginActivity.this, MainRoutesActivity.class);
         startActivity(intent);
     }
 
@@ -125,7 +125,7 @@ public class loginActivity extends AppCompatActivity {
 
             // Authentication
             mAuth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(loginActivity.this, task -> {
+                    .addOnCompleteListener(LoginActivity.this, task -> {
                         if (task.isSuccessful()) {
                             navigateToMain();
                         } else {
