@@ -11,7 +11,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import es.cuatrovientos.a4vgo.Utils.DialogUtils;
 import es.cuatrovientos.a4vgo.R;
 
-public class loginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     @Override
@@ -41,11 +41,11 @@ public class loginActivity extends AppCompatActivity {
 
             // Authentication
             mAuth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(loginActivity.this, task -> {
+                    .addOnCompleteListener(LoginActivity.this, task -> {
 
                         if (task.isSuccessful()) {
                             // Sign in success, go to the principal activity
-                            Intent intent = new Intent(loginActivity.this, MainRoutesActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, MainRoutesActivity.class);
                             startActivity(intent);
                         } else {
                             // If sign in fails, clear the input fields and show a popup

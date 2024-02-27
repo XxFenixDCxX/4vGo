@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import es.cuatrovientos.a4vgo.R;
-import es.cuatrovientos.a4vgo.activities.Register.FirstRegisterActivity;
+import es.cuatrovientos.a4vgo.activities.register.FirstRegisterActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ConstraintLayout constraintLayout = findViewById(R.id.constraintLayout2);
         constraintLayout.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, loginActivity.class);
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
         });
         ConstraintLayout constraintLayout1 = findViewById(R.id.constraintLayout3);
