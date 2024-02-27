@@ -16,7 +16,7 @@
             android:name=".activities.createRoute.AddRouteSecondActivity"
             android:exported="false" />
 
-        <activity android:name=".activities.ProfileActivity"
+        <activity android:name=".activities.profile.ProfileActivity"
             android:exported="false"/>
         <activity
             android:name=".activities.createRoute.AddRouteActivity"

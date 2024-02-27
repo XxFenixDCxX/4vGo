@@ -1,4 +1,4 @@
-package es.cuatrovientos.a4vgo.activities;
+package es.cuatrovientos.a4vgo.activities.profile;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -9,6 +9,7 @@ import android.os.Bundle;
 import com.google.firebase.auth.FirebaseAuth;
 
 import es.cuatrovientos.a4vgo.R;
+import es.cuatrovientos.a4vgo.activities.MainActivity;
 
 public class ProfileActivity extends AppCompatActivity {
     ConstraintLayout logout;
