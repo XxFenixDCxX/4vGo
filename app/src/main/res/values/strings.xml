@@ -56,7 +56,12 @@
     <string name="vehiclesImageDescription">Imagen de Vehiculos</string>
     <string name="logout">Cerrar sesion</string>
     <string name="logoutImageDescripton">Imagen de Cerrar sesion</string>
+    <string name="username">Nombre de usuario</string>
     <string name="errorLogCantLoadDetails">Se ha producido un error al cargar tus datos, vuelve a iniciar sesion o contacta con algun tecnico</string>
+    <string name="save">Guardar</string>
+    <string name="selectLanguage">Selecciona un idioma</string>
+    <string name="selectedLanguague">Idioma seleccionado: </string>
+    <string name="errorLogImage">Error al cargar la imagen</string>
 
     <!-- Description -->
     <string name="background">background</string>

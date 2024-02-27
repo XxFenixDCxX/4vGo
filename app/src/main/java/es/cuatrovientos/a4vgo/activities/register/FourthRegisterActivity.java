@@ -108,6 +108,7 @@ public class FourthRegisterActivity extends AppCompatActivity {
                 personalDetailsMap.put("birthdate", sendBirthdate);
                 personalDetailsMap.put("spam", String.valueOf(sendSpam));
                 personalDetailsMap.put("email", sendEmail.toLowerCase());
+                personalDetailsMap.put("profileImage", "");
                 db.collection("personalDetails").document(sendDni.toUpperCase()).set(personalDetailsMap);
 
                 FirebaseAuth auth = FirebaseAuth.getInstance();
