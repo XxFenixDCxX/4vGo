@@ -74,7 +74,7 @@
         tools:ignore="TouchTargetSizeCheck,VisualLintTextFieldSize" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/txtUsername"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -98,12 +98,12 @@
         android:buttonTint="@color/green"
         android:text="@string/whiteString"
         android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="@+id/textView4"
+        app:layout_constraintBottom_toBottomOf="@+id/txtUsername"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView4" />
+        app:layout_constraintTop_toTopOf="@+id/txtUsername" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/txtEmailProfile"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -115,7 +115,7 @@
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/txtUsername"
         tools:ignore="VisualLintLongText" />
 
     <ImageButton

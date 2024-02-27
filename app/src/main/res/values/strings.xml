@@ -43,6 +43,12 @@
     <string name="errorLoginMessage">Error al iniciar sesión, Vuelva a intentarlo.</string>
     <string name="errorLogUserExist">Ya existe un usuario con ese correo electronico</string>
     <string name="errorLogDniExist">Ya existe un usuario con ese dni</string>
+    <string name="profile">Perfil</string>
+    <string name="username">Nombre de Usuario</string>
+    <string name="defaultDescription">Imagen de fondo</string>
+    <string name="imageProfileDescription">Imagen de perfil</string>
+    <string name="imageArrowDescription">Flecha de siguiente</string>
+    <string name="personalDetails">Datos Personales</string>
 
     <!-- Description -->
     <string name="background">background</string>
