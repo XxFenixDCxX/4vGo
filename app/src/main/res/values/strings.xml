@@ -42,6 +42,7 @@
     <string name="errorLoginTitle">¡Ups!</string>
     <string name="errorLoginMessage">Error al iniciar sesión, Vuelva a intentarlo.</string>
     <string name="errorLogUserExist">Ya existe un usuario con ese correo electronico</string>
+    <string name="errorLogDniExist">Ya existe un usuario con ese dni</string>
 
     <!-- Description -->
     <string name="background">background</string>
