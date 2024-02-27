@@ -3,7 +3,6 @@ package es.cuatrovientos.a4vgo.activities.register;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -13,7 +12,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -22,6 +20,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import es.cuatrovientos.a4vgo.R;
+import es.cuatrovientos.a4vgo.Utils.DialogUtils;
 import es.cuatrovientos.a4vgo.activities.MainActivity;
 
 public class FirstRegisterActivity extends AppCompatActivity {
@@ -78,7 +77,7 @@ public class FirstRegisterActivity extends AppCompatActivity {
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     continua = true;
                     assert user != null;
-                    user.updateEmail(emailText).addOnSuccessListener(unused -> errorMessage(getString(R.string.errorLogUserExist)))
+                    user.updateEmail(emailText).addOnSuccessListener(unused -> DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.errorLogUserExist)))
                             .addOnFailureListener(e -> {
                         Intent intent = new Intent(FirstRegisterActivity.this, SecondRegisterActivity.class);
                         intent.putExtra( "email", emailText);
@@ -86,10 +85,10 @@ public class FirstRegisterActivity extends AppCompatActivity {
                         startActivity(intent);
                     });
                 } else {
-                    errorMessage(getString(R.string.errorLogDomain));
+                    DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.errorLogDomain));
                 }
             }else {
-                errorMessage(getString(R.string.errorLogEmail));
+                DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.errorLogEmail));
             }
         });
     }
@@ -119,14 +118,5 @@ public class FirstRegisterActivity extends AppCompatActivity {
         Matcher matcher = pattern.matcher(email);
 
         return matcher.matches();
-    }
-
-    private void errorMessage(String text){
-        next.setVisibility(View.INVISIBLE);
-        View contentView = findViewById(android.R.id.content);
-        Snackbar snackbar = Snackbar.make(contentView, text, Snackbar.LENGTH_SHORT);
-        snackbar.setTextColor(Color.RED);
-        snackbar.setBackgroundTint(Color.BLACK);
-        snackbar.show();
     }
 }
