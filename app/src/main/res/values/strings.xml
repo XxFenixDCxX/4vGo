@@ -41,6 +41,7 @@
     <string name="errorLogPassword">Las contraseñas no coinciden</string>
     <string name="errorLoginTitle">¡Ups!</string>
     <string name="errorLoginMessage">Error al iniciar sesión, Vuelva a intentarlo.</string>
+    <string name="errorLogUserExist">Ya existe un usuario con ese correo electronico</string>
 
     <!-- Description -->
     <string name="background">background</string>

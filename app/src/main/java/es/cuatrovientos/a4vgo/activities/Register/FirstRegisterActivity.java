@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -26,6 +27,7 @@ public class FirstRegisterActivity extends AppCompatActivity {
     ImageButton next;
     CheckBox spam;
     EditText email;
+    FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class FirstRegisterActivity extends AppCompatActivity {
         next = findViewById(R.id.btnNext);
         spam = findViewById(R.id.chcSpam);
         email = findViewById(R.id.txtEmail);
+        db = FirebaseFirestore.getInstance();
 
         back.setOnClickListener(view -> {
             Intent intent = new Intent(FirstRegisterActivity.this, MainActivity.class);
@@ -69,11 +72,14 @@ public class FirstRegisterActivity extends AppCompatActivity {
 
             if (validateEmail(emailText)){
                 if (validateDomain(emailText)) {
-                    //toDo antes de enviar queda verificar si existe ya un usuario con ese email, si lo existe no deja registrar
-                    Intent intent = new Intent(FirstRegisterActivity.this, SecondRegisterActivity.class);
-                    intent.putExtra( "email", emailText);
-                    intent.putExtra("spam", spam.isChecked());
-                    startActivity(intent);
+                    db.collection("users").document(emailText).get()
+                            .addOnSuccessListener(documentSnapshot -> errorMessage(getString(R.string.errorLogUserExist)))
+                            .addOnCanceledListener(() -> {
+                                Intent intent = new Intent(FirstRegisterActivity.this, SecondRegisterActivity.class);
+                                intent.putExtra( "email", emailText);
+                                intent.putExtra("spam", spam.isChecked());
+                                startActivity(intent);
+                            });
                 } else {
                     errorMessage(getString(R.string.errorLogDomain));
                 }
