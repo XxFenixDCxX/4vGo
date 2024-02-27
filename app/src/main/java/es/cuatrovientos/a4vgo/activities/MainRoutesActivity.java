@@ -8,7 +8,7 @@ import android.os.Bundle;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import es.cuatrovientos.a4vgo.R;
-import es.cuatrovientos.a4vgo.activities.CreateRoute.AddRouteActivity;
+import es.cuatrovientos.a4vgo.activities.createRoute.AddRouteActivity;
 
 public class MainRoutesActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;

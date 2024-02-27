@@ -1,4 +1,4 @@
-package es.cuatrovientos.a4vgo.activities.CreateRoute;
+package es.cuatrovientos.a4vgo.activities.createRoute;
 
 import androidx.appcompat.app.AppCompatActivity;
 
