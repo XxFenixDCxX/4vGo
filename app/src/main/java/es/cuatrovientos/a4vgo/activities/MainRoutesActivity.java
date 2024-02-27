@@ -19,10 +19,11 @@ public class MainRoutesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_routes);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.getMenu().findItem(R.id.messages).setChecked(true);
         bottomNavigationView.setOnItemSelectedListener(
                 item -> {
                     int id = item.getItemId();
-                    if (id == R.id.trips) {
+                    if (id == R.id.messages) {
 
                         return true;
                     } else if (id == R.id.trips) {
@@ -37,15 +38,13 @@ public class MainRoutesActivity extends AppCompatActivity {
                     } else if (id == R.id.profile) {
                         overridePendingTransition(0, 0);
 
-                        Intent intent = new Intent(MainRoutesActivity.this , AddRouteActivity.class);
+                        Intent intent = new Intent(MainRoutesActivity.this , ProfileActivity.class);
                         startActivity(intent);
 
                         overridePendingTransition(0, 0);
 
                         return true;
                     }
-
-
 
                     else {
                         return false;
