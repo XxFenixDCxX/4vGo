@@ -2,25 +2,33 @@ package es.cuatrovientos.a4vgo.activities.Register;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+
+import java.util.HashMap;
+import java.util.Map;
 
 import es.cuatrovientos.a4vgo.R;
 
 public class FourthRegisterActivity extends AppCompatActivity {
     EditText password, rePassword;
     ImageButton next;
+    Button back;
     Bundle bundle;
     String sendName, sendSurname, sendDni, sendEmail, sendBirthdate;
     Boolean sendSpam;
+    FirebaseFirestore db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +37,7 @@ public class FourthRegisterActivity extends AppCompatActivity {
         password = findViewById(R.id.txtPassword);
         rePassword = findViewById(R.id.txtRePassword);
         next = findViewById(R.id.btnNext);
+        back = findViewById(R.id.btnBack);
         bundle = getIntent().getExtras();
         assert bundle != null;
         sendName = bundle.getString("name");
@@ -37,7 +46,12 @@ public class FourthRegisterActivity extends AppCompatActivity {
         sendEmail = bundle.getString("email");
         sendBirthdate = bundle.getString("birthdate");
         sendSpam = bundle.getBoolean("spam");
+        db = FirebaseFirestore.getInstance();
 
+        back.setOnClickListener(view -> {
+            Intent intent = new Intent(FourthRegisterActivity.this, ThirdRegisterActivity.class);
+            startActivity(intent);
+        });
 
         password.addTextChangedListener(new TextWatcher() {
             @Override
@@ -85,7 +99,21 @@ public class FourthRegisterActivity extends AppCompatActivity {
             String rePasswordString = rePassword.getText().toString();
 
             if(passwordString.equals(rePasswordString)){
-                //toDo Mandar a la pantalla principal y registrar datos en la base de datos, queda decidir cual sera el id
+                //toDo Mandar a la pantalla principal
+                Map<String, String> personalDetailsMap = new HashMap<>();
+                personalDetailsMap.put("dni", sendDni);
+                personalDetailsMap.put("username", sendEmail.split("@")[0]);
+                personalDetailsMap.put("name", sendName);
+                personalDetailsMap.put("surname", sendSurname);
+                personalDetailsMap.put("birthdate", sendBirthdate);
+                personalDetailsMap.put("spam", String.valueOf(sendSpam));
+                personalDetailsMap.put("userId", sendEmail);
+                db.collection("personalDetails").document(sendDni).set(personalDetailsMap);
+
+                Map<String, String> userMap = new HashMap<>();
+                userMap.put("email", sendEmail);
+                userMap.put("password", passwordString);
+                db.collection("users").document(sendEmail).set(userMap);
             }else{
                 next.setVisibility(View.INVISIBLE);
                 View contentView = findViewById(android.R.id.content);

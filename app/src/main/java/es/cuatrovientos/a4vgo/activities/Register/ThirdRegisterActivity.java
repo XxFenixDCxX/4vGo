@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -22,6 +23,7 @@ import es.cuatrovientos.a4vgo.R;
 
 public class ThirdRegisterActivity extends AppCompatActivity {
     EditText birthdate;
+    Button back;
     ImageButton next;
     String sendName, sendSurname, sendDni, sendEmail;
     Boolean sendSpam;
@@ -33,6 +35,7 @@ public class ThirdRegisterActivity extends AppCompatActivity {
 
         birthdate = findViewById(R.id.txtBirthDate);
         next = findViewById(R.id.btnNext);
+        back = findViewById(R.id.btnBack);
         bundle = getIntent().getExtras();
         assert bundle != null;
         sendName = bundle.getString("name");
@@ -40,6 +43,11 @@ public class ThirdRegisterActivity extends AppCompatActivity {
         sendDni = bundle.getString("dni");
         sendEmail = bundle.getString("email");
         sendSpam = bundle.getBoolean("spam");
+
+        back.setOnClickListener(view -> {
+            Intent intent = new Intent(ThirdRegisterActivity.this, SecondRegisterActivity.class);
+            startActivity(intent);
+        });
 
         birthdate.addTextChangedListener(new TextWatcher() {
             @Override
