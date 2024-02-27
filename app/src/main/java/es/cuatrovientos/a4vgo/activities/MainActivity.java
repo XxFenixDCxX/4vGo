@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import es.cuatrovientos.a4vgo.R;
-import es.cuatrovientos.a4vgo.activities.Register.FirstRegisterActivity;
+import es.cuatrovientos.a4vgo.activities.register.FirstRegisterActivity;
 
 public class MainActivity extends AppCompatActivity {
 

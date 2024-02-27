@@ -49,7 +49,15 @@
     <string name="imageProfileDescription">Imagen de perfil</string>
     <string name="imageArrowDescription">Flecha de siguiente</string>
     <string name="personalDetails">Datos Personales</string>
+    <string name="personalDetailsImageDescription">Imagen de Datos Personales</string>
     <string name="languague">Idioma</string>
+    <string name="languagueImageDescription">Imagen de Idioma</string>
+    <string name="co2Points">Puntuaciones C02</string>
+    <string name="co2PointsImageDescription">Imagen de Puntuaciones C02</string>
+    <string name="vehicles">Vehiculos</string>
+    <string name="vehiclesImageDescription">Imagen de Vehiculos</string>
+    <string name="logout">Cerrar sesion</string>
+    <string name="logoutImageDescripton">Imagen de Cerrar sesion</string>
 
     <!-- Description -->
     <string name="background">background</string>
