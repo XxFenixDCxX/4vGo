@@ -30,25 +30,25 @@
             android:name=".activities.MainRoutesActivity"
             android:exported="false" />
         <activity
-            android:name=".register.FourthRegisterActivity"
+            android:name=".activities.register.FourthRegisterActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".register.ThirdRegisterActivity"
+            android:name=".activities.register.ThirdRegisterActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".register.SecondRegisterActivity"
+            android:name=".activities.register.SecondRegisterActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".register.FirstRegisterActivity"
+            android:name=".activities.register.FirstRegisterActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"
