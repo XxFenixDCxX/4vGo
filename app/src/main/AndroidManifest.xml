@@ -13,15 +13,17 @@
         android:theme="@style/Theme._4vGo"
         tools:targetApi="31">
         <activity
-            android:name=".activities.CreateRoute.AddRouteSecondActivity"
+            android:name=".activities.profile.PersonalDetailsActivity"
             android:exported="false" />
-
-        <activity android:name=".activities.ProfileActivity"
-            android:exported="false"/>
         <activity
-            android:name=".activities.CreateRoute.AddRouteActivity"
+            android:name=".activities.createRoute.AddRouteSecondActivity"
             android:exported="false" />
-
+        <activity
+            android:name=".activities.profile.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.createRoute.AddRouteActivity"
+            android:exported="false" />
         <activity
             android:name=".activities.MainRoutesActivity"
             android:exported="false" />
@@ -50,7 +52,7 @@
             android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".activities.loginActivity"
+            android:name=".activities.LoginActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
