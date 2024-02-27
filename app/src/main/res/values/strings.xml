@@ -9,6 +9,7 @@
     <string name="email">Correo electronico</string>
     <string name="disclaimerEmail">No quiero recibir noticias, promociones ni contenido gratiuito de 4V GO.</string>
     <string name="disclaimerEmailSuscription" tools:ignore="Typos">Una vez suscrito, puedo cancelar mi suscripción en cualquier momento contactando con 4V GO o a través del enlace que se encuentra en el boletin del noticias.</string>
+    <string name="passwordQuestion">Define tu contraseña</string>
     <string name="password">Contraseña</string>
     <string name="rePassword">Repite tu contraseña</string>
     <string name="disclaimerPassword">Debe tener al menos 8 caracteres e incluir 1 letra y 1 número</string>

@@ -3,7 +3,6 @@ package es.cuatrovientos.a4vgo.activities.register;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -13,7 +12,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -91,10 +89,12 @@ public class FirstRegisterActivity extends AppCompatActivity {
                         }
                     });
                 } else {
-                    errorMessage(getString(R.string.errorLogDomain));
+                    next.setVisibility(View.INVISIBLE);
+                    DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.errorLogDomain));
                 }
             }else {
-                errorMessage(getString(R.string.errorLogEmail));
+                next.setVisibility(View.INVISIBLE);
+                DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.errorLogEmail));
             }
         });
     }
@@ -124,14 +124,5 @@ public class FirstRegisterActivity extends AppCompatActivity {
         Matcher matcher = pattern.matcher(email);
 
         return matcher.matches();
-    }
-
-    private void errorMessage(String text){
-        next.setVisibility(View.INVISIBLE);
-        View contentView = findViewById(android.R.id.content);
-        Snackbar snackbar = Snackbar.make(contentView, text, Snackbar.LENGTH_SHORT);
-        snackbar.setTextColor(Color.RED);
-        snackbar.setBackgroundTint(Color.BLACK);
-        snackbar.show();
     }
 }
