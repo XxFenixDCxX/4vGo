@@ -39,8 +39,6 @@
     <string name="errorLogDate">Fecha no valida</string>
     <string name="errorLogYears">Tienes que tener al menos 16 años</string>
     <string name="errorLogPassword">Las contraseñas no coinciden</string>
-    <string name="errorLoginTitle">¡Ups!</string>
-    <string name="errorLoginMessage">Error al iniciar sesión, Vuelva a intentarlo.</string>
     <string name="errorLogUserExist">Ya existe un usuario con ese correo electronico</string>
     <string name="errorLogDniExist">Ya existe un usuario con ese dni</string>
     <string name="profile">Perfil</string>
@@ -80,6 +78,9 @@
     <string name="txt_see_all">Mostrar todo</string>
     <string name="txt_routes_record">Historial de trayectos</string>
     <string name="txt_habitual_routes">Trayectos habituales</string>
+    <string name="success">success</string>
+    <string name="warning">warning</string>
+    <string name="error">error</string>
 
     <!--Crear rutas-->
     <string name="addRoute">Crear ruta</string>
@@ -98,4 +99,9 @@
 
 
 
+    <!--AlertDialog-->
+        <!-- Para el diálogo de error -->
+    <string name="errorLoginTitle">¡Ups!</string>
+    <string name="errorLoginMessage">Error al iniciar sesión, Vuelva a intentarlo.</string>
+    <string name="errorLoginEmptyMensaje">Por favor, rellena todos los campos</string>
 </resources>
