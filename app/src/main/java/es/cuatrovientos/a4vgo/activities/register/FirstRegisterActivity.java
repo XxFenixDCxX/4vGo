@@ -1,4 +1,4 @@
-package es.cuatrovientos.a4vgo.activities.Register;
+package es.cuatrovientos.a4vgo.activities.register;
 
 import androidx.appcompat.app.AppCompatActivity;
 
