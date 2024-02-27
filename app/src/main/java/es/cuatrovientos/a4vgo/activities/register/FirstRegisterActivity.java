@@ -14,14 +14,16 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import es.cuatrovientos.a4vgo.R;
+import es.cuatrovientos.a4vgo.Utils.DialogUtils;
 import es.cuatrovientos.a4vgo.activities.MainActivity;
 
 public class FirstRegisterActivity extends AppCompatActivity {
@@ -29,8 +31,8 @@ public class FirstRegisterActivity extends AppCompatActivity {
     ImageButton next;
     CheckBox spam;
     EditText email;
-    FirebaseFirestore db;
-    Boolean continua;
+    Query query;
+    CollectionReference collection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,6 @@ public class FirstRegisterActivity extends AppCompatActivity {
         next = findViewById(R.id.btnNext);
         spam = findViewById(R.id.chcSpam);
         email = findViewById(R.id.txtEmail);
-        db = FirebaseFirestore.getInstance();
 
         back.setOnClickListener(view -> {
             Intent intent = new Intent(FirstRegisterActivity.this, MainActivity.class);
@@ -75,15 +76,19 @@ public class FirstRegisterActivity extends AppCompatActivity {
 
             if (validateEmail(emailText)){
                 if (validateDomain(emailText)) {
-                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    continua = true;
-                    assert user != null;
-                    user.updateEmail(emailText).addOnSuccessListener(unused -> errorMessage(getString(R.string.errorLogUserExist)))
-                            .addOnFailureListener(e -> {
-                        Intent intent = new Intent(FirstRegisterActivity.this, SecondRegisterActivity.class);
-                        intent.putExtra( "email", emailText);
-                        intent.putExtra("spam", spam.isChecked());
-                        startActivity(intent);
+                    collection = FirebaseFirestore.getInstance().collection("personalDetails");
+                    query = collection.whereEqualTo("email", emailText);
+                    query.get().addOnCompleteListener(task -> {
+                        QuerySnapshot querySnapshot = task.getResult();
+                        if (querySnapshot.isEmpty()) {
+                            Intent intent = new Intent(FirstRegisterActivity.this, SecondRegisterActivity.class);
+                            intent.putExtra( "email", emailText);
+                            intent.putExtra("spam", spam.isChecked());
+                            startActivity(intent);
+                        } else {
+                            next.setVisibility(View.INVISIBLE);
+                            DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.errorLogUserExist));
+                        }
                     });
                 } else {
                     errorMessage(getString(R.string.errorLogDomain));
