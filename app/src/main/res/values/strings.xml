@@ -22,6 +22,8 @@
     <string name="Google">Google</string>
     <string name="LoginButton">Iniciar sesión</string>
     <string name="whiteString"></string>
+    <string name="errorLoginTitle">¡Ups!</string>
+    <string name="errorLoginMessage">Error al iniciar sesión, Vuelva a intentarlo.</string>
 
     <!-- Description -->
     <string name="background">background</string>
