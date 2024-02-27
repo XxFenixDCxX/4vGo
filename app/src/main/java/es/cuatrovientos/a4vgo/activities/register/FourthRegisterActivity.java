@@ -1,4 +1,4 @@
-package es.cuatrovientos.a4vgo.activities.register;
+package es.cuatrovientos.a4vgo.activities.Register;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -102,14 +102,14 @@ public class FourthRegisterActivity extends AppCompatActivity {
 
             if(passwordString.equals(rePasswordString)){
                 Map<String, String> personalDetailsMap = new HashMap<>();
-                personalDetailsMap.put("dni", sendDni.toUpperCase());
-                personalDetailsMap.put("username", sendEmail.toLowerCase().split("@")[0]);
-                personalDetailsMap.put("name", sendName.toLowerCase());
-                personalDetailsMap.put("surname", sendSurname.toLowerCase());
+                personalDetailsMap.put("dni", sendDni);
+                personalDetailsMap.put("username", sendEmail.split("@")[0]);
+                personalDetailsMap.put("name", sendName);
+                personalDetailsMap.put("surname", sendSurname);
                 personalDetailsMap.put("birthdate", sendBirthdate);
                 personalDetailsMap.put("spam", String.valueOf(sendSpam));
-                personalDetailsMap.put("userId", sendEmail.toLowerCase());
-                db.collection("personalDetails").document(sendDni.toUpperCase()).set(personalDetailsMap);
+                personalDetailsMap.put("userId", sendEmail);
+                db.collection("personalDetails").document(sendDni).set(personalDetailsMap);
 
                 FirebaseAuth auth = FirebaseAuth.getInstance();
                 auth.createUserWithEmailAndPassword(sendEmail, passwordString);
