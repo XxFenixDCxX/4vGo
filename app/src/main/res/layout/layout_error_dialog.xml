@@ -18,25 +18,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textTitle"
-            android:background="@drawable/success_background"
+            android:background="@drawable/error_background"
             android:padding="10dp"
             android:textColor="@color/white"
             android:textSize="17sp"
             android:textStyle="bold"
             app:layout_constraintTop_toTopOf="parent"/>
-
         <ImageView
-            android:id="@+id/imageIconSuccess"
+            android:id="@+id/imageIconError"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginEnd="10dp"
-            android:contentDescription="@string/success"
-            android:src="@drawable/icon_success_vector"
+            android:src="@drawable/icon_error_vector"
             app:layout_constraintBottom_toBottomOf="@id/textTitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/textTitle"
             app:tint="@color/white"
-            tools:ignore="ImageContrastCheck" />
+            android:contentDescription="@string/error" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

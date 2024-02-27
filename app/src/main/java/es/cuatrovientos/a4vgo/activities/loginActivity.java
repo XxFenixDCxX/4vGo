@@ -4,11 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import es.cuatrovientos.a4vgo.Utils.DialogUtils;
 import es.cuatrovientos.a4vgo.R;
 
 public class loginActivity extends AppCompatActivity {
@@ -34,28 +34,25 @@ public class loginActivity extends AppCompatActivity {
             String email = editTextEmail.getText().toString();
             String password = editTextPassword.getText().toString();
 
+            if (email.isEmpty() || password.isEmpty()) {
+                DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.errorLoginEmptyMensaje));
+                return;
+            }
+
             // Authentication
             mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(loginActivity.this, task -> {
+
                         if (task.isSuccessful()) {
                             // Sign in success, go to the principal activity
-                            Intent intent = new Intent(loginActivity.this, MainActivity.class);
+                            Intent intent = new Intent(loginActivity.this, MainRoutesActivity.class);
                             startActivity(intent);
                         } else {
                             // If sign in fails, clear the input fields and show a popup
-                            editTextEmail.setText("");
-                            editTextPassword.setText("");
+                            editTextEmail.setText(R.string.whiteString);
+                            editTextPassword.setText(R.string.whiteString);
 
-                            new AlertDialog.Builder(loginActivity.this)
-                                    .setTitle(R.string.errorLoginTitle)
-                                    .setMessage(R.string.errorLoginMessage)
-                                    .setPositiveButton(android.R.string.yes, (dialog, which) -> {
-                                        // Refresh the activity
-                                        finish();
-                                        startActivity(getIntent());
-                                    })
-                                    .setIcon(android.R.drawable.ic_dialog_alert)
-                                    .show();
+                            DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.errorLoginMessage));
                         }
                     });
         });
