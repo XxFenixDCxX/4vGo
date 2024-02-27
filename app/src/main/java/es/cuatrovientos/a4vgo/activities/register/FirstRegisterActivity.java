@@ -75,7 +75,7 @@ public class FirstRegisterActivity extends AppCompatActivity {
             if (validateEmail(emailText)){
                 if (validateDomain(emailText)) {
                     collection = FirebaseFirestore.getInstance().collection("personalDetails");
-                    query = collection.whereEqualTo("email", emailText);
+                    query = collection.whereEqualTo("email", emailText.toLowerCase());
                     query.get().addOnCompleteListener(task -> {
                         QuerySnapshot querySnapshot = task.getResult();
                         if (querySnapshot.isEmpty()) {

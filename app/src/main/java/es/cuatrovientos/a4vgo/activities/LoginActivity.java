@@ -2,7 +2,6 @@ package es.cuatrovientos.a4vgo.activities;
 
 import static android.content.ContentValues.TAG;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,7 +9,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -29,9 +27,10 @@ import es.cuatrovientos.a4vgo.Utils.DialogUtils;
 public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private GoogleSignInClient mGoogleSignInClient;
-
+    private static final int REQUEST_CODE_GOOGLE_SIGN_IN = 1001;
     private EditText editTextEmail;
     private EditText editTextPassword;
+    private Intent signInIntent;
     private ActivityResultLauncher<Intent> signInIntentLauncher;
 
     @Override
@@ -47,16 +46,16 @@ public class LoginActivity extends AppCompatActivity {
         editTextPassword = findViewById(R.id.editTextPassword);
 
         // Configure Google Sign In
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        /**GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        LinearLayout signInButton = findViewById(R.id.linearLayoutGoogle);
+         **/LinearLayout signInButton = findViewById(R.id.linearLayoutGoogle);
         signInButton.setOnClickListener(view -> signIn());
-
+/**
         signInIntentLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
@@ -67,14 +66,21 @@ public class LoginActivity extends AppCompatActivity {
                         handleSignInResult(task);
                     }
                 });
-
+         **/
         //Autentication call
         login();
     }
 
     private void signIn() {
-        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        signInIntentLauncher.launch(signInIntent);
+        /**signInIntent = mGoogleSignInClient.getSignInIntent();
+        signInIntentLauncher.launch(signInIntent);**/
+        GoogleSignInOptions googleConf = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                        .requestEmail()
+                                .build();
+        GoogleSignInClient googleClient = GoogleSignIn.getClient(this, googleConf);
+        int idGoogle = 100;
+        startActivityForResult(googleClient.getSignInIntent(), REQUEST_CODE_GOOGLE_SIGN_IN);
     }
 
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
@@ -133,5 +139,23 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     });
         });
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_CODE_GOOGLE_SIGN_IN) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+
+                if(account != null){
+                    AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
+                    FirebaseAuth.getInstance().signInWithCredential(credential);
+                }
+            } catch (ApiException e) {
+                DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), e.toString());
+            }
+        }
     }
 }

@@ -105,5 +105,5 @@
     <string name="errorLoginTitle">¡Ups!</string>
     <string name="errorLoginMessage">Error al iniciar sesión, Vuelva a intentarlo.</string>
     <string name="errorLoginEmptyMensaje">Por favor, rellena todos los campos</string>
-    <string name="default_web_client_id">88104562322-i9sq0fgb4hnf9beh4dfoq6l7dbkdd4q2.apps.googleusercontent.com</string>
+    <string name="default_web_client_id">88104562322-i9sq0fgb4hnf9beh4dfoq6l7dbkdd4q2</string>
 </resources>
