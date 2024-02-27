@@ -50,21 +50,24 @@ public class SecondRegisterActivity extends AppCompatActivity {
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                 db.collection("personalDetails").document(dniText).get().addOnSuccessListener(documentSnapshot -> {
                     next.setVisibility(View.INVISIBLE);
-                    View contentView = findViewById(android.R.id.content);
-                    Snackbar snackbar = Snackbar.make(contentView, R.string.errorLogDniExist, Snackbar.LENGTH_SHORT);
-                    snackbar.setTextColor(Color.RED);
-                    snackbar.setBackgroundTint(Color.BLACK);
-                    snackbar.show();
+                    if(documentSnapshot.exists()){
+                        View contentView = findViewById(android.R.id.content);
+                        Snackbar snackbar = Snackbar.make(contentView, R.string.errorLogDniExist, Snackbar.LENGTH_SHORT);
+                        snackbar.setTextColor(Color.RED);
+                        snackbar.setBackgroundTint(Color.BLACK);
+                        snackbar.show();
+                    } else{
+                        Intent intent = new Intent(SecondRegisterActivity.this, ThirdRegisterActivity.class);
+                        String nameText = name.getText().toString();
+                        String surnameText = surname.getText().toString();
+                        intent.putExtra("name", nameText);
+                        intent.putExtra("surname", surnameText);
+                        intent.putExtra("dni", dniText);
+                        intent.putExtra( "email", sendEmail);
+                        intent.putExtra("spam", sendSpam);
+                        startActivity(intent);
+                    }
                 }).addOnFailureListener(e -> {
-                    Intent intent = new Intent(SecondRegisterActivity.this, ThirdRegisterActivity.class);
-                    String nameText = name.getText().toString();
-                    String surnameText = surname.getText().toString();
-                    intent.putExtra("name", nameText);
-                    intent.putExtra("surname", surnameText);
-                    intent.putExtra("dni", dniText);
-                    intent.putExtra( "email", sendEmail);
-                    intent.putExtra("spam", sendSpam);
-                    startActivity(intent);
                 });
             } else {
                 next.setVisibility(View.INVISIBLE);

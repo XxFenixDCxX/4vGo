@@ -49,6 +49,7 @@
     <string name="imageProfileDescription">Imagen de perfil</string>
     <string name="imageArrowDescription">Flecha de siguiente</string>
     <string name="personalDetails">Datos Personales</string>
+    <string name="languague">Idioma</string>
 
     <!-- Description -->
     <string name="background">background</string>

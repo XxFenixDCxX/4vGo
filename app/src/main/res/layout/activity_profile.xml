@@ -136,17 +136,17 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/btn_1" />
+                    app:srcCompat="@drawable/btn_language" />
 
                 <TextView
                     android:id="@+id/textView15"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="Notification"
-                    android:textStyle="bold"
+                    android:text="@string/languague"
                     android:textColor="@color/dark_green"
                     android:textSize="20sp"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView60"
                     app:layout_constraintTop_toTopOf="@+id/imageView60" />
