@@ -10,7 +10,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import es.cuatrovientos.a4vgo.R;
-import es.cuatrovientos.a4vgo.activities.register.FirstRegisterActivity;
+import es.cuatrovientos.a4vgo.register.FirstRegisterActivity;
 
 public class MainActivity extends AppCompatActivity {
     FirebaseUser user;
