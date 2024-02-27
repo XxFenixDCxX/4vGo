@@ -45,4 +45,30 @@
 
     <!-- Hint -->
     <string name="hint_email">Email</string>
+
+    <!-- Menu -->
+    <string name="ic_profile">Perfil</string>
+    <string name="ic_trips">Viajes</string>
+    <string name="ic_messages">Mensajes</string>
+
+    <!--Buscador-->
+    <string name="edit_origin_hint">Origin</string>
+    <string name="edit_destination_hint">Destino</string>
+    <string name="edit_date_hint">Fecha</string>
+    <string name="button_search">Buscar</string>
+
+    <!--Historial de rutas-->
+    <string name="txt_see_all">Mostrar todo</string>
+    <string name="txt_routes_record">Historial de trayectos</string>
+    <string name="txt_habitual_routes">Trayectos habituales</string>
+
+
+
+
+
+
+
+
+
+
 </resources>
