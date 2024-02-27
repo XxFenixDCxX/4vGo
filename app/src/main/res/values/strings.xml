@@ -40,6 +40,14 @@
     <string name="errorLogYears">Tienes que tener al menos 16 años</string>
     <string name="errorLogPassword">Las contraseñas no coinciden</string>
     <string name="errorLogUserExist">Ya existe un usuario con ese correo electronico</string>
+    <string name="errorLogDniExist">Ya existe un usuario con ese dni</string>
+    <string name="profile">Perfil</string>
+    <string name="username">Nombre de Usuario</string>
+    <string name="defaultDescription">Imagen de fondo</string>
+    <string name="imageProfileDescription">Imagen de perfil</string>
+    <string name="imageArrowDescription">Flecha de siguiente</string>
+    <string name="personalDetails">Datos Personales</string>
+    <string name="languague">Idioma</string>
 
     <!-- Description -->
     <string name="background">background</string>
@@ -65,6 +73,22 @@
     <string name="success">success</string>
     <string name="warning">warning</string>
     <string name="error">error</string>
+
+    <!--Crear rutas-->
+    <string name="addRoute">Crear ruta</string>
+    <string name="createRouteButton">Crear Ruta</string>
+    <string name="dateAndTimeHint">Fecha y Hora</string>
+    <string name="availableSeatsHint">Número de Plazas Disponibles</string>
+    <string name="specialConditionsHint">Condiciones Especiales</string>
+    <string name="vehicleHint">Vehículo</string>
+    <string name="intermediateStopsHint">Paradas Intermedias (si aplicable)</string>
+    <string name="additionalCommentsHint">Comentarios Adicionales</string>
+    <string name="routeFrequencyHint">Frecuencia de la Ruta (si es recurrente)</string>
+    <string name="CreateRouteButton">Crear Ruta</string>
+    <string name="tripType">Tipo de Viaje</string>
+    <string name="next">Siguiente</string>
+    <string name="back">Volver</string>
+
 
 
     <!--AlertDialog-->

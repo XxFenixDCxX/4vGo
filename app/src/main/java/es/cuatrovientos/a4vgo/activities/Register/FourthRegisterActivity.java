@@ -14,12 +14,14 @@ import android.widget.ImageButton;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.auth.FirebaseAuth;
 
 
 import java.util.HashMap;
 import java.util.Map;
 
 import es.cuatrovientos.a4vgo.R;
+import es.cuatrovientos.a4vgo.activities.MainRoutesActivity;
 
 public class FourthRegisterActivity extends AppCompatActivity {
     EditText password, rePassword;
@@ -99,7 +101,6 @@ public class FourthRegisterActivity extends AppCompatActivity {
             String rePasswordString = rePassword.getText().toString();
 
             if(passwordString.equals(rePasswordString)){
-                //toDo Mandar a la pantalla principal
                 Map<String, String> personalDetailsMap = new HashMap<>();
                 personalDetailsMap.put("dni", sendDni);
                 personalDetailsMap.put("username", sendEmail.split("@")[0]);
@@ -110,10 +111,11 @@ public class FourthRegisterActivity extends AppCompatActivity {
                 personalDetailsMap.put("userId", sendEmail);
                 db.collection("personalDetails").document(sendDni).set(personalDetailsMap);
 
-                Map<String, String> userMap = new HashMap<>();
-                userMap.put("email", sendEmail);
-                userMap.put("password", passwordString);
-                db.collection("users").document(sendEmail).set(userMap);
+                FirebaseAuth auth = FirebaseAuth.getInstance();
+                auth.createUserWithEmailAndPassword(sendEmail, passwordString);
+                auth.signInWithEmailAndPassword(sendEmail, passwordString);
+                Intent intent = new Intent(FourthRegisterActivity.this, MainRoutesActivity.class);
+                startActivity(intent);
             }else{
                 next.setVisibility(View.INVISIBLE);
                 View contentView = findViewById(android.R.id.content);

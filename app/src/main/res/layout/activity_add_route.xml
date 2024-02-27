@@ -21,7 +21,7 @@
         android:id="@+id/textViewHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login"
+        android:text="@string/addRoute"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:textSize="30sp"
@@ -32,183 +32,137 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="vertical"
         android:padding="32dp"
+        android:background="@color/light_blue"
+        android:layout_margin="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewBackground">
 
-        <TextView
-            android:id="@+id/textViewEmail"
+        <!-- Campo para Origen -->
+        <Spinner
+            android:id="@+id/spinner3"
+            android:padding="15dp"
+            android:background="@drawable/white_edittext"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/Email"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/editTextEmail"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="12dp"
-            android:autofillHints=""
-            android:background="@drawable/edittext_background"
-            android:ems="10"
-            android:hint="@string/PutEmail"
-            android:inputType="textEmailAddress"
-            android:padding="12dp"
-            android:textColor="@color/gris"
-            android:textColorHint="@color/green"
-            android:textSize="18sp"
-            tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
 
-        <TextView
-            android:id="@+id/textViewPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="@string/Password"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/editTextPassword"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="12dp"
-            android:autofillHints=""
-            android:background="@drawable/edittext_background"
-            android:ems="10"
-            android:hint="@string/PutPassword"
-            android:padding="12dp"
-            android:textColor="@color/gris"
-            android:textColorHint="@color/green"
-            android:textSize="18sp"
-            tools:ignore="TextContrastCheck,VisualLintTextFieldSize"
-            android:inputType="textPassword" />
+        </Spinner>
 
-        <TextView
-            android:id="@+id/textViewForgotPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="@string/ForgotPassword"
-            android:textAlignment="center" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
             android:orientation="horizontal">
 
-            <View
-                android:id="@+id/viewHr"
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:background="@color/gris" />
-
-            <TextView
-                android:id="@+id/textViewOtherLogin"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/editTextOrigin"
+                android:layout_width="202dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="@string/OtherLogin" />
+                android:layout_marginTop="16dp"
+                android:background="@drawable/white_edittext"
+                android:drawableStart="@drawable/ic_marcador"
+                android:drawablePadding="20dp"
+                android:hint="@string/edit_origin_hint"
+                android:inputType="text"
+                android:layout_weight="3"
+                android:padding="15dp" />
 
-            <View
-                android:id="@+id/viewHr2"
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:layout_gravity="center_vertical"
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="30dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
-                android:background="@color/gris" />
+                android:layout_marginLeft="5dp"
+
+                android:background="@drawable/background_oval_1"
+                android:layout_gravity="bottom"
+                android:src="@drawable/ic_marcador" />
         </LinearLayout>
 
+        <!-- Campo para Destino -->
+
+        <!-- Campo para Fecha y Hora -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:orientation="horizontal"
-            android:baselineAligned="false">
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <EditText
+                android:id="@+id/editTextDestination"
+                android:layout_width="204dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_weight="3"
+                android:background="@drawable/white_edittext"
+                android:drawableStart="@drawable/ic_marcador"
+                android:drawablePadding="10dp"
+                android:hint="@string/edit_destination_hint"
+                android:inputType="text"
+                android:padding="15dp" />
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="30dp"
                 android:layout_height="50dp"
-                android:layout_marginEnd="16dp"
-                android:layout_weight="0.5"
-                android:background="@drawable/social_btn_background"
-                android:orientation="horizontal">
+                android:layout_weight="1"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/background_oval_1"
 
-                <ImageView
-                    android:id="@+id/imageViewFacebook"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="8dp"
-                    app:srcCompat="@drawable/facebook"
-                    android:contentDescription="@string/Facebook" />
-
-                <TextView
-                    android:id="@+id/textViewFacebook"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:text="@string/Facebook"
-                    android:textColor="@color/green"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    tools:ignore="NestedWeights" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginStart="16dp"
-                android:layout_weight="0.5"
-                android:background="@drawable/social_btn_background"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/imageViewGoogle"
-                    android:layout_width="35dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="8dp"
-                    android:contentDescription="@string/Google"
-                    app:srcCompat="@drawable/google" />
-
-                <TextView
-                    android:id="@+id/textViewGoogle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:text="@string/Google"
-                    android:textColor="@color/green"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    tools:ignore="NestedWeights" />
-            </LinearLayout>
+                android:layout_gravity="bottom"
+                android:src="@drawable/ic_marcador"/>
         </LinearLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/buttonLogin"
+        <EditText
+            android:id="@+id/editTextDateTime"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="32dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/white_edittext"
+            android:drawableStart="@drawable/ic_marcador"
+            android:drawablePadding="10dp"
+            android:layout_marginTop="16dp"
+            android:padding="15dp"
+
+            android:hint="@string/dateAndTimeHint"
+            android:inputType="datetime" />
+
+        <!-- Campo para Número de Plazas Disponibles -->
+        <EditText
+            android:id="@+id/editTextAvailableSeats"
+            android:background="@drawable/white_edittext"
+            android:drawableStart="@drawable/ic_marcador"
+            android:drawablePadding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+
+            android:layout_marginTop="16dp"
+            android:hint="@string/availableSeatsHint"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/btnNext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/next"
+            android:textAllCaps="false"
+            android:layout_marginTop="16dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
             android:background="@drawable/button_background"
-            style="@android:style/Widget.Button"
-            android:textColor="@color/white"
-            android:textSize="25sp"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
             android:textStyle="bold"
-            android:text="@string/LoginButton"
-            tools:ignore="VisualLintButtonSize" />
+            android:layout_gravity="end"
+        />
+
+
+
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
