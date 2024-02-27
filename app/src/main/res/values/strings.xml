@@ -9,6 +9,7 @@
     <string name="email">Correo electronico</string>
     <string name="disclaimerEmail">No quiero recibir noticias, promociones ni contenido gratiuito de 4V GO.</string>
     <string name="disclaimerEmailSuscription" tools:ignore="Typos">Una vez suscrito, puedo cancelar mi suscripción en cualquier momento contactando con 4V GO o a través del enlace que se encuentra en el boletin del noticias.</string>
+    <string name="passwordQuestion">Define tu contraseña</string>
     <string name="password">Contraseña</string>
     <string name="rePassword">Repite tu contraseña</string>
     <string name="disclaimerPassword">Debe tener al menos 8 caracteres e incluir 1 letra y 1 número</string>
@@ -42,7 +43,6 @@
     <string name="errorLogUserExist">Ya existe un usuario con ese correo electronico</string>
     <string name="errorLogDniExist">Ya existe un usuario con ese dni</string>
     <string name="profile">Perfil</string>
-    <string name="username">Nombre de Usuario</string>
     <string name="defaultDescription">Imagen de fondo</string>
     <string name="imageProfileDescription">Imagen de perfil</string>
     <string name="imageArrowDescription">Flecha de siguiente</string>
@@ -56,6 +56,12 @@
     <string name="vehiclesImageDescription">Imagen de Vehiculos</string>
     <string name="logout">Cerrar sesion</string>
     <string name="logoutImageDescripton">Imagen de Cerrar sesion</string>
+    <string name="username">Nombre de usuario</string>
+    <string name="errorLogCantLoadDetails">Se ha producido un error al cargar tus datos, vuelve a iniciar sesion o contacta con algun tecnico</string>
+    <string name="save">Guardar</string>
+    <string name="selectLanguage">Selecciona un idioma</string>
+    <string name="selectedLanguague">Idioma seleccionado: </string>
+    <string name="errorLogImage">Error al cargar la imagen</string>
 
     <!-- Description -->
     <string name="background">background</string>
@@ -99,11 +105,10 @@
     <string name="content_description">Imagen de más</string>
 
 
-
-
     <!--AlertDialog-->
-        <!-- Para el diálogo de error -->
+    <!-- Para el diálogo de error -->
     <string name="errorLoginTitle">¡Ups!</string>
     <string name="errorLoginMessage">Error al iniciar sesión, Vuelva a intentarlo.</string>
     <string name="errorLoginEmptyMensaje">Por favor, rellena todos los campos</string>
+    <string name="default_web_client_id">88104562322-i9sq0fgb4hnf9beh4dfoq6l7dbkdd4q2</string>
 </resources>

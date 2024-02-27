@@ -36,10 +36,9 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="32dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewBackground"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toBottomOf="@+id/imageViewBackground">
 
         <TextView
             android:id="@+id/textViewEmail"
@@ -169,6 +168,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linearLayoutGoogle"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginStart="16dp"
