@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.loginActivity">
+
+    <ImageView
+        android:id="@+id/imageViewBackground"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/top_background"
+        android:contentDescription="@string/background" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_marginLeft="25dp"
+        android:padding="32dp"
+        android:background="@color/light_blue"
+        android:layout_margin="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewBackground">
+
+        <!-- Campo para Origen -->
+        <!-- Campo para Condiciones Especiales -->
+        <EditText
+            android:id="@+id/editTextSpecialConditions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/specialConditionsHint"
+            android:inputType="text"
+            android:padding="15dp"
+            android:background="@drawable/white_edittext"
+            android:drawableStart="@drawable/ic_marcador"
+            android:drawablePadding="20dp"
+            android:layout_marginTop="16dp"/>
+
+        <!-- Campo para Vehículo -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editTextVehicle"
+                android:layout_width="284dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/white_edittext"
+                android:drawableStart="@drawable/ic_marcador"
+                android:drawablePadding="20dp"
+                android:hint="@string/vehicleHint"
+                android:inputType="text"
+                android:padding="15dp" />
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@android:drawable/btn_plus" />
+        </LinearLayout>
+
+        <!-- Campo para Paradas Intermedias -->
+        <CheckBox
+            android:id="@+id/checkBoxIntermediateStops"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:background="@drawable/white_edittext"
+            android:text="@string/intermediateStopsHint"
+            android:layout_marginTop="16dp"/>
+
+
+        <!-- Campo para Comentarios Adicionales -->
+        <EditText
+            android:id="@+id/editTextAdditionalComments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:background="@drawable/white_edittext"
+            android:drawableStart="@drawable/ic_marcador"
+            android:drawablePadding="20dp"
+            android:hint="@string/additionalCommentsHint"
+            android:inputType="text"
+            android:layout_marginTop="16dp"/>
+
+        <!-- Campo para Frecuencia de la Ruta -->
+        <CheckBox
+            android:id="@+id/checkBoxRouteFrequency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/routeFrequencyHint"
+            android:layout_marginTop="16dp"
+            android:padding="15dp"
+            android:background="@drawable/white_edittext"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Botón de Volver -->
+            <Button
+                android:id="@+id/btnBack"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/button_background"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="@string/back"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- Botón de Siguiente -->
+            <Button
+                android:id="@+id/btnNext"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/button_background"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="@string/next"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
