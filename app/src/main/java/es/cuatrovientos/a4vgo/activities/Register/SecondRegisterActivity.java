@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import es.cuatrovientos.a4vgo.R;
 
@@ -46,15 +47,28 @@ public class SecondRegisterActivity extends AppCompatActivity {
         next.setOnClickListener(view -> {
             String dniText = dni.getText().toString();
             if(validateDNI(dniText)){
-                Intent intent = new Intent(SecondRegisterActivity.this, ThirdRegisterActivity.class);
-                String nameText = name.getText().toString();
-                String surnameText = surname.getText().toString();
-                intent.putExtra("name", nameText);
-                intent.putExtra("surname", surnameText);
-                intent.putExtra("dni", dniText);
-                intent.putExtra( "email", sendEmail);
-                intent.putExtra("spam", sendSpam);
-                startActivity(intent);
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                db.collection("personalDetails").document(dniText).get().addOnSuccessListener(documentSnapshot -> {
+                    next.setVisibility(View.INVISIBLE);
+                    if(documentSnapshot.exists()){
+                        View contentView = findViewById(android.R.id.content);
+                        Snackbar snackbar = Snackbar.make(contentView, R.string.errorLogDniExist, Snackbar.LENGTH_SHORT);
+                        snackbar.setTextColor(Color.RED);
+                        snackbar.setBackgroundTint(Color.BLACK);
+                        snackbar.show();
+                    } else{
+                        Intent intent = new Intent(SecondRegisterActivity.this, ThirdRegisterActivity.class);
+                        String nameText = name.getText().toString();
+                        String surnameText = surname.getText().toString();
+                        intent.putExtra("name", nameText);
+                        intent.putExtra("surname", surnameText);
+                        intent.putExtra("dni", dniText);
+                        intent.putExtra( "email", sendEmail);
+                        intent.putExtra("spam", sendSpam);
+                        startActivity(intent);
+                    }
+                }).addOnFailureListener(e -> {
+                });
             } else {
                 next.setVisibility(View.INVISIBLE);
                 View contentView = findViewById(android.R.id.content);
