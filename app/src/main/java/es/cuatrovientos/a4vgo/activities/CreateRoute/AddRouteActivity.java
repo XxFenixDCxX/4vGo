@@ -17,7 +17,7 @@ public class AddRouteActivity extends AppCompatActivity {
         //Spinner adapter
         Spinner spinner = findViewById(R.id.spinner3);
         String[] items = new String[]{"Ida", "Vuelta"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, items);
         spinner.setAdapter(adapter);
 
 

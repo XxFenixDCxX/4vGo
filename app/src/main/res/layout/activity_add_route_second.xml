@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
-        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
         android:padding="32dp"
         android:background="@color/light_blue"
         android:layout_margin="15dp"
@@ -35,13 +35,16 @@
             android:id="@+id/editTextSpecialConditions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/specialConditionsHint"
-            android:inputType="text"
-            android:padding="15dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/white_edittext"
             android:drawableStart="@drawable/ic_marcador"
             android:drawablePadding="20dp"
-            android:layout_marginTop="16dp"/>
+            android:hint="@string/specialConditionsHint"
+            android:inputType="text"
+            android:padding="15dp"
+            android:textColorHint="#757575"
+            android:autofillHints=""
+            tools:ignore="VisualLintTextFieldSize" />
 
         <!-- Campo para Vehículo -->
         <LinearLayout
@@ -51,22 +54,27 @@
 
             <EditText
                 android:id="@+id/editTextVehicle"
-                android:layout_width="284dp"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/white_edittext"
                 android:drawableStart="@drawable/ic_marcador"
                 android:drawablePadding="20dp"
                 android:hint="@string/vehicleHint"
+
                 android:inputType="text"
-                android:padding="15dp" />
+                android:padding="15dp"
+                android:textColorHint="#757575"
+                android:autofillHints="" />
 
             <ImageButton
                 android:id="@+id/imageButton3"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@android:drawable/btn_plus" />
+                android:layout_height="50dp"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="5dp"
+                android:src="@drawable/ic_marcador"
+                android:contentDescription="@string/content_description" />
         </LinearLayout>
 
         <!-- Campo para Paradas Intermedias -->
@@ -77,31 +85,37 @@
             android:padding="15dp"
             android:background="@drawable/white_edittext"
             android:text="@string/intermediateStopsHint"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="16dp"
+            tools:ignore="VisualLintButtonSize" />
 
 
         <!-- Campo para Comentarios Adicionales -->
+        <CheckBox
+            android:id="@+id/checkBoxRouteFrequency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/white_edittext"
+            android:padding="15dp"
+            android:text="@string/routeFrequencyHint"
+            tools:ignore="VisualLintButtonSize" />
+
         <EditText
             android:id="@+id/editTextAdditionalComments"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="15dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/white_edittext"
             android:drawableStart="@drawable/ic_marcador"
             android:drawablePadding="20dp"
             android:hint="@string/additionalCommentsHint"
             android:inputType="text"
-            android:layout_marginTop="16dp"/>
+            android:padding="15dp"
+            android:textColorHint="#757575"
+            android:autofillHints=""
+            tools:ignore="VisualLintTextFieldSize" />
 
         <!-- Campo para Frecuencia de la Ruta -->
-        <CheckBox
-            android:id="@+id/checkBoxRouteFrequency"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/routeFrequencyHint"
-            android:layout_marginTop="16dp"
-            android:padding="15dp"
-            android:background="@drawable/white_edittext"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -113,33 +127,35 @@
                 android:id="@+id/btnBack"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginRight="25dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="25dp"
+                android:layout_weight="1"
                 android:background="@drawable/button_background"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:text="@string/back"
                 android:textAllCaps="false"
-                android:textColor="@android:color/white"
+                android:textColor="@color/white"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="VisualLintButtonSize" />
 
             <!-- Botón de Siguiente -->
             <Button
                 android:id="@+id/btnNext"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginTop="16dp"
+                android:layout_weight="1"
                 android:background="@drawable/button_background"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:text="@string/next"
                 android:textAllCaps="false"
-                android:textColor="@android:color/white"
+                android:textColor="@color/white"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="VisualLintButtonSize" />
         </LinearLayout>
 
 
