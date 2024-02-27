@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.auth.FirebaseAuth;
 
 
 import java.util.HashMap;
@@ -110,10 +111,7 @@ public class FourthRegisterActivity extends AppCompatActivity {
                 personalDetailsMap.put("userId", sendEmail);
                 db.collection("personalDetails").document(sendDni).set(personalDetailsMap);
 
-                Map<String, String> userMap = new HashMap<>();
-                userMap.put("email", sendEmail);
-                userMap.put("password", passwordString);
-                db.collection("users").document(sendEmail).set(userMap);
+                FirebaseAuth.getInstance().createUserWithEmailAndPassword(sendEmail, passwordString);
             }else{
                 next.setVisibility(View.INVISIBLE);
                 View contentView = findViewById(android.R.id.content);

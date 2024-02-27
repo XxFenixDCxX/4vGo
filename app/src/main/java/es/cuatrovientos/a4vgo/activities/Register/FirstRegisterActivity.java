@@ -14,6 +14,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.regex.Matcher;
@@ -28,6 +30,7 @@ public class FirstRegisterActivity extends AppCompatActivity {
     CheckBox spam;
     EditText email;
     FirebaseFirestore db;
+    Boolean continua;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,14 +75,16 @@ public class FirstRegisterActivity extends AppCompatActivity {
 
             if (validateEmail(emailText)){
                 if (validateDomain(emailText)) {
-                    db.collection("users").document(emailText).get()
-                            .addOnSuccessListener(documentSnapshot -> errorMessage(getString(R.string.errorLogUserExist)))
-                            .addOnCanceledListener(() -> {
-                                Intent intent = new Intent(FirstRegisterActivity.this, SecondRegisterActivity.class);
-                                intent.putExtra( "email", emailText);
-                                intent.putExtra("spam", spam.isChecked());
-                                startActivity(intent);
-                            });
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    continua = true;
+                    assert user != null;
+                    user.updateEmail(emailText).addOnSuccessListener(unused -> errorMessage(getString(R.string.errorLogUserExist)))
+                            .addOnFailureListener(e -> {
+                        Intent intent = new Intent(FirstRegisterActivity.this, SecondRegisterActivity.class);
+                        intent.putExtra( "email", emailText);
+                        intent.putExtra("spam", spam.isChecked());
+                        startActivity(intent);
+                    });
                 } else {
                     errorMessage(getString(R.string.errorLogDomain));
                 }
