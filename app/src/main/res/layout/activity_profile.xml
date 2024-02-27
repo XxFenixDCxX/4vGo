@@ -67,7 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@string/username"
+                android:text="@string/whiteString"
                 android:textAlignment="center"
                 android:textColor="@color/dark_green"
                 android:textSize="26sp"
@@ -77,10 +77,11 @@
                 android:id="@+id/txtEmailProfile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/Email"
+                android:text="@string/whiteString"
                 android:textAlignment="center" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/personalDetailsAction"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="32dp"

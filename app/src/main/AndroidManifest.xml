@@ -13,15 +13,17 @@
         android:theme="@style/Theme._4vGo"
         tools:targetApi="31">
         <activity
+            android:name=".activities.profile.PersonalDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.createRoute.AddRouteSecondActivity"
             android:exported="false" />
-
-        <activity android:name=".activities.profile.ProfileActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".activities.profile.ProfileActivity"
+            android:exported="false" />
         <activity
             android:name=".activities.createRoute.AddRouteActivity"
             android:exported="false" />
-
         <activity
             android:name=".activities.MainRoutesActivity"
             android:exported="false" />
