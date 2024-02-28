@@ -72,6 +72,18 @@
     <string name="color">Color</string>
     <string name="siteNumber">Numero de sitios</string>
     <string name="Back_Icon">Back-Icon</string>
+    <string name="Origin">Origen</string>
+    <string name="Destination">Destino</string>
+    <string name="profileImg">Imagen de perfil</string>
+    <string name="OriginCity">Pamplona</string>
+    <string name="DestinationCity">Pamplona</string>
+    <string name="time_elapsed">13:00</string>
+    <string name="valoration">3</string>
+    <string name="starImg">Imagen de valoraciones</string>
+    <string name="pasagers">Imagen de numero de pasajeros</string>
+    <string name="seatNum">2</string>
+    <string name="DestinationTime">2</string>
+    <string name="OriginTime">2</string>
 
     <!-- Description -->
     <string name="background">background</string>
@@ -126,6 +138,6 @@
 
 
     <!--Maps-->
-    <string name="maps_write_direction">Escribe una dirección...</string>
+    <string name="maps_write_direction">Escribe una dirección…</string>
 
 </resources>
