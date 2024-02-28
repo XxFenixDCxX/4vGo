@@ -64,6 +64,14 @@
     <string name="errorLogImage">Error al cargar la imagen</string>
     <string name="selectImage">Selecciona una imagen</string>
     <string name="stringMinLenght">La longitud de los datos tiene que ser minimo de 3 caracteres</string>
+    <string name="descriptionImageAddButtonVehicle">Imagen del boton para agregar vehiculos</string>
+    <string name="plate">Matricula</string>
+    <string name="numSits">Numero de Sitios:</string>
+    <string name="deleteImageDescription">Imagen de boton para eliminar vehiculo</string>
+    <string name="add">Agregar</string>
+    <string name="color">Color</string>
+    <string name="siteNumber">Numero de sitios</string>
+    <string name="Back_Icon">Back-Icon</string>
 
     <!-- Description -->
     <string name="background">background</string>

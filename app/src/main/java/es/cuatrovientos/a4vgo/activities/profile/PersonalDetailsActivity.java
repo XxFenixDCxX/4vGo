@@ -133,6 +133,8 @@ public class PersonalDetailsActivity extends AppCompatActivity {
                                 }
                             });
                         }
+                        Intent intent = new Intent(PersonalDetailsActivity.this, ProfileActivity.class);
+                        startActivity(intent);
                     } else {
                         DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.errorLogDomain));
                     }

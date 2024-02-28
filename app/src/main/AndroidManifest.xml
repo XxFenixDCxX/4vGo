@@ -19,6 +19,12 @@
             android:name=".maps.searchMapActivity"
             android:exported="false" />
         <activity
+            android:name=".activities.JoinRoutesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.profile.AddVehicleActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.profile.VehicleActivity"
             android:exported="false" />
         <activity
@@ -37,7 +43,7 @@
             android:name=".activities.MainRoutesActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.register.FirstRegisterActivity"
+            android:name=".activities.register.FourthRegisterActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"
@@ -55,7 +61,7 @@
             android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".activities.register.FourthRegisterActivity"
+            android:name=".activities.register.FirstRegisterActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"
