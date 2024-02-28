@@ -30,9 +30,15 @@ import com.google.firebase.storage.StorageReference;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import es.cuatrovientos.a4vgo.R;
 import es.cuatrovientos.a4vgo.Utils.DialogUtils;
+
 public class PersonalDetailsActivity extends AppCompatActivity {
     Query query;
     CollectionReference collection;
@@ -91,10 +97,48 @@ public class PersonalDetailsActivity extends AppCompatActivity {
         });
 
         save.setOnClickListener(v -> {
-            //toDo Realizar el almacenaje en la base de datos con las validaciones
             if (selectedImageUri != null) {
-                // Perform the image upload and database update
                 uploadImageToFirebaseStorage(selectedImageUri);
+            }
+            String nameString = name.getText().toString();
+            String surnameString = surname.getText().toString();
+            String emailString = email.getText().toString();
+            String usernameString = eTxtUsername.getText().toString();
+
+            if(nameString.length() < 2 && surnameString.length() < 2 && usernameString.length() < 2 && emailString.length() < 2){
+                DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.stringMinLenght));
+            }else{
+                if (validateEmail(emailString)){
+                    if (validateDomain(emailString)) {
+                        collection = FirebaseFirestore.getInstance().collection("personalDetails");
+                        if(Objects.requireNonNull(currentUser.getEmail()).equals(emailString.toLowerCase())){
+                            Map<String, Object> personalDetailsMap = new HashMap<>();
+                            personalDetailsMap.put("username", usernameString.toLowerCase());
+                            personalDetailsMap.put("name", nameString.toLowerCase());
+                            personalDetailsMap.put("surname", surnameString.toLowerCase());
+                            collection.document(currentUserDNI).update(personalDetailsMap);
+                        }else{
+                            query = collection.whereEqualTo("email", emailString.toLowerCase());
+                            query.get().addOnCompleteListener(task -> {
+                                QuerySnapshot querySnapshot = task.getResult();
+                                if (querySnapshot.isEmpty()) {
+                                    Map<String, Object> personalDetailsMap = new HashMap<>();
+                                    personalDetailsMap.put("username", usernameString.toLowerCase());
+                                    personalDetailsMap.put("name", nameString.toLowerCase());
+                                    personalDetailsMap.put("surname", surnameString.toLowerCase());
+                                    personalDetailsMap.put("email", emailString.toLowerCase());
+                                    collection.document(currentUserDNI).update(personalDetailsMap);
+                                } else {
+                                    DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.errorLogUserExist));
+                                }
+                            });
+                        }
+                    } else {
+                        DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.errorLogDomain));
+                    }
+                }else {
+                    DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.errorLogEmail));
+                }
             }
         });
 
@@ -189,4 +233,30 @@ public class PersonalDetailsActivity extends AppCompatActivity {
             }
         }.execute();
     }
+    private boolean validateEmail(String email) {
+        String emailPattern = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+
+        Pattern pattern = Pattern.compile(emailPattern);
+
+        Matcher matcher = pattern.matcher(email);
+
+        return matcher.matches();
+    }
+    private boolean validateDomain(String validEmail) {
+        String[] validDomains = {"gmail.com", "hotmail.com"};
+
+        String[] emailParts = validEmail.split("@");
+        if (emailParts.length == 2) {
+            String domain = emailParts[1].toLowerCase();
+
+            for (String validDomain : validDomains) {
+                if (domain.equals(validDomain)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
 }

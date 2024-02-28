@@ -63,6 +63,7 @@
     <string name="selectedLanguague">Idioma seleccionado: </string>
     <string name="errorLogImage">Error al cargar la imagen</string>
     <string name="selectImage">Selecciona una imagen</string>
+    <string name="stringMinLenght">La longitud de los datos tiene que ser minimo de 3 caracteres</string>
 
     <!-- Description -->
     <string name="background">background</string>
