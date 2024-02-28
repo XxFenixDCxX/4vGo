@@ -84,8 +84,9 @@ public class ProfileActivity extends AppCompatActivity {
             AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this);
             builder.setTitle(getString(R.string.selectLanguage))
                     .setItems(idiomas, (dialog, which) -> {
-                        String idiomaSeleccionado = idiomas[which];
-                        Toast.makeText(ProfileActivity.this, getString(R.string.selectedLanguague) + idiomaSeleccionado, Toast.LENGTH_SHORT).show();
+                        String selectedLanguague = idiomas[which];
+                        Toast.makeText(ProfileActivity.this, getString(R.string.selectedLanguague) + selectedLanguague, Toast.LENGTH_SHORT).show();
+                        collection.document(currenUserDNI).update("languague", selectedLanguague);
                     });
             builder.create().show();
         });
@@ -105,10 +106,7 @@ public class ProfileActivity extends AppCompatActivity {
                         }
                     }
                 })
-                .addOnFailureListener(e -> {
-                    e.printStackTrace();
-                    DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.errorLogImage));
-                });
+                .addOnFailureListener(e -> DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.errorLogImage)));
     }
 
     @SuppressLint("StaticFieldLeak")
