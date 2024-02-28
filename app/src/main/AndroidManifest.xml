@@ -16,6 +16,9 @@
         android:theme="@style/Theme._4vGo"
         tools:targetApi="31">
         <activity
+            android:name=".activities.profile.AddVehicleActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.profile.VehicleActivity"
             android:exported="false" />
         <activity
