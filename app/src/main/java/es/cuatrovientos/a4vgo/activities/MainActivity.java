@@ -35,15 +35,16 @@ public class MainActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         ConstraintLayout constraintLayout = findViewById(R.id.constraintLayout2);
         user = FirebaseAuth.getInstance().getCurrentUser();
-        assert user != null;
-        Query query = db.collection("personalDetails").whereEqualTo("email", user.getEmail());
-        query.get().addOnCompleteListener(task -> {
-            QuerySnapshot querySnapshot = task.getResult();
-            DocumentSnapshot document = querySnapshot.getDocuments().get(0);
-            languagueCode = document.getString("languague");
-            setDefaultLanguage();
-        });
+        if (user != null){
 
+            Query query = db.collection("personalDetails").whereEqualTo("email", user.getEmail());
+            query.get().addOnCompleteListener(task -> {
+                QuerySnapshot querySnapshot = task.getResult();
+                DocumentSnapshot document = querySnapshot.getDocuments().get(0);
+                languagueCode = document.getString("languague");
+                setDefaultLanguage();
+            });
+        }
         if (user != null){
             Intent intent = new Intent(MainActivity.this, MainRoutesActivity.class);
             startActivity(intent);
