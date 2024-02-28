@@ -3,7 +3,6 @@ package es.cuatrovientos.a4vgo.activities.Register;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -12,14 +11,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import com.google.android.material.snackbar.Snackbar;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
 import es.cuatrovientos.a4vgo.R;
+import es.cuatrovientos.a4vgo.Utils.DialogUtils;
 
 public class ThirdRegisterActivity extends AppCompatActivity {
     EditText birthdate;
@@ -88,19 +86,13 @@ public class ThirdRegisterActivity extends AppCompatActivity {
                     intent.putExtra("spam", sendSpam);
                     startActivity(intent);
                 }else {
-                    errorMessage(getString(R.string.errorLogYears));
+                    next.setVisibility(View.INVISIBLE);
+                    DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.errorLogYears));
                 }
             } catch (ParseException e) {
-                errorMessage(getString(R.string.errorLogDate));
+                next.setVisibility(View.INVISIBLE);
+                DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.errorLogDate));
             }
         });
-    }
-    private void errorMessage(String text){
-        next.setVisibility(View.INVISIBLE);
-        View contentView = findViewById(android.R.id.content);
-        Snackbar snackbar = Snackbar.make(contentView, text, Snackbar.LENGTH_SHORT);
-        snackbar.setTextColor(Color.RED);
-        snackbar.setBackgroundTint(Color.BLACK);
-        snackbar.show();
     }
 }
