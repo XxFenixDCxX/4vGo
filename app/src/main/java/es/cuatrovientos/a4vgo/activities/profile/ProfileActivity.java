@@ -26,7 +26,7 @@ import java.io.InputStream;
 import java.net.URL;
 
 import es.cuatrovientos.a4vgo.R;
-import es.cuatrovientos.a4vgo.Utils.DialogUtils;
+import es.cuatrovientos.a4vgo.utils.DialogUtils;
 import es.cuatrovientos.a4vgo.activities.MainActivity;
 
 public class ProfileActivity extends AppCompatActivity {

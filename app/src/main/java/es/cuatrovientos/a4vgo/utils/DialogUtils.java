@@ -1,4 +1,4 @@
-package es.cuatrovientos.a4vgo.Utils;
+package es.cuatrovientos.a4vgo.utils;
 
 import android.app.Activity;
 import android.graphics.drawable.ColorDrawable;
@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import es.cuatrovientos.a4vgo.R;
 
@@ -18,7 +17,7 @@ public class DialogUtils {
                 new AlertDialog.Builder(activity, R.style.AlertDialogCustom);
         View view = LayoutInflater.from(activity).inflate(
                 R.layout.layout_success_dialog,
-                (ConstraintLayout)activity.findViewById(R.id.layoutDialogContainer)
+                activity.findViewById(R.id.layoutDialogContainer)
         );
         builder.setView(view);
         ((TextView) view.findViewById(R.id.textTitle)).setText(title);
@@ -40,7 +39,7 @@ public class DialogUtils {
                 new AlertDialog.Builder(activity, R.style.AlertDialogCustom);
         View view = LayoutInflater.from(activity).inflate(
                 R.layout.layout_warning_dialog,
-                (ConstraintLayout)activity.findViewById(R.id.layoutDialogContainer)
+                activity.findViewById(R.id.layoutDialogContainer)
         );
         builder.setView(view);
         ((TextView) view.findViewById(R.id.textTitle)).setText(title);
@@ -62,7 +61,7 @@ public class DialogUtils {
                 new AlertDialog.Builder(activity, R.style.AlertDialogCustom);
         View view = LayoutInflater.from(activity).inflate(
                 R.layout.layout_error_dialog,
-                (ConstraintLayout)activity.findViewById(R.id.layoutDialogContainer)
+                activity.findViewById(R.id.layoutDialogContainer)
         );
         builder.setView(view);
         ((TextView) view.findViewById(R.id.textTitle)).setText(title);

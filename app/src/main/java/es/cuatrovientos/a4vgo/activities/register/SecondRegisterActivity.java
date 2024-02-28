@@ -14,7 +14,7 @@ import android.widget.ImageButton;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import es.cuatrovientos.a4vgo.R;
-import es.cuatrovientos.a4vgo.Utils.DialogUtils;
+import es.cuatrovientos.a4vgo.utils.DialogUtils;
 
 public class SecondRegisterActivity extends AppCompatActivity {
     Button back;

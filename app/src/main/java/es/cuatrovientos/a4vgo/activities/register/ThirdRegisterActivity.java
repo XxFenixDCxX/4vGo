@@ -17,7 +17,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import es.cuatrovientos.a4vgo.R;
-import es.cuatrovientos.a4vgo.Utils.DialogUtils;
+import es.cuatrovientos.a4vgo.utils.DialogUtils;
 
 public class ThirdRegisterActivity extends AppCompatActivity {
     EditText birthdate;

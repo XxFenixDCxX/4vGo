@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import es.cuatrovientos.a4vgo.R;
-import es.cuatrovientos.a4vgo.Utils.DialogUtils;
+import es.cuatrovientos.a4vgo.utils.DialogUtils;
 import es.cuatrovientos.a4vgo.activities.MainRoutesActivity;
 
 public class FourthRegisterActivity extends AppCompatActivity {

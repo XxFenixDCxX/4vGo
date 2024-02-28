@@ -37,7 +37,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import es.cuatrovientos.a4vgo.R;
-import es.cuatrovientos.a4vgo.Utils.DialogUtils;
+import es.cuatrovientos.a4vgo.utils.DialogUtils;
 
 public class PersonalDetailsActivity extends AppCompatActivity {
     Query query;
