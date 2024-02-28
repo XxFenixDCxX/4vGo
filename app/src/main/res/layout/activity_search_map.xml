@@ -28,17 +28,6 @@
             android:layout_weight="3"
             android:padding="15dp" />
 
-        <ImageButton
-            android:id="@+id/imageButtonCurrentDirection"
-            android:layout_width="20dp"
-            android:layout_height="62dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5dp"
-
-            android:layout_weight="1"
-            android:background="@drawable/background_oval_1"
-            android:src="@drawable/ic_marcador" />
-
     </LinearLayout>
 
     <LinearLayout

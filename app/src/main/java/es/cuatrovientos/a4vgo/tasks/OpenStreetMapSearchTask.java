@@ -25,7 +25,8 @@ public class OpenStreetMapSearchTask extends AsyncTask<String, Void, String> {
 
         try {
             streetName = URLEncoder.encode(streetName, "UTF-8");
-            String apiUrl = "https://nominatim.openstreetmap.org/search?format=json&q=" + streetName + "&country=USA";
+            // Agrega el filtro de región (en este caso, Navarra) a la URL
+            String apiUrl = "https://nominatim.openstreetmap.org/search?format=json&q=" + streetName + "&country=Spain&state=Navarre";
             URL url = new URL(apiUrl);
 
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();

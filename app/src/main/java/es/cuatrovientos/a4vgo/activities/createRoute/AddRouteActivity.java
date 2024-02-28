@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -26,6 +27,8 @@ import java.util.Calendar;
 import java.util.Locale;
 
 import es.cuatrovientos.a4vgo.R;
+import es.cuatrovientos.a4vgo.activities.MainRoutesActivity;
+import es.cuatrovientos.a4vgo.activities.profile.ProfileActivity;
 import es.cuatrovientos.a4vgo.adapters.CustomSpinnerAdapter;
 import es.cuatrovientos.a4vgo.models.Route;
 import es.cuatrovientos.a4vgo.utils.DialogUtils;
@@ -50,6 +53,7 @@ public class AddRouteActivity extends AppCompatActivity {
     private String selectedItem;
     private String selectedCoordinates ;
     private String lonLatCuatrovientos;
+    private BottomNavigationView bottom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +69,7 @@ public class AddRouteActivity extends AppCompatActivity {
         imageButtonDestination = findViewById(R.id.imageButtonDestination);
         imageButtonOrigin = findViewById(R.id.imageButtonOrigin);
         btnNext = findViewById(R.id.btnNext);
-
+        bottom = findViewById(R.id.bnNavigation);
         Spinner spinner = findViewById(R.id.spinner3);
         String[] items = new String[]{getString(R.string.route_type_ida), getString(R.string.route_type_vuelta)};
         txtDateTime.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +91,29 @@ public class AddRouteActivity extends AppCompatActivity {
                 validateAndProceed();
             }
         });
+        bottom.setSelectedItemId(R.id.navigation_publish_route);
+
+        bottom.setOnItemSelectedListener(item -> {
+                    int id = item.getItemId();
+                    if (id == R.id.navigation_trips) {
+                        overridePendingTransition(0, 0);
+                        Intent intent = new Intent(AddRouteActivity.this , MainRoutesActivity.class);
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
+                    } else if (id == R.id.navigation_profile) {
+                        overridePendingTransition(0, 0);
+                        Intent intent = new Intent(AddRouteActivity.this , ProfileActivity.class);
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
+                    } else if (id == R.id.navigation_chat){
+                        overridePendingTransition(0, 0);
+                        Intent intent = new Intent(AddRouteActivity.this , AddRouteActivity.class);
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
+                    }
+                    return true;
+                }
+        );
         CustomSpinnerAdapter adapter = new CustomSpinnerAdapter(this, android.R.layout.simple_spinner_item, items);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 

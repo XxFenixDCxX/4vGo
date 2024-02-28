@@ -113,7 +113,9 @@
     <!-- Create Routes -->
     <string name="addRoute">Create route</string>
     <string name="createRouteButton">Create Route</string>
-    <string name="dateAndTimeHint">Date and Time</string>
+    <string name="dateHint">Date</string>
+    <string name="TimeHint">Time</string>
+
     <string name="availableSeatsHint">Number of Available Seats</string>
     <string name="specialConditionsHint">Special Conditions</string>
     <string name="vehicleHint">Vehicle</string>
