@@ -77,8 +77,8 @@
     <string name="ic_messages">Mensajes</string>
 
     <!--Buscador-->
-    <string name="edit_origin_hint">Origin</string>
-    <string name="edit_destination_hint">Destino</string>
+    <string name="edit_origin_hint">Selecciona un origen</string>
+    <string name="edit_destination_hint">Haz click para selecciona un destino</string>
     <string name="edit_date_hint">Fecha</string>
     <string name="button_search">Buscar</string>
 
@@ -105,6 +105,8 @@
     <string name="next">Siguiente</string>
     <string name="back">Volver</string>
     <string name="content_description">Imagen de más</string>
+    <string name="ci_cuatrovientos">CI CUATROVIENTOS</string>
+
 
 
     <!--AlertDialog-->
@@ -113,4 +115,9 @@
     <string name="errorLoginMessage">Error al iniciar sesión, Vuelva a intentarlo.</string>
     <string name="errorLoginEmptyMensaje">Por favor, rellena todos los campos</string>
     <string name="default_web_client_id">88104562322-i9sq0fgb4hnf9beh4dfoq6l7dbkdd4q2</string>
+
+
+    <!--Maps-->
+    <string name="maps_write_direction">Escribe una dirección...</string>
+
 </resources>
