@@ -1,0 +1,139 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">4V GO</string>
+    <string name="emailQuestion">What is your email?</string>
+    <string name="name">Name</string>
+    <string name="birthdate">Date of Birth</string>
+    <string name="surname">Surname(s)</string>
+    <string name="dni">ID</string>
+    <string name="hint_write">Write here…</string>
+    <string name="email">Email</string>
+    <string name="disclaimerEmail">I do not want to receive news, promotions, or free content from 4V GO.</string>
+    <string name="disclaimerEmailSuscription" tools:ignore="Typos">Once subscribed, I can cancel my subscription at any time by contacting 4V GO or through the link found in the newsletter.</string>
+    <string name="passwordQuestion">Set your password</string>
+    <string name="password">Password</string>
+    <string name="rePassword">Repeat your password</string>
+    <string name="disclaimerPassword">Must be at least 8 characters and include 1 letter and 1 number</string>
+    <string name="register">Register</string>
+    <string name="descriptionHeader">Header Image</string>
+    <string name="descriptionCuatrovientos">Four Winds Image</string>
+    <string name="doneBy">Done by:</string>
+    <string name="appDescription">Promoting carpooling, energy efficiency, and CO2 emission reduction</string>
+    <string name="login">Log in</string>
+    <string name="Email">Email</string>
+    <string name="PutEmail">Enter the email</string>
+    <string name="Password">Password</string>
+    <string name="PutPassword">Enter the password</string>
+    <string name="ForgotPassword">Forgot your password? Recover it</string>
+    <string name="OtherLogin">Or log in with</string>
+    <string name="Facebook">Facebook</string>
+    <string name="Google">Google</string>
+    <string name="LoginButton">Log in</string>
+    <string name="whiteString" />
+    <string name="errorLogName">Name must have more than 3 characters</string>
+    <string name="descriptionBackButton">Back Button</string>
+    <string name="descriptionNext">Next Button</string>
+    <string name="nameSurnameQuestionDNI">What is your name and ID?</string>
+    <string name="errorLogEmail">Invalid email or not allowed domain</string>
+    <string name="errorLogDomain">Invalid domain</string>
+    <string name="errorLogDNI">Invalid ID</string>
+    <string name="birthdateQuestion">What is your date of birth?</string>
+    <string name="errorLogDate">Invalid date</string>
+    <string name="errorLogYears">You must be at least 16 years old</string>
+    <string name="errorLogPassword">Passwords do not match</string>
+    <string name="errorLogUserExist">A user with that email already exists</string>
+    <string name="errorLogDniExist">A user with that ID already exists</string>
+    <string name="profile">Profile</string>
+    <string name="defaultDescription">Background Image</string>
+    <string name="imageProfileDescription">Profile Image</string>
+    <string name="imageArrowDescription">Next Arrow Image</string>
+    <string name="personalDetails">Personal Details</string>
+    <string name="personalDetailsImageDescription">Personal Details Image</string>
+    <string name="languague">Language</string>
+    <string name="languagueImageDescription">Language Image</string>
+    <string name="co2Points">CO2 Scores</string>
+    <string name="co2PointsImageDescription">CO2 Scores Image</string>
+    <string name="vehicles">Vehicles</string>
+    <string name="vehiclesImageDescription">Vehicles Image</string>
+    <string name="logout">Log out</string>
+    <string name="logoutImageDescripton">Log out Image</string>
+    <string name="username">Username</string>
+    <string name="errorLogCantLoadDetails">An error occurred while loading your data, please log in again or contact a technician</string>
+    <string name="save">Save</string>
+    <string name="selectLanguage">Select a language</string>
+    <string name="selectedLanguague">Selected language: </string>
+    <string name="errorLogImage">Error loading the image</string>
+    <string name="selectImage">Select an image</string>
+    <string name="stringMinLenght">Data length must be at least 3 characters</string>
+    <string name="descriptionImageAddButtonVehicle">Image of the button to add vehicles</string>
+    <string name="plate">License Plate</string>
+    <string name="numSits">Number of Seats:</string>
+    <string name="deleteImageDescription">Image of the button to delete vehicle</string>
+    <string name="add">Add</string>
+    <string name="color">Color</string>
+    <string name="siteNumber">Number of Seats</string>
+    <string name="Back_Icon">Back Icon</string>
+    <string name="Origin">Origin</string>
+    <string name="Destination">Destination</string>
+    <string name="profileImg">Profile Image</string>
+    <string name="OriginCity">Pamplona</string>
+    <string name="DestinationCity">Pamplona</string>
+    <string name="time_elapsed">13:00</string>
+    <string name="valoration">3</string>
+    <string name="starImg">Image of ratings</string>
+    <string name="pasagers">Image of number of passengers</string>
+    <string name="seatNum">2</string>
+    <string name="DestinationTime">2</string>
+    <string name="OriginTime">2</string>
+
+    <!-- Description -->
+    <string name="background">background</string>
+
+    <!-- Hint -->
+    <string name="hint_email">Email</string>
+
+    <!-- Menu -->
+    <string name="ic_profile">Profile</string>
+    <string name="ic_trips">Trips</string>
+    <string name="ic_messages">Messages</string>
+
+    <!-- Search -->
+    <string name="edit_origin_hint">Select an origin</string>
+    <string name="edit_destination_hint">Click to select a destination</string>
+    <string name="edit_date_hint">Date</string>
+    <string name="button_search">Search</string>
+
+    <!-- Route History -->
+    <string name="txt_see_all">Show all</string>
+    <string name="txt_routes_record">Route History</string>
+    <string name="txt_habitual_routes">Habitual Routes</string>
+    <string name="success">success</string>
+    <string name="warning">warning</string>
+    <string name="error">error</string>
+
+    <!-- Create Routes -->
+    <string name="addRoute">Create route</string>
+    <string name="createRouteButton">Create Route</string>
+    <string name="dateAndTimeHint">Date and Time</string>
+    <string name="availableSeatsHint">Number of Available Seats</string>
+    <string name="specialConditionsHint">Special Conditions</string>
+    <string name="vehicleHint">Vehicle</string>
+    <string name="intermediateStopsHint">Intermediate Stops (if applicable)</string>
+    <string name="additionalCommentsHint">Additional Comments</string>
+    <string name="routeFrequencyHint">Route Frequency (if recurring)</string>
+    <string name="CreateRouteButton">Create Route</string>
+    <string name="tripType">Trip Type</string>
+    <string name="next">Next</string>
+    <string name="back">Back</string>
+    <string name="content_description">Image of more</string>
+    <string name="ci_cuatrovientos">CI CUATROVIENTOS</string>
+
+    <!-- AlertDialog -->
+    <!-- For error dialog -->
+    <string name="errorLoginTitle">Oops!</string>
+    <string name="errorLoginMessage">Error logging in, please try again.</string>
+    <string name="errorLoginEmptyMensaje">Please fill in all fields</string>
+    <string name="default_web_client_id">88104562322-i9sq0fgb4hnf9beh4dfoq6l7dbkdd4q2</string>
+
+    <!-- Maps -->
+    <string name="maps_write_direction">Enter an address…</string>
+</resources>
