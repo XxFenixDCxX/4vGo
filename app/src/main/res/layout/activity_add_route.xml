@@ -43,46 +43,63 @@
         app:layout_constraintTop_toBottomOf="@+id/imageViewBackground">
 
         <!-- Campo para Origen -->
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginBottom="5dp"
+            android:text="@string/route_type"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            tools:ignore="TextSizeCheck" />
+
         <Spinner
             android:id="@+id/spinner3"
             android:padding="15dp"
-            android:background="@drawable/spinner_background"
+            android:textSize="14sp"
+
+            android:background="@drawable/white_edittext"
             android:layout_width="match_parent"
-
             android:layout_height="wrap_content">
-
         </Spinner>
 
 
-        <LinearLayout
+
+
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/editTextOrigin"
-                android:layout_width="202dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_weight="3"
-                android:background="@drawable/white_edittext"
-                android:drawableStart="@drawable/ic_marcador"
-                android:drawablePadding="20dp"
-                android:hint="@string/edit_origin_hint"
-                android:inputType="text"
-                android:padding="15dp"
-                android:textColorHint="@color/gris" />
+        <TextView
+            android:id="@+id/txtOrigin"
+            android:layout_width="202dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_weight="3"
+            android:background="@drawable/white_edittext"
+            android:drawablePadding="10dp"
+            android:hint="@string/edit_origin_hint"
+            android:padding="15dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gris"
+
+            android:textSize="14sp"
+            tools:ignore="TextSizeCheck"
+            app:drawableStartCompat="@drawable/ic_marcador" />
 
             <ImageButton
                 android:id="@+id/imageButtonOrigin"
-                android:layout_width="30dp"
+                android:layout_width="25dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
 
                 android:background="@drawable/background_oval_1"
                 android:layout_gravity="bottom"
-                android:src="@drawable/ic_marcador" />
+                android:src="@drawable/ic_marcador"
+                tools:ignore="ContentDescription" />
         </LinearLayout>
 
         <!-- Campo para Destino -->
@@ -93,46 +110,80 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/editTextDestination"
+            <TextView
+                android:id="@+id/txtDestination"
                 android:layout_width="204dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_weight="3"
                 android:background="@drawable/white_edittext"
-                android:drawableStart="@drawable/ic_marcador"
                 android:drawablePadding="10dp"
                 android:hint="@string/edit_destination_hint"
-                android:inputType="text"
                 android:padding="15dp"
-                android:textColorHint="@color/gris" />
+                android:textColor="@color/black"
+                android:textColorHint="@color/gris"
+
+                android:textSize="14sp"
+                tools:ignore="TextSizeCheck"
+                app:drawableStartCompat="@drawable/ic_marcador" />
 
             <ImageButton
                 android:id="@+id/imageButtonDestination"
-                android:layout_width="30dp"
+                android:layout_width="25dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:background="@drawable/background_oval_1"
 
                 android:layout_gravity="bottom"
-                android:src="@drawable/ic_marcador"/>
+                android:src="@drawable/ic_marcador"
+                android:contentDescription="@string/descriptionBackButton" />
         </LinearLayout>
 
-        <EditText
-            android:id="@+id/editTextDateTime"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:autofillHints=""
-            android:background="@drawable/white_edittext"
-            android:drawableStart="@drawable/ic_marcador"
-            android:drawablePadding="10dp"
+            android:orientation="horizontal">
 
-            android:hint="@string/dateAndTimeHint"
-            android:inputType="datetime"
-            android:padding="15dp"
-            android:textColorHint="#757575" />
+            <TextView
+                android:id="@+id/txtDateTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_weight="3"
+                android:autofillHints=""
+                android:background="@drawable/white_edittext"
+                android:drawablePadding="10dp"
+                android:focusable="false"
+
+                android:hint="@string/dateHint"
+                android:inputType="none"
+                android:padding="15dp"
+                android:textColorHint="@color/gris"
+                android:textSize="14sp"
+                tools:ignore="TextSizeCheck"
+                app:drawableStartCompat="@drawable/ic_fecha" />
+
+            <TextView
+                android:id="@+id/txtTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="16dp"
+                android:layout_weight="2"
+                android:autofillHints=""
+                android:background="@drawable/white_edittext"
+                android:drawablePadding="10dp"
+                android:focusable="false"
+                android:hint="@string/TimeHint"
+                android:inputType="none"
+                android:padding="15dp"
+                android:textColorHint="@color/gris"
+                android:textSize="14sp"
+                tools:ignore="TextSizeCheck"
+                app:drawableStartCompat="@drawable/ic_hora" />
+        </LinearLayout>
+
 
         <!-- Campo para Número de Plazas Disponibles -->
         <EditText
@@ -140,33 +191,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:autofillHints=""
             android:background="@drawable/white_edittext"
-            android:drawableStart="@drawable/ic_marcador"
+            android:drawableStart="@drawable/ic_car_seat"
             android:drawablePadding="10dp"
-
             android:hint="@string/availableSeatsHint"
             android:inputType="number"
             android:padding="15dp"
-            android:textColorHint="#757575"
-            android:autofillHints="" />
+            android:textColorHint="@color/gris"
+            android:textSize="14dp"
+            tools:ignore="SpUsage,TextSizeCheck" />
 
         <Button
             android:id="@+id/btnNext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/next"
-            android:textAllCaps="false"
+            android:layout_gravity="end"
             android:layout_marginTop="16dp"
+            android:background="@drawable/button_background"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
-            android:background="@drawable/button_background"
+            android:text="@string/next"
+            android:textAllCaps="false"
             android:textColor="@android:color/white"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_gravity="end"
-        />
-
-
+            android:textStyle="bold" />
 
 
     </LinearLayout>

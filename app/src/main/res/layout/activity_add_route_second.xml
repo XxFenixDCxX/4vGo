@@ -32,20 +32,6 @@
 
         <!-- Campo para Origen -->
         <!-- Campo para Condiciones Especiales -->
-        <EditText
-            android:id="@+id/editTextSpecialConditions"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/white_edittext"
-            android:drawableStart="@drawable/ic_marcador"
-            android:drawablePadding="20dp"
-            android:hint="@string/specialConditionsHint"
-            android:inputType="text"
-            android:padding="15dp"
-            android:textColorHint="#757575"
-            android:autofillHints=""
-            tools:ignore="VisualLintTextFieldSize" />
 
         <!-- Campo para Vehículo -->
         <LinearLayout
@@ -53,28 +39,28 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/editTextVehicle"
+            <TextView
+                android:id="@+id/txtVehicle"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:autofillHints=""
                 android:background="@drawable/white_edittext"
-                android:drawableStart="@drawable/ic_marcador"
+                android:drawableStart="@drawable/ic_car"
                 android:drawablePadding="20dp"
                 android:hint="@string/vehicleHint"
-
-                android:inputType="text"
                 android:padding="15dp"
-                android:textColorHint="#757575"
-                android:autofillHints="" />
+                android:textColorHint="@color/gris"
+                android:textSize="14dp"
+                tools:ignore="TextSizeCheck" />
 
             <ImageButton
-                android:id="@+id/imageButton3"
+                android:id="@+id/btnShowVehicleList"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_gravity="bottom"
                 android:layout_marginStart="5dp"
-                android:src="@drawable/ic_marcador"
+                android:src="@drawable/ic_plus"
                 android:contentDescription="@string/content_description" />
         </LinearLayout>
 
@@ -83,14 +69,15 @@
             android:id="@+id/checkBoxIntermediateStops"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="15dp"
-            android:background="@drawable/white_edittext"
-            android:text="@string/intermediateStopsHint"
             android:layout_marginTop="16dp"
-            tools:ignore="VisualLintButtonSize" />
+            android:background="@drawable/white_edittext"
+            android:padding="15dp"
+            android:text="@string/intermediateStopsHint"
+            android:textColorHint="@color/gris"
+            android:textSize="14dp"
+            tools:ignore="VisualLintButtonSize,TextSizeCheck" />
 
 
-        <!-- Campo para Comentarios Adicionales -->
         <CheckBox
             android:id="@+id/checkBoxRouteFrequency"
             android:layout_width="match_parent"
@@ -99,24 +86,26 @@
             android:background="@drawable/white_edittext"
             android:padding="15dp"
             android:text="@string/routeFrequencyHint"
-            tools:ignore="VisualLintButtonSize" />
+            android:textColorHint="@color/gris"
+            android:textSize="14dp"
+            tools:ignore="VisualLintButtonSize,TextSizeCheck" />
 
         <EditText
             android:id="@+id/editTextAdditionalComments"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@drawable/white_edittext"
-            android:drawableStart="@drawable/ic_marcador"
-            android:drawablePadding="20dp"
-            android:hint="@string/additionalCommentsHint"
-            android:inputType="text"
-            android:padding="15dp"
-            android:textColorHint="#757575"
             android:autofillHints=""
-            tools:ignore="VisualLintTextFieldSize" />
+            android:background="@drawable/white_edittext"
+            android:drawableStart="@drawable/ic_comment"
+            android:drawablePadding="12dp"
+            android:hint="@string/additionalCommentsHint"
+            android:inputType="textMultiLine"
+            android:padding="15dp"
+            android:textColorHint="@color/gris"
+            android:textSize="14dp"
+            tools:ignore="VisualLintTextFieldSize,TextSizeCheck" />
 
-        <!-- Campo para Frecuencia de la Ruta -->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -151,7 +140,7 @@
                 android:background="@drawable/button_background"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
-                android:text="@string/next"
+                android:text="@string/btn_route_creation"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="16sp"
