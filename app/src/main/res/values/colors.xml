@@ -16,5 +16,6 @@
     <color name="colorNeutral">#b8b6b0</color>
     <color name="colorWarning">#FFA500</color>
     <color name="colorError">#FF0000</color>
-<color name="colorPrimary">#F2F2F2</color>
+    <color name="colorPrimary">#F2F2F2</color>
+
 </resources>

@@ -46,11 +46,10 @@
         <Spinner
             android:id="@+id/spinner3"
             android:padding="15dp"
-            android:background="@drawable/white_edittext"
+            android:background="@drawable/spinner_background"
             android:layout_width="match_parent"
+
             android:layout_height="wrap_content">
-
-
 
         </Spinner>
 
@@ -65,16 +64,17 @@
                 android:layout_width="202dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:layout_weight="3"
                 android:background="@drawable/white_edittext"
                 android:drawableStart="@drawable/ic_marcador"
                 android:drawablePadding="20dp"
                 android:hint="@string/edit_origin_hint"
                 android:inputType="text"
-                android:layout_weight="3"
-                android:padding="15dp" />
+                android:padding="15dp"
+                android:textColorHint="@color/gris" />
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/imageButtonOrigin"
                 android:layout_width="30dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -104,10 +104,11 @@
                 android:drawablePadding="10dp"
                 android:hint="@string/edit_destination_hint"
                 android:inputType="text"
-                android:padding="15dp" />
+                android:padding="15dp"
+                android:textColorHint="@color/gris" />
 
             <ImageButton
-                android:id="@+id/imageButton2"
+                android:id="@+id/imageButtonDestination"
                 android:layout_width="30dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -122,28 +123,32 @@
             android:id="@+id/editTextDateTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:autofillHints=""
             android:background="@drawable/white_edittext"
             android:drawableStart="@drawable/ic_marcador"
             android:drawablePadding="10dp"
-            android:layout_marginTop="16dp"
-            android:padding="15dp"
 
             android:hint="@string/dateAndTimeHint"
-            android:inputType="datetime" />
+            android:inputType="datetime"
+            android:padding="15dp"
+            android:textColorHint="#757575" />
 
         <!-- Campo para Número de Plazas Disponibles -->
         <EditText
             android:id="@+id/editTextAvailableSeats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:background="@drawable/white_edittext"
             android:drawableStart="@drawable/ic_marcador"
             android:drawablePadding="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="15dp"
 
-            android:layout_marginTop="16dp"
             android:hint="@string/availableSeatsHint"
-            android:inputType="number" />
+            android:inputType="number"
+            android:padding="15dp"
+            android:textColorHint="#757575"
+            android:autofillHints="" />
 
         <Button
             android:id="@+id/btnNext"
