@@ -68,6 +68,9 @@
     <string name="plate">Matricula</string>
     <string name="numSits">Numero de Sitios:</string>
     <string name="deleteImageDescription">Imagen de boton para eliminar vehiculo</string>
+    <string name="add">Agregar</string>
+    <string name="color">Color</string>
+    <string name="siteNumber">Numero de sitios</string>
 
     <!-- Description -->
     <string name="background">background</string>
