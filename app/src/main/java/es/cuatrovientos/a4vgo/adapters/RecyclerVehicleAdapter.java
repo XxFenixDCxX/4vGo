@@ -20,7 +20,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import es.cuatrovientos.a4vgo.R;
 import es.cuatrovientos.a4vgo.models.Vehicle;
@@ -28,25 +27,23 @@ import es.cuatrovientos.a4vgo.models.Vehicle;
 public class RecyclerVehicleAdapter extends RecyclerView.Adapter<RecyclerVehicleAdapter.RecyclerDataHolder> {
     private final List<Vehicle> list;
     private final List<Vehicle> listCopy;
+    private final FirebaseFirestore db;
     private String dni;
 
     public RecyclerVehicleAdapter() {
+        db = FirebaseFirestore.getInstance();
         list = new ArrayList<>();
         listCopy = new ArrayList<>();
-        fetchDataFromFirebase();
+        getCurrentUserDNI();
     }
 
     @SuppressLint("NotifyDataSetChanged")
     private void fetchDataFromFirebase() {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("cars")
-                .whereEqualTo("userDNI", getCurrentUserDNI())
-                .get()
-                .addOnCompleteListener(task -> {
+        db.collection("cars").whereEqualTo("userDNI", dni).get().addOnCompleteListener(task -> {
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         String plate = document.getString("plate");
                         String color = document.getString("color");
-                        int siteNumber = Objects.requireNonNull(document.getLong("siteNumber")).intValue();
+                        String siteNumber = document.getString("numSit");
 
                         Vehicle vehicle = new Vehicle(plate, color, siteNumber);
                         list.add(vehicle);
@@ -56,17 +53,16 @@ public class RecyclerVehicleAdapter extends RecyclerView.Adapter<RecyclerVehicle
                 });
     }
 
-    private String getCurrentUserDNI() {
-        dni = "";
+    private void getCurrentUserDNI() {
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         assert currentUser != null;
-        Query query = FirebaseFirestore.getInstance().collection("personalDetails").whereEqualTo("email", currentUser.getEmail());
+        Query query = db.collection("personalDetails").whereEqualTo("email", currentUser.getEmail());
         query.get().addOnCompleteListener(task -> {
             QuerySnapshot querySnapshot = task.getResult();
             DocumentSnapshot document = querySnapshot.getDocuments().get(0);
             dni = document.getString("dni");
+            fetchDataFromFirebase();
         });
-        return dni;
     }
 
     @NonNull
@@ -86,7 +82,7 @@ public class RecyclerVehicleAdapter extends RecyclerView.Adapter<RecyclerVehicle
         return list.size();
     }
 
-    public static class RecyclerDataHolder extends RecyclerView.ViewHolder {
+    public class RecyclerDataHolder extends RecyclerView.ViewHolder {
         TextView txtPlate, txtNumberSites;
         ImageView delete;
         public RecyclerDataHolder(@NonNull View itemView) {
@@ -96,10 +92,16 @@ public class RecyclerVehicleAdapter extends RecyclerView.Adapter<RecyclerVehicle
             delete = itemView.findViewById(R.id.imgBtnDeleteVehicle);
         }
 
+        @SuppressLint("NotifyDataSetChanged")
         public void assignData(Vehicle vehicle) {
             txtPlate.setText(vehicle.getPlate());
             txtNumberSites.setText(String.valueOf(vehicle.getSiteNumber()));
-            delete.setOnClickListener(v -> FirebaseFirestore.getInstance().collection("cars").document(vehicle.getPlate()).delete());
+            delete.setOnClickListener(v -> FirebaseFirestore.getInstance().collection("cars").document(vehicle.getPlate()).delete()                   .addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    list.remove(vehicle);
+                    notifyDataSetChanged();
+                }
+            }));
         }
     }
 }

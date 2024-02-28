@@ -62,6 +62,8 @@ public class AddVehicleActivity extends AppCompatActivity {
             carsMap.put("numSit", numSitString.toLowerCase());
             carsMap.put("userDNI", dni.toUpperCase());
             db.collection("cars").document(plateString.toLowerCase()).set(carsMap);
+            Intent intent = new Intent(AddVehicleActivity.this, VehicleActivity.class);
+            startActivity(intent);
         });
     }
 }

@@ -3,9 +3,9 @@ package es.cuatrovientos.a4vgo.models;
 public class Vehicle {
     private final String plate;
     private final String color;
-    private final int siteNumber;
+    private final String siteNumber;
 
-    public Vehicle(String plate, String color, int siteNumber) {
+    public Vehicle(String plate, String color, String siteNumber) {
         this.plate = plate;
         this.color = color;
         this.siteNumber = siteNumber;
@@ -19,7 +19,7 @@ public class Vehicle {
         return color;
     }
 
-    public int getSiteNumber() {
+    public String getSiteNumber() {
         return siteNumber;
     }
 }
