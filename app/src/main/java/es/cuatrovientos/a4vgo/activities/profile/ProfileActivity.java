@@ -30,14 +30,14 @@ import es.cuatrovientos.a4vgo.Utils.DialogUtils;
 import es.cuatrovientos.a4vgo.activities.MainActivity;
 
 public class ProfileActivity extends AppCompatActivity {
-    ConstraintLayout logout, personalDetails, languague;
+    ConstraintLayout logout, personalDetails, languague, vehicle;
     CollectionReference collection;
     FirebaseUser currentUser;
     TextView username, email;
     Query query;
     ImageView profile;
     String currenUserDNI;
-    String[] idiomas = {"Español", "Inglés", "Francés", "Alemán"};
+    String[] idiomas = {"Español", "Inglés", "Alemán"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +52,7 @@ public class ProfileActivity extends AppCompatActivity {
         email = findViewById(R.id.txtEmailProfile);
         profile = findViewById(R.id.imgProfileP);
         query = collection.whereEqualTo("email", currentUser.getEmail());
+        vehicle = findViewById(R.id.vehicleAction);
 
         query.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
@@ -89,6 +90,11 @@ public class ProfileActivity extends AppCompatActivity {
                         collection.document(currenUserDNI).update("languague", selectedLanguague);
                     });
             builder.create().show();
+        });
+
+        vehicle.setOnClickListener(v -> {
+            Intent intent = new Intent(ProfileActivity.this, VehicleActivity.class);
+            startActivity(intent);
         });
     }
     private void loadProfileImage() {
