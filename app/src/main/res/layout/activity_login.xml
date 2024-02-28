@@ -92,14 +92,6 @@
             android:textSize="18sp"
             tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
 
-        <TextView
-            android:id="@+id/textViewForgotPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="@string/ForgotPassword"
-            android:textAlignment="center" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -140,7 +132,7 @@
 
             <LinearLayout
                 android:id="@+id/linearLayoutGoogle"
-                android:layout_width="20dp"
+                android:layout_width="0dp"
                 android:layout_height="49dp"
                 android:layout_weight="1"
                 android:background="@drawable/social_btn_background"

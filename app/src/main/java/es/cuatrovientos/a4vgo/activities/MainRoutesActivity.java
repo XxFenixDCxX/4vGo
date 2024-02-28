@@ -12,46 +12,35 @@ import es.cuatrovientos.a4vgo.activities.createRoute.AddRouteActivity;
 import es.cuatrovientos.a4vgo.activities.profile.ProfileActivity;
 
 public class MainRoutesActivity extends AppCompatActivity {
-    BottomNavigationView bottomNavigationView;
-
+    BottomNavigationView bottom;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_routes);
 
-        bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.getMenu().findItem(R.id.messages).setChecked(true);
-        bottomNavigationView.setOnItemSelectedListener(
-                item -> {
+        bottom = findViewById(R.id.bnNavigation);
+        bottom.setSelectedItemId(R.id.navigation_trips);
+
+        bottom.setOnItemSelectedListener(item -> {
                     int id = item.getItemId();
-                    if (id == R.id.messages) {
-
-                        return true;
-                    } else if (id == R.id.trips) {
+                    if (id == R.id.navigation_profile) {
                         overridePendingTransition(0, 0);
-
-                        Intent intent = new Intent(MainRoutesActivity.this , AddRouteActivity.class);
-                        startActivity(intent);
-
-                        overridePendingTransition(0, 0);
-
-                        return true;
-                    } else if (id == R.id.profile) {
-                        overridePendingTransition(0, 0);
-
                         Intent intent = new Intent(MainRoutesActivity.this , ProfileActivity.class);
                         startActivity(intent);
-
                         overridePendingTransition(0, 0);
-
-                        return true;
+                    } else if (id == R.id.navigation_publish_route) {
+                        overridePendingTransition(0, 0);
+                        Intent intent = new Intent(MainRoutesActivity.this , AddRouteActivity.class);
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
+                    } else if (id == R.id.navigation_chat){
+                        overridePendingTransition(0, 0);
+                        Intent intent = new Intent(MainRoutesActivity.this , AddRouteActivity.class);
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
                     }
-
-                    else {
-                        return false;
-                    }
+                    return true;
                 }
         );
-
     }
 }

@@ -6,6 +6,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -13,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
@@ -24,8 +27,11 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.Locale;
 
 import es.cuatrovientos.a4vgo.R;
+import es.cuatrovientos.a4vgo.activities.MainRoutesActivity;
+import es.cuatrovientos.a4vgo.activities.createRoute.AddRouteActivity;
 import es.cuatrovientos.a4vgo.utils.DialogUtils;
 import es.cuatrovientos.a4vgo.activities.MainActivity;
 
@@ -37,7 +43,8 @@ public class ProfileActivity extends AppCompatActivity {
     Query query;
     ImageView profile;
     String currenUserDNI;
-    String[] idiomas = {"Español", "Inglés", "Alemán"};
+    BottomNavigationView bottom;
+    String[] idiomas = {"Español", "Inglés", "Euskera"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +60,8 @@ public class ProfileActivity extends AppCompatActivity {
         profile = findViewById(R.id.imgProfileP);
         query = collection.whereEqualTo("email", currentUser.getEmail());
         vehicle = findViewById(R.id.vehicleAction);
+        bottom = findViewById(R.id.bnNavigation);
+        bottom.setSelectedItemId(R.id.navigation_profile);
 
         query.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
@@ -87,7 +96,20 @@ public class ProfileActivity extends AppCompatActivity {
                     .setItems(idiomas, (dialog, which) -> {
                         String selectedLanguague = idiomas[which];
                         Toast.makeText(ProfileActivity.this, getString(R.string.selectedLanguague) + selectedLanguague, Toast.LENGTH_SHORT).show();
-                        collection.document(currenUserDNI).update("languague", selectedLanguague);
+                        String languagueCode = "";
+                        switch (selectedLanguague){
+                            case "Español":
+                                languagueCode = "es";
+                                break;
+                            case "Inglés":
+                                languagueCode = "en";
+                                break;
+                            case "Euskera":
+                                languagueCode = "eu";
+                                break;
+                        }
+                        collection.document(currenUserDNI).update("languague", languagueCode);
+                        changeLanguague(languagueCode);
                     });
             builder.create().show();
         });
@@ -96,6 +118,28 @@ public class ProfileActivity extends AppCompatActivity {
             Intent intent = new Intent(ProfileActivity.this, VehicleActivity.class);
             startActivity(intent);
         });
+
+        bottom.setOnItemSelectedListener(item -> {
+                    int id = item.getItemId();
+                    if (id == R.id.navigation_trips) {
+                        overridePendingTransition(0, 0);
+                        Intent intent = new Intent(ProfileActivity.this , MainRoutesActivity.class);
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
+                    } else if (id == R.id.navigation_publish_route) {
+                        overridePendingTransition(0, 0);
+                        Intent intent = new Intent(ProfileActivity.this , AddRouteActivity.class);
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
+                    } else if (id == R.id.navigation_chat){
+                        overridePendingTransition(0, 0);
+                        Intent intent = new Intent(ProfileActivity.this , AddRouteActivity.class);
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
+                    }
+                    return true;
+                }
+        );
     }
     private void loadProfileImage() {
         collection.document(currenUserDNI).get()
@@ -104,10 +148,8 @@ public class ProfileActivity extends AppCompatActivity {
                         String imageUrl = documentSnapshot.getString("profileImage");
 
                         if (imageUrl != null && !imageUrl.isEmpty()) {
-                            // If profile image URL is available, download it and set as background
                             downloadImageAndSetBackground(imageUrl);
                         } else {
-                            // If no profile image URL, set the default image
                             profile.setBackgroundResource(R.drawable.ic_profile);
                         }
                     }
@@ -121,7 +163,6 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             protected Drawable doInBackground(Void... voids) {
                 try {
-                    // Download the image as a Drawable
                     InputStream inputStream = new URL(imageUrl).openStream();
                     return Drawable.createFromStream(inputStream, null);
                 } catch (IOException e) {
@@ -133,13 +174,25 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             protected void onPostExecute(Drawable drawable) {
                 if (drawable != null) {
-                    // Set the downloaded image as the background
                     profile.setBackground(drawable);
                 } else {
-                    // Set the default image
                     profile.setBackgroundResource(R.drawable.ic_profile);
                 }
             }
         }.execute();
+    }
+    private void changeLanguague(String languagueCode){
+        Locale locale = new Locale(languagueCode);
+        Locale.setDefault(locale);
+
+        Configuration config = new Configuration();
+        config.locale = locale;
+
+        Resources resources = this.getResources();
+        resources.updateConfiguration(config, resources.getDisplayMetrics());
+
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
     }
 }
