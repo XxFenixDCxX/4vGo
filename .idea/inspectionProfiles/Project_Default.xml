@@ -2,5 +2,16 @@
   <profile version="1.0">
     <option name="myName" value="Project Default" />
     <inspection_tool class="Deprecation" enabled="true" level="TEXT ATTRIBUTES" enabled_by_default="true" editorAttributes="CONSIDERATION_ATTRIBUTES" />
+    <inspection_tool class="MismatchedCollectionQueryUpdate" enabled="false" level="WARNING" enabled_by_default="false">
+      <option name="queryNames">
+        <value />
+      </option>
+      <option name="updateNames">
+        <value />
+      </option>
+      <option name="ignoredClasses">
+        <value />
+      </option>
+    </inspection_tool>
   </profile>
 </component>
