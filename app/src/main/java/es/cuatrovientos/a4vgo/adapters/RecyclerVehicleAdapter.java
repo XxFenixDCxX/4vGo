@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Objects;
 
 import es.cuatrovientos.a4vgo.R;
-import es.cuatrovientos.a4vgo.activities.models.Vehicle;
+import es.cuatrovientos.a4vgo.models.Vehicle;
 
 public class RecyclerVehicleAdapter extends RecyclerView.Adapter<RecyclerVehicleAdapter.RecyclerDataHolder> {
     private final List<Vehicle> list;

@@ -1,4 +1,4 @@
-package es.cuatrovientos.a4vgo.activities.models;
+package es.cuatrovientos.a4vgo.models;
 
 public class Vehicle {
     private final String plate;
