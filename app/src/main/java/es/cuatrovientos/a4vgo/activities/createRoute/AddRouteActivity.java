@@ -2,24 +2,28 @@ package es.cuatrovientos.a4vgo.activities.createRoute;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import es.cuatrovientos.a4vgo.R;
+import es.cuatrovientos.a4vgo.activities.MainRoutesActivity;
+import es.cuatrovientos.a4vgo.activities.profile.ProfileActivity;
 import es.cuatrovientos.a4vgo.adapters.CustomSpinnerAdapter;
 
 public class AddRouteActivity extends AppCompatActivity {
 
-    private Spinner spinner ;
     private EditText editTextOrigen;
     private EditText editTextDestination;
     private ImageButton imageButtonDestination;
     private ImageButton imageButtonOrigin;
+    BottomNavigationView bottom;
 
 
     @Override
@@ -27,14 +31,38 @@ public class AddRouteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_route);
         //Spinner adapter
-        spinner = findViewById(R.id.spinner3);
+        Spinner spinner1 = findViewById(R.id.spinner3);
         editTextOrigen = findViewById(R.id.editTextOrigin);
         editTextDestination = findViewById(R.id.editTextDestination);
         imageButtonDestination = findViewById(R.id.imageButtonDestination);
         imageButtonOrigin = findViewById(R.id.imageButtonOrigin);
+        bottom = findViewById(R.id.bnNavigation);
+        bottom.setSelectedItemId(R.id.navigation_publish_route);
 
         Spinner spinner = findViewById(R.id.spinner3);
         String[] items = new String[]{"Ida", "Vuelta"};
+
+        bottom.setOnItemSelectedListener(item -> {
+                    int id = item.getItemId();
+                    if (id == R.id.navigation_trips) {
+                        overridePendingTransition(0, 0);
+                        Intent intent = new Intent(AddRouteActivity.this , MainRoutesActivity.class);
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
+                    } else if (id == R.id.navigation_profile) {
+                        overridePendingTransition(0, 0);
+                        Intent intent = new Intent(AddRouteActivity.this , ProfileActivity.class);
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
+                    } else if (id == R.id.navigation_chat){
+                        overridePendingTransition(0, 0);
+                        Intent intent = new Intent(AddRouteActivity.this , AddRouteActivity.class);
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
+                    }
+                    return true;
+                }
+        );
 
 // Utiliza tu adaptador personalizado
         CustomSpinnerAdapter adapter = new CustomSpinnerAdapter(this, android.R.layout.simple_spinner_item, items);

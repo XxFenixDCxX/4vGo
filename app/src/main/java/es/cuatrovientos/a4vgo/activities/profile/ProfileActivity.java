@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
@@ -29,6 +30,8 @@ import java.net.URL;
 import java.util.Locale;
 
 import es.cuatrovientos.a4vgo.R;
+import es.cuatrovientos.a4vgo.activities.MainRoutesActivity;
+import es.cuatrovientos.a4vgo.activities.createRoute.AddRouteActivity;
 import es.cuatrovientos.a4vgo.utils.DialogUtils;
 import es.cuatrovientos.a4vgo.activities.MainActivity;
 
@@ -40,6 +43,7 @@ public class ProfileActivity extends AppCompatActivity {
     Query query;
     ImageView profile;
     String currenUserDNI;
+    BottomNavigationView bottom;
     String[] idiomas = {"Español", "Inglés", "Euskera"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +60,8 @@ public class ProfileActivity extends AppCompatActivity {
         profile = findViewById(R.id.imgProfileP);
         query = collection.whereEqualTo("email", currentUser.getEmail());
         vehicle = findViewById(R.id.vehicleAction);
+        bottom = findViewById(R.id.bnNavigation);
+        bottom.setSelectedItemId(R.id.navigation_profile);
 
         query.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
@@ -112,6 +118,28 @@ public class ProfileActivity extends AppCompatActivity {
             Intent intent = new Intent(ProfileActivity.this, VehicleActivity.class);
             startActivity(intent);
         });
+
+        bottom.setOnItemSelectedListener(item -> {
+                    int id = item.getItemId();
+                    if (id == R.id.navigation_trips) {
+                        overridePendingTransition(0, 0);
+                        Intent intent = new Intent(ProfileActivity.this , MainRoutesActivity.class);
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
+                    } else if (id == R.id.navigation_publish_route) {
+                        overridePendingTransition(0, 0);
+                        Intent intent = new Intent(ProfileActivity.this , AddRouteActivity.class);
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
+                    } else if (id == R.id.navigation_chat){
+                        overridePendingTransition(0, 0);
+                        Intent intent = new Intent(ProfileActivity.this , AddRouteActivity.class);
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
+                    }
+                    return true;
+                }
+        );
     }
     private void loadProfileImage() {
         collection.document(currenUserDNI).get()

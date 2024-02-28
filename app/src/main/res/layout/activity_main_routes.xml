@@ -7,16 +7,27 @@
     tools:context=".activities.MainRoutesActivity"
     android:background="@color/colorPrimary">
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bnNavigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:itemIconTint="#0A8353"
+        app:itemTextColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu"
+        tools:ignore="VisualLintBottomNav" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
 
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/linearLayout2"
@@ -45,6 +56,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:minHeight="48dp" />
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -94,6 +106,7 @@
                     android:textColorHint="#A1887F"
                     android:textStyle="italic"
                     tools:ignore="RtlSymmetry" />
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -141,8 +154,8 @@
                     android:id="@+id/button2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/button_search"
-                    android:background="@drawable/background_button_intro"/>
+                    android:background="@drawable/background_button_intro"
+                    android:text="@string/button_search" />
 
             </LinearLayout>
         </LinearLayout>
@@ -208,15 +221,5 @@
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_navigation_menu"
-        tools:ignore="VisualLintBottomNav" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
