@@ -71,6 +71,7 @@
     <string name="add">Agregar</string>
     <string name="color">Color</string>
     <string name="siteNumber">Numero de sitios</string>
+    <string name="Back_Icon">Back-Icon</string>
 
     <!-- Description -->
     <string name="background">background</string>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="214dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="14dp"
+        app:cardBackgroundColor="@color/colorPrimary"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp"
+        app:cardMaxElevation="12dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
+        tools:ignore="TextSizeCheck">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary">
+
+            <ImageView
+                android:id="@+id/OriginDestinationImg"
+                android:layout_width="92dp"
+                android:layout_height="90dp"
+                android:layout_margin="10dp"
+                android:contentDescription="@string/profileImg"
+                android:src="@drawable/roadmap"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/OriginCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/OriginCity"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/OriginDestinationImg"
+                app:layout_constraintHorizontal_bias="0.926"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.052" />
+
+            <TextView
+                android:id="@+id/DestinationCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/DestinationCity"
+                android:textSize="20sp"
+                tools:layout_editor_absoluteX="221dp"
+                tools:layout_editor_absoluteY="55dp"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/elapsedTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="72dp"
+                android:text="@string/time_elapsed"
+                android:textSize="15sp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/OriginDestinationImg"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:text="@string/user_name"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/profileImg"
+                app:layout_constraintHorizontal_bias="0.947"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/elapsedTime"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/user_valoration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/valoration"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/user_name"
+                app:layout_constraintEnd_toEndOf="@+id/profileImg"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="@+id/user_name"
+                app:layout_constraintTop_toBottomOf="@+id/elapsedTime"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <ImageView
+                android:id="@+id/profileImg"
+                android:layout_width="56dp"
+                android:layout_height="55dp"
+                android:layout_margin="10dp"
+                android:layout_marginEnd="4dp"
+                android:contentDescription="@string/profileImg"
+                android:src="@drawable/ic_profile"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.988" />
+
+            <ImageView
+                android:id="@+id/StarImg"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:layout_margin="10dp"
+                android:contentDescription="@string/starImg"
+                android:src="@drawable/starimg"
+                tools:ignore="ImageContrastCheck,MissingConstraints"
+                tools:layout_editor_absoluteX="245dp"
+                tools:layout_editor_absoluteY="100dp" />
+
+            <ImageView
+                android:id="@+id/carSeatsImg"
+                android:layout_width="45dp"
+                android:layout_height="47dp"
+                android:layout_margin="10dp"
+                android:contentDescription="@string/moreInfo"
+                android:src="@drawable/car_seat"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.009"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.994"
+                tools:ignore="ImageContrastCheck" />
+
+            <TextView
+                android:id="@+id/seat_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="28dp"
+                android:text="@string/seatNum"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/carSeatsImg"
+                app:layout_constraintEnd_toEndOf="@+id/carSeatsImg"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/carSeatsImg" />
+
+            <TextView
+                android:id="@+id/DestinationTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/DestinationTime"
+                android:textSize="20sp"
+                tools:layout_editor_absoluteX="222dp"
+                tools:layout_editor_absoluteY="28dp"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/OriginTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/OriginTime"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/OriginDestinationImg"
+                app:layout_constraintHorizontal_bias="0.934"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/OriginCity"
+                app:layout_constraintVertical_bias="0.0" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

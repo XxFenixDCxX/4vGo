@@ -37,6 +37,7 @@
         android:orientation="vertical"
         android:padding="32dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewBackground">
 
@@ -138,43 +139,14 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginEnd="16dp"
-                android:layout_weight="0.5"
-                android:background="@drawable/social_btn_background"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/imageViewFacebook"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="8dp"
-                    android:contentDescription="@string/Facebook"
-                    app:srcCompat="@drawable/facebook" />
-
-                <TextView
-                    android:id="@+id/textViewFacebook"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:text="@string/Facebook"
-                    android:textColor="@color/green"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    tools:ignore="NestedWeights" />
-            </LinearLayout>
-
-            <LinearLayout
                 android:id="@+id/linearLayoutGoogle"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginStart="16dp"
-                android:layout_weight="0.5"
+                android:layout_width="20dp"
+                android:layout_height="49dp"
+                android:layout_weight="1"
                 android:background="@drawable/social_btn_background"
-                android:orientation="horizontal">
+                android:gravity="center"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
 
                 <ImageView
                     android:id="@+id/imageViewGoogle"
