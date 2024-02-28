@@ -62,6 +62,7 @@
     <string name="selectLanguage">Selecciona un idioma</string>
     <string name="selectedLanguague">Idioma seleccionado: </string>
     <string name="errorLogImage">Error al cargar la imagen</string>
+    <string name="selectImage">Selecciona una imagen</string>
 
     <!-- Description -->
     <string name="background">background</string>

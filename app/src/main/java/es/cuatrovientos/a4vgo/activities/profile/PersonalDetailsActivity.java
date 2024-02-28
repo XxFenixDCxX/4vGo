@@ -16,7 +16,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -34,7 +33,6 @@ import java.net.URL;
 
 import es.cuatrovientos.a4vgo.R;
 import es.cuatrovientos.a4vgo.Utils.DialogUtils;
-//toDo finalizar apartado de save y implementar los errores con nuestros dialogs
 public class PersonalDetailsActivity extends AppCompatActivity {
     Query query;
     CollectionReference collection;
@@ -105,7 +103,7 @@ public class PersonalDetailsActivity extends AppCompatActivity {
             Intent intent = new Intent();
             intent.setType("image/*");
             intent.setAction(Intent.ACTION_GET_CONTENT);
-            startActivityForResult(Intent.createChooser(intent, "Selecciona una imagen"), PICK_IMAGE_REQUEST);
+            startActivityForResult(Intent.createChooser(intent, getString(R.string.selectImage)), PICK_IMAGE_REQUEST);
         });
     }
     @Override
@@ -123,7 +121,7 @@ public class PersonalDetailsActivity extends AppCompatActivity {
 
             } catch (IOException e) {
                 e.printStackTrace();
-                Toast.makeText(this, getString(R.string.errorLogImage), Toast.LENGTH_SHORT).show();
+                DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.errorLogImage));
             }
         }
     }
@@ -135,8 +133,7 @@ public class PersonalDetailsActivity extends AppCompatActivity {
                 .addOnSuccessListener(taskSnapshot -> storageReference.getDownloadUrl().addOnSuccessListener(this::updateProfileImage))
                 .addOnFailureListener(e -> {
                     e.printStackTrace();
-                    DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), e.toString());
-                    Toast.makeText(this, "Failed to upload image" + e, Toast.LENGTH_SHORT).show();
+                    DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.errorLogImage));
                 });
     }
     private void updateProfileImage(Uri imageUrl) {
@@ -161,7 +158,7 @@ public class PersonalDetailsActivity extends AppCompatActivity {
                 })
                 .addOnFailureListener(e -> {
                     e.printStackTrace();
-                    Toast.makeText(this, getString(R.string.errorLogImage), Toast.LENGTH_SHORT).show();
+                    DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.errorLogImage));
                 });
     }
 
@@ -186,8 +183,6 @@ public class PersonalDetailsActivity extends AppCompatActivity {
                     // Set the downloaded image as the background
                     profile.setBackground(drawable);
                 } else {
-                    // Handle the case where image download failed
-                    Toast.makeText(PersonalDetailsActivity.this, "Failed to download image", Toast.LENGTH_SHORT).show();
                     // Set the default image
                     profile.setBackgroundResource(R.drawable.ic_profile);
                 }

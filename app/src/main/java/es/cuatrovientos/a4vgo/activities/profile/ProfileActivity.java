@@ -65,7 +65,7 @@ public class ProfileActivity extends AppCompatActivity {
                 email.setText(document.getString("email"));
                 loadProfileImage();
             } else {
-                DialogUtils.showErrorDialog(this, getString(R.string.errorLogCantLoadDetails), getString(R.string.errorLoginMessage));
+                DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.errorLogCantLoadDetails));
             }
         });
 
@@ -107,7 +107,7 @@ public class ProfileActivity extends AppCompatActivity {
                 })
                 .addOnFailureListener(e -> {
                     e.printStackTrace();
-                    Toast.makeText(this, getString(R.string.errorLogImage), Toast.LENGTH_SHORT).show();
+                    DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.errorLogImage));
                 });
     }
 
@@ -132,8 +132,6 @@ public class ProfileActivity extends AppCompatActivity {
                     // Set the downloaded image as the background
                     profile.setBackground(drawable);
                 } else {
-                    // Handle the case where image download failed
-                    Toast.makeText(ProfileActivity.this, "Failed to download image", Toast.LENGTH_SHORT).show();
                     // Set the default image
                     profile.setBackgroundResource(R.drawable.ic_profile);
                 }
