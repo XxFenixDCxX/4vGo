@@ -71,7 +71,6 @@
             android:id="@+id/spinner3"
             android:padding="15dp"
             android:textSize="14sp"
-
             android:background="@drawable/white_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

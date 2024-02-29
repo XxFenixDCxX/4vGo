@@ -7,6 +7,7 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,6 +18,7 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -30,6 +32,7 @@ import es.cuatrovientos.a4vgo.R;
 import es.cuatrovientos.a4vgo.activities.MainRoutesActivity;
 import es.cuatrovientos.a4vgo.activities.profile.ProfileActivity;
 import es.cuatrovientos.a4vgo.adapters.CustomSpinnerAdapter;
+import es.cuatrovientos.a4vgo.maps.searchMapActivity;
 import es.cuatrovientos.a4vgo.models.Route;
 import es.cuatrovientos.a4vgo.utils.DialogUtils;
 
@@ -65,6 +68,8 @@ public class AddRouteActivity extends AppCompatActivity {
         txtDestination = findViewById(R.id.txtDestination);
         txtDateTime = findViewById(R.id.txtDateTime);
         txtTime = findViewById(R.id.txtTime);
+
+
         editTextAvailableSeats = findViewById(R.id.editTextAvailableSeats);
         imageButtonDestination = findViewById(R.id.imageButtonDestination);
         imageButtonOrigin = findViewById(R.id.imageButtonOrigin);
@@ -72,10 +77,46 @@ public class AddRouteActivity extends AppCompatActivity {
         bottom = findViewById(R.id.bnNavigation);
         Spinner spinner = findViewById(R.id.spinner3);
         String[] items = new String[]{getString(R.string.route_type_ida), getString(R.string.route_type_vuelta)};
+
+
+
+        Intent intent2 = getIntent();
+        if (intent2.hasExtra("streetName") && intent2.hasExtra("latitudeStr") && intent2.hasExtra("longitudeStr")) {
+            // Data is passed, extract and display
+            String streetName = intent2.getStringExtra("streetName");
+            Bundle bundle  ;
+            bundle = getIntent().getExtras();
+            assert bundle != null;
+            String selectedLatitude = bundle.getString("latitudeStr");
+            String selectedLongitude = bundle.getString("longitudeStr");
+
+            String selectedCoordinates = selectedLatitude + "," + selectedLongitude;
+
+            Log.i("moha", "Street Name: " + streetName);
+            Log.i("moha", "Selected Latitude: " + selectedLatitude);
+            Log.i("moha", "Selected Longitude: " + selectedLongitude);
+            Log.i("moha", "Selected Coordinates: " + selectedCoordinates);
+
+            txtOrigin.setHint(streetName);
+        }
         txtDateTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showDateTimePickerDialog(view);
+            }
+        });
+        imageButtonDestination.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AddRouteActivity.this, searchMapActivity.class);
+                startActivity(intent);
+            }
+        });
+        imageButtonOrigin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AddRouteActivity.this, searchMapActivity.class);
+                startActivity(intent);
             }
         });
 

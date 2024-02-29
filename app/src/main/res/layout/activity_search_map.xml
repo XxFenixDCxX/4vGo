@@ -15,18 +15,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/editTextIntroduceDirection"
-            android:layout_width="202dp"
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteTextViewIntroduceDirection"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:layout_margin="20dp"
             android:background="@drawable/white_edittext"
             android:drawableStart="@drawable/ic_marcador"
             android:drawablePadding="20dp"
             android:hint="@string/maps_write_direction"
             android:inputType="text"
             android:layout_weight="3"
-            android:padding="15dp" />
+            android:padding="15dp"/>
+
 
     </LinearLayout>
 
@@ -47,7 +50,24 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".MainActivity" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
     </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@color/teal_700"
+        android:src="@drawable/ic_check"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

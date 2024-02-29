@@ -46,25 +46,29 @@
                 android:layout_width="304dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="120dp"
+                android:layout_marginTop="100dp"
 
                 android:background="@drawable/edittext_background"
                 android:orientation="vertical">
 
                 <Spinner
-                    android:id="@+id/spinner2"
+                    android:id="@+id/spinner3"
+                    android:padding="15dp"
+                    android:textSize="14sp"
+
+                    android:background="@drawable/white_edittext"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:minHeight="48dp" />
+                    android:layout_height="wrap_content">
+                </Spinner>
+
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@android:color/darker_gray" />
 
-                <EditText
-                    android:id="@+id/editTextText"
+                <TextView
+                    android:id="@+id/txtOrigen2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -73,13 +77,12 @@
                     android:drawableStart="@drawable/ic_marcador"
                     android:drawablePadding="10dp"
                     android:ems="10"
-                    android:hint="@string/edit_origin_hint"
-                    android:inputType="textPersonName"
                     android:minHeight="48dp"
                     android:padding="7dp"
+                    android:text="@string/edit_origin_hint"
                     android:paddingStart="10dp"
                     android:textColor="@color/black"
-                    android:textColorHint="#A1887F"
+                    android:textColorHint="@color/gris"
                     android:textStyle="italic"
                     tools:ignore="RtlSymmetry" />
 
@@ -88,8 +91,8 @@
                     android:layout_height="1dp"
                     android:background="@android:color/darker_gray" />
 
-                <EditText
-                    android:id="@+id/editTextText2"
+                <TextView
+                    android:id="@+id/txtDestination"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -98,8 +101,7 @@
                     android:drawableStart="@drawable/ic_marcador"
                     android:drawablePadding="10dp"
                     android:ems="10"
-                    android:hint="@string/edit_destination_hint"
-                    android:inputType="textPersonName"
+                    android:text="@string/edit_destination_hint"
                     android:minHeight="48dp"
                     android:padding="7dp"
                     android:paddingStart="10dp"
@@ -120,8 +122,8 @@
                     android:orientation="horizontal">
 
                     <Spinner
-                        android:id="@+id/spinner"
-                        android:layout_width="match_parent"
+                        android:id="@+id/spinnerNumPeople"
+                        android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
@@ -144,7 +146,7 @@
                         android:drawableStart="@drawable/ic_date"
                         android:drawablePadding="10dp"
                         android:ems="10"
-
+                        android:background="@drawable/white_edittext"
                         android:hint="@string/edit_date_hint"
                         android:inputType="date"
                         android:minHeight="48dp"
@@ -164,7 +166,7 @@
         <LinearLayout
             android:id="@+id/linearLayoutgfgfg"
             android:layout_width="match_parent"
-            android:layout_height="261dp"
+            android:layout_height="200dp"
             android:background="@drawable/light_blue_background"
             android:orientation="vertical"
 

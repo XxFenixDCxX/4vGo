@@ -1,7 +1,21 @@
 package es.cuatrovientos.a4vgo.tasks;
 
+import static es.cuatrovientos.a4vgo.maps.searchMapActivity.passCoordinates;
+
 import android.os.AsyncTask;
+import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,10 +27,16 @@ import java.net.URLEncoder;
 
 public class OpenStreetMapSearchTask extends AsyncTask<String, Void, String> {
 
-    private EditText editTextOrigin;
 
-    public OpenStreetMapSearchTask(EditText editTextOrigin) {
-        this.editTextOrigin = editTextOrigin;
+    private AutoCompleteTextView autoCompleteTextView;
+    private ArrayAdapter<String> adapter;
+    private GoogleMap mMap;  // Add GoogleMap instance
+
+    public OpenStreetMapSearchTask(AutoCompleteTextView autoCompleteTextView, ArrayAdapter<String> adapter, GoogleMap mMap) {
+        this.autoCompleteTextView = autoCompleteTextView;
+        this.adapter = adapter;
+        this.mMap = mMap;
+
     }
 
     @Override
@@ -25,8 +45,7 @@ public class OpenStreetMapSearchTask extends AsyncTask<String, Void, String> {
 
         try {
             streetName = URLEncoder.encode(streetName, "UTF-8");
-            // Agrega el filtro de región (en este caso, Navarra) a la URL
-            String apiUrl = "https://nominatim.openstreetmap.org/search?format=json&q=" + streetName + "&country=Spain&state=Navarre";
+            String apiUrl = "https://nominatim.openstreetmap.org/search?format=json&q=" + streetName;
             URL url = new URL(apiUrl);
 
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -54,8 +73,38 @@ public class OpenStreetMapSearchTask extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        // Aquí puedes manejar el resultado de la búsqueda
-        // El resultado es un JSON que contiene información sobre la dirección encontrada
-        // Puedes parsear el JSON y mostrar la información relevante en tu aplicación
+        Log.d("moha", "Result: " + result);
+
+        if (result != null) {
+            // Parsea el resultado y obtén la latitud y longitud
+            try {
+                JSONArray jsonArray = new JSONArray(result);
+                if (jsonArray.length() > 0) {
+                    JSONObject firstResult = jsonArray.getJSONObject(0);
+                    double latitude = Double.parseDouble(firstResult.getString("lat"));
+                    double longitude = Double.parseDouble(firstResult.getString("lon"));
+
+                    adapter.clear();
+
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject item = jsonArray.getJSONObject(i);
+                        String displayName = item.optString("display_name", "");
+                        adapter.add(displayName);
+                    }
+
+                    adapter.notifyDataSetChanged();
+
+                    LatLng location = new LatLng(latitude, longitude);
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15f));
+
+                    mMap.clear();
+                    mMap.addMarker(new MarkerOptions().position(location).title("Ubicación encontrada").draggable(true));
+                    passCoordinates(location);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
+
 }
