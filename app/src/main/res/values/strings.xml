@@ -157,6 +157,10 @@
     <string name="route_type_ida">Ida</string>
     <string name="route_type_vuelta">Vuelta</string>
     <string name="btn_route_creation">Crear ruta</string>
+    <string name="ic_to">icon go to</string>
+    <string name="txtDate">17/02/2024</string>
+    <string name="txtTime">00:04</string>
+    <string name="person">persona/s</string>
 
 
 </resources>
