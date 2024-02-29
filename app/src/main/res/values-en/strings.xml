@@ -138,4 +138,19 @@
 
     <!-- Maps -->
     <string name="maps_write_direction">Enter an address…</string>
+    <string name="coordinates_ci_cuatrovientos">42.82437339317052, -1.6598970153413861</string>
+
+    <!--Spinner-->
+    <string name="route_type_ida">Departure</string>
+    <string name="route_type_vuelta">Return</string>
+    <string name="btn_route_creation">Create route</string>
+    <string name="seats_error">Number of seats must be between 1 and 10</string>
+    <string name="date_time_error">Selected date must be today or later, and selected time must be later than the current time.</string>
+    <string name="select_date_time_error">Select a date and time</string>
+    <string name="seats_empty_error">Please enter the number of seats</string>
+    <string name="route_type">Route type</string>
+    <string name="vehicule_selection">Select a vehicle</string>
+    <string name="unkown_error">Error</string>
+    <string name="warning_vehicle_selection">Please add a vehicle</string>
+    <string name="route_addition_failed">Failed to create route</string>
 </resources>
