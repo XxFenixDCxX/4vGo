@@ -2,15 +2,14 @@ package es.cuatrovientos.a4vgo.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -33,10 +32,8 @@ public class MainRoutesActivity extends AppCompatActivity {
     private TextView txtDestination;
     private TextView txtDateTime;
 
-    private Button buttonSearch;
-    private Activity context = this ;
-    private Boolean goBackBool = true;
-    private ImageView imageSwitch;
+    private final Activity context = this ;
+    private final Boolean goBackBool = true;
     private String routeType;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +41,10 @@ public class MainRoutesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_routes);
         txtOrigin2 = findViewById(R.id.txtOrigen2);
         txtDateTime = findViewById(R.id.txtDateTime);
+        Button buttonSearch = findViewById(R.id.buttonSearch);
         bottom = findViewById(R.id.bnNavigation);
         bottom.setSelectedItemId(R.id.navigation_trips);
-        imageSwitch = findViewById(R.id.imageSwitch);
+        ImageView imageSwitch = findViewById(R.id.imageSwitch);
         bottom.setOnItemSelectedListener(item -> {
                     int id = item.getItemId();
                     if (id == R.id.navigation_profile) {
@@ -104,40 +102,21 @@ public class MainRoutesActivity extends AppCompatActivity {
 
         spinnerNumPeople.setAdapter(adapterNum);
 
-        txtDateTime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDateTimePickerDialog(v);
-            }
+        txtDateTime.setOnClickListener(this::showDateTimePickerDialog);
+        txtOrigin2.setOnClickListener(v -> {
+            Intent intent = new Intent(MainRoutesActivity.this, searchMapActivity.class);
+            intent.putExtra("REQUEST_CODE",REQUEST_MAP_GO );
+            startActivity(intent);
         });
-        txtOrigin2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainRoutesActivity.this, searchMapActivity.class);
-                intent.putExtra("REQUEST_CODE",REQUEST_MAP_GO );
-                startActivity(intent);
-            }
+        buttonSearch.setOnClickListener(v -> {
+            Intent intent = new Intent(MainRoutesActivity.this, searchMapActivity.class);
+            intent.putExtra("REQUEST_CODE",REQUEST_MAP_GO );
+            startActivity(intent);
         });
-        buttonSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainRoutesActivity.this, searchMapActivity.class);
-                intent.putExtra("REQUEST_CODE",REQUEST_MAP_GO );
-                startActivity(intent);
-            }
-        });
-        txtDestination.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainRoutesActivity.this, searchMapActivity.class);
-                intent.putExtra("routeType", routeType);
-                /*
-                intent.putExtra("selectedCoordinates", selectedCoordinates);
-                intent.putExtra("date", selectedDateStr);
-                intent.putExtra("time", selectedTimeStr);
-                intent.putExtra("availableSeats", plazas);*/
-                startActivity(intent);
-            }
+        txtDestination.setOnClickListener(v -> {
+            Intent intent = new Intent(MainRoutesActivity.this, searchMapActivity.class);
+            intent.putExtra("routeType", routeType);
+            startActivity(intent);
         });
 
     }
@@ -151,13 +130,10 @@ public class MainRoutesActivity extends AppCompatActivity {
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 context,
-                new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        // Formatea la fecha como desees
-                        String formattedDate = String.format("%02d/%02d/%04d", dayOfMonth, month + 1, year);
-                        txtDateTime.setText(formattedDate);
-                    }
+                (view1, year1, month1, dayOfMonth) -> {
+                    // Formatea la fecha como desees
+                    @SuppressLint("DefaultLocale") String formattedDate = String.format("%02d/%02d/%04d", dayOfMonth, month1 + 1, year1);
+                    txtDateTime.setText(formattedDate);
                 },
                 year,
                 month,
@@ -168,6 +144,4 @@ public class MainRoutesActivity extends AppCompatActivity {
         datePickerDialog.show();
 
     }
-
-
 }
