@@ -147,6 +147,7 @@
     <string name="unkown_error">Error</string>
     <string name="warning_vehicle_selection">Por favor, añade un vehiculo</string>
     <string name="route_addition_failed">Error al crear la ruta</string>
+    <string name="success_creation_route">La ruta se ha creado correctamente</string>
 
 
     <!--Maps-->
@@ -167,4 +168,5 @@
     <string name="english_languague">Ingles</string>
     <string name="basque_languauge">Euskera</string>
     <string name="selectPasagers">Selecciona numero de pasageros</string>
+
 </resources>

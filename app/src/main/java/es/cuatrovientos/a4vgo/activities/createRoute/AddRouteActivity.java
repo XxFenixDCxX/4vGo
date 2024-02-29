@@ -38,6 +38,7 @@ import es.cuatrovientos.a4vgo.utils.DialogUtils;
 
 public class AddRouteActivity extends AppCompatActivity {
 
+
     private Spinner spinner ;
     private TextView txtOrigin;
     private TextView txtDestination;
@@ -93,10 +94,6 @@ public class AddRouteActivity extends AppCompatActivity {
 
             selectedCoordinates = selectedLatitude + "," + selectedLongitude;
 
-            Log.i("moha", "Street Name: " + streetName);
-            Log.i("moha", "Selected Latitude: " + selectedLatitude);
-            Log.i("moha", "Selected Longitude: " + selectedLongitude);
-            Log.i("moha", "Selected Coordinates: " + selectedCoordinates);
 
             txtOrigin.setHint(streetName);
         }
