@@ -30,6 +30,7 @@
     import java.util.Locale;
 
     import es.cuatrovientos.a4vgo.R;
+    import es.cuatrovientos.a4vgo.activities.JoinRoutesActivity;
     import es.cuatrovientos.a4vgo.activities.MainRoutesActivity;
     import es.cuatrovientos.a4vgo.activities.createRoute.AddRouteActivity;
     import es.cuatrovientos.a4vgo.utils.DialogUtils;
@@ -142,7 +143,7 @@
                             overridePendingTransition(0, 0);
                         } else if (id == R.id.navigation_chat){
                             overridePendingTransition(0, 0);
-                            Intent intent = new Intent(ProfileActivity.this , AddRouteActivity.class);
+                            Intent intent = new Intent(ProfileActivity.this , JoinRoutesActivity.class);
                             startActivity(intent);
                             overridePendingTransition(0, 0);
                         }

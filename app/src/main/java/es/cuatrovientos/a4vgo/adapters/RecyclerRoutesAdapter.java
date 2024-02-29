@@ -21,13 +21,13 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import es.cuatrovientos.a4vgo.R;
 import es.cuatrovientos.a4vgo.models.Route;
 
 public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAdapter.RecyclerDataHolder> {
     private final List<Route> list;
+    private final List<Route> listCopy;
     private final FirebaseFirestore db;
     private String dni;
     private final String routeType;
@@ -43,7 +43,7 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
         this.numPeople = numPeople;
         db = FirebaseFirestore.getInstance();
         list = new ArrayList<>();
-        List<Route> listCopy = new ArrayList<>();
+        listCopy = new ArrayList<>();
         getCurrentUserDNI();
     }
 
@@ -52,7 +52,7 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
         double latitudOriginal = Double.parseDouble(this.cords.split(",")[0]);
         double longitudOrginal = Double.parseDouble(this.cords.split(",")[1]);
         CollectionReference routesCollection = db.collection("routes");
-        if (routeType.equals("Ida")){
+        if (routeType.equals("Vuelta")){
             routesCollection.get().addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : task.getResult()) {
@@ -67,7 +67,8 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
                             if(distance <= 2){
                                 String selectedDate = document.getString("selectedDate");
                                 if (this.selectedDate.equals(selectedDate)){
-                                    int numPeople = Integer.parseInt(Objects.requireNonNull(document.getString("maxSeats")));
+                                    Long maxSeatsLong = document.getLong("maxSeats");
+                                    int numPeople = (maxSeatsLong != null) ? maxSeatsLong.intValue() : 0;
                                     if(this.numPeople <= numPeople){
                                         String origin = document.getString("origin");
                                         String userId = document.getString("userId");
@@ -75,13 +76,16 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
                                         String selectedVehicle = document.getString("selectedVehicle");
                                         boolean frequent = Boolean.TRUE.equals(document.getBoolean("frequent"));
                                         String coments = document.getString("comments");
+                                        Route route = new Route(routeType, destination, origin, userId, selectedDate, selectedTime, numPeople, selectedVehicle, frequent, coments);
 
-                                        list.add(new Route(routeType, destination, origin, userId, selectedDate, selectedTime, this.numPeople, selectedVehicle, frequent, coments));
+                                        list.add(route);
+                                        listCopy.add(route);
                                     }
                                 }
                             }
                         }
                     }
+                    notifyDataSetChanged();
                 }
             });
         }else {
@@ -99,7 +103,8 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
                             if(distance <= 2){
                                 String selectedDate = document.getString("selectedDate");
                                 if (this.selectedDate.equals(selectedDate)){
-                                    int numPeople = Integer.parseInt(Objects.requireNonNull(document.getString("maxSeats")));
+                                    Long maxSeatsLong = document.getLong("maxSeats");
+                                    int numPeople = (maxSeatsLong != null) ? maxSeatsLong.intValue() : 0;
                                     if(this.numPeople <= numPeople){
                                         String origin = document.getString("origin");
                                         String userId = document.getString("userId");
@@ -107,13 +112,16 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
                                         String selectedVehicle = document.getString("selectedVehicle");
                                         boolean frequent = Boolean.TRUE.equals(document.getBoolean("frequent"));
                                         String coments = document.getString("comments");
+                                        Route route = new Route(routeType, destination, origin, userId, selectedDate, selectedTime, numPeople, selectedVehicle, frequent, coments);
 
-                                        list.add(new Route(routeType, destination, origin, userId, selectedDate, selectedTime, this.numPeople, selectedVehicle, frequent, coments));
+                                        list.add(route);
+                                        listCopy.add(route);
                                     }
                                 }
                             }
                         }
                     }
+                    notifyDataSetChanged();
                 }
             });
         }
@@ -172,22 +180,21 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
                     QuerySnapshot querySnapshot = task.getResult();
                     DocumentSnapshot document = querySnapshot.getDocuments().get(0);
                     currentUsername = document.getString("username");
+                    if(route.getRouteType().equals("Ida")){
+                        destination.setText(R.string.center);
+                        //toDo destination
+                        originTime.setText(route.getSelectedTime());
+                        destinaionTime.setText("08:20");
+                    }else{
+                        origin.setText(R.string.center);
+                        //toDo destination
+                        originTime.setText("14:30");
+                        destinaionTime.setText(route.getSelectedTime());
+                    }
+                    seatNum.setText(String.valueOf(route.getMaxSeats()));
+                    username.setText(currentUsername);
                 }
             });
-
-            if(route.getRouteType().equals("Ida")){
-                destination.setText(R.string.center);
-                //toDo destination
-                originTime.setText(route.getSelectedTime());
-                destinaionTime.setText("8:20");
-            }else{
-                origin.setText(R.string.center);
-                //toDo destination
-                originTime.setText("14:30");
-                destinaionTime.setText(route.getSelectedTime());
-            }
-            seatNum.setText(route.getMaxSeats());
-            username.setText(currentUsername);
         }
     }
     private double haversine(double lat1, double lon1, double lat2, double lon2) {

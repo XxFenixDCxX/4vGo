@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/colorPrimary"
     android:layout_height="match_parent">
 
     <androidx.cardview.widget.CardView
@@ -32,7 +33,7 @@
             tools:ignore="VisualLintBounds">
 
             <ImageView
-                android:id="@+id/OriginDestinationImg"
+                android:id="@+id/btnBackRoutesJoin"
                 android:layout_width="48dp"
                 android:layout_height="54dp"
                 android:contentDescription="@string/Back_Icon"
@@ -48,80 +49,77 @@
                 android:id="@+id/originDestinationImg"
                 android:layout_width="29dp"
                 android:layout_height="34dp"
+                android:layout_marginStart="8dp"
                 android:contentDescription="@string/ic_to"
                 android:src="@drawable/ic_to"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.58"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.177"
+                app:layout_constraintBottom_toBottomOf="@+id/OriginCity"
+                app:layout_constraintStart_toEndOf="@+id/OriginCity"
+                app:layout_constraintTop_toTopOf="@+id/OriginCity"
                 tools:ignore="ImageContrastCheck" />
 
             <TextView
                 android:id="@+id/OriginCity"
-                android:layout_width="115dp"
-                android:layout_height="28dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
                 android:text="@string/OriginCity"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/txtDate"
-                app:layout_constraintEnd_toStartOf="@+id/originDestinationImg"
-                app:layout_constraintStart_toEndOf="@+id/OriginDestinationImg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/btnBackRoutesJoin"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.6"
                 tools:ignore="TextSizeCheck" />
 
             <TextView
                 android:id="@+id/txtDate"
-                android:layout_width="115dp"
-                android:layout_height="28dp"
-                android:layout_marginStart="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
                 android:text="@string/txtDate"
                 android:textStyle="italic"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/OriginDestinationImg"
+                app:layout_constraintEnd_toStartOf="@+id/txtPeopleNum"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.901" />
+                app:layout_constraintVertical_bias="0.8" />
 
             <TextView
-                android:id="@+id/txtTime"
-                android:layout_width="16dp"
-                android:layout_height="28dp"
+                android:id="@+id/txtPeopleNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="@string/seatNum"
                 android:textStyle="italic"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/txtDate"
-                app:layout_constraintTop_toBottomOf="@+id/originDestinationImg"
-                app:layout_constraintVertical_bias="0.42000002" />
+                app:layout_constraintBottom_toBottomOf="@+id/txtDate"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txtDate"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/personas"
-                android:layout_width="88dp"
-                android:layout_height="28dp"
-                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:text="@string/person"
                 android:textStyle="italic"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/txtTime"
-                app:layout_constraintTop_toBottomOf="@+id/DestinationCity"
-                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintBottom_toBottomOf="@+id/txtPeopleNum"
+                app:layout_constraintStart_toEndOf="@+id/txtPeopleNum"
+                app:layout_constraintTop_toTopOf="@+id/txtPeopleNum"
                 tools:ignore="TextSizeCheck" />
 
             <TextView
                 android:id="@+id/DestinationCity"
-                android:layout_width="103dp"
-                android:layout_height="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:text="@string/DestinationCity"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.637"
+                app:layout_constraintBottom_toBottomOf="@+id/OriginCity"
                 app:layout_constraintStart_toEndOf="@+id/originDestinationImg"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/OriginCity"
                 app:layout_constraintVertical_bias="0.224"
                 tools:ignore="TextSizeCheck" />
 

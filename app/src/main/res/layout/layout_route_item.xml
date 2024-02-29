@@ -56,13 +56,13 @@
 
             <TextView
                 android:id="@+id/DestinationCity"
-                android:layout_width="93dp"
-                android:layout_height="31dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="@string/DestinationCity"
                 android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/elapsedTime"
                 app:layout_constraintStart_toEndOf="@+id/OriginDestinationImg"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteY="51dp" />
+                tools:ignore="MissingConstraints" />
 
             <TextView
                 android:id="@+id/elapsedTime"
@@ -101,10 +101,8 @@
                 android:text="@string/valoration"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toTopOf="@+id/user_name"
-                app:layout_constraintEnd_toEndOf="@+id/profileImg"
-                app:layout_constraintStart_toStartOf="@+id/user_name"
-                app:layout_constraintTop_toBottomOf="@+id/elapsedTime"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintEnd_toStartOf="@+id/StarImg"
+                app:layout_constraintTop_toBottomOf="@+id/elapsedTime" />
 
             <ImageView
                 android:id="@+id/profileImg"
@@ -127,7 +125,7 @@
                 android:contentDescription="@string/starImg"
                 android:src="@drawable/starimg"
                 app:layout_constraintBottom_toBottomOf="@+id/user_valoration"
-                app:layout_constraintStart_toEndOf="@+id/user_valoration"
+                app:layout_constraintEnd_toStartOf="@+id/profileImg"
                 app:layout_constraintTop_toTopOf="@+id/user_valoration"
                 tools:ignore="ImageContrastCheck,MissingConstraints" />
 

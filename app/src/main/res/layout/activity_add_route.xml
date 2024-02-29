@@ -177,7 +177,7 @@
                 app:drawableStartCompat="@drawable/ic_fecha" />
 
             <TextView
-                android:id="@+id/txtTime"
+                android:id="@+id/txtPeopleNum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
