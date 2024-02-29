@@ -153,4 +153,9 @@
     <string name="unkown_error">Error</string>
     <string name="warning_vehicle_selection">Please add a vehicle</string>
     <string name="route_addition_failed">Failed to create route</string>
+
+    <string name="spanish_languague">Spanish</string>
+    <string name="english_languague">English</string>
+    <string name="basque_languauge">Basque</string>
+
 </resources>

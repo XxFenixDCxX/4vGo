@@ -154,4 +154,7 @@
     <string name="dateHint">Data</string>
     <string name="TimeHint">Ordua</string>
 
+    <string name="spanish_languague">Gaztelania</string>
+    <string name="english_languague">Ingelesa</string>
+    <string name="basque_languauge">Euskara</string>
 </resources>
