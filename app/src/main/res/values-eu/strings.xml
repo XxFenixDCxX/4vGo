@@ -158,4 +158,9 @@
     <string name="english_languague">Ingelesa</string>
     <string name="basque_languauge">Euskara</string>
     <string name="selectPasagers">Hautatu bidaiarien kopurua</string>
+    <string name="ic_to">ikono joan</string>
+    <string name="txtDate">2024/02/17</string>
+    <string name="txtTime">00:04</string>
+    <string name="person">pertsona/ak</string>
+    <string name="center">Lau Haizetara</string>
 </resources>

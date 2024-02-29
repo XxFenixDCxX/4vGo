@@ -1,6 +1,5 @@
 package es.cuatrovientos.a4vgo.models;
 
-import java.util.List;
 
 public class Route {
     private String routeType;
@@ -30,6 +29,20 @@ public class Route {
         this.maxSeats = maxSeats;
         this.selectedVehiclePlate = selectedVehiclePlate;
         this.hasIntermediateStops = hasIntermediateStops;
+        this.isFrequent = isFrequent;
+        this.comments = comments;
+    }
+    public Route(String routeType, String origin, String destination,String userId, String selectedDate,
+                 String selectedTime, int maxSeats, String selectedVehiclePlate,
+                 boolean isFrequent, String comments) {
+        this.routeType = routeType;
+        this.origin = origin;
+        this.destination = destination;
+        this.userId = userId;
+        this.selectedDate = selectedDate;
+        this.selectedTime = selectedTime;
+        this.maxSeats = maxSeats;
+        this.selectedVehiclePlate = selectedVehiclePlate;
         this.isFrequent = isFrequent;
         this.comments = comments;
     }

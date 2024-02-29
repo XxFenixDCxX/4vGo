@@ -158,4 +158,9 @@
     <string name="english_languague">English</string>
     <string name="basque_languauge">Basque</string>
     <string name="selectPasagers">Select number of passengers</string>
+    <string name="ic_to">icon go to</string>
+    <string name="txtDate">17/02/2024</string>
+    <string name="txtTime">00:04</string>
+    <string name="person">person(s)</string>
+    <string name="center">Cuatrovientos</string>
 </resources>

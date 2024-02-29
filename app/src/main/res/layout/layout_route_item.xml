@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
@@ -56,13 +56,13 @@
 
             <TextView
                 android:id="@+id/DestinationCity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="93dp"
+                android:layout_height="31dp"
                 android:text="@string/DestinationCity"
                 android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@+id/OriginDestinationImg"
                 tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="221dp"
-                tools:layout_editor_absoluteY="55dp" />
+                tools:layout_editor_absoluteY="51dp" />
 
             <TextView
                 android:id="@+id/elapsedTime"
@@ -102,7 +102,6 @@
                 android:textSize="20sp"
                 app:layout_constraintBottom_toTopOf="@+id/user_name"
                 app:layout_constraintEnd_toEndOf="@+id/profileImg"
-                app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="@+id/user_name"
                 app:layout_constraintTop_toBottomOf="@+id/elapsedTime"
                 app:layout_constraintVertical_bias="1.0" />
@@ -127,9 +126,10 @@
                 android:layout_margin="10dp"
                 android:contentDescription="@string/starImg"
                 android:src="@drawable/starimg"
-                tools:ignore="ImageContrastCheck,MissingConstraints"
-                tools:layout_editor_absoluteX="245dp"
-                tools:layout_editor_absoluteY="100dp" />
+                app:layout_constraintBottom_toBottomOf="@+id/user_valoration"
+                app:layout_constraintStart_toEndOf="@+id/user_valoration"
+                app:layout_constraintTop_toTopOf="@+id/user_valoration"
+                tools:ignore="ImageContrastCheck,MissingConstraints" />
 
             <ImageView
                 android:id="@+id/carSeatsImg"
@@ -164,9 +164,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/DestinationTime"
                 android:textSize="20sp"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="222dp"
-                tools:layout_editor_absoluteY="28dp" />
+                app:layout_constraintBottom_toTopOf="@+id/DestinationCity"
+                app:layout_constraintStart_toEndOf="@+id/OriginDestinationImg"
+                tools:ignore="MissingConstraints" />
 
             <TextView
                 android:id="@+id/OriginTime"
