@@ -1,9 +1,8 @@
-package es.cuatrovientos.a4vgo.activities.Register;
+package es.cuatrovientos.a4vgo.activities.register;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -12,7 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -21,6 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import es.cuatrovientos.a4vgo.R;
+import es.cuatrovientos.a4vgo.utils.DialogUtils;
 import es.cuatrovientos.a4vgo.activities.MainRoutesActivity;
 
 public class FourthRegisterActivity extends AppCompatActivity {
@@ -102,14 +101,14 @@ public class FourthRegisterActivity extends AppCompatActivity {
 
             if(passwordString.equals(rePasswordString)){
                 Map<String, String> personalDetailsMap = new HashMap<>();
-                personalDetailsMap.put("dni", sendDni);
-                personalDetailsMap.put("username", sendEmail.split("@")[0]);
-                personalDetailsMap.put("name", sendName);
-                personalDetailsMap.put("surname", sendSurname);
+                personalDetailsMap.put("dni", sendDni.toUpperCase());
+                personalDetailsMap.put("username", sendEmail.toLowerCase().split("@")[0]);
+                personalDetailsMap.put("name", sendName.toLowerCase());
+                personalDetailsMap.put("surname", sendSurname.toLowerCase());
                 personalDetailsMap.put("birthdate", sendBirthdate);
                 personalDetailsMap.put("spam", String.valueOf(sendSpam));
-                personalDetailsMap.put("userId", sendEmail);
-                db.collection("personalDetails").document(sendDni).set(personalDetailsMap);
+                personalDetailsMap.put("email", sendEmail.toLowerCase());
+                db.collection("personalDetails").document(sendDni.toUpperCase()).set(personalDetailsMap);
 
                 FirebaseAuth auth = FirebaseAuth.getInstance();
                 auth.createUserWithEmailAndPassword(sendEmail, passwordString);
@@ -118,11 +117,7 @@ public class FourthRegisterActivity extends AppCompatActivity {
                 startActivity(intent);
             }else{
                 next.setVisibility(View.INVISIBLE);
-                View contentView = findViewById(android.R.id.content);
-                Snackbar snackbar = Snackbar.make(contentView, R.string.errorLogPassword, Snackbar.LENGTH_SHORT);
-                snackbar.setTextColor(Color.RED);
-                snackbar.setBackgroundTint(Color.BLACK);
-                snackbar.show();
+                DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.errorLogPassword));
             }
         });
     }

@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/user"
+        android:title="@string/whiteString" />
+    <item
+        android:id="@+id/navigation_trips"
+        android:icon="@drawable/routes"
+        android:title="@string/whiteString" />
+    <item
+        android:id="@+id/navigation_publish_route"
+        android:icon="@drawable/createroute"
+        android:title="@string/whiteString" />
+    <item
+        android:id="@+id/navigation_chat"
+        android:icon="@drawable/chat"
+        android:title="@string/whiteString" />
+</menu>

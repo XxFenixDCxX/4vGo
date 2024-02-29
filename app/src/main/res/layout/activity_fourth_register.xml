@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F2F2F2"
-    tools:context=".activities.Register.FirstRegisterActivity">
+    tools:context=".activities.register.FirstRegisterActivity">
 
     <TextView
         android:id="@+id/textView6"
@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:text="@string/birthdateQuestion"
+        android:text="@string/passwordQuestion"
         android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"

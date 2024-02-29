@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,40 +18,61 @@
         android:theme="@style/Theme._4vGo"
         tools:targetApi="31">
         <activity
-            android:name=".activities.ProfileActivity"
+            android:name=".maps.searchMapActivity"
+            android:exported="false" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyC00uvASQk4aEwyJds-ZsQb0ZhmhZwvozA" />
+        <activity
+            android:name=".activities.JoinRoutesActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.AddRouteActivity"
+            android:name=".activities.profile.AddVehicleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.profile.VehicleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.profile.PersonalDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.createRoute.AddRouteSecondActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.profile.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.createRoute.AddRouteActivity"
             android:exported="false" />
         <activity
             android:name=".activities.MainRoutesActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.Register.FourthRegisterActivity"
+            android:name=".activities.register.FourthRegisterActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".activities.Register.ThirdRegisterActivity"
+            android:name=".activities.register.ThirdRegisterActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".activities.Register.SecondRegisterActivity"
+            android:name=".activities.register.SecondRegisterActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".activities.Register.FirstRegisterActivity"
+            android:name=".activities.register.FirstRegisterActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".activities.loginActivity"
+            android:name=".activities.LoginActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />

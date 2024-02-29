@@ -1,9 +1,8 @@
-package es.cuatrovientos.a4vgo.activities.Register;
+package es.cuatrovientos.a4vgo.activities.register;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -13,15 +12,16 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import es.cuatrovientos.a4vgo.R;
+import es.cuatrovientos.a4vgo.utils.DialogUtils;
 import es.cuatrovientos.a4vgo.activities.MainActivity;
 
 public class FirstRegisterActivity extends AppCompatActivity {
@@ -29,8 +29,8 @@ public class FirstRegisterActivity extends AppCompatActivity {
     ImageButton next;
     CheckBox spam;
     EditText email;
-    FirebaseFirestore db;
-    Boolean continua;
+    Query query;
+    CollectionReference collection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +41,6 @@ public class FirstRegisterActivity extends AppCompatActivity {
         next = findViewById(R.id.btnNext);
         spam = findViewById(R.id.chcSpam);
         email = findViewById(R.id.txtEmail);
-        db = FirebaseFirestore.getInstance();
 
         back.setOnClickListener(view -> {
             Intent intent = new Intent(FirstRegisterActivity.this, MainActivity.class);
@@ -75,21 +74,27 @@ public class FirstRegisterActivity extends AppCompatActivity {
 
             if (validateEmail(emailText)){
                 if (validateDomain(emailText)) {
-                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    continua = true;
-                    assert user != null;
-                    user.updateEmail(emailText).addOnSuccessListener(unused -> errorMessage(getString(R.string.errorLogUserExist)))
-                            .addOnFailureListener(e -> {
-                        Intent intent = new Intent(FirstRegisterActivity.this, SecondRegisterActivity.class);
-                        intent.putExtra( "email", emailText);
-                        intent.putExtra("spam", spam.isChecked());
-                        startActivity(intent);
+                    collection = FirebaseFirestore.getInstance().collection("personalDetails");
+                    query = collection.whereEqualTo("email", emailText.toLowerCase());
+                    query.get().addOnCompleteListener(task -> {
+                        QuerySnapshot querySnapshot = task.getResult();
+                        if (querySnapshot.isEmpty()) {
+                            Intent intent = new Intent(FirstRegisterActivity.this, SecondRegisterActivity.class);
+                            intent.putExtra( "email", emailText);
+                            intent.putExtra("spam", spam.isChecked());
+                            startActivity(intent);
+                        } else {
+                            next.setVisibility(View.INVISIBLE);
+                            DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.errorLogUserExist));
+                        }
                     });
                 } else {
-                    errorMessage(getString(R.string.errorLogDomain));
+                    next.setVisibility(View.INVISIBLE);
+                    DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.errorLogDomain));
                 }
             }else {
-                errorMessage(getString(R.string.errorLogEmail));
+                next.setVisibility(View.INVISIBLE);
+                DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.errorLogEmail));
             }
         });
     }
@@ -119,14 +124,5 @@ public class FirstRegisterActivity extends AppCompatActivity {
         Matcher matcher = pattern.matcher(email);
 
         return matcher.matches();
-    }
-
-    private void errorMessage(String text){
-        next.setVisibility(View.INVISIBLE);
-        View contentView = findViewById(android.R.id.content);
-        Snackbar snackbar = Snackbar.make(contentView, text, Snackbar.LENGTH_SHORT);
-        snackbar.setTextColor(Color.RED);
-        snackbar.setBackgroundTint(Color.BLACK);
-        snackbar.show();
     }
 }

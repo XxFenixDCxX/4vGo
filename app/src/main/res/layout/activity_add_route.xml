@@ -4,7 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.loginActivity">
+    android:background="@color/colorPrimary"
+    tools:context=".activities.LoginActivity">
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bnNavigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:itemIconTint="#0A8353"
+        app:itemTextColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu"
+        tools:ignore="VisualLintBottomNav" />
 
     <ImageView
         android:id="@+id/imageViewBackground"
@@ -21,7 +35,7 @@
         android:id="@+id/textViewHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login"
+        android:text="@string/addRoute"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:textSize="30sp"
@@ -32,183 +46,190 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="vertical"
-        android:padding="32dp"
+        android:padding="20dp"
+        android:background="@color/light_blue"
+        android:layout_margin="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewBackground">
 
+        <!-- Campo para Origen -->
         <TextView
-            android:id="@+id/textViewEmail"
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginBottom="5dp"
+            android:text="@string/route_type"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            tools:ignore="TextSizeCheck" />
+
+        <Spinner
+            android:id="@+id/spinner3"
+            android:padding="15dp"
+            android:textSize="14sp"
+            android:background="@drawable/white_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </Spinner>
+
+
+
+
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/Email"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/editTextEmail"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="12dp"
-            android:autofillHints=""
-            android:background="@drawable/edittext_background"
-            android:ems="10"
-            android:hint="@string/PutEmail"
-            android:inputType="textEmailAddress"
-            android:padding="12dp"
-            android:textColor="@color/gris"
-            android:textColorHint="@color/green"
-            android:textSize="18sp"
-            tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
-
-        <TextView
-            android:id="@+id/textViewPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="@string/Password"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/editTextPassword"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="12dp"
-            android:autofillHints=""
-            android:background="@drawable/edittext_background"
-            android:ems="10"
-            android:hint="@string/PutPassword"
-            android:padding="12dp"
-            android:textColor="@color/gris"
-            android:textColorHint="@color/green"
-            android:textSize="18sp"
-            tools:ignore="TextContrastCheck,VisualLintTextFieldSize"
-            android:inputType="textPassword" />
-
-        <TextView
-            android:id="@+id/textViewForgotPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="@string/ForgotPassword"
-            android:textAlignment="center" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
             android:orientation="horizontal">
 
-            <View
-                android:id="@+id/viewHr"
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:layout_gravity="center_vertical"
+        <TextView
+            android:id="@+id/txtOrigin"
+            android:layout_width="202dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_weight="3"
+            android:background="@drawable/white_edittext"
+            android:drawablePadding="10dp"
+            android:hint="@string/edit_origin_hint"
+            android:padding="15dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gris"
+
+            android:textSize="14sp"
+            tools:ignore="TextSizeCheck"
+            app:drawableStartCompat="@drawable/ic_marcador" />
+
+            <ImageButton
+                android:id="@+id/imageButtonOrigin"
+                android:layout_width="25dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
-                android:background="@color/gris" />
+                android:layout_marginStart="5dp"
+
+                android:background="@drawable/background_oval_1"
+                android:layout_gravity="bottom"
+                android:src="@drawable/ic_marcador"
+                tools:ignore="ContentDescription" />
+        </LinearLayout>
+
+        <!-- Campo para Destino -->
+
+        <!-- Campo para Fecha y Hora -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textViewOtherLogin"
-                android:layout_width="wrap_content"
+                android:id="@+id/txtDestination"
+                android:layout_width="204dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="@string/OtherLogin" />
+                android:layout_marginTop="16dp"
+                android:layout_weight="3"
+                android:background="@drawable/white_edittext"
+                android:drawablePadding="10dp"
+                android:hint="@string/edit_destination_hint"
+                android:padding="15dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gris"
 
-            <View
-                android:id="@+id/viewHr2"
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:layout_gravity="center_vertical"
+                android:textSize="14sp"
+                tools:ignore="TextSizeCheck"
+                app:drawableStartCompat="@drawable/ic_marcador" />
+
+            <ImageButton
+                android:id="@+id/imageButtonDestination"
+                android:layout_width="25dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
-                android:background="@color/gris" />
+                android:layout_marginStart="5dp"
+                android:background="@drawable/background_oval_1"
+
+                android:layout_gravity="bottom"
+                android:src="@drawable/ic_marcador"
+                android:contentDescription="@string/descriptionBackButton" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:orientation="horizontal"
-            android:baselineAligned="false">
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginEnd="16dp"
-                android:layout_weight="0.5"
-                android:background="@drawable/social_btn_background"
-                android:orientation="horizontal">
+            <TextView
+                android:id="@+id/txtDateTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_weight="3"
+                android:autofillHints=""
+                android:background="@drawable/white_edittext"
+                android:drawablePadding="10dp"
+                android:focusable="false"
 
-                <ImageView
-                    android:id="@+id/imageViewFacebook"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="8dp"
-                    app:srcCompat="@drawable/facebook"
-                    android:contentDescription="@string/Facebook" />
+                android:hint="@string/dateHint"
+                android:inputType="none"
+                android:padding="15dp"
+                android:textColorHint="@color/gris"
+                android:textSize="14sp"
+                tools:ignore="TextSizeCheck"
+                app:drawableStartCompat="@drawable/ic_fecha" />
 
-                <TextView
-                    android:id="@+id/textViewFacebook"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:text="@string/Facebook"
-                    android:textColor="@color/green"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    tools:ignore="NestedWeights" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginStart="16dp"
-                android:layout_weight="0.5"
-                android:background="@drawable/social_btn_background"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/imageViewGoogle"
-                    android:layout_width="35dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="8dp"
-                    android:contentDescription="@string/Google"
-                    app:srcCompat="@drawable/google" />
-
-                <TextView
-                    android:id="@+id/textViewGoogle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:text="@string/Google"
-                    android:textColor="@color/green"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    tools:ignore="NestedWeights" />
-            </LinearLayout>
+            <TextView
+                android:id="@+id/txtPeopleNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="16dp"
+                android:layout_weight="2"
+                android:autofillHints=""
+                android:background="@drawable/white_edittext"
+                android:drawablePadding="10dp"
+                android:focusable="false"
+                android:hint="@string/TimeHint"
+                android:inputType="none"
+                android:padding="15dp"
+                android:textColorHint="@color/gris"
+                android:textSize="14sp"
+                tools:ignore="TextSizeCheck"
+                app:drawableStartCompat="@drawable/ic_hora" />
         </LinearLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/buttonLogin"
+
+        <!-- Campo para Número de Plazas Disponibles -->
+        <EditText
+            android:id="@+id/editTextAvailableSeats"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="32dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:autofillHints=""
+            android:background="@drawable/white_edittext"
+            android:drawableStart="@drawable/ic_car_seat"
+            android:drawablePadding="10dp"
+            android:hint="@string/availableSeatsHint"
+            android:inputType="number"
+            android:padding="15dp"
+            android:textColorHint="@color/gris"
+            android:textSize="14dp"
+            tools:ignore="SpUsage,TextSizeCheck" />
+
+        <Button
+            android:id="@+id/btnNext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="16dp"
             android:background="@drawable/button_background"
-            style="@android:style/Widget.Button"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:text="@string/LoginButton"
-            tools:ignore="VisualLintButtonSize" />
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="@string/next"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,8 @@
-package es.cuatrovientos.a4vgo.activities.Register;
+package es.cuatrovientos.a4vgo.activities.register;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -12,10 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import es.cuatrovientos.a4vgo.R;
+import es.cuatrovientos.a4vgo.utils.DialogUtils;
 
 public class SecondRegisterActivity extends AppCompatActivity {
     Button back;
@@ -50,29 +49,25 @@ public class SecondRegisterActivity extends AppCompatActivity {
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                 db.collection("personalDetails").document(dniText).get().addOnSuccessListener(documentSnapshot -> {
                     next.setVisibility(View.INVISIBLE);
-                    View contentView = findViewById(android.R.id.content);
-                    Snackbar snackbar = Snackbar.make(contentView, R.string.errorLogDniExist, Snackbar.LENGTH_SHORT);
-                    snackbar.setTextColor(Color.RED);
-                    snackbar.setBackgroundTint(Color.BLACK);
-                    snackbar.show();
+                    if(documentSnapshot.exists()){
+                        next.setVisibility(View.INVISIBLE);
+                        DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.errorLogDniExist));
+                    } else{
+                        Intent intent = new Intent(SecondRegisterActivity.this, ThirdRegisterActivity.class);
+                        String nameText = name.getText().toString();
+                        String surnameText = surname.getText().toString();
+                        intent.putExtra("name", nameText);
+                        intent.putExtra("surname", surnameText);
+                        intent.putExtra("dni", dniText);
+                        intent.putExtra( "email", sendEmail);
+                        intent.putExtra("spam", sendSpam);
+                        startActivity(intent);
+                    }
                 }).addOnFailureListener(e -> {
-                    Intent intent = new Intent(SecondRegisterActivity.this, ThirdRegisterActivity.class);
-                    String nameText = name.getText().toString();
-                    String surnameText = surname.getText().toString();
-                    intent.putExtra("name", nameText);
-                    intent.putExtra("surname", surnameText);
-                    intent.putExtra("dni", dniText);
-                    intent.putExtra( "email", sendEmail);
-                    intent.putExtra("spam", sendSpam);
-                    startActivity(intent);
                 });
             } else {
                 next.setVisibility(View.INVISIBLE);
-                View contentView = findViewById(android.R.id.content);
-                Snackbar snackbar = Snackbar.make(contentView, R.string.errorLogDNI, Snackbar.LENGTH_SHORT);
-                snackbar.setTextColor(Color.RED);
-                snackbar.setBackgroundTint(Color.BLACK);
-                snackbar.show();
+                DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.errorLogDNI));
             }
         });
 

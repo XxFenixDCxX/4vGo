@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".activities.LoginActivity">
+
+    <ImageView
+        android:id="@+id/imageViewBackground"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/top_background"
+        android:contentDescription="@string/background" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_marginStart="25dp"
+        android:padding="32dp"
+        android:background="@color/light_blue"
+        android:layout_margin="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewBackground">
+
+        <!-- Campo para Origen -->
+        <!-- Campo para Condiciones Especiales -->
+
+        <!-- Campo para Vehículo -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtVehicle"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:autofillHints=""
+                android:background="@drawable/white_edittext"
+                android:drawableStart="@drawable/ic_car"
+                android:drawablePadding="20dp"
+                android:hint="@string/vehicleHint"
+                android:padding="15dp"
+                android:textColorHint="@color/gris"
+                android:textSize="14dp"
+                tools:ignore="TextSizeCheck" />
+
+            <ImageButton
+                android:id="@+id/btnShowVehicleList"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="5dp"
+                android:src="@drawable/ic_plus"
+                android:contentDescription="@string/content_description" />
+        </LinearLayout>
+
+        <!-- Campo para Paradas Intermedias -->
+        <CheckBox
+            android:id="@+id/checkBoxIntermediateStops"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/white_edittext"
+            android:padding="15dp"
+            android:text="@string/intermediateStopsHint"
+            android:textColorHint="@color/gris"
+            android:textSize="14dp"
+            tools:ignore="VisualLintButtonSize,TextSizeCheck" />
+
+
+        <CheckBox
+            android:id="@+id/checkBoxRouteFrequency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/white_edittext"
+            android:padding="15dp"
+            android:text="@string/routeFrequencyHint"
+            android:textColorHint="@color/gris"
+            android:textSize="14dp"
+            tools:ignore="VisualLintButtonSize,TextSizeCheck" />
+
+        <EditText
+            android:id="@+id/editTextAdditionalComments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:autofillHints=""
+            android:background="@drawable/white_edittext"
+            android:drawableStart="@drawable/ic_comment"
+            android:drawablePadding="12dp"
+            android:hint="@string/additionalCommentsHint"
+            android:inputType="textMultiLine"
+            android:padding="15dp"
+            android:textColorHint="@color/gris"
+            android:textSize="14dp"
+            tools:ignore="VisualLintTextFieldSize,TextSizeCheck" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Botón de Volver -->
+            <Button
+                android:id="@+id/btnBack"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="25dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_background"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="@string/back"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:ignore="VisualLintButtonSize" />
+
+            <!-- Botón de Siguiente -->
+            <Button
+                android:id="@+id/btnNext"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_background"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="@string/btn_route_creation"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:ignore="VisualLintButtonSize" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

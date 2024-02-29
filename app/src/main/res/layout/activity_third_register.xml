@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F2F2F2"
-    tools:context=".activities.Register.FirstRegisterActivity">
+    tools:context=".activities.register.FirstRegisterActivity">
 
     <ImageView
         android:id="@+id/imageView3"
@@ -60,7 +60,7 @@
         android:background="@drawable/edittext_background"
         android:ems="10"
         android:hint="@string/birthdate"
-        android:inputType="datetime|date"
+        android:inputType="text"
         android:paddingStart="10sp"
         android:paddingEnd="0sp"
         android:shadowColor="#000000"
@@ -71,7 +71,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
-        tools:ignore="TouchTargetSizeCheck,VisualLintTextFieldSize,TextContrastCheck" />
+        tools:ignore="TextContrastCheck,TextFields,TouchTargetSizeCheck,VisualLintTextFieldSize" />
 
     <ImageButton
         android:id="@+id/btnNext"

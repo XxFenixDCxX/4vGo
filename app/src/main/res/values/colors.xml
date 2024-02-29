@@ -11,10 +11,11 @@
     <color name="dark_green">#005313</color>
     <color name="light_blue">#f2f1f6</color>
     <color name="gris">#707070</color>
-    <color name="orange">#FFA500</color>
     <color name="red">#FF0000</color>
     <color name="colorSuccess">#FF00FF00</color>
     <color name="colorNeutral">#b8b6b0</color>
-    <color name="colorWarning">#FFD700</color>
+    <color name="colorWarning">#FFA500</color>
     <color name="colorError">#FF0000</color>
+    <color name="colorPrimary">#F2F2F2</color>
+
 </resources>

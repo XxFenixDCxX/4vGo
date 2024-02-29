@@ -1,0 +1,167 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">4V GO</string>
+    <string name="emailQuestion">Zein da zure posta elektronikoa?</string>
+    <string name="name">Izena</string>
+    <string name="birthdate">Jaiotze data</string>
+    <string name="surname">Abizena(k)</string>
+    <string name="dni">NAN</string>
+    <string name="hint_write">Hemen idatzi…</string>
+    <string name="email">Posta elektronikoa</string>
+    <string name="disclaimerEmail">Ez dut 4V GO-tik albisteak, promozioak edo doako edukia jaso nahi.</string>
+    <string name="disclaimerEmailSuscription" tools:ignore="Typos">Zuzenduta, harpidetza nire baztertu dezaket edo kontaktuan jartzeko 4V GO-rekin edo albiste-bulegoaren loturan dagoen esteka bidez.</string>
+    <string name="passwordQuestion">Zehaztu zure pasahitza</string>
+    <string name="password">Pasahitza</string>
+    <string name="rePassword">Errepikatu zure pasahitza</string>
+    <string name="disclaimerPassword">Gutxienez 8 karaktere izan behar ditu eta 1 letra eta 1 zenbaki bat sartu behar ditu</string>
+    <string name="register">Erregistratu</string>
+    <string name="descriptionHeader">Goiko irudia</string>
+    <string name="descriptionCuatrovientos">Lauburuaren irudia</string>
+    <string name="doneBy">Gauzatua:</string>
+    <string name="appDescription">Elkarbanatzea, energia eraginkortasuna eta CO2 emisioen murrizketa bultzatu</string>
+    <string name="login">Sartu</string>
+    <string name="Email">Posta</string>
+    <string name="PutEmail">Sartu posta elektronikoa</string>
+    <string name="Password">Pasahitza</string>
+    <string name="PutPassword">Sartu pasahitza</string>
+    <string name="ForgotPassword">Pasahitza ahaztu duzu? Berreskuratu</string>
+    <string name="OtherLogin">edo saioa hasi</string>
+    <string name="Facebook">Facebook</string>
+    <string name="Google">Google</string>
+    <string name="LoginButton">Saioa hasi</string>
+    <string name="whiteString" />
+    <string name="errorLogName">Izenak gutxienez 3 karaktere izan behar ditu</string>
+    <string name="descriptionBackButton">Atzera joateko botoia</string>
+    <string name="descriptionNext">Hurrengo botoia</string>
+    <string name="nameSurnameQuestionDNI">Zer da zure izena eta NAN-a?</string>
+    <string name="errorLogEmail">Posta elektronikoa ez da baliozkoa edo ez du baimendutako domeinua</string>
+    <string name="errorLogDomain">Ez da baimendutako domeinua</string>
+    <string name="errorLogDNI">NAN-a ez da baliozkoa</string>
+    <string name="birthdateQuestion">Zein da zure jaiotze data?</string>
+    <string name="errorLogDate">Data ez da baliozkoa</string>
+    <string name="errorLogYears">Gutxienez 16 urte izan behar dituzu</string>
+    <string name="errorLogPassword">Pasahitzak ez datoz bat</string>
+    <string name="errorLogUserExist">Dagoeneko badago erabiltzaile bat posta elektroniko horrekin</string>
+    <string name="errorLogDniExist">Dagoeneko badago erabiltzaile bat NAN horrekin</string>
+    <string name="profile">Profila</string>
+    <string name="defaultDescription">Atzeko irudia</string>
+    <string name="imageProfileDescription">Profila irudia</string>
+    <string name="imageArrowDescription">Hurrengo gezia</string>
+    <string name="personalDetails">Datu Pertsonalak</string>
+    <string name="personalDetailsImageDescription">Datu Pertsonalak irudia</string>
+    <string name="languague">Hizkuntza</string>
+    <string name="languagueImageDescription">Hizkuntza irudia</string>
+    <string name="co2Points">CO2 Puntuazioak</string>
+    <string name="co2PointsImageDescription">CO2 Puntuazioak irudia</string>
+    <string name="vehicles">Ibilgailuak</string>
+    <string name="vehiclesImageDescription">Ibilgailuak irudia</string>
+    <string name="logout">Saioa itxi</string>
+    <string name="logoutImageDescripton">Saioa itxi irudia</string>
+    <string name="username">Erabiltzaile izena</string>
+    <string name="errorLogCantLoadDetails">Zure datuak kargatzean errorea gertatu da, saioa berriz hasi edo teknikari batekin harremanetan jartzea</string>
+    <string name="save">Gorde</string>
+    <string name="selectLanguage">Hautatu hizkuntza bat</string>
+    <string name="selectedLanguague">Aukeratutako hizkuntza: </string>
+    <string name="errorLogImage">Irudia kargatzean errorea</string>
+    <string name="selectImage">Hautatu irudia</string>
+    <string name="stringMinLenght">Daturen luzera gutxienez 3 karaktere izan behar du</string>
+    <string name="descriptionImageAddButtonVehicle">Ibilgailuak gehitzeko botoiaren irudia</string>
+    <string name="plate">Nekazari</string>
+    <string name="numSits">Sarrerak zenbatu:</string>
+    <string name="deleteImageDescription">Ibilgailua kenduaren botoiaren irudia</string>
+    <string name="add">Gehitu</string>
+    <string name="color">Kolorea</string>
+    <string name="siteNumber">Sarreren zenbakia</string>
+    <string name="Back_Icon">Atzera-Ikonoa</string>
+    <string name="Origin">Jatorria</string>
+    <string name="Destination">Helburua</string>
+    <string name="profileImg">Profila irudia</string>
+    <string name="OriginCity">Iruñea</string>
+    <string name="DestinationCity">Iruñea</string>
+    <string name="time_elapsed">13:00</string>
+    <string name="valoration">3</string>
+    <string name="starImg">Ebaluazioen irudia</string>
+    <string name="pasagers">Bidaiarien zenbakien irudia</string>
+    <string name="seatNum">2</string>
+    <string name="DestinationTime">2</string>
+    <string name="OriginTime">2</string>
+
+    <!-- Deskribapena -->
+    <string name="background">Atzeko irudia</string>
+
+    <!-- Hint -->
+    <string name="hint_email">Posta elektronikoa</string>
+
+    <!-- Menua -->
+    <string name="ic_profile">Profila</string>
+    <string name="ic_trips">Bidaiak</string>
+    <string name="ic_messages">Mezuak</string>
+
+    <!-- Bilatzailea -->
+    <string name="edit_origin_hint">Hautatu jatorri bat</string>
+    <string name="edit_destination_hint">Sakatu helburu bat hautatzeko</string>
+    <string name="edit_date_hint">Data</string>
+    <string name="button_search">Bilatu</string>
+
+    <!-- Ibilbide Historikoa -->
+    <string name="txt_see_all">Denak erakutsi</string>
+    <string name="txt_routes_record">Ibilbideen Historia</string>
+    <string name="txt_habitual_routes">Ohiko Ibilbideak</string>
+    <string name="success">arrakasta</string>
+    <string name="warning">kontuz</string>
+    <string name="error">errorea</string>
+
+    <!-- Ibilbideak sortu -->
+    <string name="addRoute">Sortu ibilbidea</string>
+    <string name="createRouteButton">Sortu Ibilbidea</string>
+    <string name="availableSeatsHint">Plazak daude</string>
+    <string name="specialConditionsHint">Baldintza bereziak</string>
+    <string name="vehicleHint">Ibilgailua</string>
+    <string name="intermediateStopsHint">Gehigarriak (aplikagarria bada)</string>
+    <string name="additionalCommentsHint">Oharrak gehigarriak</string>
+    <string name="routeFrequencyHint">Ibilbidearen maiztasuna (berrehiztatuak badira)</string>
+    <string name="CreateRouteButton">Sortu Ibilbidea</string>
+    <string name="tripType">Bidai mota</string>
+    <string name="next">Hurrengoa</string>
+    <string name="back">Atzera</string>
+    <string name="content_description">Gehiago irudia</string>
+    <string name="ci_cuatrovientos">CI CUATROVIENTOS</string>
+
+    <!--AlertDialog-->
+    <!-- Saioa itxi titulua -->
+    <string name="errorLoginTitle">Aupa!</string>
+    <string name="errorLoginMessage">Errorea saioa hasteak, saiatu berriro.</string>
+    <string name="errorLoginEmptyMensaje">Mesedez, bete eremu guztiak</string>
+    <string name="default_web_client_id">88104562322-i9sq0fgb4hnf9beh4dfoq6l7dbkdd4q2</string>
+
+    <!-- Mapak -->
+    <string name="maps_write_direction">Idatzi helbide bat…</string>
+
+    <string name="coordinates_ci_cuatrovientos">42.82437339317052, -1.6598970153413861</string>
+
+    <!--Spinner-->
+    <string name="route_type_ida">Irteera</string>
+    <string name="route_type_vuelta">Itzulera</string>
+    <string name="btn_route_creation">Sortu ibilbidea</string>
+    <string name="seats_error">Asientoen kopurua 1 eta 10 artean izan behar da</string>
+    <string name="date_time_error">Aukeratutako data gaurkoa edo geroa izan behar da, eta aukeratutako ordua uneko ordua baino beranduagoa izan behar da.</string>
+    <string name="select_date_time_error">Hautatu data eta ordua</string>
+    <string name="seats_empty_error">Mesedez, sartu asientoen zenbakia</string>
+    <string name="route_type">Ibilbide mota</string>
+    <string name="vehicule_selection">Hautatu ibilgailua</string>
+    <string name="unkown_error">Errorea</string>
+    <string name="warning_vehicle_selection">Mesedez, gehitu ibilgailua</string>
+    <string name="route_addition_failed">Errorea ibilbidea sortzean</string>
+    <string name="dateHint">Data</string>
+    <string name="TimeHint">Ordua</string>
+
+    <string name="spanish_languague">Gaztelania</string>
+    <string name="english_languague">Ingelesa</string>
+    <string name="basque_languauge">Euskara</string>
+    <string name="selectPasagers">Hautatu bidaiarien kopurua</string>
+    <string name="ic_to">ikono joan</string>
+    <string name="txtDate">2024/02/17</string>
+    <string name="txtTime">00:04</string>
+    <string name="person">pertsona/ak</string>
+    <string name="center">Lau Haizetara</string>
+    <string name="success_creation_route">Ibilbidea ongi sortu da</string>
+</resources>

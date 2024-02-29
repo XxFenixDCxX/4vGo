@@ -9,6 +9,7 @@
     <string name="email">Correo electronico</string>
     <string name="disclaimerEmail">No quiero recibir noticias, promociones ni contenido gratiuito de 4V GO.</string>
     <string name="disclaimerEmailSuscription" tools:ignore="Typos">Una vez suscrito, puedo cancelar mi suscripción en cualquier momento contactando con 4V GO o a través del enlace que se encuentra en el boletin del noticias.</string>
+    <string name="passwordQuestion">Define tu contraseña</string>
     <string name="password">Contraseña</string>
     <string name="rePassword">Repite tu contraseña</string>
     <string name="disclaimerPassword">Debe tener al menos 8 caracteres e incluir 1 letra y 1 número</string>
@@ -39,10 +40,50 @@
     <string name="errorLogDate">Fecha no valida</string>
     <string name="errorLogYears">Tienes que tener al menos 16 años</string>
     <string name="errorLogPassword">Las contraseñas no coinciden</string>
-    <string name="errorLoginTitle">¡Ups!</string>
-    <string name="errorLoginMessage">Error al iniciar sesión, Vuelva a intentarlo.</string>
     <string name="errorLogUserExist">Ya existe un usuario con ese correo electronico</string>
     <string name="errorLogDniExist">Ya existe un usuario con ese dni</string>
+    <string name="profile">Perfil</string>
+    <string name="defaultDescription">Imagen de fondo</string>
+    <string name="imageProfileDescription">Imagen de perfil</string>
+    <string name="imageArrowDescription">Flecha de siguiente</string>
+    <string name="personalDetails">Datos Personales</string>
+    <string name="personalDetailsImageDescription">Imagen de Datos Personales</string>
+    <string name="languague">Idioma</string>
+    <string name="languagueImageDescription">Imagen de Idioma</string>
+    <string name="co2Points">Puntuaciones C02</string>
+    <string name="co2PointsImageDescription">Imagen de Puntuaciones C02</string>
+    <string name="vehicles">Vehiculos</string>
+    <string name="vehiclesImageDescription">Imagen de Vehiculos</string>
+    <string name="logout">Cerrar sesion</string>
+    <string name="logoutImageDescripton">Imagen de Cerrar sesion</string>
+    <string name="username">Nombre de usuario</string>
+    <string name="errorLogCantLoadDetails">Se ha producido un error al cargar tus datos, vuelve a iniciar sesion o contacta con algun tecnico</string>
+    <string name="save">Guardar</string>
+    <string name="selectLanguage">Selecciona un idioma</string>
+    <string name="selectedLanguague">Idioma seleccionado: </string>
+    <string name="errorLogImage">Error al cargar la imagen</string>
+    <string name="selectImage">Selecciona una imagen</string>
+    <string name="stringMinLenght">La longitud de los datos tiene que ser minimo de 3 caracteres</string>
+    <string name="descriptionImageAddButtonVehicle">Imagen del boton para agregar vehiculos</string>
+    <string name="plate">Matricula</string>
+    <string name="numSits">Numero de Sitios:</string>
+    <string name="deleteImageDescription">Imagen de boton para eliminar vehiculo</string>
+    <string name="add">Agregar</string>
+    <string name="color">Color</string>
+    <string name="siteNumber">Numero de sitios</string>
+    <string name="Back_Icon">Back-Icon</string>
+    <string name="Origin">Origen</string>
+    <string name="Destination">Destino</string>
+    <string name="profileImg">Imagen de perfil</string>
+    <string name="OriginCity">Pamplona</string>
+    <string name="DestinationCity">Pamplona</string>
+    <string name="time_elapsed">13:00</string>
+    <string name="valoration">3</string>
+    <string name="starImg">Imagen de valoraciones</string>
+    <string name="pasagers">Imagen de numero de pasajeros</string>
+    <string name="seatNum">2</string>
+    <string name="DestinationTime">2</string>
+    <string name="OriginTime">2</string>
 
     <!-- Description -->
     <string name="background">background</string>
@@ -56,8 +97,8 @@
     <string name="ic_messages">Mensajes</string>
 
     <!--Buscador-->
-    <string name="edit_origin_hint">Origin</string>
-    <string name="edit_destination_hint">Destino</string>
+    <string name="edit_origin_hint">Selecciona un origen</string>
+    <string name="edit_destination_hint">Selecciona un destino</string>
     <string name="edit_date_hint">Fecha</string>
     <string name="button_search">Buscar</string>
 
@@ -65,6 +106,67 @@
     <string name="txt_see_all">Mostrar todo</string>
     <string name="txt_routes_record">Historial de trayectos</string>
     <string name="txt_habitual_routes">Trayectos habituales</string>
+    <string name="success">success</string>
+    <string name="warning">warning</string>
+    <string name="error">error</string>
 
+    <!--Crear rutas-->
+    <string name="addRoute">Crear ruta</string>
+    <string name="createRouteButton">Crear Ruta</string>
+    <string name="dateHint">Fecha</string>
+    <string name="TimeHint">Hora</string>
+
+    <string name="availableSeatsHint">Número de Plazas Disponibles</string>
+    <string name="specialConditionsHint">Condiciones Especiales</string>
+    <string name="vehicleHint">Vehículo</string>
+    <string name="intermediateStopsHint">Paradas Intermedias (si aplicable)</string>
+    <string name="additionalCommentsHint">Comentarios Adicionales</string>
+    <string name="routeFrequencyHint">Frecuencia de la Ruta (si es recurrente)</string>
+    <string name="CreateRouteButton">Crear Ruta</string>
+    <string name="tripType">Tipo de Viaje</string>
+    <string name="next">Siguiente</string>
+    <string name="back">Volver</string>
+    <string name="content_description">Imagen de más</string>
+    <string name="ci_cuatrovientos">CI CUATROVIENTOS</string>
+
+
+
+    <!--AlertDialog-->
+    <!-- Para el diálogo de error -->
+    <string name="errorLoginTitle">¡Ups!</string>
+    <string name="errorLoginMessage">Error al iniciar sesión, Vuelva a intentarlo.</string>
+    <string name="errorLoginEmptyMensaje">Por favor, rellena todos los campos</string>
+    <string name="default_web_client_id">88104562322-i9sq0fgb4hnf9beh4dfoq6l7dbkdd4q2</string>
+
+    <string name="seats_error">El número de plazas debe estar entre 1 y 10</string>
+    <string name="date_time_error">La fecha seleccionada debe ser hoy o posterior, y la hora seleccionada debe ser posterior a la hora actual.</string>
+    <string name="select_date_time_error">Selecciona una fecha y una hora</string>
+    <string name="seats_empty_error">Por favor, ingrese el número de asientos</string>
+    <string name="route_type">Tipo de ruta</string>
+    <string name="vehicule_selection">Seleccione un vehículo</string>
+    <string name="unkown_error">Error</string>
+    <string name="warning_vehicle_selection">Por favor, añade un vehiculo</string>
+    <string name="route_addition_failed">Error al crear la ruta</string>
+    <string name="success_creation_route">La ruta se ha creado correctamente</string>
+
+
+    <!--Maps-->
+    <string name="maps_write_direction">Escribe una dirección…</string>
+    <string name="coordinates_ci_cuatrovientos">42.82437339317052, -1.6598970153413861</string>
+
+    <!--Spinner-->
+    <string name="route_type_ida">Ida</string>
+    <string name="route_type_vuelta">Vuelta</string>
+    <string name="btn_route_creation">Crear ruta</string>
+    <string name="ic_to">icon go to</string>
+    <string name="txtDate">17/02/2024</string>
+    <string name="txtTime">00:04</string>
+    <string name="person">persona/s</string>
+    <string name="center">Cuatrovientos</string>
+
+    <string name="spanish_languague">Español</string>
+    <string name="english_languague">Ingles</string>
+    <string name="basque_languauge">Euskera</string>
+    <string name="selectPasagers">Selecciona numero de pasageros</string>
 
 </resources>
