@@ -57,7 +57,8 @@ public class AddRouteActivity extends AppCompatActivity {
     private String selectedCoordinates ;
     private String lonLatCuatrovientos;
     private BottomNavigationView bottom;
-
+    private String selectedLongitude;
+    private String selectedLatitude;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,10 +88,10 @@ public class AddRouteActivity extends AppCompatActivity {
             Bundle bundle  ;
             bundle = getIntent().getExtras();
             assert bundle != null;
-            String selectedLatitude = bundle.getString("latitudeStr");
-            String selectedLongitude = bundle.getString("longitudeStr");
+            selectedLatitude = bundle.getString("latitudeStr");
+            selectedLongitude = bundle.getString("longitudeStr");
 
-            String selectedCoordinates = selectedLatitude + "," + selectedLongitude;
+            selectedCoordinates = selectedLatitude + "," + selectedLongitude;
 
             Log.i("moha", "Street Name: " + streetName);
             Log.i("moha", "Selected Latitude: " + selectedLatitude);
