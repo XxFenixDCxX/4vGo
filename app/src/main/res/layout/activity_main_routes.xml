@@ -51,42 +51,51 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Spinner
-            android:id="@+id/spinner3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/white_edittext"
-            android:padding="15dp"
-            android:textSize="14sp" />
 
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             android:background="@android:color/darker_gray" />
 
-        <TextView
-            android:id="@+id/txtOrigen2"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:autofillHints=""
-            android:background="@drawable/white_edittext"
-            android:drawableStart="@drawable/ic_marcador"
-            android:drawablePadding="10dp"
-            android:ems="10"
-            android:minHeight="48dp"
-            android:padding="7dp"
-            android:paddingStart="10dp"
-            android:text="@string/edit_origin_hint"
-            android:textColor="@color/black"
-            android:textColorHint="@color/gris"
-            android:textStyle="italic"
-            tools:ignore="RtlSymmetry" />
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/txtOrigen2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:background="@drawable/white_edittext"
+                android:drawableStart="@drawable/circle_shape_svgrepo_com"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="@string/Origin"
+                android:minHeight="48dp"
+                android:padding="7dp"
+                android:paddingStart="10dp"
+                android:text="@string/edit_origin_hint"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gris"
+                android:textStyle="italic"
+                tools:ignore="RtlSymmetry" />
+
+            <ImageView
+                android:id="@+id/imageSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_switch"
+                android:layout_marginEnd="10dp" />
+        </RelativeLayout>
+
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             android:background="@android:color/darker_gray" />
 
         <TextView
@@ -96,11 +105,13 @@
             android:layout_margin="10dp"
             android:autofillHints=""
             android:background="@drawable/white_edittext"
-            android:drawableStart="@drawable/ic_marcador"
+            android:drawableStart="@drawable/circle_shape_svgrepo_com"
             android:drawablePadding="10dp"
             android:ems="10"
             android:minHeight="48dp"
             android:padding="7dp"
+            android:hint="@string/Destination"
+
             android:paddingStart="10dp"
             android:text="@string/edit_destination_hint"
             android:textColor="@color/black"
@@ -110,7 +121,7 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             android:background="@android:color/darker_gray" />
 
 
@@ -133,29 +144,31 @@
                 android:src="@drawable/ic_person" />
 
             <View
-                android:layout_width="1dp"
+                android:layout_width="0.5dp"
                 android:layout_height="match_parent"
                 android:background="@android:color/darker_gray" />
 
-            <EditText
-                android:id="@+id/editTextDate"
+            <TextView
+                android:id="@+id/txtDateTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                android:layout_weight="3"
                 android:autofillHints=""
                 android:background="@drawable/white_edittext"
-                android:drawableStart="@drawable/ic_date"
                 android:drawablePadding="10dp"
-                android:ems="10"
-                android:hint="@string/edit_date_hint"
-                android:inputType="date"
-                android:minHeight="48dp"
-                android:textColorHint="@android:color/darker_gray" />
+                android:focusable="false"
+                android:hint="@string/dateHint"
+                android:inputType="none"
+                android:padding="15dp"
+                android:textColorHint="@color/gris"
+                android:textSize="14sp"
+                tools:ignore="TextSizeCheck"
+                app:drawableStartCompat="@drawable/ic_fecha" />
         </LinearLayout>
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/buttonSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/background_button_intro"

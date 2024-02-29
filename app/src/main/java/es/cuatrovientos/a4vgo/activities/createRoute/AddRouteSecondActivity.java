@@ -36,6 +36,7 @@ import java.util.Locale;
 
 import es.cuatrovientos.a4vgo.R;
 import es.cuatrovientos.a4vgo.activities.MainActivity;
+import es.cuatrovientos.a4vgo.activities.MainRoutesActivity;
 import es.cuatrovientos.a4vgo.models.Route;
 import es.cuatrovientos.a4vgo.models.Vehicle;
 import es.cuatrovientos.a4vgo.utils.DialogUtils;
@@ -229,9 +230,14 @@ public class AddRouteSecondActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Intent intent = new Intent(AddRouteSecondActivity.this, MainActivity.class);
+                        DialogUtils.showSuccessDialog(context, getString(R.string.success), getString(R.string.success_creation_route));
+                        try {
+                            Thread.sleep(9000);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                        Intent intent = new Intent(AddRouteSecondActivity.this, MainRoutesActivity.class);
                         startActivity(intent);
-                        Log.i("moha", "Se ha agregado correctamente");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
