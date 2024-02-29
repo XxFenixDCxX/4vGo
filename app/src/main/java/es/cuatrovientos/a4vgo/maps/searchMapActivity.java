@@ -211,15 +211,15 @@ public class searchMapActivity extends AppCompatActivity implements OnMapReadyCa
         if (currentLocation != null) {
             double latitude = currentLocation.latitude;
             double longitude = currentLocation.longitude;
-            String latitudeStr = String.valueOf(latitude);
-            String longitudeStr = String.valueOf(longitude);
+            String latitudeStr = ""+latitude;
+            String longitudeStr = ""+longitude;
 
             String streetName = getStreetName(latitude, longitude);
 
             Intent intent = new Intent(searchMapActivity.this, AddRouteActivity.class);
             intent.putExtra("streetName", streetName);
-            intent.putExtra("latitudeStr", latitude);
-            intent.putExtra("longitudeStr", longitude);
+            intent.putExtra("latitudeStr", latitudeStr);
+            intent.putExtra("longitudeStr", longitudeStr);
 
             Log.i("moha2", "Street Name: " + streetName);
             Log.i("moha2", "Selected Longitude: " + latitude);

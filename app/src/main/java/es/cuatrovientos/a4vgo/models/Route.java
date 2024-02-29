@@ -6,6 +6,9 @@ public class Route {
     private String routeType;
     private String origin;
     private String destination;
+
+    private String userId;
+
     private String selectedDate;
     private String selectedTime;
     private int maxSeats;
@@ -15,12 +18,13 @@ public class Route {
     private String comments;
 
     // Constructor
-    public Route(String routeType, String origin, String destination, String selectedDate,
+    public Route(String routeType, String origin, String destination,String userId, String selectedDate,
                  String selectedTime, int maxSeats, String selectedVehiclePlate,
                  boolean hasIntermediateStops, boolean isFrequent, String comments) {
         this.routeType = routeType;
         this.origin = origin;
         this.destination = destination;
+        this.userId = userId;
         this.selectedDate = selectedDate;
         this.selectedTime = selectedTime;
         this.maxSeats = maxSeats;
@@ -43,6 +47,13 @@ public class Route {
 
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     public String getRouteType() {
         return routeType;

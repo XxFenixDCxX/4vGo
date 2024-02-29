@@ -28,8 +28,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+
 import es.cuatrovientos.a4vgo.R;
 import es.cuatrovientos.a4vgo.models.Route;
 import es.cuatrovientos.a4vgo.models.Vehicle;
@@ -43,20 +47,27 @@ public class AddRouteSecondActivity extends AppCompatActivity {
     private Route route;
     private String dni;
     private Button btnNext ;
+    private Button btnBack ;
+
     private Activity context = this;
     private CheckBox checkBoxIntermediateStops ;
     private CheckBox checkBoxRouteFrequency ;
     private EditText editTextAdditionalComments;
+
+    private String routeType;
+    private String selectedCoordinates;
+    private String date;
+    private String time;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_route_second);
         Intent intent = getIntent();
         if (intent != null) {
-            String routeType = intent.getStringExtra("routeType");
-            String selectedCoordinates = intent.getStringExtra("selectedCoordinates");
-            String date = intent.getStringExtra("date");
-            String time = intent.getStringExtra("time");
+            routeType = intent.getStringExtra("routeType");
+            selectedCoordinates = intent.getStringExtra("selectedCoordinates");
+            date = intent.getStringExtra("date");
+            time = intent.getStringExtra("time");
 
             int availableSeats = intent.getIntExtra("availableSeats", 0);
             route = new Route ();
@@ -70,14 +81,21 @@ public class AddRouteSecondActivity extends AppCompatActivity {
                 route.setDestination(selectedCoordinates);
             }
 
-            route.setSelectedTime(date);
+            route.setSelectedDate(date);
             route.setSelectedTime(time);
             route.setMaxSeats(availableSeats);
+
 
         }
 
         btnNext = findViewById(R.id.btnNext);
-
+        btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         checkBoxIntermediateStops = findViewById(R.id.checkBoxIntermediateStops);
         checkBoxRouteFrequency = findViewById(R.id.checkBoxRouteFrequency);
         editTextAdditionalComments = findViewById(R.id.editTextAdditionalComments);
@@ -114,6 +132,8 @@ public class AddRouteSecondActivity extends AppCompatActivity {
                         // Obtener el DNI si existen detalles personales
                         DocumentSnapshot document = querySnapshot.getDocuments().get(0);
                         dni = document.getString("dni");
+                        route.setUserId(dni);
+
 
                         if (dni != null) {
                             db.collection("cars")
@@ -202,12 +222,12 @@ public class AddRouteSecondActivity extends AppCompatActivity {
         route.setFrequent(isFrequentRoute);
         route.setComments(additionalComments);
     }
-    private void addRouteToDB(){
-        db.collection("routes")
-                .add(route)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+    private void addRouteToDB() {
+        db.collection("routes").document(generateDocRouteId())
+                .set(route)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onSuccess(DocumentReference documentReference) {
+                    public void onSuccess(Void aVoid) {
                         Log.i("moha", "Se ha agregado correctamente");
                     }
                 })
@@ -215,9 +235,25 @@ public class AddRouteSecondActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         DialogUtils.showErrorDialog(context, getString(R.string.unkown_error), getString(R.string.route_addition_failed));
-
                     }
                 });
     }
+
+
+    private String generateDocRouteId() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HH" +
+                "", Locale.getDefault());
+        String currentDateAndTime = dateFormat.format(new Date());
+
+
+
+        String routeId = removeCommaFromCoordinates(selectedCoordinates)+ "_" + currentDateAndTime + route.getUserId();
+
+        return routeId;
+    }
+    private String removeCommaFromCoordinates(String selectedCoordinates) {
+        return selectedCoordinates.replace(",", "");
+    }
+
 
 }
