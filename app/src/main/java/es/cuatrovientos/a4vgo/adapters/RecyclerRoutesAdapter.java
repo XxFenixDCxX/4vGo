@@ -1,12 +1,14 @@
 package es.cuatrovientos.a4vgo.adapters;
 
-
 import android.annotation.SuppressLint;
+import android.graphics.drawable.Drawable;
 import android.location.Address;
 import android.location.Geocoder;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,6 +24,8 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -33,7 +37,7 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
     private final List<Route> list;
     private final List<Route> listCopy;
     private final FirebaseFirestore db;
-    private String dni;
+    private static String dni;
     private final String routeType;
     private final String cords;
     private final String selectedDate;
@@ -162,6 +166,7 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
 
     public static class RecyclerDataHolder extends RecyclerView.ViewHolder {
         TextView origin, destination, originTime, destinaionTime, seatNum, elapsedTime, username;
+        ImageView profileImg;
         public RecyclerDataHolder(@NonNull View itemView) {
             super(itemView);
             origin = itemView.findViewById(R.id.OriginCity);
@@ -171,9 +176,10 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
             elapsedTime = itemView.findViewById(R.id.elapsedTime);
             seatNum = itemView.findViewById(R.id.seat_num);
             username = itemView.findViewById(R.id.user_name);
+            profileImg = itemView.findViewById(R.id.profileImg);
         }
 
-        @SuppressLint({"NotifyDataSetChanged", "SetTextI18n"})
+        @SuppressLint({"NotifyDataSetChanged", "SetTextI18n", "StaticFieldLeak"})
         public void assignData(Route route) {
             FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
             CollectionReference collection = FirebaseFirestore.getInstance().collection("personalDetails");
@@ -189,23 +195,61 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
 
 
                     String streetName;
+                    String time;
+
                     if(route.getRouteType().equals("Ida")){
                         streetName = getStreetName(Double.parseDouble(route.getOrigin().split(",")[0]), Double.parseDouble(route.getOrigin().split(",")[1]), itemView);
 
                         destination.setText(R.string.center);
                         originTime.setText(route.getSelectedTime());
                         destinaionTime.setText("08:30");
+                        elapsedTime.setText(getHowMuchTime(route.getSelectedTime(), "08:30"));
                         origin.setText(streetName);
                     }else{
                         streetName = getStreetName(Double.parseDouble(route.getDestination().split(",")[0]), Double.parseDouble(route.getDestination().split(",")[1]), itemView);
 
                         origin.setText(R.string.center);
                         originTime.setText("14:30");
+                        elapsedTime.setText(getHowMuchTime("14:30", route.getSelectedTime()));
                         destinaionTime.setText(route.getSelectedTime());
                         destination.setText(streetName);
                     }
                     seatNum.setText(String.valueOf(route.getMaxSeats()));
                     username.setText(currentUsername);
+
+                    CollectionReference collection1 = FirebaseFirestore.getInstance().collection("personalDetails");
+                    collection1.document(dni).get()
+                            .addOnSuccessListener(documentSnapshot -> {
+                                if (documentSnapshot.exists()) {
+                                    String imageUrl = documentSnapshot.getString("profileImage");
+
+                                    if (imageUrl != null && !imageUrl.isEmpty()) {
+                                        new AsyncTask<Void, Void, Drawable>() {
+                                            @Override
+                                            protected Drawable doInBackground(Void... voids) {
+                                                try {
+                                                    InputStream inputStream = new URL(imageUrl).openStream();
+                                                    return Drawable.createFromStream(inputStream, null);
+                                                } catch (IOException e) {
+                                                    e.printStackTrace();
+                                                    return null;
+                                                }
+                                            }
+
+                                            @Override
+                                            protected void onPostExecute(Drawable drawable) {
+                                                if (drawable != null) {
+                                                    profileImg.setBackground(drawable);
+                                                } else {
+                                                    profileImg.setBackgroundResource(R.drawable.ic_profile);
+                                                }
+                                            }
+                                        }.execute();
+                                    } else {
+                                        profileImg.setBackgroundResource(R.drawable.ic_profile);
+                                    }
+                                }
+                            });
                 }
             });
         }
@@ -243,5 +287,15 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
             e.printStackTrace();
         }
         return "";
+    }
+    private static String getHowMuchTime(String originTime, String destinationTime){
+        int originHour = Integer.parseInt(originTime.split(":")[0]);
+        int originMinute = Integer.parseInt(originTime.split(":")[1]);
+        int destinationHour = Integer.parseInt(destinationTime.split(":")[0]);
+        int destinationMinute = Integer.parseInt(destinationTime.split(":")[1]);
+
+        int hour = Math.abs(destinationHour - originHour);
+        int minute = Math.abs(destinationMinute - originMinute);
+        return hour + "h " + minute + "m";
     }
 }
