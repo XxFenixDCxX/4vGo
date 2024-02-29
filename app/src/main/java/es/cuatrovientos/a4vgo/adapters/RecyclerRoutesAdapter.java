@@ -2,6 +2,8 @@ package es.cuatrovientos.a4vgo.adapters;
 
 
 import android.annotation.SuppressLint;
+import android.location.Address;
+import android.location.Geocoder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +21,10 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import es.cuatrovientos.a4vgo.R;
 import es.cuatrovientos.a4vgo.models.Route;
@@ -180,16 +184,25 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
                     QuerySnapshot querySnapshot = task.getResult();
                     DocumentSnapshot document = querySnapshot.getDocuments().get(0);
                     currentUsername = document.getString("username");
+                    double destinationLat = Double.parseDouble(route.getDestination().split(",")[0]);
+                    double destinationLon = Double.parseDouble(route.getDestination().split(",")[1]);
+
+
+                    String streetName;
                     if(route.getRouteType().equals("Ida")){
+                        streetName = getStreetName(Double.parseDouble(route.getOrigin().split(",")[0]), Double.parseDouble(route.getOrigin().split(",")[1]), itemView);
+
                         destination.setText(R.string.center);
-                        //toDo destination
                         originTime.setText(route.getSelectedTime());
-                        destinaionTime.setText("08:20");
+                        destinaionTime.setText("08:30");
+                        origin.setText(streetName);
                     }else{
+                        streetName = getStreetName(Double.parseDouble(route.getDestination().split(",")[0]), Double.parseDouble(route.getDestination().split(",")[1]), itemView);
+
                         origin.setText(R.string.center);
-                        //toDo destination
                         originTime.setText("14:30");
                         destinaionTime.setText(route.getSelectedTime());
+                        destination.setText(streetName);
                     }
                     seatNum.setText(String.valueOf(route.getMaxSeats()));
                     username.setText(currentUsername);
@@ -206,5 +219,29 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         double RADIUS_OF_EARTH = 6371;
         return RADIUS_OF_EARTH * c;
+    }
+    private static String getStreetName(double latitude, double longitude, View itemView) {
+
+        Geocoder geocoder = new Geocoder(itemView.getContext(), Locale.getDefault());
+        List<Address> addresses;
+        try {
+            addresses = geocoder.getFromLocation(latitude, longitude, 1);
+            if (addresses != null && !addresses.isEmpty()) {
+                String thoroughfare = addresses.get(0).getThoroughfare();
+                String featureName = addresses.get(0).getFeatureName();
+                String addressLine = addresses.get(0).getAddressLine(0);
+
+                if (thoroughfare != null && !thoroughfare.isEmpty()) {
+                    return thoroughfare;
+                } else if (featureName != null && !featureName.isEmpty()) {
+                    return featureName;
+                } else if (addressLine != null && !addressLine.isEmpty()) {
+                    return addressLine;
+                }
+            }
+        } catch (IOException | IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 }
