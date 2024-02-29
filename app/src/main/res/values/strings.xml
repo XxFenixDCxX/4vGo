@@ -158,5 +158,8 @@
     <string name="route_type_vuelta">Vuelta</string>
     <string name="btn_route_creation">Crear ruta</string>
 
-
+    <string name="spanish_languague">Español</string>
+    <string name="english_languague">Ingles</string>
+    <string name="basque_languauge">Euskera</string>
+    <string name="selectPasagers">Selecciona numero de pasageros</string>
 </resources>
