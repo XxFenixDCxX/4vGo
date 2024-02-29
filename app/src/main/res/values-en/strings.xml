@@ -157,5 +157,5 @@
     <string name="spanish_languague">Spanish</string>
     <string name="english_languague">English</string>
     <string name="basque_languauge">Basque</string>
-
+    <string name="selectPasagers">Select number of passengers</string>
 </resources>

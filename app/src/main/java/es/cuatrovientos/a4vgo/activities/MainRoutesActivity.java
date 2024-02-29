@@ -15,8 +15,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import es.cuatrovientos.a4vgo.R;
 import es.cuatrovientos.a4vgo.activities.createRoute.AddRouteActivity;
 import es.cuatrovientos.a4vgo.activities.profile.ProfileActivity;
-import es.cuatrovientos.a4vgo.adapters.CustomSpinnerAdapter;
-
 public class MainRoutesActivity extends AppCompatActivity {
     BottomNavigationView bottom;
     private TextView txtOrigin2;
@@ -54,9 +52,10 @@ public class MainRoutesActivity extends AppCompatActivity {
                 }
         );
         txtDestination = findViewById(R.id.txtDestination);
+
         Spinner spinner = findViewById(R.id.spinner3);
         String[] items = new String[]{getString(R.string.route_type_ida), getString(R.string.route_type_vuelta)};
-        CustomSpinnerAdapter adapter = new CustomSpinnerAdapter(this, android.R.layout.simple_spinner_item, items);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, items);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spinner.setAdapter(adapter);
@@ -100,14 +99,13 @@ public class MainRoutesActivity extends AppCompatActivity {
 
         });
 
-        // Find the Spinner in your activity
         Spinner spinnerNumPeople = findViewById(R.id.spinnerNumPeople);
+        String[] numbers = new String[]{"1", "2", "3", "4", "5"};
 
-        String[] numbers = new String[]{"1","2","3","4","5"};
-        CustomSpinnerAdapter adapterSpinnerNumPeople = new CustomSpinnerAdapter(this, android.R.layout.simple_spinner_item, numbers);
-        adapterSpinnerNumPeople.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> adapterNum = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, numbers);
+        adapterNum.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        spinnerNumPeople.setAdapter(adapterSpinnerNumPeople);
+        spinnerNumPeople.setAdapter(adapterNum);
 
     }
 }
