@@ -164,4 +164,29 @@
     <string name="person">pertsona/ak</string>
     <string name="center">Lau Haizetara</string>
     <string name="success_creation_route">Ibilbidea ongi sortu da</string>
+
+
+    <string name="error_date">Data eguna oraindikoa edo geroa izan behar da</string>
+
+    <!--Data errors-->
+    <string name="error_invalid_date_format">Data formatu baliogabea</string>
+    <string name="error_past_date">Hautatutako data gaurkoa edo geroa izan behar da</string>
+
+    <!-- Pertsonen kopuruarekin lotutako kateak -->
+    <string name="error_invalid_number_of_people">Pertsonen kopuru baliogabea</string>
+    <string name="error_exceeded_max_people">Gehienezko pertsonen kopurua gainditua (gehienez 4)</string>
+
+    <!-- Beste mezuak -->
+    <string name="error_no_location_selected">Mesedez, hautatu kokapena bat.</string>
+
+    <string name="button_description">Flotatu botoia</string>
+    <string name="creating_route">Ruta sortzen</string>
+    <string name="ok">Ados</string>
+    <string name="success_operation">Operazio Ongi Izena</string>
+    <string name="error_saving_localization">Ubikazioa gordetzean errorea</string>
+    <string name="num_person_error">Pertsonen kopurua 1 eta 4 artean egon behar da</string>
+    <string name="Invalid_number">Zenbakiaren formatu okerra</string>
+
+    <string name="ic_create_route">Ruta Sortu</string>
+
 </resources>

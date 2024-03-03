@@ -164,4 +164,28 @@
     <string name="person">person(s)</string>
     <string name="center">Cuatrovientos</string>
     <string name="success_creation_route">The route has been created successfully</string>
+
+    <string name="error_date">The date must be equal to or later than the current date</string>
+
+    <!--Date errors-->
+    <string name="error_invalid_date_format">Invalid date format</string>
+    <string name="error_past_date">Selected date must be today or later</string>
+
+    <!-- Strings related to the number of people -->
+    <string name="error_invalid_number_of_people">Invalid number of people</string>
+    <string name="error_exceeded_max_people">Maximum number of people exceeded (maximum 4)</string>
+
+    <!-- Other messages -->
+    <string name="error_no_location_selected">Please select a location.</string>
+
+    <string name="button_description">Float button</string>
+    <string name="creating_route">Creating route</string>
+    <string name="ok">OK</string>
+    <string name="success_operation">Operation Successful</string>
+    <string name="error_saving_localization">Error saving location</string>
+    <string name="num_person_error">The number of people must be between 1 and 4</string>
+    <string name="Invalid_number">Invalid number format</string>
+
+    <string name="ic_create_route">Create Route</string>
+
 </resources>
