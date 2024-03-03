@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         app:itemIconTint="#0A8353"
-        app:itemTextColor="#FFFFFF"
+        app:itemTextColor="#0A8353"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -99,7 +99,7 @@
 
             android:textSize="14sp"
             tools:ignore="TextSizeCheck"
-            app:drawableStartCompat="@drawable/ic_marcador" />
+            app:drawableStartCompat="@drawable/circle_shape_svgrepo_com" />
 
             <ImageButton
                 android:id="@+id/imageButtonOrigin"
@@ -137,7 +137,7 @@
 
                 android:textSize="14sp"
                 tools:ignore="TextSizeCheck"
-                app:drawableStartCompat="@drawable/ic_marcador" />
+                app:drawableStartCompat="@drawable/circle_shape_svgrepo_com" />
 
             <ImageButton
                 android:id="@+id/imageButtonDestination"
@@ -177,7 +177,7 @@
                 app:drawableStartCompat="@drawable/ic_fecha" />
 
             <TextView
-                android:id="@+id/txtPeopleNum"
+                android:id="@+id/txtTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"

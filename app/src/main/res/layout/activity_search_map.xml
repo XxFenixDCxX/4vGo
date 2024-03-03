@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
     tools:context=".maps.searchMapActivity">
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -19,7 +18,7 @@
 
         <AutoCompleteTextView
             android:id="@+id/autoCompleteTextViewIntroduceDirection"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:layout_marginTop="16dp"
@@ -30,7 +29,7 @@
             android:hint="@string/maps_write_direction"
             android:inputType="text"
             android:padding="15dp"
-            tools:ignore="InefficientWeight,TextContrastCheck,VisualLintTextFieldSize" />
+            android:textColorHint="#757575" />
 
 
     </LinearLayout>
@@ -44,21 +43,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
-        <androidx.fragment.app.FragmentContainerView
-            xmlns:tools="http://schemas.android.com/tools"
+        <fragment
             android:id="@+id/map"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".MainActivity"
-            tools:ignore="RedundantNamespace" />
+            tools:context=".MainActivity" />
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/whiteString"
-            tools:ignore="VisualLintButtonSize" />
+
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -66,12 +58,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:background="@color/teal_700"
-        android:contentDescription="@string/add"
-        android:src="@drawable/ic_check"
+        app:borderWidth="3dp"
+        android:src="@drawable/baseline_check_24"
+        android:backgroundTint="@color/teal_700"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/button_description" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

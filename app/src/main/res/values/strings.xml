@@ -95,6 +95,7 @@
     <string name="ic_profile">Perfil</string>
     <string name="ic_trips">Viajes</string>
     <string name="ic_messages">Mensajes</string>
+    <string name="ic_create_route">Crear Ruta</string>
 
     <!--Buscador-->
     <string name="edit_origin_hint">Selecciona un origen</string>
@@ -106,9 +107,10 @@
     <string name="txt_see_all">Mostrar todo</string>
     <string name="txt_routes_record">Historial de trayectos</string>
     <string name="txt_habitual_routes">Trayectos habituales</string>
-    <string name="success">success</string>
-    <string name="warning">warning</string>
-    <string name="error">error</string>
+    <string name="success">Éxito</string>
+    <string name="warning">Advertencia</string>
+    <string name="error">Error</string>
+
 
     <!--Crear rutas-->
     <string name="addRoute">Crear ruta</string>
@@ -137,6 +139,8 @@
     <string name="errorLoginMessage">Error al iniciar sesión, Vuelva a intentarlo.</string>
     <string name="errorLoginEmptyMensaje">Por favor, rellena todos los campos</string>
     <string name="default_web_client_id">88104562322-i9sq0fgb4hnf9beh4dfoq6l7dbkdd4q2</string>
+    <string name="num_person_error">El número de personas debe estar entre 1 y 4</string>
+    <string name="Invalid_number">Formato de número incorrecto</string>
 
     <string name="seats_error">El número de plazas debe estar entre 1 y 10</string>
     <string name="date_time_error">La fecha seleccionada debe ser hoy o posterior, y la hora seleccionada debe ser posterior a la hora actual.</string>
@@ -148,6 +152,11 @@
     <string name="warning_vehicle_selection">Por favor, añade un vehiculo</string>
     <string name="route_addition_failed">Error al crear la ruta</string>
     <string name="success_creation_route">La ruta se ha creado correctamente</string>
+    <string name="creating_route">Creando ruta</string>
+    <string name="ok">OK</string>
+    <string name="success_operation">Operación Exitosa</string>
+    <string name="error_saving_localization">"Error al guardar la ubicación"</string>
+
 
 
     <!--Maps-->
@@ -168,5 +177,25 @@
     <string name="english_languague">Ingles</string>
     <string name="basque_languauge">Euskera</string>
     <string name="selectPasagers">Selecciona numero de pasageros</string>
+
+
+    <!--Main routes-->
+    <string name="error_date">La fecha tiene que ser igual o mayor que la actual</string>
+
+
+    <!--Date errors-->
+    <string name="error_invalid_date_format">Formato de fecha no válido</string>
+    <string name="error_past_date">La fecha seleccionada debe ser hoy o posterior</string>
+
+    <!-- Strings relacionadas con el número de personas -->
+    <string name="error_invalid_number_of_people">Número de personas no válido</string>
+    <string name="error_exceeded_max_people">Número máximo de personas superado (máximo 4)</string>
+
+    <!-- Otros mensajes -->
+
+    <string name="error_no_location_selected">Por favor, selecciona una ubicación.</string>
+
+    <string name="button_description">Float button</string>
+
 
 </resources>
