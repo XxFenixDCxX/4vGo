@@ -198,15 +198,11 @@ public class MainRoutesActivity extends AppCompatActivity {
             return false;
         }
 
-        if (!isNumberOfPeopleValid()) {
-
-            return false;
-        }
+        return isNumberOfPeopleValid();
 
 
 
         // All conditions are met
-        return true;
     }
 
     private boolean isDateValid() {
