@@ -26,6 +26,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.IOException;
@@ -108,7 +109,20 @@ public class searchMapActivity extends AppCompatActivity implements OnMapReadyCa
         mMap.getUiSettings().setMyLocationButtonEnabled(true);
 
         LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        mMap.setOnMapClickListener(latLng -> {
+            // Mueve el marcador a la ubicación tocada
 
+            mMap.clear();
+
+            if (marker != null) {
+                marker.remove();
+            }
+
+            MarkerOptions markerOptions = new MarkerOptions().position(latLng).draggable(true);
+            marker = mMap.addMarker(markerOptions);
+            currentLocation = latLng;
+
+        });
         mMap.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
             @Override
             public void onMarkerDrag(@NonNull Marker marker) {

@@ -16,13 +16,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme._4vGo"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".activities.co2Points.RatingByCo2Points"
+            android:exported="false" />
         <activity
             android:name=".maps.searchMapActivity"
             android:exported="false" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyC00uvASQk4aEwyJds-ZsQb0ZhmhZwvozA" />
+
         <activity
             android:name=".activities.JoinRoutesActivity"
             android:exported="false" />
@@ -46,7 +52,7 @@
             android:exported="false" />
         <activity
             android:name=".activities.MainRoutesActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".activities.register.FourthRegisterActivity"
             android:exported="false"

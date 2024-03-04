@@ -15,6 +15,8 @@ public class Route {
     private boolean hasIntermediateStops;
     private boolean isFrequent;
     private String comments;
+    public static final double EARTH_RADIUS = 6371;
+
 
     // Constructor
     public Route(String routeType, String origin, String destination,String userId, String selectedDate,
@@ -147,4 +149,39 @@ public class Route {
     public void setComments(String comments) {
         this.comments = comments;
     }
+    private double calculateDistance() {
+
+        if (origin == null || destination == null) {
+            throw new IllegalStateException("Coordenadas de origen y destino son necesarias para calcular la distancia.");
+        }
+
+        String[] originCoords = origin.split(",");
+        String[] destCoords = destination.split(",");
+
+        double originLat = Double.parseDouble(originCoords[0]);
+        double originLng = Double.parseDouble(originCoords[1]);
+        double destLat = Double.parseDouble(destCoords[0]);
+        double destLng = Double.parseDouble(destCoords[1]);
+
+        double dLat = Math.toRadians(destLat - originLat);
+        double dLng = Math.toRadians(destLng - originLng);
+
+        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(Math.toRadians(originLat)) * Math.cos(Math.toRadians(destLat)) *
+                        Math.sin(dLng / 2) * Math.sin(dLng / 2);
+
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        return EARTH_RADIUS * c;
+    }
+
+    public double calculateCreatorCO2Points() {
+        double distance = calculateDistance();
+        return distance * 5;
+    }
+    public double calculateUserCO2Points() {
+        double distance = calculateDistance();
+        return distance * 3;
+    }
+
 }

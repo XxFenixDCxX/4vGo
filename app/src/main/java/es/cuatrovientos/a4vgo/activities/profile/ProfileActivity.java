@@ -32,12 +32,13 @@
     import es.cuatrovientos.a4vgo.R;
     import es.cuatrovientos.a4vgo.activities.JoinRoutesActivity;
     import es.cuatrovientos.a4vgo.activities.MainRoutesActivity;
+    import es.cuatrovientos.a4vgo.activities.co2Points.RatingByCo2Points;
     import es.cuatrovientos.a4vgo.activities.createRoute.AddRouteActivity;
     import es.cuatrovientos.a4vgo.utils.DialogUtils;
     import es.cuatrovientos.a4vgo.activities.MainActivity;
 
     public class ProfileActivity extends AppCompatActivity {
-        ConstraintLayout logout, personalDetails, languague, vehicle;
+        ConstraintLayout logout, personalDetails, languague, vehicle,co2PointsAction;
         CollectionReference collection;
         FirebaseUser currentUser;
         TextView username, email;
@@ -63,6 +64,7 @@
             vehicle = findViewById(R.id.vehicleAction);
             bottom = findViewById(R.id.bnNavigation);
             bottom.setSelectedItemId(R.id.navigation_profile);
+            co2PointsAction = findViewById(R.id.co2PointsAction);
             languagues = new String[]{
                     getString(R.string.spanish_languague),
                     getString(R.string.english_languague),
@@ -128,7 +130,10 @@
                 Intent intent = new Intent(ProfileActivity.this, VehicleActivity.class);
                 startActivity(intent);
             });
-
+            co2PointsAction.setOnClickListener(v -> {
+                Intent intent = new Intent(ProfileActivity.this, RatingByCo2Points.class);
+                startActivity(intent);
+            });
             bottom.setOnItemSelectedListener(item -> {
                         int id = item.getItemId();
                         if (id == R.id.navigation_trips) {

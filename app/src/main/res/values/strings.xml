@@ -132,7 +132,6 @@
     <string name="ci_cuatrovientos">CI CUATROVIENTOS</string>
 
 
-
     <!--AlertDialog-->
     <!-- Para el diálogo de error -->
     <string name="errorLoginTitle">¡Ups!</string>
@@ -156,7 +155,6 @@
     <string name="ok">OK</string>
     <string name="success_operation">Operación Exitosa</string>
     <string name="error_saving_localization">"Error al guardar la ubicación"</string>
-
 
 
     <!--Maps-->
@@ -196,6 +194,19 @@
     <string name="error_no_location_selected">Por favor, selecciona una ubicación.</string>
 
     <string name="button_description">Float button</string>
+
+    <!-- Rutas Favoritas -->
+    <string name="routes_favorites">Rutas Favoritas</string>
+
+    <!-- Historial de Rutas -->
+    <string name="routes_history">Historial de Rutas</string>
+
+    <!-- Usuarios Favoritos -->
+    <string name="users_favorites">Usuarios Favoritos</string>
+
+    <!-- Usuarios Baneados -->
+    <string name="users_banned">Usuarios Baneados</string>
+
 
 
 </resources>

@@ -35,7 +35,8 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView3"
                     app:srcCompat="@drawable/arc_3" />
 
-                <ImageView
+
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/imgProfileP"
                     android:layout_width="126dp"
                     android:layout_height="126dp"
@@ -46,7 +47,11 @@
                     app:layout_constraintHorizontal_bias="0.498"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView3"
-                    app:layout_constraintVertical_bias="0.941" />
+                    app:layout_constraintVertical_bias="0.941"
+                    app:shapeAppearanceOverlay="@style/squareImageview"
+                />
+
+
 
                 <TextView
                     android:id="@+id/textView3"
@@ -170,6 +175,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/co2PointsAction"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="32dp"
