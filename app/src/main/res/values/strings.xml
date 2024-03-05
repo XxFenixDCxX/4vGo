@@ -207,6 +207,7 @@
     <!-- Usuarios Baneados -->
     <string name="users_banned">Usuarios Baneados</string>
 
+    <string name="error_clasification">Error al obtener los datos de la clasificación</string>
 
 
 </resources>

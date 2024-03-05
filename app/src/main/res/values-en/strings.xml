@@ -40,8 +40,8 @@
     <string name="errorLogDate">Invalid date</string>
     <string name="errorLogYears">You must be at least 16 years old</string>
     <string name="errorLogPassword">Passwords do not match</string>
-    <string name="errorLogUserExist">A user with that email already exists</string>
-    <string name="errorLogDniExist">A user with that ID already exists</string>
+    <string name="errorLogUserExist">A userProfile with that email already exists</string>
+    <string name="errorLogDniExist">A userProfile with that ID already exists</string>
     <string name="profile">Profile</string>
     <string name="defaultDescription">Background Image</string>
     <string name="imageProfileDescription">Profile Image</string>

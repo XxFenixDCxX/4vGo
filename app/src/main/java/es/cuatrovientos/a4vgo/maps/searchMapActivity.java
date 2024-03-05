@@ -110,7 +110,6 @@ public class searchMapActivity extends AppCompatActivity implements OnMapReadyCa
 
         LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         mMap.setOnMapClickListener(latLng -> {
-            // Mueve el marcador a la ubicación tocada
 
             mMap.clear();
 

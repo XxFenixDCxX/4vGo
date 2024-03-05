@@ -13,15 +13,15 @@ import com.google.android.material.imageview.ShapeableImageView;
 import java.util.List;
 
 import es.cuatrovientos.a4vgo.R;
-import es.cuatrovientos.a4vgo.models.User;
+import es.cuatrovientos.a4vgo.models.UserProfile;
 
 public class RatingCo2PointsAdapter extends RecyclerView.Adapter<RatingCo2PointsAdapter.ViewHolder> {
 
-    private final List<User> userList;
+    private final List<UserProfile> userProfileList;
     private final OnItemClickListener listener;
 
-    public RatingCo2PointsAdapter(List<User> userList, OnItemClickListener listener) {
-        this.userList = userList;
+    public RatingCo2PointsAdapter(List<UserProfile> userProfileList, OnItemClickListener listener) {
+        this.userProfileList = userProfileList;
         this.listener = listener;
     }
 
@@ -34,12 +34,12 @@ public class RatingCo2PointsAdapter extends RecyclerView.Adapter<RatingCo2Points
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.assignData(userList.get(position), listener);
+        holder.assignData(userProfileList.get(position), listener);
     }
 
     @Override
     public int getItemCount() {
-        return userList.size();
+        return userProfileList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -56,20 +56,20 @@ public class RatingCo2PointsAdapter extends RecyclerView.Adapter<RatingCo2Points
             scoreTxt = itemView.findViewById(R.id.scoreTxt);
         }
 
-        public void assignData(User user, OnItemClickListener listener) {
+        public void assignData(UserProfile userProfile, OnItemClickListener listener) {
             rowTxt.setText(String.valueOf(getAdapterPosition() + 1));
-            titleTxt.setText(user.getName());
+            titleTxt.setText(userProfile.getName());
 
             pic.setImageResource(R.drawable.user_2);
 
 
-            scoreTxt.setText(String.valueOf(user.getCo2Points()));
+            scoreTxt.setText(String.valueOf(userProfile.getCo2Points()));
 
-            itemView.setOnClickListener(v -> listener.onItemClick(user, getAdapterPosition()));
+            itemView.setOnClickListener(v -> listener.onItemClick(userProfile, getAdapterPosition()));
         }
     }
 
     public interface OnItemClickListener {
-        void onItemClick(User user, int position);
+        void onItemClick(UserProfile userProfile, int position);
     }
 }

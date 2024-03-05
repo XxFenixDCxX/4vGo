@@ -1,10 +1,11 @@
 package es.cuatrovientos.a4vgo.models;
 
 
-public class User {
+import java.util.Map;
+
+public class UserProfile {
     private String firstName;
     private String lastName;
-    private String phoneNumber;
     private String birthdate;
     private String dni;
     private String email;
@@ -14,27 +15,41 @@ public class User {
     private boolean spam;
     private String surname;
     private String username;
-    private double rating;
     private double co2Points;
 
-    public User(String firstName, String lastName, String passwordHash,
-                           String phoneNumber, String birthdate, String dni,
-                           String email, String language, String name, String profileImage,
-                           boolean spam, String surname, String username) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
-        this.birthdate = birthdate;
-        this.dni = dni;
-        this.email = email;
-        this.language = language;
-        this.name = name;
-        this.profileImage = profileImage;
-        this.spam = spam;
-        this.surname = surname;
-        this.username = username;
-        this.rating = 0.0;
-        this.co2Points = 0.0;
+    public UserProfile() {
+        // Constructor vacío necesario para Firestore
+    }
+
+    public static UserProfile fromMap(Map<String, Object> data) {
+        UserProfile userProfile = new UserProfile();
+
+        userProfile.setFirstName(getStringFromMap(data, "firstName"));
+        userProfile.setLastName(getStringFromMap(data, "lastName"));
+        userProfile.setBirthdate(getStringFromMap(data, "birthdate"));
+        userProfile.setDni(getStringFromMap(data, "dni"));
+        userProfile.setEmail(getStringFromMap(data, "email"));
+        userProfile.setLanguage(getStringFromMap(data, "language"));
+        userProfile.setName(getStringFromMap(data, "name"));
+        userProfile.setProfileImage(getStringFromMap(data, "profileImage"));
+        userProfile.setSpam(getBooleanFromMap(data, "spam"));
+        userProfile.setSurname(getStringFromMap(data, "surname"));
+        userProfile.setUsername(getStringFromMap(data, "username"));
+        userProfile.setCo2Points(getDoubleFromMap(data, "co2Points"));
+
+        return userProfile;
+    }
+
+    private static String getStringFromMap(Map<String, Object> data, String key) {
+        return data.containsKey(key) ? (String) data.get(key) : "";
+    }
+
+    private static boolean getBooleanFromMap(Map<String, Object> data, String key) {
+        return data.containsKey(key) && data.get(key) instanceof Boolean ? (Boolean) data.get(key) : false;
+    }
+
+    private static double getDoubleFromMap(Map<String, Object> data, String key) {
+        return data.containsKey(key) && data.get(key) instanceof Number ? ((Number) data.get(key)).doubleValue() : 0.0;
     }
 
     public String getFirstName() {
@@ -51,14 +66,6 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 
     public String getBirthdate() {
@@ -131,14 +138,6 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public double getRating() {
-        return rating;
-    }
-
-    public void setRating(double rating) {
-        this.rating = rating;
     }
 
     public double getCo2Points() {
