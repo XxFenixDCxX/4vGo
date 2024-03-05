@@ -7,316 +7,318 @@
     android:background="@color/colorPrimary"
     tools:context=".activities.MainRoutesActivity">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bnNavigation"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        app:itemIconTint="#0A8353"
-        app:itemTextColor="#0A8353"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu"
-        tools:ignore="VisualLintBottomNav" />
-
-    <ImageView
-        android:id="@+id/imageViewgif"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="167dp"
-        android:layout_marginBottom="-10dp"
-        android:contentDescription="@string/descriptionHeader"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-        app:layout_constraintHorizontal_bias="0.438"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        app:srcCompat="@drawable/car_movement" />
+        android:layout_height="match_parent"
+        android:background="@drawable/background"
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/edittext_background"
-        android:orientation="vertical"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/bnNavigation"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
-
-        <RelativeLayout
-            android:layout_width="match_parent"
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bnNavigation"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp">
+            android:background="@android:color/white"
+            app:itemIconTint="#0A8353"
+            app:itemTextColor="#0A8353"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/bottom_nav_menu"
+            tools:ignore="VisualLintBottomNav" />
 
-            <TextView
-                android:id="@+id/txtOrigen2"
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/edittext_background"
+            android:orientation="vertical"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/bnNavigation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:id="@+id/txtOrigen2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints=""
+                    android:background="@drawable/white_edittext"
+                    android:drawableStart="@drawable/circle_shape_svgrepo_com"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:hint="@string/edit_origin_hint"
+                    android:minHeight="48dp"
+                    android:padding="7dp"
+                    android:paddingStart="10dp"
+
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gris"
+                    android:textStyle="italic"
+                    tools:ignore="RtlSymmetry" />
+
+                <ImageView
+                    android:id="@+id/imageSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="10dp"
+                    android:contentDescription="TODO"
+                    android:src="@drawable/ic_switch" />
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/txtDestination"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:autofillHints=""
                 android:background="@drawable/white_edittext"
                 android:drawableStart="@drawable/circle_shape_svgrepo_com"
                 android:drawablePadding="10dp"
+                android:ems="10"
                 android:gravity="center_vertical"
-                android:hint="@string/edit_origin_hint"
+                android:hint="@string/edit_destination_hint"
                 android:minHeight="48dp"
                 android:padding="7dp"
-                android:paddingStart="10dp"
 
+                android:paddingStart="10dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gris"
                 android:textStyle="italic"
                 tools:ignore="RtlSymmetry" />
 
-            <ImageView
-                android:id="@+id/imageSwitch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="10dp"
-                android:src="@drawable/ic_switch"
-                android:contentDescription="TODO" />
-        </RelativeLayout>
-
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@android:color/darker_gray" />
-
-        <TextView
-            android:id="@+id/txtDestination"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:autofillHints=""
-            android:background="@drawable/white_edittext"
-            android:drawableStart="@drawable/circle_shape_svgrepo_com"
-            android:drawablePadding="10dp"
-            android:ems="10"
-            android:gravity="center_vertical"
-            android:hint="@string/edit_destination_hint"
-            android:minHeight="48dp"
-            android:padding="7dp"
-
-            android:paddingStart="10dp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/gris"
-            android:textStyle="italic"
-            tools:ignore="RtlSymmetry" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@android:color/darker_gray" />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/txtDateTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_weight="3"
-                android:autofillHints=""
-                android:background="@drawable/white_edittext"
-                android:drawablePadding="10dp"
-                android:focusable="false"
-                android:hint="@string/dateHint"
-                android:inputType="none"
-                android:padding="15dp"
-                android:textColorHint="@color/gris"
-                android:textSize="14sp"
-                app:drawableStartCompat="@drawable/ic_fecha"
-                tools:ignore="TextSizeCheck,VisualLintBounds" />
-
             <View
-                android:layout_width="0.5dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
                 android:background="@android:color/darker_gray" />
 
-            <EditText
-                android:id="@+id/editNumPeople"
-                android:layout_width="70dp"
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtDateTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="3"
+                    android:autofillHints=""
+                    android:background="@drawable/white_edittext"
+                    android:drawablePadding="10dp"
+                    android:focusable="false"
+                    android:hint="@string/dateHint"
+                    android:inputType="none"
+                    android:padding="15dp"
+                    android:textColorHint="@color/gris"
+                    android:textSize="14sp"
+                    app:drawableStartCompat="@drawable/ic_fecha"
+                    tools:ignore="TextSizeCheck,VisualLintBounds" />
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/darker_gray" />
+
+                <EditText
+                    android:id="@+id/editNumPeople"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+
+                    android:background="@drawable/white_edittext"
+                    android:contentDescription="@null"
+                    android:drawableStart="@drawable/ic_person"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:inputType="number"
+                    android:minHeight="48dp"
+                    android:padding="7dp"
+                    android:paddingStart="10dp"
+                    android:textColor="#000000"
+                    tools:ignore="LabelFor" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/buttonSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_button_intro"
+                android:text="@string/button_search"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutHistory"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/white_background_for_recycler"
+            android:orientation="vertical"
+            android:padding="7dp"
+            app:layout_constraintBottom_toTopOf="@+id/bnNavigation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/white_edittext"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
 
-                android:contentDescription="@null"
-                android:drawableStart="@drawable/ic_person"
-                android:drawablePadding="10dp"
-                android:gravity="center_vertical"
-                android:inputType="number"
-                android:minHeight="48dp"
-                android:padding="7dp"
-                android:paddingStart="10dp"
-                android:textColor="#000000"
-                tools:ignore="LabelFor"
-                android:autofillHints="" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="75dp"
+                    android:layout_margin="3dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/white_edittext"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_favorito"
+                        android:drawablePadding="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/routes_favorites"
+
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <!-- Agrega aquí más información sobre la Ruta Favorita 1 según tus necesidades -->
+
+                </LinearLayout>
+
+                <!-- Card 2: Ruta Favorita -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="75dp"
+                    android:layout_margin="3dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/white_edittext"
+
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_historial"
+                        android:drawablePadding="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/routes_history"
+                        android:textColor="@color/black"
+
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <!-- Agrega aquí más información sobre la Ruta Favorita 2 según tus necesidades -->
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <!-- Card 3: Ruta Favorita -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="75dp"
+                    android:layout_margin="3dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/white_edittext"
+
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/favorito_user"
+
+                        android:drawablePadding="10dp"
+                        android:text="@string/users_favorites"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="75dp"
+                    android:layout_margin="3dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/white_edittext"
+
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/banned"
+                        android:drawablePadding="10dp"
+                        android:text="@string/users_banned"
+
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
         </LinearLayout>
 
-        <Button
-            android:id="@+id/buttonSearch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/background_button_intro"
-            android:text="@string/button_search"
-            android:textColor="@color/white"
-            android:textStyle="bold" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayoutHistory"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/white_background_for_recycler"
-        android:orientation="vertical"
-        android:padding="7dp"
-        app:layout_constraintBottom_toTopOf="@+id/bnNavigation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:orientation="horizontal"
-            android:baselineAligned="false">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="75dp"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                android:background="@drawable/white_edittext"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_favorito"
-                    android:drawablePadding="10dp"
-                    android:gravity="center_vertical"
-                    android:text="@string/routes_favorites"
-
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <!-- Agrega aquí más información sobre la Ruta Favorita 1 según tus necesidades -->
-
-            </LinearLayout>
-
-            <!-- Card 2: Ruta Favorita -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="75dp"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                android:background="@drawable/white_edittext"
-
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_historial"
-                    android:drawablePadding="10dp"
-                    android:gravity="center_vertical"
-                    android:text="@string/routes_history"
-                    android:textColor="@color/black"
-
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <!-- Agrega aquí más información sobre la Ruta Favorita 2 según tus necesidades -->
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="3dp"
-            android:orientation="horizontal"
-            android:baselineAligned="false">
-
-            <!-- Card 3: Ruta Favorita -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="75dp"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                android:background="@drawable/white_edittext"
-
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/favorito_user"
-
-                    android:drawablePadding="10dp"
-                    android:text="@string/users_favorites"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="75dp"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                android:background="@drawable/white_edittext"
-
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/banned"
-                    android:drawablePadding="10dp"
-                    android:text="@string/users_banned"
-
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -189,4 +189,18 @@
 
     <string name="ic_create_route">Ruta Sortu</string>
 
+    <string name="routes_favorites">Bideak Gogokoak</string>
+
+    <!-- Bide Historia -->
+    <string name="routes_history">Bide Historia</string>
+
+    <!-- Gogokoak Diren Erabiltzaileak -->
+    <string name="users_favorites">Gogokoak Diren Erabiltzaileak</string>
+
+    <!-- Ukatutako Erabiltzaileak -->
+    <string name="users_banned">Ukatutako Erabiltzaileak</string>
+
+    <string name="error_clasification">Klasifikazioaren datuak eskuratzerakoan errorea</string>
+
+
 </resources>

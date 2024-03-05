@@ -188,4 +188,17 @@
 
     <string name="ic_create_route">Create Route</string>
 
+    <string name="routes_favorites">Favorite Routes</string>
+
+    <!-- Route History -->
+    <string name="routes_history">Route History</string>
+
+    <!-- Favorite Users -->
+    <string name="users_favorites">Favorite Users</string>
+
+    <!-- Banned Users -->
+    <string name="users_banned">Banned Users</string>
+
+    <string name="error_clasification">Error retrieving classification data</string>
+
 </resources>
