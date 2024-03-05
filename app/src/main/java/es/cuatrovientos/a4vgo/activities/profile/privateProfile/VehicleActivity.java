@@ -1,4 +1,4 @@
-package es.cuatrovientos.a4vgo.activities.profile;
+package es.cuatrovientos.a4vgo.activities.profile.privateProfile;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;

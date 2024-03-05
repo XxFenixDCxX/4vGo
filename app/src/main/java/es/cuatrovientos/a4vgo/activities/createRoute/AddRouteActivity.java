@@ -24,7 +24,7 @@ import java.util.Locale;
 
 import es.cuatrovientos.a4vgo.R;
 import es.cuatrovientos.a4vgo.activities.MainRoutesActivity;
-import es.cuatrovientos.a4vgo.activities.profile.ProfileActivity;
+import es.cuatrovientos.a4vgo.activities.profile.privateProfile.ProfileActivity;
 import es.cuatrovientos.a4vgo.adapters.CustomSpinnerAdapter;
 import es.cuatrovientos.a4vgo.maps.searchMapActivity;
 import es.cuatrovientos.a4vgo.utils.DialogUtils;
