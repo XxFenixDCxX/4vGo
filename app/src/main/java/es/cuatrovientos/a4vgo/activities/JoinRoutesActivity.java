@@ -22,16 +22,19 @@ public class JoinRoutesActivity extends AppCompatActivity {
     RecyclerView routes;
     ImageView back;
     TextView destination, origin, date, peopleNum;
+    Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join_routes);
 
-        String routeType = "Ida";
-        String cords = "42.8225083,-1.6541776";
-        String selectedDate = "29/02/2024";
-        int numPeople = 2;
-
+        bundle = getIntent().getExtras();
+        String routeType = bundle.getString("routeType");
+        String selectedDate = bundle.getString("selectedDate");
+        int numPeople = Integer.parseInt(bundle.getString("numPeople"));
+        double latitude = Double.parseDouble(bundle.getString("selectedLatitude"));
+        double longitude = Double.parseDouble(bundle.getString("selectedLongitude"));
+        String cords = latitude + "," + longitude;
         routes = findViewById(R.id.rvRoutes);
         RecyclerRoutesAdapter adapter = new RecyclerRoutesAdapter(routeType, cords, selectedDate, numPeople);
         back = findViewById(R.id.btnBackRoutesJoin);
@@ -45,7 +48,7 @@ public class JoinRoutesActivity extends AppCompatActivity {
             Intent intent = new Intent(JoinRoutesActivity.this, MainRoutesActivity.class);
             startActivity(intent);
         });
-        String streetName = getStreetName(Double.parseDouble(cords.split(",")[0]), Double.parseDouble(cords.split(",")[1]));
+        String streetName = getStreetName(latitude, longitude);
         if (routeType.equals("Ida")){
             origin.setText(streetName);
             destination.setText(R.string.center);
