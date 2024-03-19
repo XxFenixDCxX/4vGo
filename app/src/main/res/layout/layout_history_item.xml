@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        app:cardBackgroundColor="@color/colorPrimary"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp"
+        app:cardMaxElevation="12dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
+        tools:ignore="TextSizeCheck">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary">
+
+            <ImageView
+                android:id="@+id/OriginDestinationImg"
+                android:layout_width="92dp"
+                android:layout_height="90dp"
+                android:layout_margin="10dp"
+                android:contentDescription="@string/profileImg"
+                android:src="@drawable/roadmap"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/txtOriginHistory"
+                android:layout_width="71dp"
+                android:layout_height="18dp"
+                android:ellipsize="end"
+                android:text="@string/OriginCity"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/OriginDestinationImg"
+                app:layout_constraintTop_toTopOf="@+id/OriginDestinationImg"
+                app:layout_constraintWidth_default="wrap"
+                app:layout_constraintWidth_max="wrap"
+                app:layout_constraintWidth_min="wrap" />
+
+            <TextView
+                android:id="@+id/txtDestinationHistory"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/DestinationCity"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/OriginDestinationImg"
+                app:layout_constraintStart_toEndOf="@+id/OriginDestinationImg"
+                tools:ignore="MissingConstraints" />
+
+            <ImageView
+                android:id="@+id/carSeatsImg"
+                android:layout_width="45dp"
+                android:layout_height="47dp"
+                android:layout_margin="10dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="16dp"
+                android:contentDescription="@string/pasagers"
+                android:src="@drawable/car_seat"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="ImageContrastCheck" />
+
+            <TextView
+                android:id="@+id/txtSeatNumHistory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="28dp"
+                android:text="@string/seatNum"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/carSeatsImg"
+                app:layout_constraintEnd_toEndOf="@+id/carSeatsImg"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/carSeatsImg" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
