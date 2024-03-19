@@ -65,6 +65,18 @@
                 app:layout_constraintStart_toEndOf="@+id/OriginDestinationImg"
                 tools:ignore="MissingConstraints" />
 
+            <TextView
+                android:id="@+id/txtDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/dateHint"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
             <ImageView
                 android:id="@+id/carSeatsImg"
                 android:layout_width="45dp"

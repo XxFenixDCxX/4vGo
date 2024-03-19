@@ -15,12 +15,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import es.cuatrovientos.a4vgo.R;
 import es.cuatrovientos.a4vgo.activities.createRoute.AddRouteActivity;
@@ -42,6 +51,11 @@ public class MainRoutesActivity extends AppCompatActivity {
     private String selectedLatitude;
     private LinearLayout history, favRoute, favBan;
     private RecyclerView rvHistory;
+    private Query query;
+    private FirebaseFirestore db;
+    private String originHistory;
+    private String destinationHistory;
+    private String dniHistory;
     private static final int REQUEST_MAP_GO = 1;
 
     @Override
@@ -70,6 +84,14 @@ public class MainRoutesActivity extends AppCompatActivity {
             favBan.setVisibility(View.VISIBLE);
             favRoute.setVisibility(View.VISIBLE);
         });
+
+        query.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                QuerySnapshot querySnapshot = task.getResult();
+                DocumentSnapshot document = querySnapshot.getDocuments().get(0);
+                dniHistory = document.getString("dni");
+            }
+        });
     }
 
     private void initializeViews() {
@@ -86,6 +108,10 @@ public class MainRoutesActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.btnBackMain);
         favBan = findViewById(R.id.layoutFavBan);
         favRoute = findViewById(R.id.layoutFavRout);
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        CollectionReference collection = FirebaseFirestore.getInstance().collection("personalDetails");
+        query = collection.whereEqualTo("email", currentUser.getEmail());
+        db = FirebaseFirestore.getInstance();
         selectedCoordinates= "";
     }
 
@@ -110,12 +136,14 @@ public class MainRoutesActivity extends AppCompatActivity {
         boolean isVuelta = routeType.equals(getString(R.string.route_type_vuelta));
         if (isVuelta) {
             txtDestination.setText(getString(R.string.ci_cuatrovientos));
+            destinationHistory = getString(R.string.ci_cuatrovientos);
             txtDestination.setEnabled(false);
             txtOrigin2.setEnabled(true);
             txtOrigin2.setText("");
             routeType = getString(R.string.route_type_ida);
         } else {
             txtOrigin2.setText(getString(R.string.ci_cuatrovientos));
+            originHistory = getString(R.string.ci_cuatrovientos);
             txtDestination.setText("");
             txtOrigin2.setEnabled(false);
             txtDestination.setEnabled(true);
@@ -182,12 +210,15 @@ public class MainRoutesActivity extends AppCompatActivity {
 
             if (routeType.equals("Ida")) {
                 txtOrigin2.setText(streetName);
+                originHistory = streetName;
                 txtDestination.setText(getString(R.string.ci_cuatrovientos));
+                destinationHistory = getString(R.string.ci_cuatrovientos);
 
             } else {
                 txtDestination.setText(streetName);
+                destinationHistory = streetName;
                 txtOrigin2.setText(getString(R.string.ci_cuatrovientos));
-
+                originHistory = getString(R.string.ci_cuatrovientos);
             }
         }else{
             txtOrigin2.setText("");
@@ -201,6 +232,17 @@ public class MainRoutesActivity extends AppCompatActivity {
 
     private void navigateToRouteResultsActivity() {
         if (validateSearchConditions()) {
+            String numPeopleHistory = editNumPeople.getText().toString();
+            String dateHistory = txtDateTime.getText().toString();
+            Map<String, String> historyRoutesMap = new HashMap<>();
+            historyRoutesMap.put("origin", originHistory);
+            historyRoutesMap.put("destination", destinationHistory);
+            historyRoutesMap.put("dni", dniHistory);
+            historyRoutesMap.put("date", dateHistory);
+            historyRoutesMap.put("numPeople", numPeopleHistory);
+            String docId = dniHistory+"-"+originHistory+"-"+destinationHistory;
+            db.collection("historyRoutes").document(docId).set(historyRoutesMap);
+
             Intent intent = new Intent(MainRoutesActivity.this, JoinRoutesActivity.class);
             intent.putExtra("routeType", routeType);
             intent.putExtra("selectedLatitude", selectedLatitude);
@@ -295,7 +337,4 @@ public class MainRoutesActivity extends AppCompatActivity {
             return true;
         }
     }
-
-
-
 }
