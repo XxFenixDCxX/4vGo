@@ -52,7 +52,8 @@
                 app:layout_constraintTop_toTopOf="@+id/OriginDestinationImg"
                 app:layout_constraintWidth_default="wrap"
                 app:layout_constraintWidth_max="wrap"
-                app:layout_constraintWidth_min="wrap" />
+                app:layout_constraintWidth_min="wrap"
+                tools:ignore="TextSizeCheck" />
 
             <TextView
                 android:id="@+id/txtDestinationHistory"
