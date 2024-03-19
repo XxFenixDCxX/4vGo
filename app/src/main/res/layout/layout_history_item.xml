@@ -12,19 +12,29 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginBottom="0dp"
         app:cardBackgroundColor="@color/colorPrimary"
         app:cardCornerRadius="20dp"
         app:cardElevation="10dp"
         app:cardMaxElevation="12dp"
         app:cardPreventCornerOverlap="true"
-        app:cardUseCompatPadding="true"
+        app:cardUseCompatPadding="false"
         tools:ignore="TextSizeCheck">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="0dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginBottom="0dp"
             android:background="@color/colorPrimary">
 
             <ImageView
@@ -43,12 +53,14 @@
 
             <TextView
                 android:id="@+id/txtOriginHistory"
-                android:layout_width="71dp"
-                android:layout_height="18dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:text="@string/OriginCity"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toStartOf="@+id/OriginDestinationImg"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/OriginDestinationImg"
                 app:layout_constraintWidth_default="wrap"
                 app:layout_constraintWidth_max="wrap"

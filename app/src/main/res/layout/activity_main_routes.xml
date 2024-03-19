@@ -333,14 +333,14 @@
                 android:layout_marginStart="30dp"
                 android:contentDescription="@string/Back_Icon"
                 android:src="@drawable/general_back_icon"
-                android:visibility="invisible"
+                android:visibility="gone"
                 tools:ignore="VisualLintBounds" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvHistory"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="invisible">
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
             </androidx.recyclerview.widget.RecyclerView>
 

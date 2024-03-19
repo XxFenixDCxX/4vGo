@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -34,6 +35,7 @@ import java.util.Map;
 import es.cuatrovientos.a4vgo.R;
 import es.cuatrovientos.a4vgo.activities.createRoute.AddRouteActivity;
 import es.cuatrovientos.a4vgo.activities.profile.privateProfile.ProfileActivity;
+import es.cuatrovientos.a4vgo.adapters.RecyclerHistoryAdapter;
 import es.cuatrovientos.a4vgo.maps.searchMapActivity;
 import es.cuatrovientos.a4vgo.utils.DialogUtils;
 
@@ -74,13 +76,17 @@ public class MainRoutesActivity extends AppCompatActivity {
         history.setOnClickListener(v ->{
             rvHistory.setVisibility(View.VISIBLE);
             btnBack.setVisibility(View.VISIBLE);
-            favBan.setVisibility(View.INVISIBLE);
-            favRoute.setVisibility(View.INVISIBLE);
+            favBan.setVisibility(View.GONE);
+            favRoute.setVisibility(View.GONE);
+
+            RecyclerHistoryAdapter adapter = new RecyclerHistoryAdapter();
+            rvHistory.setAdapter(adapter);
+            rvHistory.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
         });
 
         btnBack.setOnClickListener(v ->{
-            rvHistory.setVisibility(View.INVISIBLE);
-            btnBack.setVisibility(View.INVISIBLE);
+            rvHistory.setVisibility(View.GONE);
+            btnBack.setVisibility(View.GONE);
             favBan.setVisibility(View.VISIBLE);
             favRoute.setVisibility(View.VISIBLE);
         });
