@@ -71,7 +71,7 @@
                     android:textColor="@color/black"
                     android:textColorHint="@color/gris"
                     android:textStyle="italic"
-                    tools:ignore="RtlSymmetry" />
+                    tools:ignore="RtlSymmetry,UseCompatTextViewDrawableXml" />
 
                 <ImageView
                     android:id="@+id/imageSwitch"
@@ -80,7 +80,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="10dp"
-                    android:contentDescription="TODO"
+                    android:contentDescription="@string/defaultDescription"
                     android:src="@drawable/ic_switch" />
             </RelativeLayout>
 
@@ -109,7 +109,7 @@
                 android:textColor="@color/black"
                 android:textColorHint="@color/gris"
                 android:textStyle="italic"
-                tools:ignore="RtlSymmetry" />
+                tools:ignore="RtlSymmetry,UseCompatTextViewDrawableXml" />
 
             <View
                 android:layout_width="match_parent"
@@ -163,7 +163,7 @@
                     android:padding="7dp"
                     android:paddingStart="10dp"
                     android:textColor="#000000"
-                    tools:ignore="LabelFor" />
+                    tools:ignore="LabelFor,RtlSymmetry,SpeakableTextPresentCheck,VisualLintTextFieldSize" />
 
             </LinearLayout>
 
@@ -174,7 +174,8 @@
                 android:background="@drawable/background_button_intro"
                 android:text="@string/button_search"
                 android:textColor="@color/white"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="VisualLintButtonSize" />
 
         </LinearLayout>
 
@@ -186,6 +187,7 @@
             android:background="@drawable/white_background_for_recycler"
             android:orientation="vertical"
             android:padding="7dp"
+            android:visibility="visible"
             app:layout_constraintBottom_toTopOf="@+id/bnNavigation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -194,11 +196,13 @@
 
 
             <LinearLayout
+                android:id="@+id/layoutFavRout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:baselineAligned="false"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="visible">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -219,7 +223,8 @@
 
                         android:textColor="@color/black"
                         android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:ignore="UseCompatTextViewDrawableXml" />
 
                     <!-- Agrega aquí más información sobre la Ruta Favorita 1 según tus necesidades -->
 
@@ -227,12 +232,13 @@
 
                 <!-- Card 2: Ruta Favorita -->
                 <LinearLayout
+                    android:id="@+id/routeHistory"
                     android:layout_width="0dp"
                     android:layout_height="75dp"
                     android:layout_margin="3dp"
                     android:layout_weight="1"
-                    android:background="@drawable/white_edittext"
 
+                    android:background="@drawable/white_edittext"
                     android:orientation="vertical"
                     android:padding="16dp">
 
@@ -246,7 +252,8 @@
                         android:textColor="@color/black"
 
                         android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:ignore="UseCompatTextViewDrawableXml" />
 
                     <!-- Agrega aquí más información sobre la Ruta Favorita 2 según tus necesidades -->
 
@@ -256,6 +263,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/layoutFavBan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
@@ -271,7 +279,8 @@
                     android:background="@drawable/white_edittext"
 
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    tools:ignore="VisualLintBounds,TextSizeCheck">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -282,7 +291,8 @@
                         android:text="@string/users_favorites"
                         android:textColor="@color/black"
                         android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:ignore="UseCompatTextViewDrawableXml" />
 
 
                 </LinearLayout>
@@ -295,7 +305,8 @@
                     android:background="@drawable/white_edittext"
 
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    tools:ignore="VisualLintBounds,TextSizeCheck">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -306,13 +317,33 @@
 
                         android:textColor="@color/black"
                         android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:ignore="UseCompatTextViewDrawableXml" />
 
 
                 </LinearLayout>
 
 
             </LinearLayout>
+
+            <ImageView
+                android:id="@+id/btnBackMain"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="30dp"
+                android:contentDescription="@string/Back_Icon"
+                android:src="@drawable/general_back_icon"
+                android:visibility="invisible"
+                tools:ignore="VisualLintBounds" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvHistory"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="invisible">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
         </LinearLayout>
 
 

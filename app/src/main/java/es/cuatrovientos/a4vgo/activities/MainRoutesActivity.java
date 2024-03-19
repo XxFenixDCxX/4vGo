@@ -1,14 +1,18 @@
 package es.cuatrovientos.a4vgo.activities;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -30,12 +34,14 @@ public class MainRoutesActivity extends AppCompatActivity {
     private TextView txtDestination;
     private TextView txtDateTime;
     private Button buttonSearch;
-    private ImageView imageSwitch;
+    private ImageView imageSwitch, btnBack;
     private String selectedCoordinates;
     private EditText editNumPeople;
     private String routeType;
     private String selectedLongitude;
     private String selectedLatitude;
+    private LinearLayout history, favRoute, favBan;
+    private RecyclerView rvHistory;
     private static final int REQUEST_MAP_GO = 1;
 
     @Override
@@ -51,6 +57,19 @@ public class MainRoutesActivity extends AppCompatActivity {
         setSearchButtonListener();
         handleIntentExtras(getIntent());
 
+        history.setOnClickListener(v ->{
+            rvHistory.setVisibility(View.VISIBLE);
+            btnBack.setVisibility(View.VISIBLE);
+            favBan.setVisibility(View.INVISIBLE);
+            favRoute.setVisibility(View.INVISIBLE);
+        });
+
+        btnBack.setOnClickListener(v ->{
+            rvHistory.setVisibility(View.INVISIBLE);
+            btnBack.setVisibility(View.INVISIBLE);
+            favBan.setVisibility(View.VISIBLE);
+            favRoute.setVisibility(View.VISIBLE);
+        });
     }
 
     private void initializeViews() {
@@ -62,8 +81,12 @@ public class MainRoutesActivity extends AppCompatActivity {
         editNumPeople = findViewById(R.id.editNumPeople);
         BottomNavigationView bottom = findViewById(R.id.bnNavigation);
         bottom.setSelectedItemId(R.id.navigation_trips);
+        history = findViewById(R.id.routeHistory);
+        rvHistory = findViewById(R.id.rvHistory);
+        btnBack = findViewById(R.id.btnBackMain);
+        favBan = findViewById(R.id.layoutFavBan);
+        favRoute = findViewById(R.id.layoutFavRout);
         selectedCoordinates= "";
-
     }
 
     private void setBottomNavigationListener() {
@@ -113,7 +136,7 @@ public class MainRoutesActivity extends AppCompatActivity {
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 this,
                 (view, year1, month1, dayOfMonth) -> {
-                    String formattedDate = String.format("%02d/%02d/%04d", dayOfMonth, month1 + 1, year1);
+                    @SuppressLint("DefaultLocale") String formattedDate = String.format("%02d/%02d/%04d", dayOfMonth, month1 + 1, year1);
                     txtDateTime.setText(formattedDate);
                 },
                 year,
@@ -265,7 +288,7 @@ public class MainRoutesActivity extends AppCompatActivity {
 
 
     private boolean isLocationSelected() {
-        if ( selectedCoordinates.isEmpty() || selectedCoordinates == null) {
+        if ( selectedCoordinates.isEmpty()) {
             DialogUtils.showWarningDialog(this, getString(R.string.error), getString(R.string.error_no_location_selected));
             return false;
         } else {
