@@ -34,6 +34,7 @@
     import es.cuatrovientos.a4vgo.activities.MainRoutesActivity;
     import es.cuatrovientos.a4vgo.activities.co2Points.RatingByCo2Points;
     import es.cuatrovientos.a4vgo.activities.createRoute.AddRouteActivity;
+    import es.cuatrovientos.a4vgo.activities.profile.publicProfile.PublicProfilActivity;
     import es.cuatrovientos.a4vgo.utils.DialogUtils;
     import es.cuatrovientos.a4vgo.activities.MainActivity;
 
@@ -148,7 +149,7 @@
                             overridePendingTransition(0, 0);
                         } else if (id == R.id.navigation_chat){
                             overridePendingTransition(0, 0);
-                            Intent intent = new Intent(ProfileActivity.this , JoinRoutesActivity.class);
+                            Intent intent = new Intent(ProfileActivity.this , PublicProfilActivity.class);
                             startActivity(intent);
                             overridePendingTransition(0, 0);
                         }

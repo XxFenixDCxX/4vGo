@@ -209,5 +209,22 @@
 
     <string name="error_clasification">Error al obtener los datos de la clasificación</string>
 
+    <string name="banIconDescription">Descripción del ícono de ban</string>
+    <string name="favoriteIconDescription">Descripción del ícono de favorito</string>
+    <string name="customIconDescription">Descripción del ícono personalizado</string>
+    <string name="userIconDescription">Icono de Usuario</string>
+    <string name="userInfoText">Información del Usuario</string>
+
+    <string name="co2IconDescription">Icono de CO2</string>
+    <string name="co2ScoreText">Puntuación de CO2</string>
+
+        <string name="favorite_icon_description">Agregar a favoritos</string>
+        <string name="favorite_text">Agregar a favoritos</string>
+
+        <string name="banned_icon_description">Banear usuario</string>
+        <string name="banned_text">Banear usuario</string>
+
+        <string name="contact_icon_description">Contactar con usuario</string>
+        <string name="contact_text">Contactar con usuario</string>
 
 </resources>
