@@ -1,26 +1,41 @@
 package es.cuatrovientos.a4vgo.activities;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import es.cuatrovientos.a4vgo.R;
 import es.cuatrovientos.a4vgo.activities.createRoute.AddRouteActivity;
 import es.cuatrovientos.a4vgo.activities.profile.privateProfile.ProfileActivity;
+import es.cuatrovientos.a4vgo.adapters.RecyclerHistoryAdapter;
 import es.cuatrovientos.a4vgo.maps.searchMapActivity;
 import es.cuatrovientos.a4vgo.utils.DialogUtils;
 
@@ -30,12 +45,19 @@ public class MainRoutesActivity extends AppCompatActivity {
     private TextView txtDestination;
     private TextView txtDateTime;
     private Button buttonSearch;
-    private ImageView imageSwitch;
+    private ImageView imageSwitch, btnBack;
     private String selectedCoordinates;
     private EditText editNumPeople;
     private String routeType;
     private String selectedLongitude;
     private String selectedLatitude;
+    private LinearLayout history, favRoute, favBan;
+    private RecyclerView rvHistory;
+    private Query query;
+    private FirebaseFirestore db;
+    private String originHistory;
+    private String destinationHistory;
+    private String dniHistory;
     private static final int REQUEST_MAP_GO = 1;
 
     @Override
@@ -51,6 +73,31 @@ public class MainRoutesActivity extends AppCompatActivity {
         setSearchButtonListener();
         handleIntentExtras(getIntent());
 
+        history.setOnClickListener(v ->{
+            rvHistory.setVisibility(View.VISIBLE);
+            btnBack.setVisibility(View.VISIBLE);
+            favBan.setVisibility(View.GONE);
+            favRoute.setVisibility(View.GONE);
+
+            RecyclerHistoryAdapter adapter = new RecyclerHistoryAdapter();
+            rvHistory.setAdapter(adapter);
+            rvHistory.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+        });
+
+        btnBack.setOnClickListener(v ->{
+            rvHistory.setVisibility(View.GONE);
+            btnBack.setVisibility(View.GONE);
+            favBan.setVisibility(View.VISIBLE);
+            favRoute.setVisibility(View.VISIBLE);
+        });
+
+        query.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                QuerySnapshot querySnapshot = task.getResult();
+                DocumentSnapshot document = querySnapshot.getDocuments().get(0);
+                dniHistory = document.getString("dni");
+            }
+        });
     }
 
     private void initializeViews() {
@@ -62,8 +109,16 @@ public class MainRoutesActivity extends AppCompatActivity {
         editNumPeople = findViewById(R.id.editNumPeople);
         BottomNavigationView bottom = findViewById(R.id.bnNavigation);
         bottom.setSelectedItemId(R.id.navigation_trips);
+        history = findViewById(R.id.routeHistory);
+        rvHistory = findViewById(R.id.rvHistory);
+        btnBack = findViewById(R.id.btnBackMain);
+        favBan = findViewById(R.id.layoutFavBan);
+        favRoute = findViewById(R.id.layoutFavRout);
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        CollectionReference collection = FirebaseFirestore.getInstance().collection("personalDetails");
+        query = collection.whereEqualTo("email", currentUser.getEmail());
+        db = FirebaseFirestore.getInstance();
         selectedCoordinates= "";
-
     }
 
     private void setBottomNavigationListener() {
@@ -87,12 +142,14 @@ public class MainRoutesActivity extends AppCompatActivity {
         boolean isVuelta = routeType.equals(getString(R.string.route_type_vuelta));
         if (isVuelta) {
             txtDestination.setText(getString(R.string.ci_cuatrovientos));
+            destinationHistory = getString(R.string.ci_cuatrovientos);
             txtDestination.setEnabled(false);
             txtOrigin2.setEnabled(true);
             txtOrigin2.setText("");
             routeType = getString(R.string.route_type_ida);
         } else {
             txtOrigin2.setText(getString(R.string.ci_cuatrovientos));
+            originHistory = getString(R.string.ci_cuatrovientos);
             txtDestination.setText("");
             txtOrigin2.setEnabled(false);
             txtDestination.setEnabled(true);
@@ -113,7 +170,7 @@ public class MainRoutesActivity extends AppCompatActivity {
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 this,
                 (view, year1, month1, dayOfMonth) -> {
-                    String formattedDate = String.format("%02d/%02d/%04d", dayOfMonth, month1 + 1, year1);
+                    @SuppressLint("DefaultLocale") String formattedDate = String.format("%02d/%02d/%04d", dayOfMonth, month1 + 1, year1);
                     txtDateTime.setText(formattedDate);
                 },
                 year,
@@ -159,12 +216,15 @@ public class MainRoutesActivity extends AppCompatActivity {
 
             if (routeType.equals("Ida")) {
                 txtOrigin2.setText(streetName);
+                originHistory = streetName;
                 txtDestination.setText(getString(R.string.ci_cuatrovientos));
+                destinationHistory = getString(R.string.ci_cuatrovientos);
 
             } else {
                 txtDestination.setText(streetName);
+                destinationHistory = streetName;
                 txtOrigin2.setText(getString(R.string.ci_cuatrovientos));
-
+                originHistory = getString(R.string.ci_cuatrovientos);
             }
         }else{
             txtOrigin2.setText("");
@@ -178,6 +238,17 @@ public class MainRoutesActivity extends AppCompatActivity {
 
     private void navigateToRouteResultsActivity() {
         if (validateSearchConditions()) {
+            String numPeopleHistory = editNumPeople.getText().toString();
+            String dateHistory = txtDateTime.getText().toString();
+            Map<String, String> historyRoutesMap = new HashMap<>();
+            historyRoutesMap.put("origin", originHistory);
+            historyRoutesMap.put("destination", destinationHistory);
+            historyRoutesMap.put("dni", dniHistory);
+            historyRoutesMap.put("date", dateHistory);
+            historyRoutesMap.put("numPeople", numPeopleHistory);
+            String docId = dniHistory+"-"+originHistory+"-"+destinationHistory;
+            db.collection("historyRoutes").document(docId).set(historyRoutesMap);
+
             Intent intent = new Intent(MainRoutesActivity.this, JoinRoutesActivity.class);
             intent.putExtra("routeType", routeType);
             intent.putExtra("selectedLatitude", selectedLatitude);
@@ -265,14 +336,11 @@ public class MainRoutesActivity extends AppCompatActivity {
 
 
     private boolean isLocationSelected() {
-        if ( selectedCoordinates.isEmpty() || selectedCoordinates == null) {
+        if ( selectedCoordinates.isEmpty()) {
             DialogUtils.showWarningDialog(this, getString(R.string.error), getString(R.string.error_no_location_selected));
             return false;
         } else {
             return true;
         }
     }
-
-
-
 }

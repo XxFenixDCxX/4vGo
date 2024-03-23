@@ -1,11 +1,15 @@
 package es.cuatrovientos.a4vgo.activities;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if (!isNetworkAvailable()) {
+            showNoInternetDialog();
+            return;
+        }
         setDefaultLanguage();
 
         db = FirebaseFirestore.getInstance();
@@ -71,5 +79,24 @@ public class MainActivity extends AppCompatActivity {
 
         Resources resources = getResources();
         resources.updateConfiguration(config, resources.getDisplayMetrics());
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager != null) {
+            NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+            return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+        }
+        return false;
+    }
+
+    // Método para mostrar un diálogo si no hay conexión a Internet
+    private void showNoInternetDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("No hay conexión a Internet");
+        builder.setMessage("Por favor, verifica tu conexión a Internet y vuelve a intentarlo.");
+        builder.setPositiveButton("Cerrar aplicación", (dialog, which) -> finish());
+        builder.setCancelable(false); // Para evitar que el usuario cierre el diálogo pulsando fuera de él
+        builder.show();
     }
 }
