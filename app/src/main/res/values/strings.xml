@@ -50,7 +50,7 @@
     <string name="personalDetailsImageDescription">Imagen de Datos Personales</string>
     <string name="languague">Idioma</string>
     <string name="languagueImageDescription">Imagen de Idioma</string>
-    <string name="co2Points">Puntuaciones C02</string>
+    <string name="co2Points">Ranking puntuaciones C02</string>
     <string name="co2PointsImageDescription">Imagen de Puntuaciones C02</string>
     <string name="vehicles">Vehiculos</string>
     <string name="vehiclesImageDescription">Imagen de Vehiculos</string>
@@ -204,6 +204,7 @@
     <!-- Usuarios Favoritos -->
     <string name="users_favorites">Usuarios Favoritos</string>
 
+    <string name="collection_favoritos">favorits</string>
     <!-- Usuarios Baneados -->
     <string name="users_banned">Usuarios Baneados</string>
 
@@ -218,13 +219,41 @@
     <string name="co2IconDescription">Icono de CO2</string>
     <string name="co2ScoreText">Puntuación de CO2</string>
 
-        <string name="favorite_icon_description">Agregar a favoritos</string>
-        <string name="favorite_text">Agregar a favoritos</string>
+    <string name="favorite_icon_description">Agregar a favoritos</string>
+    <string name="favorite_text">Agregar a favoritos</string>
 
-        <string name="banned_icon_description">Banear usuario</string>
-        <string name="banned_text">Banear usuario</string>
+    <string name="banned_icon_description">Banear usuario</string>
+    <string name="banned_text">Banear usuario</string>
 
-        <string name="contact_icon_description">Contactar con usuario</string>
-        <string name="contact_text">Contactar con usuario</string>
+    <string name="contact_icon_description">Contactar con usuario</string>
+    <string name="contact_text">Contactar con usuario</string>
+    <string name="co2PointsProfile">Puntos CO2: %1$d</string>
+    <string name="user_not_found">El usuario no se ha encontrado</string>
+    <string name="select_origin_destination_error">Por favor, seleccione una dirección</string>
+
+    <string name="dialog_title_add_to_favorites">El usuario ya está en la lista de favoritos</string>
+    <string name="dialog_message_user_already_favorite">El usuario ya está en la lista de favoritos</string>
+    <string name="log_message_user_added_to_favorites">Usuario agregado a favoritos</string>
+    <string name="error_message_failed_to_add_user_to_favorites">Error al agregar usuario a favoritos</string>
+    <string name="error_message_failed_to_check_user_in_favorites">Error al verificar si el usuario está en la lista de favoritos</string>
+
+    <string name="collection_baneados">bannedUsers</string>
+    <string name="dialog_title_ban_user">Usuario ya está baneado</string>
+    <string name="dialog_message_user_already_banned">El usuario ya está baneado</string>
+    <string name="warning_message_user_banned">Usuario baneado correctamente</string>
+    <string name="error_message_failed_to_ban_user">Error al banear usuario</string>
+    <string name="error_message_failed_to_check_user_banned">Error al verificar si el usuario está baneado</string>
+
+    <string name="adding_to_favorites_progress">Agregando a favoritos...</string>
+    <string name="banning_user_progress">Baneando usuario...</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="_3">3</string>
+    <string name="_2">2</string>
+    <string name="_000dd00">000dd00</string>
+    <string name="_00000">00000</string>
+    <string name="title">title</string>
+    <string name="_1">1</string>
+
 
 </resources>

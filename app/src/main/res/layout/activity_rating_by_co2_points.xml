@@ -7,9 +7,41 @@
     android:background="@color/white"
     tools:context=".activities.co2Points.RatingByCo2Points">
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="415dp"
+        android:layout_height="71dp"
+        android:contentDescription="@string/descriptionHeader"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/top_background"
+        tools:ignore="VisualLintBounds" />
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="59dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/descriptionBackButton"
+        android:rotation="180"
+        android:text="@string/whiteString"
+        android:textColorHighlight="#00FFFFFF"
+        android:textColorLink="#00FFFFFF"
+        app:icon="@drawable/arrow_point_to_right"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="#00FFFFFF" />
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3">
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -19,13 +51,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="24dp"
-                android:orientation="horizontal">
+                android:layout_marginTop="45dp"
+                android:orientation="horizontal"
+                android:baselineAligned="false">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -42,6 +70,7 @@
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:padding="2dp"
+                            android:src="@drawable/user_2"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +78,6 @@
                             app:layout_constraintVertical_bias="0.7"
                             app:shapeAppearanceOverlay="@style/circleImageview"
                             app:strokeColor="#AE844F"
-                            android:src="@drawable/user_2"
 
                             app:strokeWidth="3dp" />
 
@@ -59,14 +87,15 @@
                             android:layout_height="21dp"
                             android:background="@drawable/circle_top_3"
                             android:gravity="center"
-                            android:text="3"
+                            android:text="@string/_3"
                             android:textColor="@color/white"
                             android:textSize="16sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="@+id/pic3"
                             app:layout_constraintEnd_toEndOf="@+id/pic3"
                             app:layout_constraintStart_toStartOf="@+id/pic3"
-                            app:layout_constraintTop_toBottomOf="@+id/pic3" />
+                            app:layout_constraintTop_toBottomOf="@+id/pic3"
+                            tools:ignore="TextSizeCheck" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -74,7 +103,7 @@
                         android:id="@+id/titleTop3Txt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="title"
+                        android:text="@string/title"
                         android:textAlignment="center"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -94,8 +123,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="4dp"
 
-                            app:srcCompat="@drawable/ic_copoints"
-                            android:contentDescription="TODO" />
+                            android:contentDescription="@string/ic_profile"
+                            app:srcCompat="@drawable/ic_copoints" />
 
                         <TextView
                             android:id="@+id/scoreTop3Txt"
@@ -103,8 +132,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="4dp"
                             android:layout_marginEnd="8dp"
-                            android:text="00000"
-                            android:textColor="@color/white" />
+                            android:text="@string/_00000"
+                            android:textColor="#212121" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -123,13 +152,13 @@
                             android:layout_width="137dp"
                             android:layout_height="137dp"
                             android:padding="2dp"
+                            android:src="@drawable/user_2"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:shapeAppearanceOverlay="@style/circleImageview"
                             app:strokeColor="#FEBB3A"
-                            android:src="@drawable/user_2"
                             app:strokeWidth="3dp" />
 
                         <TextView
@@ -138,14 +167,15 @@
                             android:layout_height="28dp"
                             android:background="@drawable/circle_top_1"
                             android:gravity="center"
-                            android:text="1"
-                            android:textColor="@color/white"
+                            android:text="@string/_1"
+                            android:textColor="#546E7A"
                             android:textSize="23sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="@+id/pic1"
                             app:layout_constraintEnd_toEndOf="@+id/pic1"
                             app:layout_constraintStart_toStartOf="@+id/pic1"
-                            app:layout_constraintTop_toBottomOf="@+id/pic1" />
+                            app:layout_constraintTop_toBottomOf="@+id/pic1"
+                            tools:ignore="TextSizeCheck" />
 
                         <ImageView
                             android:id="@+id/imageView9"
@@ -153,17 +183,19 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="-2dp"
 
+                            android:contentDescription="@string/ic_profile"
                             app:layout_constraintBottom_toTopOf="@+id/pic1"
                             app:layout_constraintEnd_toEndOf="@+id/pic1"
                             app:layout_constraintStart_toStartOf="@+id/pic1"
-                            app:srcCompat="@drawable/crown" />
+                            app:srcCompat="@drawable/crown"
+                            tools:ignore="ImageContrastCheck" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <TextView
                         android:id="@+id/titleTop1Txt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="title"
+                        android:text="@string/title"
                         android:textAlignment="center"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -183,7 +215,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="4dp"
 
-                            android:contentDescription="TODO"
+                            android:contentDescription="@string/ic_profile"
                             app:srcCompat="@drawable/ic_copoints"
                             tools:ignore="ImageContrastCheck" />
 
@@ -193,8 +225,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="4dp"
                             android:layout_marginEnd="8dp"
-                            android:text="000dd00"
-                            android:textColor="@color/white" />
+                            android:text="@string/_000dd00"
+                            android:textColor="#455A64" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -213,6 +245,7 @@
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:padding="2dp"
+                            android:src="@drawable/user_2"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -220,7 +253,6 @@
                             app:layout_constraintVertical_bias="0.65999997"
                             app:shapeAppearanceOverlay="@style/circleImageview"
                             app:strokeColor="#BFBFC0"
-                            android:src="@drawable/user_2"
 
                             app:strokeWidth="3dp" />
 
@@ -230,14 +262,15 @@
                             android:layout_height="21dp"
                             android:background="@drawable/circle_top_2"
                             android:gravity="center"
-                            android:text="2"
-                            android:textColor="@color/white"
+                            android:text="@string/_2"
+                            android:textColor="#BF360C"
                             android:textSize="16sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="@+id/pic2"
                             app:layout_constraintEnd_toEndOf="@+id/pic2"
                             app:layout_constraintStart_toStartOf="@+id/pic2"
-                            app:layout_constraintTop_toBottomOf="@+id/pic2" />
+                            app:layout_constraintTop_toBottomOf="@+id/pic2"
+                            tools:ignore="TextSizeCheck" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -245,7 +278,7 @@
                         android:id="@+id/titleTop2Txt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="title"
+                        android:text="@string/title"
                         android:textAlignment="center"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -265,7 +298,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="4dp"
 
-                            app:srcCompat="@drawable/ic_copoints" />
+                            android:contentDescription="@string/ic_profile"
+                            app:srcCompat="@drawable/ic_copoints"
+                            tools:ignore="ImageContrastCheck" />
 
                         <TextView
                             android:id="@+id/scoreTop2Txt"
@@ -273,8 +308,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="4dp"
                             android:layout_marginEnd="8dp"
-                            android:text="00000"
-                            android:textColor="@color/white" />
+                            android:text="@string/_00000"
+                            android:textColor="#0D47A1" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

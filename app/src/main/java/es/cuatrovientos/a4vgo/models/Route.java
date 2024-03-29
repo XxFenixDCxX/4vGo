@@ -1,6 +1,10 @@
 package es.cuatrovientos.a4vgo.models;
 
 
+import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
+
 public class Route {
     private String routeType;
     private String origin;
@@ -17,6 +21,11 @@ public class Route {
     private String comments;
     public static final double EARTH_RADIUS = 6371;
 
+    @SerializedName("features")
+    public List<es.cuatrovientos.a4vgo.models.Feature> features;
+    public List<Feature> getFeatures() {
+        return features;
+    }
 
     // Constructor
     public Route(String routeType, String origin, String destination,String userId, String selectedDate,

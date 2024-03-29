@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -33,9 +33,9 @@ import java.util.Locale;
 import java.util.Map;
 
 import es.cuatrovientos.a4vgo.R;
+import es.cuatrovientos.a4vgo.activities.co2Points.RatingByCo2Points;
 import es.cuatrovientos.a4vgo.activities.createRoute.AddRouteActivity;
 import es.cuatrovientos.a4vgo.activities.profile.privateProfile.ProfileActivity;
-import es.cuatrovientos.a4vgo.adapters.RecyclerHistoryAdapter;
 import es.cuatrovientos.a4vgo.maps.searchMapActivity;
 import es.cuatrovientos.a4vgo.utils.DialogUtils;
 
@@ -51,7 +51,7 @@ public class MainRoutesActivity extends AppCompatActivity {
     private String routeType;
     private String selectedLongitude;
     private String selectedLatitude;
-    private LinearLayout history, favRoute, favBan;
+    private LinearLayout history, favRoute, favBan, favoriteUsers;
     private RecyclerView rvHistory;
     private Query query;
     private FirebaseFirestore db;
@@ -59,6 +59,8 @@ public class MainRoutesActivity extends AppCompatActivity {
     private String destinationHistory;
     private String dniHistory;
     private static final int REQUEST_MAP_GO = 1;
+
+    private LinearLayout co2PointRank ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,16 +75,6 @@ public class MainRoutesActivity extends AppCompatActivity {
         setSearchButtonListener();
         handleIntentExtras(getIntent());
 
-        history.setOnClickListener(v ->{
-            rvHistory.setVisibility(View.VISIBLE);
-            btnBack.setVisibility(View.VISIBLE);
-            favBan.setVisibility(View.GONE);
-            favRoute.setVisibility(View.GONE);
-
-            RecyclerHistoryAdapter adapter = new RecyclerHistoryAdapter();
-            rvHistory.setAdapter(adapter);
-            rvHistory.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
-        });
 
         btnBack.setOnClickListener(v ->{
             rvHistory.setVisibility(View.GONE);
@@ -90,7 +82,10 @@ public class MainRoutesActivity extends AppCompatActivity {
             favBan.setVisibility(View.VISIBLE);
             favRoute.setVisibility(View.VISIBLE);
         });
-
+        co2PointRank.setOnClickListener(v -> {
+            Intent intent = new Intent(MainRoutesActivity.this, RatingByCo2Points.class);
+            startActivity(intent);
+        });
         query.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 QuerySnapshot querySnapshot = task.getResult();
@@ -109,11 +104,9 @@ public class MainRoutesActivity extends AppCompatActivity {
         editNumPeople = findViewById(R.id.editNumPeople);
         BottomNavigationView bottom = findViewById(R.id.bnNavigation);
         bottom.setSelectedItemId(R.id.navigation_trips);
-        history = findViewById(R.id.routeHistory);
         rvHistory = findViewById(R.id.rvHistory);
         btnBack = findViewById(R.id.btnBackMain);
-        favBan = findViewById(R.id.layoutFavBan);
-        favRoute = findViewById(R.id.layoutFavRout);
+        co2PointRank = findViewById(R.id.rankingLayout);
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         CollectionReference collection = FirebaseFirestore.getInstance().collection("personalDetails");
         query = collection.whereEqualTo("email", currentUser.getEmail());
@@ -126,6 +119,7 @@ public class MainRoutesActivity extends AppCompatActivity {
         bottom.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
             if (id == R.id.navigation_profile) {
+
                 navigateToActivity(ProfileActivity.class);
             } else if (id == R.id.navigation_publish_route || id == R.id.navigation_chat) {
                 navigateToActivity(AddRouteActivity.class);
@@ -198,8 +192,11 @@ public class MainRoutesActivity extends AppCompatActivity {
     }
 
     private void navigateToActivity(Class<?> destinationActivity) {
+        overridePendingTransition(0, 0);
         Intent intent = new Intent(MainRoutesActivity.this, destinationActivity);
         startActivity(intent);
+        overridePendingTransition(0, 0);
+
     }
 
     private void handleIntentExtras(Intent intent) {

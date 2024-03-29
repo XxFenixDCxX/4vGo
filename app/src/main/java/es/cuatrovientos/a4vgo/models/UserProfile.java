@@ -1,7 +1,14 @@
 package es.cuatrovientos.a4vgo.models;
 
 
+import android.util.Log;
+
+
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+
 import java.util.Map;
+import java.util.function.Consumer;
 
 public class UserProfile {
     private String firstName;
@@ -18,7 +25,6 @@ public class UserProfile {
     private double co2Points;
 
     public UserProfile() {
-        // Constructor vacío necesario para Firestore
     }
 
     public static UserProfile fromMap(Map<String, Object> data) {
@@ -32,24 +38,44 @@ public class UserProfile {
         userProfile.setLanguage(getStringFromMap(data, "language"));
         userProfile.setName(getStringFromMap(data, "name"));
         userProfile.setProfileImage(getStringFromMap(data, "profileImage"));
-        userProfile.setSpam(getBooleanFromMap(data, "spam"));
+        userProfile.setSpam(getBooleanFromMap(data));
         userProfile.setSurname(getStringFromMap(data, "surname"));
         userProfile.setUsername(getStringFromMap(data, "username"));
-        userProfile.setCo2Points(getDoubleFromMap(data, "co2Points"));
+        userProfile.setCo2Points(getDoubleFromMap(data));
 
         return userProfile;
+    }
+
+
+    public void getUserDni(String email, Consumer<String> callback) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("personalDetails").whereEqualTo("email", email)
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    String currentUserDNI ;
+                    for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                        currentUserDNI = documentSnapshot.getString("dni");
+                        callback.accept(currentUserDNI);
+                        return;
+                    }
+                    callback.accept("");
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("Firestore", "Error fetching user DNI", e);
+                    callback.accept(""); // En caso de error
+                });
     }
 
     private static String getStringFromMap(Map<String, Object> data, String key) {
         return data.containsKey(key) ? (String) data.get(key) : "";
     }
 
-    private static boolean getBooleanFromMap(Map<String, Object> data, String key) {
-        return data.containsKey(key) && data.get(key) instanceof Boolean ? (Boolean) data.get(key) : false;
+    private static boolean getBooleanFromMap(Map<String, Object> data) {
+        return data.containsKey("spam") && data.get("spam") instanceof Boolean ? (Boolean) data.get("spam") : false;
     }
 
-    private static double getDoubleFromMap(Map<String, Object> data, String key) {
-        return data.containsKey(key) && data.get(key) instanceof Number ? ((Number) data.get(key)).doubleValue() : 0.0;
+    private static double getDoubleFromMap(Map<String, Object> data) {
+        return data.containsKey("co2Points") && data.get("co2Points") instanceof Number ? ((Number) data.get("co2Points")).doubleValue() : 0.0;
     }
 
     public String getFirstName() {
@@ -147,4 +173,6 @@ public class UserProfile {
     public void setCo2Points(double co2Points) {
         this.co2Points = co2Points;
     }
+
+
 }

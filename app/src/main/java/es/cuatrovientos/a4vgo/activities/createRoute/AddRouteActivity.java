@@ -128,6 +128,7 @@ public class AddRouteActivity extends AppCompatActivity {
         if (routeType.equals("Ida")) {
             spinner.setSelection(0);
             txtOrigin.setHint(streetName);
+
         } else {
             spinner.setSelection(1);
             txtDestination.setHint(streetName);
@@ -215,6 +216,11 @@ public class AddRouteActivity extends AppCompatActivity {
         String selectedDateStr = txtDateTime.getText().toString();
         String selectedTimeStr = txtTime.getText().toString();
         String plazasStr = editTextAvailableSeats.getText().toString();
+
+        if(selectedCoordinates == null || selectedCoordinates.isEmpty()){
+            showMessage(getString(R.string.select_origin_destination_error));
+            return;
+        }
 
         if (selectedDateStr.isEmpty() || selectedTimeStr.isEmpty()) {
             showMessage(getString(R.string.select_date_time_error));

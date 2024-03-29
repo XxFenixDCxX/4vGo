@@ -87,24 +87,25 @@
                 android:text="@string/email"
                 android:textAlignment="center" />
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="16dp"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:baselineAligned="false">
 
-                <!-- Botón superior centrado -->
                 <LinearLayout
                     android:id="@+id/AddToFavorite"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
+                    android:layout_weight="1"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="5dp"
+                    android:layout_marginEnd="2.5dp"
                     android:layout_marginBottom="5dp"
                     android:background="@drawable/edittext_background"
                     android:gravity="center"
@@ -117,28 +118,28 @@
                         android:layout_height="wrap_content"
                         android:background="?android:attr/selectableItemBackground"
                         android:contentDescription="@string/favorite_icon_description"
-                        android:src="@drawable/ic_favorito" />
+                        android:src="@drawable/ic_favorito"
+                        tools:ignore="DuplicateSpeakableTextCheck,TouchTargetSizeCheck" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingStart="8dp"
                         android:text="@string/favorite_text"
-                        android:textColor="@android:color/black" />
+                        android:textColor="@android:color/black"
+                        tools:ignore="RtlSymmetry" />
 
                 </LinearLayout>
 
-                <!-- Botón inferior izquierdo -->
                 <LinearLayout
                     android:id="@+id/BanUser"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/AddToFavorite"
-                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="2.5dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="5dp"
                     android:layout_marginBottom="5dp"
-
                     android:background="@drawable/edittext_background"
                     android:gravity="center"
                     android:orientation="horizontal"
@@ -150,49 +151,23 @@
                         android:layout_height="wrap_content"
                         android:background="?android:attr/selectableItemBackground"
                         android:contentDescription="@string/banned_icon_description"
-                        android:src="@drawable/ban_icon" />
+                        android:src="@drawable/ban_icon"
+                        tools:ignore="DuplicateSpeakableTextCheck,TouchTargetSizeCheck" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingStart="8dp"
                         android:text="@string/banned_text"
-                        android:textColor="@android:color/black" />
-
-                </LinearLayout>
-
-                <!-- Botón inferior derecho -->
-                <LinearLayout
-                    android:id="@+id/vehicleAction3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/AddToFavorite"
-                    android:layout_toEndOf="@id/BanUser"
-                    android:background="@drawable/edittext_background"
-                    android:orientation="horizontal"
-                    android:layout_margin="5dp"
-
-                    android:padding="15dp"
-                    android:gravity="center">
-
-                    <ImageButton
-                        android:id="@+id/contactButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="?android:attr/selectableItemBackground"
-                        android:contentDescription="@string/contact_icon_description"
-                        android:src="@drawable/ic_contact_user" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/contact_text"
                         android:textColor="@android:color/black"
-                        android:paddingStart="8dp"/>
+                        tools:ignore="RtlSymmetry" />
 
                 </LinearLayout>
 
-            </RelativeLayout>
+            </LinearLayout>
+
+
+
 
 
 
@@ -207,11 +182,12 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:baselineAligned="false">
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="60dp"
+                        android:layout_height="80dp"
                         android:layout_margin="8dp"
                         android:layout_weight="1"
                         android:background="@drawable/edittext_background"
@@ -220,20 +196,24 @@
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
-                            android:padding="5dp"
-
                             android:contentDescription="@string/userIconDescription"
-                            android:src="@drawable/ic_copoints" />
+
+                            android:padding="5dp"
+                            android:src="@drawable/ic_copoints"
+                            tools:ignore="ImageContrastCheck,ImageContrastCheck" />
 
                         <TextView
+                            android:id="@+id/co2PointsTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:padding="5dp"
                             android:text="@string/userInfoText" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="60dp"
+                        android:layout_height="80dp"
                         android:layout_margin="8dp"
                         android:layout_weight="1"
                         android:background="@drawable/edittext_background"
@@ -242,12 +222,16 @@
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
-                            android:padding="5dp"
                             android:contentDescription="@string/userIconDescription"
-                            android:src="@drawable/rank" />
+                            android:padding="5dp"
+                            android:src="@drawable/rank"
+                            tools:ignore="ImageContrastCheck" />
 
                         <TextView
                             android:layout_width="wrap_content"
+                            android:padding="5dp"
+                            android:gravity="center"
+                            android:id="@+id/rankTextView"
                             android:layout_height="wrap_content"
                             android:text="@string/userInfoText" />
                     </LinearLayout>
@@ -256,11 +240,12 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:baselineAligned="false">
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="60dp"
+                        android:layout_height="80dp"
                         android:layout_margin="8dp"
                         android:layout_weight="1"
                         android:background="@drawable/edittext_background"
@@ -269,20 +254,24 @@
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
-                            android:padding="5dp"
-
                             android:contentDescription="@string/userIconDescription"
-                            android:src="@drawable/starimg" />
+
+                            android:padding="5dp"
+                            android:src="@drawable/starimg"
+                            tools:ignore="ImageContrastCheck,ImageContrastCheck" />
 
                         <TextView
                             android:layout_width="wrap_content"
+                            android:padding="5dp"
+                            android:gravity="center"
+
                             android:layout_height="wrap_content"
                             android:text="@string/userInfoText" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="60dp"
+                        android:layout_height="80dp"
                         android:layout_margin="8dp"
                         android:layout_weight="1"
                         android:background="@drawable/edittext_background"
@@ -291,13 +280,15 @@
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
-                            android:padding="5dp"
-
                             android:contentDescription="@string/userIconDescription"
-                            android:src="@drawable/ic_copoints" />
+
+                            android:padding="5dp"
+                            android:src="@drawable/ic_copoints"
+                            tools:ignore="ImageContrastCheck" />
 
                         <TextView
                             android:layout_width="wrap_content"
+                            android:padding="5dp"
                             android:layout_height="wrap_content"
                             android:text="@string/userInfoText" />
                     </LinearLayout>

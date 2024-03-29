@@ -200,5 +200,38 @@
     <string name="users_banned">Banned Users</string>
 
     <string name="error_clasification">Error retrieving classification data</string>
+    <string name="banIconDescription">Ban Icon Description</string>
+    <string name="favoriteIconDescription">Favorite Icon Description</string>
+    <string name="customIconDescription">Custom Icon Description</string>
+    <string name="userIconDescription">User Icon</string>
+    <string name="userInfoText">User Information</string>
+
+    <string name="co2IconDescription">CO2 Icon</string>
+    <string name="co2ScoreText">CO2 Score</string>
+
+    <string name="favorite_icon_description">Add to Favorites</string>
+    <string name="favorite_text">Add to Favorites</string>
+
+    <string name="banned_icon_description">Ban User</string>
+    <string name="banned_text">Ban User</string>
+
+    <string name="contact_icon_description">Contact User</string>
+    <string name="contact_text">Contact User</string>
+    <string name="co2PointsProfile">CO2 Points: %1$d</string>
+    <string name="user_not_found">User not found</string>
+    <string name="select_origin_destination_error">Please select a direction</string>
+
+    <string name="dialog_title_add_to_favorites">User is already in favorites list</string>
+    <string name="dialog_message_user_already_favorite">User is already in favorites list</string>
+    <string name="log_message_user_added_to_favorites">User added to favorites</string>
+    <string name="error_message_failed_to_add_user_to_favorites">Failed to add user to favorites</string>
+    <string name="error_message_failed_to_check_user_in_favorites">Failed to check if user is in favorites list</string>
+
+    <string name="collection_baneados">banned</string>
+    <string name="dialog_title_ban_user">User is already banned</string>
+    <string name="dialog_message_user_already_banned">User is already banned</string>
+    <string name="warning_message_user_banned">User banned successfully</string>
+    <string name="error_message_failed_to_ban_user">Failed to ban user</string>
+    <string name="error_message_failed_to_check_user_banned">Failed to check if user is banned</string>
 
 </resources>

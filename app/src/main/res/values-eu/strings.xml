@@ -201,6 +201,39 @@
     <string name="users_banned">Ukatutako Erabiltzaileak</string>
 
     <string name="error_clasification">Klasifikazioaren datuak eskuratzerakoan errorea</string>
+    <string name="banIconDescription">Blokeatu ikonoaren deskribapena</string>
+    <string name="favoriteIconDescription">Gogoko ikonoaren deskribapena</string>
+    <string name="customIconDescription">Pertsonalizatutako ikonoaren deskribapena</string>
+    <string name="userIconDescription">Erabiltzaile ikonoa</string>
+    <string name="userInfoText">Erabiltzailearen informazioa</string>
+
+    <string name="co2IconDescription">CO2 ikonoa</string>
+    <string name="co2ScoreText">CO2 puntuazioa</string>
+
+    <string name="favorite_icon_description">Gogokoenak gehitu</string>
+    <string name="favorite_text">Gogokoenak gehitu</string>
+
+    <string name="banned_icon_description">Erabiltzailea blokeatu</string>
+    <string name="banned_text">Erabiltzailea blokeatu</string>
+
+    <string name="contact_icon_description">Erabiltzailearekin harremanetan jarri</string>
+    <string name="contact_text">Erabiltzailearekin harremanetan jarri</string>
+    <string name="co2PointsProfile">CO2 Puntuazioa: %1$d</string>
+    <string name="user_not_found">Erabiltzailea ez da aurkitu</string>
+    <string name="select_origin_destination_error">Mesedez, aukeratu norabidea</string>
+
+    <string name="dialog_title_add_to_favorites">Erabiltzailea dagoeneko gogokoen zerrendan dago</string>
+    <string name="dialog_message_user_already_favorite">Erabiltzailea dagoeneko gogokoen zerrendan dago</string>
+    <string name="log_message_user_added_to_favorites">Erabiltzailea gogokoen zerrendan gehituta</string>
+    <string name="error_message_failed_to_add_user_to_favorites">Erabiltzailea gogokoen zerrendan gehitzerakoan errorea</string>
+    <string name="error_message_failed_to_check_user_in_favorites">Erabiltzailea gogokoen zerrendan dagoen ikusteko errorea</string>
+
+    <string name="collection_baneados">blokeatuak</string>
+    <string name="dialog_title_ban_user">Erabiltzailea dagoeneko blokeatuta dago</string>
+    <string name="dialog_message_user_already_banned">Erabiltzailea dagoeneko blokeatuta dago</string>
+    <string name="warning_message_user_banned">Erabiltzailea arrakastaz blokeatuta</string>
+    <string name="error_message_failed_to_ban_user">Erabiltzailea blokeatzeko errorea</string>
+    <string name="error_message_failed_to_check_user_banned">Erabiltzailea blokeatuta dagoen ikusteko errorea</string>
 
 
 </resources>
