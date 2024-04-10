@@ -2,8 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:background="@color/colorPrimary"
+    android:layout_height="match_parent">
+
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
@@ -63,7 +65,10 @@
                 android:id="@+id/DestinationCity"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
                 android:text="@string/DestinationCity"
+                android:textColor="@color/black"
+
                 android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@+id/elapsedTime"
                 app:layout_constraintStart_toEndOf="@+id/OriginDestinationImg"
@@ -75,11 +80,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="72dp"
                 android:text="@string/time_elapsed"
+                android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="italic"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/OriginDestinationImg"
                 app:layout_constraintVertical_bias="1.0" />
@@ -90,8 +96,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
                 android:text="@string/username"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
+
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/profileImg"
                 app:layout_constraintHorizontal_bias="0.947"
@@ -109,7 +117,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/StarImg"
                 app:layout_constraintTop_toBottomOf="@+id/elapsedTime" />
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/profileImg"
                 android:layout_width="56dp"
                 android:layout_height="55dp"
@@ -120,7 +128,9 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.988" />
+                app:layout_constraintVertical_bias="0.988"
+                app:shapeAppearanceOverlay="@style/squareImageview" />
+
 
             <ImageView
                 android:id="@+id/StarImg"
@@ -136,36 +146,35 @@
 
             <ImageView
                 android:id="@+id/carSeatsImg"
-                android:layout_width="45dp"
-                android:layout_height="47dp"
-                android:layout_margin="10dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="8dp"
                 android:contentDescription="@string/pasagers"
                 android:src="@drawable/car_seat"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.009"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.994"
                 tools:ignore="ImageContrastCheck" />
 
-            <TextView
-                android:id="@+id/seat_num"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="28dp"
-                android:text="@string/seatNum"
-                android:textSize="20sp"
+            <ImageView
+                android:id="@+id/carSeatsImg2"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:contentDescription="@string/pasagers"
+                android:src="@drawable/car_seat"
                 app:layout_constraintBottom_toBottomOf="@+id/carSeatsImg"
-                app:layout_constraintEnd_toEndOf="@+id/carSeatsImg"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/carSeatsImg" />
+                app:layout_constraintStart_toEndOf="@+id/carSeatsImg"
+                app:layout_constraintTop_toTopOf="@+id/carSeatsImg"
+                tools:ignore="ImageContrastCheck" />
 
             <TextView
                 android:id="@+id/DestinationTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginBottom="4dp"
                 android:text="@string/DestinationTime"
+                android:textColor="@color/black"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toTopOf="@+id/DestinationCity"
                 app:layout_constraintStart_toEndOf="@+id/OriginDestinationImg"
@@ -176,7 +185,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/OriginTime"
+                android:textColor="@color/black"
                 android:textSize="14sp"
+
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/OriginDestinationImg"
                 app:layout_constraintHorizontal_bias="1.0"

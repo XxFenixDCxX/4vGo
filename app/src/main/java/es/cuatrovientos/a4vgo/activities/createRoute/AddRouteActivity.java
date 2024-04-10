@@ -25,6 +25,7 @@ import java.util.Locale;
 
 import es.cuatrovientos.a4vgo.R;
 import es.cuatrovientos.a4vgo.activities.MainRoutesActivity;
+import es.cuatrovientos.a4vgo.activities.co2Points.RatingByCo2Points;
 import es.cuatrovientos.a4vgo.activities.profile.privateProfile.ProfileActivity;
 import es.cuatrovientos.a4vgo.adapters.CustomSpinnerAdapter;
 import es.cuatrovientos.a4vgo.maps.searchMapActivity;
@@ -160,16 +161,19 @@ public class AddRouteActivity extends AppCompatActivity {
 
     private void setBottomNavigationListener() {
         bottom.setOnItemSelectedListener(item -> {
-            int id = item.getItemId();
-            if (id == R.id.navigation_trips) {
-                navigateToActivity(MainRoutesActivity.class);
-            } else if (id == R.id.navigation_profile) {
-                navigateToActivity(ProfileActivity.class);
-            } else if (id == R.id.navigation_chat) {
-                navigateToActivity(AddRouteActivity.class);
-            }
-            return true;
-        });
+                    int id = item.getItemId();
+                    if (id == R.id.navigation_trips) {
+                        navigateToActivity(MainRoutesActivity.class);
+                    } else if (id == R.id.navigation_publish_route) {
+                        navigateToActivity(AddRouteActivity.class);
+                    } else if (id == R.id.navigation_ranking){
+                        navigateToActivity(RatingByCo2Points.class);
+                    }else if (id == R.id.navigation_profile){
+                        navigateToActivity(ProfileActivity.class);
+                    }
+                    return true;
+                }
+        );
     }
 
     private void navigateToActivity(Class<?> activityClass) {

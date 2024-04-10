@@ -9,7 +9,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="0dp"
-        android:layout_height="127dp"
+        android:layout_height="137dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
@@ -30,8 +30,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="79dp"
-            android:background="@color/colorPrimary"
+            android:layout_height="90dp"
+            android:background="@color/white"
             tools:ignore="VisualLintBounds">
 
             <ImageView
@@ -61,7 +61,7 @@
 
             <TextView
                 android:id="@+id/OriginCity"
-                android:layout_width="wrap_content"
+                android:layout_width="110dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:text="@string/OriginCity"
@@ -113,7 +113,7 @@
 
             <TextView
                 android:id="@+id/DestinationCity"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="@string/DestinationCity"

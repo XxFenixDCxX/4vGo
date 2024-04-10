@@ -119,10 +119,11 @@ public class MainRoutesActivity extends AppCompatActivity {
         bottom.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
             if (id == R.id.navigation_profile) {
-
                 navigateToActivity(ProfileActivity.class);
-            } else if (id == R.id.navigation_publish_route || id == R.id.navigation_chat) {
+            } else if (id == R.id.navigation_publish_route ) {
                 navigateToActivity(AddRouteActivity.class);
+            } else if (id == R.id.navigation_ranking) {
+                navigateToActivity(RatingByCo2Points.class);
             }
             return true;
         });

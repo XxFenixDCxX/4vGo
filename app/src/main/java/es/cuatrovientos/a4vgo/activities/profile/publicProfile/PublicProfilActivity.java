@@ -69,7 +69,7 @@ public class PublicProfilActivity extends AppCompatActivity {
                         Intent intent = new Intent(PublicProfilActivity.this , AddRouteActivity.class);
                         startActivity(intent);
                         overridePendingTransition(0, 0);
-                    } else if (id == R.id.navigation_chat){
+                    } else if (id == R.id.navigation_ranking){
                         overridePendingTransition(0, 0);
                         Intent intent = new Intent(PublicProfilActivity.this , PublicProfilActivity.class);
                         startActivity(intent);

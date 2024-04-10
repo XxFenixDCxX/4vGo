@@ -34,6 +34,7 @@ import java.util.Locale;
 import es.cuatrovientos.a4vgo.R;
 import es.cuatrovientos.a4vgo.activities.profile.publicProfile.PublicProfilActivity;
 import es.cuatrovientos.a4vgo.models.Route;
+import es.cuatrovientos.a4vgo.models.UserProfile;
 
 public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAdapter.RecyclerDataHolder> {
     private final List<Route> list;
@@ -45,8 +46,10 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
     private final String selectedDate;
     int numPeople;
     private static String currentUsername;
+    private OnItemClickListener listener;
 
-    public RecyclerRoutesAdapter(String routeType, String cords, String selectedDate, int numPeople) {
+
+    public RecyclerRoutesAdapter(String routeType, String cords, String selectedDate, int numPeople, OnItemClickListener listener) {
         this.routeType = routeType;
         this.cords = cords;
         this.selectedDate  = selectedDate;
@@ -54,6 +57,7 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
         db = FirebaseFirestore.getInstance();
         list = new ArrayList<>();
         listCopy = new ArrayList<>();
+        this.listener = listener;
         getCurrentUserDNI();
     }
 
@@ -159,6 +163,11 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
     @Override
     public void onBindViewHolder(@NonNull RecyclerDataHolder holder, int position) {
         holder.assignData(list.get(position));
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onItemClick(list.get(position), position);
+            }
+        });
     }
 
     @Override
@@ -176,7 +185,6 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
             originTime = itemView.findViewById(R.id.OriginTime);
             destinaionTime = itemView.findViewById(R.id.DestinationTime);
             elapsedTime = itemView.findViewById(R.id.elapsedTime);
-            seatNum = itemView.findViewById(R.id.seat_num);
             username = itemView.findViewById(R.id.user_name);
             profileImg = itemView.findViewById(R.id.profileImg);
         }
@@ -216,7 +224,6 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
                         destinaionTime.setText(route.getSelectedTime());
                         destination.setText(streetName);
                     }
-                    seatNum.setText(String.valueOf(route.getMaxSeats()));
                     username.setText(currentUsername);
                     profileImg.setOnClickListener(v -> {
                         Intent intent = new Intent(itemView.getContext(), PublicProfilActivity.class);
@@ -300,9 +307,11 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
         int originMinute = Integer.parseInt(originTime.split(":")[1]);
         int destinationHour = Integer.parseInt(destinationTime.split(":")[0]);
         int destinationMinute = Integer.parseInt(destinationTime.split(":")[1]);
-
         int hour = Math.abs(destinationHour - originHour);
         int minute = Math.abs(destinationMinute - originMinute);
         return hour + "h " + minute + "m";
+    }
+    public interface OnItemClickListener{
+        void onItemClick( Route route , int position);
     }
 }
