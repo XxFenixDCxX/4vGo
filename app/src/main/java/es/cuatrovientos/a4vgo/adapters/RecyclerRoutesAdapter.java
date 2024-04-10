@@ -1,6 +1,7 @@
 package es.cuatrovientos.a4vgo.adapters;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.location.Address;
 import android.location.Geocoder;
@@ -31,6 +32,7 @@ import java.util.List;
 import java.util.Locale;
 
 import es.cuatrovientos.a4vgo.R;
+import es.cuatrovientos.a4vgo.activities.profile.publicProfile.PublicProfilActivity;
 import es.cuatrovientos.a4vgo.models.Route;
 import es.cuatrovientos.a4vgo.models.UserProfile;
 
@@ -223,6 +225,11 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
                         destination.setText(streetName);
                     }
                     username.setText(currentUsername);
+                    profileImg.setOnClickListener(v -> {
+                        Intent intent = new Intent(itemView.getContext(), PublicProfilActivity.class);
+                        intent.putExtra("dni", dni);
+                        itemView.getContext().startActivity(intent);
+                    });
 
                     CollectionReference collection1 = FirebaseFirestore.getInstance().collection("personalDetails");
                     collection1.document(dni).get()

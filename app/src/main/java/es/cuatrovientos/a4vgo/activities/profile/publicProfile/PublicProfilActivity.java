@@ -41,25 +41,27 @@ import es.cuatrovientos.a4vgo.utils.DialogUtils;
 
 public class PublicProfilActivity extends AppCompatActivity {
     private FirebaseFirestore db;
-    private String currentUserDni;
+    private String userDNI;
     private ImageView profile;
     BottomNavigationView bottom;
+
+    Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_public_profil);
+        bundle = getIntent().getExtras();
         db = FirebaseFirestore.getInstance();
-         getUserDni();
-         currentUserDni = "12345678Z";
+        userDNI = bundle.getString("dni");
         profile = findViewById(R.id.imgProfileP);
 
         LinearLayout favoriteButton = findViewById(R.id.AddToFavorite);
         LinearLayout bannedButton = findViewById(R.id.BanUser);
         bottom = findViewById(R.id.bnNavigation);
         bottom.setSelectedItemId(R.id.navigation_profile);
-        favoriteButton.setOnClickListener(view -> addToFavorites(currentUserDni));
-        bannedButton.setOnClickListener(view -> banUser(currentUserDni));
+        favoriteButton.setOnClickListener(view -> addToFavorites(userDNI));
+        bannedButton.setOnClickListener(view -> banUser(userDNI));
         bottom.setOnItemSelectedListener(item -> {
                     int id = item.getItemId();
                     if (id == R.id.navigation_trips) {
@@ -81,7 +83,7 @@ public class PublicProfilActivity extends AppCompatActivity {
                     return true;
                 }
         );
-        retrieveUserInfo(currentUserDni);
+        retrieveUserInfo(userDNI);
 
     }
     private void addToFavorites(String userDni) {
@@ -157,26 +159,7 @@ public class PublicProfilActivity extends AppCompatActivity {
 
 
 
-    private void getUserDni() {
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        if (currentUser != null) {
-            Query query = db.collection("personalDetails").whereEqualTo("email", currentUser.getEmail());
-            try {
-                Task<QuerySnapshot> querySnapshotTask = query.get();
-                QuerySnapshot querySnapshot = Tasks.await(querySnapshotTask);
-                if (querySnapshot != null && !querySnapshot.isEmpty()) {
-                    DocumentSnapshot document = querySnapshot.getDocuments().get(0);
-                    String dni = document.getString("dni");
-                } else {
-                    Log.e("getUserDni", "No documents found for the user");
-                }
-            } catch (Exception e) {
-                Log.e("getUserDni", "Error getting user document: " + e.getMessage());
-            }
-        } else {
-            Log.e("getUserDni", "Current user is null");
-        }
-    }
+
 
 
     private void retrieveUserInfo(String userDni) {

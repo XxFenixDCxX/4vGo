@@ -173,7 +173,7 @@ public class PersonalDetailsActivity extends AppCompatActivity {
     }
 
     private void uploadImageToFirebaseStorage(Uri imageUri) {
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("profile_images/" + currentUserDNI + ".jpg");
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("profile_images/").child(currentUserDNI + ".jpg");
 
         storageReference.putFile(imageUri)
                 .addOnSuccessListener(taskSnapshot -> storageReference.getDownloadUrl().addOnSuccessListener(this::updateProfileImage))

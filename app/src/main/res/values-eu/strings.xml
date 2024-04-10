@@ -198,6 +198,7 @@
     <string name="users_favorites">Gogokoak Diren Erabiltzaileak</string>
 
     <!-- Ukatutako Erabiltzaileak -->
+    <string name="collection_favoritos">Gogokoak</string>
     <string name="users_banned">Ukatutako Erabiltzaileak</string>
 
     <string name="error_clasification">Klasifikazioaren datuak eskuratzerakoan errorea</string>
@@ -234,6 +235,15 @@
     <string name="warning_message_user_banned">Erabiltzailea arrakastaz blokeatuta</string>
     <string name="error_message_failed_to_ban_user">Erabiltzailea blokeatzeko errorea</string>
     <string name="error_message_failed_to_check_user_banned">Erabiltzailea blokeatuta dagoen ikusteko errorea</string>
+    <string name="adding_to_favorites_progress">Gehitzen gogokoak</string>
+    <string name="banning_user_progress">Kamporatu pertsona</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="_3">3</string>
+    <string name="_2">2</string>
+    <string name="_000dd00">000dd00</string>
+    <string name="_00000">00000</string>
+    <string name="title">title</string>
+    <string name="_1">1</string>
 
     <string name="gps_alert_title">GPS Jakinarazpena</string>
     <string name="gps_alert_message">GPS seinalea gaituta ez duzu. Zure GPS seinalea orain gaitu nahi duzu?</string>

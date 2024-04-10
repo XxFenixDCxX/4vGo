@@ -1,15 +1,23 @@
 package es.cuatrovientos.a4vgo.adapters;
 
+import android.annotation.SuppressLint;
+import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.view.menu.MenuView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.imageview.ShapeableImageView;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.List;
 
 import es.cuatrovientos.a4vgo.R;
@@ -47,6 +55,7 @@ public class RatingCo2PointsAdapter extends RecyclerView.Adapter<RatingCo2Points
         ShapeableImageView pic;
         TextView titleTxt;
         TextView scoreTxt;
+        View itemView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -54,22 +63,49 @@ public class RatingCo2PointsAdapter extends RecyclerView.Adapter<RatingCo2Points
             pic = itemView.findViewById(R.id.pic);
             titleTxt = itemView.findViewById(R.id.titleTxt);
             scoreTxt = itemView.findViewById(R.id.scoreTxt);
+            this.itemView = itemView;
         }
 
         public void assignData(UserProfile userProfile, OnItemClickListener listener) {
             rowTxt.setText(String.valueOf(getAdapterPosition() + 1));
             titleTxt.setText(userProfile.getName());
 
-            pic.setImageResource(R.drawable.user_2);
-
-
+            downloadImageAndSetBackground(userProfile.getProfileImage(), pic);
             scoreTxt.setText(String.valueOf(userProfile.getCo2Points()));
 
-            itemView.setOnClickListener(v -> listener.onItemClick(userProfile, getAdapterPosition()));
+            this.itemView.setOnClickListener(v -> listener.onItemClick(userProfile));
+        }
+
+        @SuppressLint("StaticFieldLeak")
+        private void downloadImageAndSetBackground(String imageUrl, ImageView profile) {
+            new AsyncTask<Void, Void, Drawable>() {
+                @Override
+                protected Drawable doInBackground(Void... voids) {
+                    try {
+                        // Download the image as a Drawable
+                        InputStream inputStream = new URL(imageUrl).openStream();
+                        return Drawable.createFromStream(inputStream, null);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        return null;
+                    }
+                }
+
+                @Override
+                protected void onPostExecute(Drawable drawable) {
+                    if (drawable != null) {
+                        // Set the downloaded image as the background
+                        profile.setImageDrawable(drawable);
+                    } else {
+                        // Set the default image
+                        profile.setImageResource(R.drawable.ic_profile);
+                    }
+                }
+            }.execute();
         }
     }
 
     public interface OnItemClickListener {
-        void onItemClick(UserProfile userProfile, int position);
+        void onItemClick(UserProfile userProfile);
     }
 }
