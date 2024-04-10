@@ -1,11 +1,6 @@
 package es.cuatrovientos.a4vgo.models;
 
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -17,6 +12,7 @@ public class Route {
     private String destination;
 
     private String userId;
+    private String routeID;
 
     private String selectedDate;
     private String selectedTime;
@@ -52,6 +48,22 @@ public class Route {
     public Route(String routeType, String origin, String destination,String userId, String selectedDate,
                  String selectedTime, int maxSeats, String selectedVehiclePlate,
                  boolean isFrequent, String comments) {
+        this.routeType = routeType;
+        this.origin = origin;
+        this.destination = destination;
+        this.userId = userId;
+        this.selectedDate = selectedDate;
+        this.selectedTime = selectedTime;
+        this.maxSeats = maxSeats;
+        this.selectedVehiclePlate = selectedVehiclePlate;
+        this.isFrequent = isFrequent;
+        this.comments = comments;
+    }
+    public Route(String routeID, String routeType, String origin, String destination,String userId, String selectedDate,
+                 String selectedTime, int maxSeats, String selectedVehiclePlate,
+                 boolean isFrequent, String comments) {
+
+        this.routeID = routeID;
         this.routeType = routeType;
         this.origin = origin;
         this.destination = destination;
@@ -111,6 +123,14 @@ public class Route {
 
     public String getSelectedDate() {
         return selectedDate;
+    }
+
+    public String getRouteID() {
+        return routeID;
+    }
+
+    public void setRouteID(String routeID) {
+        this.routeID = routeID;
     }
 
     public void setSelectedDate(String selectedDate) {

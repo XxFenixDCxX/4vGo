@@ -32,9 +32,9 @@ import java.util.List;
 import java.util.Locale;
 
 import es.cuatrovientos.a4vgo.R;
+import es.cuatrovientos.a4vgo.activities.RouteDetailsActivity;
 import es.cuatrovientos.a4vgo.activities.profile.publicProfile.PublicProfilActivity;
 import es.cuatrovientos.a4vgo.models.Route;
-import es.cuatrovientos.a4vgo.models.UserProfile;
 
 public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAdapter.RecyclerDataHolder> {
     private final List<Route> list;
@@ -46,7 +46,6 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
     private final String selectedDate;
     int numPeople;
     private static String currentUsername;
-    private OnItemClickListener listener;
 
 
     public RecyclerRoutesAdapter(String routeType, String cords, String selectedDate, int numPeople, OnItemClickListener listener) {
@@ -57,7 +56,6 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
         db = FirebaseFirestore.getInstance();
         list = new ArrayList<>();
         listCopy = new ArrayList<>();
-        this.listener = listener;
         getCurrentUserDNI();
     }
 
@@ -90,7 +88,7 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
                                         String selectedVehicle = document.getString("selectedVehicle");
                                         boolean frequent = Boolean.TRUE.equals(document.getBoolean("frequent"));
                                         String coments = document.getString("comments");
-                                        Route route = new Route(routeType, destination, origin, userId, selectedDate, selectedTime, numPeople, selectedVehicle, frequent, coments);
+                                        Route route = new Route(document.getId(), routeType, destination, origin, userId, selectedDate, selectedTime, numPeople, selectedVehicle, frequent, coments);
 
                                         list.add(route);
                                         listCopy.add(route);
@@ -163,11 +161,6 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
     @Override
     public void onBindViewHolder(@NonNull RecyclerDataHolder holder, int position) {
         holder.assignData(list.get(position));
-        holder.itemView.setOnClickListener(v -> {
-            if (listener != null) {
-                listener.onItemClick(list.get(position), position);
-            }
-        });
     }
 
     @Override
@@ -191,6 +184,11 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
 
         @SuppressLint({"NotifyDataSetChanged", "SetTextI18n", "StaticFieldLeak"})
         public void assignData(Route route) {
+            itemView.setOnClickListener(v -> {
+                Intent intent = new Intent(itemView.getContext(), RouteDetailsActivity.class);
+                intent.putExtra("routeID", route.getRouteID());
+                itemView.getContext().startActivity(intent);
+            });
             FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
             CollectionReference collection = FirebaseFirestore.getInstance().collection("personalDetails");
             assert currentUser != null;
@@ -312,6 +310,6 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
         return hour + "h " + minute + "m";
     }
     public interface OnItemClickListener{
-        void onItemClick( Route route , int position);
+        void onItemClick( Route route);
     }
 }

@@ -88,7 +88,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:baselineAligned="false">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -193,7 +194,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:baselineAligned="false">
 
                     <!-- Primer LinearLayout -->
                     <LinearLayout
@@ -320,7 +322,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:baselineAligned="false">
 
                     <!-- Primer LinearLayout -->
                     <LinearLayout
@@ -353,7 +356,6 @@
                             android:padding="15dp"
                             android:textColorHint="@color/gris"
                             android:textSize="14sp"
-                            app:drawableStartCompat="@drawable/ic_fecha"
                             tools:ignore="TextSizeCheck" />
 
                     </LinearLayout>
@@ -389,7 +391,6 @@
                             android:padding="15dp"
                             android:textColorHint="@color/gris"
                             android:textSize="14sp"
-                            app:drawableStartCompat="@drawable/ic_fecha"
                             tools:ignore="TextSizeCheck" />
 
                     </LinearLayout>
@@ -399,7 +400,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:baselineAligned="false">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -408,7 +410,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/textViewColor"
+                            android:id="@+id/txtPlateRoute"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="15dp"
@@ -420,7 +422,7 @@
                             tools:ignore="TextSizeCheck" />
 
                         <TextView
-                            android:id="@+id/txtColor"
+                            android:id="@+id/txtMatricula"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
@@ -431,7 +433,6 @@
                             android:padding="15dp"
                             android:textColorHint="@color/gris"
                             android:textSize="14sp"
-                            app:drawableStartCompat="@drawable/ic_fecha"
                             tools:ignore="TextSizeCheck" />
 
                     </LinearLayout>
@@ -467,7 +468,6 @@
                             android:padding="15dp"
                             android:textColorHint="@color/gris"
                             android:textSize="14sp"
-                            app:drawableStartCompat="@drawable/ic_fecha"
                             tools:ignore="TextSizeCheck" />
 
                     </LinearLayout>
