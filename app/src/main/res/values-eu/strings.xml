@@ -235,5 +235,22 @@
     <string name="error_message_failed_to_ban_user">Erabiltzailea blokeatzeko errorea</string>
     <string name="error_message_failed_to_check_user_banned">Erabiltzailea blokeatuta dagoen ikusteko errorea</string>
 
+    <string name="gps_alert_title">GPS Jakinarazpena</string>
+    <string name="gps_alert_message">GPS seinalea gaituta ez duzu. Zure GPS seinalea orain gaitu nahi duzu?</string>
+    <string name="gps_alert_positive_button">Ados</string>
+    <string name="gps_alert_negative_button">Utzi</string>
+
+    <string name="adding_to_favorites_progress">Gogokoenetara gehitzen...</string>
+    <string name="banning_user_progress">Erabiltzailea debekatzen...</string>
+
+    <string name="_3">3</string>
+    <string name="_2">2</string>
+    <string name="_000dd00">000dd00</string>
+    <string name="_00000">00000</string>
+    <string name="title">Izenburua</string>
+    <string name="_1">1</string>
+    <string name="ic_ranking">Zerrenda</string>
+    <string name="collection_favoritos">favorits</string>
+
 
 </resources>

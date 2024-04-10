@@ -1,11 +1,17 @@
 package es.cuatrovientos.a4vgo.models;
 
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
 public class Route {
+    private  Integer id;
     private String routeType;
     private String origin;
     private String destination;
@@ -192,5 +198,6 @@ public class Route {
         double distance = calculateDistance();
         return distance * 3;
     }
+
 
 }

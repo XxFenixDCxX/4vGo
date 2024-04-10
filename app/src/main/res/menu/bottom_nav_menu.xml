@@ -12,7 +12,7 @@
         android:icon="@drawable/createroute"
         android:title="@string/ic_create_route" />
     <item
-        android:id="@+id/navigation_chat"
-        android:icon="@drawable/chat"
-        android:title="@string/ic_messages" />
+        android:id="@+id/navigation_ranking"
+        android:icon="@drawable/ic_ranking"
+        android:title="@string/ic_ranking" />
 </menu>

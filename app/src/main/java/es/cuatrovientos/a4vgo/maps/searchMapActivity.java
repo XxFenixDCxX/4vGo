@@ -21,10 +21,13 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -106,8 +109,7 @@ public class searchMapActivity extends AppCompatActivity implements OnMapReadyCa
             return;
         }
         mMap.setMyLocationEnabled(true);
-        mMap.getUiSettings().setMyLocationButtonEnabled(true);
-
+        doZoom();
         LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         mMap.setOnMapClickListener(latLng -> {
 
@@ -154,6 +156,16 @@ public class searchMapActivity extends AppCompatActivity implements OnMapReadyCa
         });
     }
 
+    private void doZoom(){
+        LatLngBounds.Builder builder = new LatLngBounds.Builder();
+        LatLng pamplona = new LatLng(42.814164, -1.597754);
+        LatLngBounds pamplonaBounds = builder.include(pamplona).build();
+        int padding = 50;
+        int zoomLevel = 10;
+        CameraUpdate cu = CameraUpdateFactory.newLatLngZoom(pamplona, zoomLevel);
+
+        mMap.moveCamera(cu);
+    }
     private void checkGPS(){
         try {
             int gpsSignal = Settings.Secure.getInt(this.getContentResolver(),Settings.Secure.LOCATION_MODE);
@@ -167,15 +179,16 @@ public class searchMapActivity extends AppCompatActivity implements OnMapReadyCa
     }
     private void showInfoAlert(){
         new AlertDialog.Builder(this)
-                .setTitle("GPS Alert")
-                .setMessage("You don´t have the GPS signal enabled, Would you like to enable the GPS signal now?")
-                .setPositiveButton("Ok", (dialogInterface, i) -> {
+                .setTitle(getString(R.string.gps_alert_title))
+                .setMessage(getString(R.string.gps_alert_message))
+                .setPositiveButton(getString(R.string.gps_alert_positive_button), (dialogInterface, i) -> {
                     Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                     startActivity(intent);
                 })
-                .setNegativeButton("Cancel",null)
+                .setNegativeButton(getString(R.string.gps_alert_negative_button), null)
                 .show();
     }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

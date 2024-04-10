@@ -32,6 +32,7 @@
     import es.cuatrovientos.a4vgo.R;
     import es.cuatrovientos.a4vgo.activities.GeneratedRouteActivity;
     import es.cuatrovientos.a4vgo.activities.MainRoutesActivity;
+    import es.cuatrovientos.a4vgo.activities.co2Points.RatingByCo2Points;
     import es.cuatrovientos.a4vgo.activities.createRoute.AddRouteActivity;
     import es.cuatrovientos.a4vgo.utils.DialogUtils;
     import es.cuatrovientos.a4vgo.activities.MainActivity;
@@ -142,24 +143,23 @@
             bottom.setOnItemSelectedListener(item -> {
                         int id = item.getItemId();
                         if (id == R.id.navigation_trips) {
-                            overridePendingTransition(0, 0);
-                            Intent intent = new Intent(ProfileActivity.this , MainRoutesActivity.class);
-                            startActivity(intent);
-                            overridePendingTransition(0, 0);
+                            navigateToActivity(MainRoutesActivity.class);
                         } else if (id == R.id.navigation_publish_route) {
-                            overridePendingTransition(0, 0);
-                            Intent intent = new Intent(ProfileActivity.this , AddRouteActivity.class);
-                            startActivity(intent);
-                            overridePendingTransition(0, 0);
-                        } else if (id == R.id.navigation_chat){
-                            overridePendingTransition(0, 0);
-                            Intent intent = new Intent(ProfileActivity.this , GeneratedRouteActivity.class);
-                            startActivity(intent);
-                            overridePendingTransition(0, 0);
+                            navigateToActivity(AddRouteActivity.class);
+                        } else if (id == R.id.navigation_ranking){
+                            navigateToActivity(RatingByCo2Points.class);
                         }
                         return true;
                     }
             );
+        }
+
+        private void navigateToActivity(Class<?> destinationActivity) {
+            overridePendingTransition(0, 0);
+            Intent intent = new Intent(ProfileActivity.this, destinationActivity);
+            startActivity(intent);
+            overridePendingTransition(0, 0);
+
         }
         private void loadProfileImage() {
             collection.document(currenUserDNI).get()

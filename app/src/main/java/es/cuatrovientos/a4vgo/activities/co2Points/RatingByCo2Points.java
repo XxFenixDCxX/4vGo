@@ -1,5 +1,6 @@
 package es.cuatrovientos.a4vgo.activities.co2Points;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -8,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -18,11 +20,15 @@ import java.util.List;
 import java.util.Map;
 
 import es.cuatrovientos.a4vgo.R;
+import es.cuatrovientos.a4vgo.activities.MainRoutesActivity;
+import es.cuatrovientos.a4vgo.activities.createRoute.AddRouteActivity;
+import es.cuatrovientos.a4vgo.activities.profile.privateProfile.ProfileActivity;
 import es.cuatrovientos.a4vgo.adapters.RatingCo2PointsAdapter;
 import es.cuatrovientos.a4vgo.models.UserProfile;
 import es.cuatrovientos.a4vgo.utils.DialogUtils;
 
 public class RatingByCo2Points extends AppCompatActivity {
+    private BottomNavigationView bottom;
 
     private final List<UserProfile> userList = new ArrayList<>();
     private RatingCo2PointsAdapter leaderboardAdapter;
@@ -31,7 +37,20 @@ public class RatingByCo2Points extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rating_by_co2_points);
-
+        bottom = findViewById(R.id.bnNavigation);
+        bottom.setSelectedItemId(R.id.navigation_ranking);
+        bottom.setOnItemSelectedListener(item -> {
+                    int id = item.getItemId();
+                    if (id == R.id.navigation_trips) {
+                        navigateToActivity(MainRoutesActivity.class);
+                    } else if (id == R.id.navigation_publish_route) {
+                        navigateToActivity(AddRouteActivity.class);
+                    } else if (id == R.id.navigation_profile){
+                        navigateToActivity(ProfileActivity.class);
+                    }
+                    return true;
+                }
+        );
         leaderboardAdapter = new RatingCo2PointsAdapter(userList, (user, position) -> {
         });
 
@@ -40,8 +59,17 @@ public class RatingByCo2Points extends AppCompatActivity {
         leaderView.setLayoutManager(new LinearLayoutManager(this));
 
         getTopUsersFromFirebase(10);
+
+
     }
 
+
+    private void navigateToActivity(Class<?> activityClass) {
+        overridePendingTransition(0, 0);
+        Intent intent = new Intent(RatingByCo2Points.this, activityClass);
+        startActivity(intent);
+        overridePendingTransition(0, 0);
+    }
     private void getTopUsersFromFirebase(int numberOfUsers) {
         CollectionReference personalDetailsRef = FirebaseFirestore.getInstance().collection("personalDetails");
 
