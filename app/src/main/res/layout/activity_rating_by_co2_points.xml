@@ -35,22 +35,6 @@
         app:srcCompat="@drawable/top_background"
         tools:ignore="VisualLintBounds" />
 
-    <Button
-        android:id="@+id/btnBack"
-        android:layout_width="59dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="5dp"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/descriptionBackButton"
-        android:rotation="180"
-        android:text="@string/whiteString"
-        android:textColorHighlight="#00FFFFFF"
-        android:textColorLink="#00FFFFFF"
-        app:icon="@drawable/arrow_point_to_right"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:rippleColor="#00FFFFFF" />
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"

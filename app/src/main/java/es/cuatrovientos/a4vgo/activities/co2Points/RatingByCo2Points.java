@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -25,6 +26,9 @@ import java.util.List;
 import java.util.Map;
 
 import es.cuatrovientos.a4vgo.R;
+import es.cuatrovientos.a4vgo.activities.MainRoutesActivity;
+import es.cuatrovientos.a4vgo.activities.createRoute.AddRouteActivity;
+import es.cuatrovientos.a4vgo.activities.profile.privateProfile.ProfileActivity;
 import es.cuatrovientos.a4vgo.activities.profile.publicProfile.PublicProfilActivity;
 import es.cuatrovientos.a4vgo.adapters.RatingCo2PointsAdapter;
 import es.cuatrovientos.a4vgo.models.UserProfile;
@@ -33,6 +37,7 @@ import es.cuatrovientos.a4vgo.utils.DialogUtils;
 public class RatingByCo2Points extends AppCompatActivity {
 
     private final List<UserProfile> userList = new ArrayList<>();
+    BottomNavigationView bottom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +50,22 @@ public class RatingByCo2Points extends AppCompatActivity {
         leaderView.setLayoutManager(new LinearLayoutManager(this));
 
         getTopUsersFromFirebase();
+        bottom = findViewById(R.id.bnNavigation);
+        bottom.setSelectedItemId(R.id.navigation_ranking);
+
+        bottom.setOnItemSelectedListener(item -> {
+
+                    int id = item.getItemId();
+                    if (id == R.id.navigation_trips) {
+                        navigateToActivity(MainRoutesActivity.class);
+                    } else if (id == R.id.navigation_publish_route) {
+                        navigateToActivity(AddRouteActivity.class);
+                    } else if (id == R.id.navigation_profile){
+                        navigateToActivity(ProfileActivity.class);
+                    }
+                    return true;
+                }
+        );
     }
 
     private void getTopUsersFromFirebase() {
@@ -134,5 +155,13 @@ public class RatingByCo2Points extends AppCompatActivity {
                 }
             }
         }.execute();
+    }
+
+    private void navigateToActivity(Class<?> destinationActivity) {
+        overridePendingTransition(0, 0);
+        Intent intent = new Intent(RatingByCo2Points.this, destinationActivity);
+        startActivity(intent);
+        overridePendingTransition(0, 0);
+
     }
 }
