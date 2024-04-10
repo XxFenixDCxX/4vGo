@@ -197,6 +197,7 @@
     <string name="users_favorites">Favorite Users</string>
 
     <!-- Banned Users -->
+    <string name="collection_favoritos">Favourites</string>
     <string name="users_banned">Banned Users</string>
 
     <string name="error_clasification">Error retrieving classification data</string>
@@ -233,5 +234,14 @@
     <string name="warning_message_user_banned">User banned successfully</string>
     <string name="error_message_failed_to_ban_user">Failed to ban user</string>
     <string name="error_message_failed_to_check_user_banned">Failed to check if user is banned</string>
+    <string name="adding_to_favorites_progress">Adding to favourites</string>
+    <string name="banning_user_progress">Banning user</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="_3">3</string>
+    <string name="_2">2</string>
+    <string name="_000dd00">000dd00</string>
+    <string name="_00000">00000</string>
+    <string name="title">title</string>
+    <string name="_1">1</string>
 
 </resources>

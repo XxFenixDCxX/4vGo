@@ -28,7 +28,7 @@
     <string name="Facebook">Facebook</string>
     <string name="Google">Google</string>
     <string name="LoginButton">Iniciar sesión</string>
-    <string name="whiteString" />
+    <string name="whiteString" translatable="false" />
     <string name="errorLogName">El nombre tiene que tener mas de 3 caracteres</string>
     <string name="descriptionBackButton">Boton para ir atras</string>
     <string name="descriptionNext">Boton de Siguiente</string>
@@ -204,7 +204,7 @@
     <!-- Usuarios Favoritos -->
     <string name="users_favorites">Usuarios Favoritos</string>
 
-    <string name="collection_favoritos">favorits</string>
+    <string name="collection_favoritos">favoritos</string>
     <!-- Usuarios Baneados -->
     <string name="users_banned">Usuarios Baneados</string>
 
@@ -244,8 +244,8 @@
     <string name="error_message_failed_to_ban_user">Error al banear usuario</string>
     <string name="error_message_failed_to_check_user_banned">Error al verificar si el usuario está baneado</string>
 
-    <string name="adding_to_favorites_progress">Agregando a favoritos...</string>
-    <string name="banning_user_progress">Baneando usuario...</string>
+    <string name="adding_to_favorites_progress">Agregando a favoritos…</string>
+    <string name="banning_user_progress">Baneando usuario…</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="_3">3</string>
