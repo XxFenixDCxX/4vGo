@@ -4,6 +4,8 @@ package es.cuatrovientos.a4vgo.activities;
 import androidx.annotation.NonNull;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
@@ -12,7 +14,6 @@ import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -53,21 +54,17 @@ public class GeneratedRouteActivity extends AppCompatActivity implements OnMapRe
     private String start ;
     private String end ;
 
-    private Button btnCalulate ;
     private LocationManager locationManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_generated_route);
-        btnCalulate = findViewById(R.id.btn2);
-        btnCalulate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                start = "-1.5977543559219463,42.814164000000005";
-                end = "-1.6598970153413861,42.82437339317052";
-                createRoute();
+        Button btnCalulate = findViewById(R.id.btn2);
+        btnCalulate.setOnClickListener(view -> {
+            start = "-1.5977543559219463,42.814164000000005";
+            end = "-1.6598970153413861,42.82437339317052";
+            createRoute();
 
-            }
         });
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -83,6 +80,7 @@ public class GeneratedRouteActivity extends AppCompatActivity implements OnMapRe
                 .build();
 
     }
+    @SuppressLint("StaticFieldLeak")
     public void createRoute() {
         new AsyncTask<Void, Void, Route>() {
             @Override
@@ -138,13 +136,10 @@ public class GeneratedRouteActivity extends AppCompatActivity implements OnMapRe
         MarkerOptions destinoMarkerOptions = new MarkerOptions()
                 .position(destino)
                 .title("Destino");
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mMap.addMarker(origenMarkerOptions);
-                mMap.addMarker(destinoMarkerOptions);
-                Polyline poly = mMap.addPolyline(polyLineOptions);
-            }
+        runOnUiThread(() -> {
+            mMap.addMarker(origenMarkerOptions);
+            mMap.addMarker(destinoMarkerOptions);
+            Polyline poly = mMap.addPolyline(polyLineOptions);
         });
     }
 

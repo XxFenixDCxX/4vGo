@@ -6,7 +6,6 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.EditText;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -21,19 +20,16 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
 public class OpenStreetMapSearchTask extends AsyncTask<String, Void, String> {
 
 
-    private AutoCompleteTextView autoCompleteTextView;
-    private ArrayAdapter<String> adapter;
-    private GoogleMap mMap;  // Add GoogleMap instance
+    private final ArrayAdapter<String> adapter;
+    private final GoogleMap mMap;  // Add GoogleMap instance
 
     public OpenStreetMapSearchTask(AutoCompleteTextView autoCompleteTextView, ArrayAdapter<String> adapter, GoogleMap mMap) {
-        this.autoCompleteTextView = autoCompleteTextView;
         this.adapter = adapter;
         this.mMap = mMap;
 
@@ -62,8 +58,6 @@ public class OpenStreetMapSearchTask extends AsyncTask<String, Void, String> {
             reader.close();
             return response.toString();
 
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

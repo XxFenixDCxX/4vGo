@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 import es.cuatrovientos.a4vgo.R;
 
 public class CustomSpinnerAdapter extends ArrayAdapter<String> {
@@ -14,15 +16,16 @@ public class CustomSpinnerAdapter extends ArrayAdapter<String> {
         super(context, resource, items);
     }
 
+    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         View view = super.getView(position, convertView, parent);
         applyCustomStyle((TextView) view);
         return view;
     }
 
     @Override
-    public View getDropDownView(int position, View convertView, ViewGroup parent) {
+    public View getDropDownView(int position, View convertView, @NonNull ViewGroup parent) {
         View view = super.getDropDownView(position, convertView, parent);
         applyCustomStyle((TextView) view);
         return view;

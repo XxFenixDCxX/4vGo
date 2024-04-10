@@ -1,5 +1,6 @@
 package es.cuatrovientos.a4vgo.activities.createRoute;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
@@ -183,7 +184,7 @@ public class AddRouteActivity extends AppCompatActivity {
         TimePickerDialog timePickerDialog = new TimePickerDialog(
                 context,
                 (view1, hourOfDay, minute) -> {
-                    String formattedTime = String.format("%02d:%02d", hourOfDay, minute);
+                    @SuppressLint("DefaultLocale") String formattedTime = String.format("%02d:%02d", hourOfDay, minute);
                     txtTime.setText(formattedTime);
                 },
                 calendar.get(Calendar.HOUR_OF_DAY),
@@ -202,7 +203,7 @@ public class AddRouteActivity extends AppCompatActivity {
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 context,
                 (view1, year1, month1, dayOfMonth) -> {
-                    String formattedDate = String.format("%02d/%02d/%04d", dayOfMonth, month1 + 1, year1);
+                    @SuppressLint("DefaultLocale") String formattedDate = String.format("%02d/%02d/%04d", dayOfMonth, month1 + 1, year1);
                     txtDateTime.setText(formattedDate);
                 },
                 year,

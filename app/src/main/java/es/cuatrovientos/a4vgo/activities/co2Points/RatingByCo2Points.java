@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,27 +33,25 @@ import es.cuatrovientos.a4vgo.utils.DialogUtils;
 public class RatingByCo2Points extends AppCompatActivity {
 
     private final List<UserProfile> userList = new ArrayList<>();
-    private RatingCo2PointsAdapter leaderboardAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rating_by_co2_points);
-
-        leaderboardAdapter = new RatingCo2PointsAdapter(userList, (user) -> {
+        RatingCo2PointsAdapter leaderboardAdapter = new RatingCo2PointsAdapter(userList, (user) -> {
         });
         RecyclerView leaderView = findViewById(R.id.leaderView);
         leaderView.setAdapter(leaderboardAdapter);
         leaderView.setLayoutManager(new LinearLayoutManager(this));
 
-        getTopUsersFromFirebase(10);
+        getTopUsersFromFirebase();
     }
 
-    private void getTopUsersFromFirebase(int numberOfUsers) {
+    private void getTopUsersFromFirebase() {
         CollectionReference personalDetailsRef = FirebaseFirestore.getInstance().collection("personalDetails");
 
         personalDetailsRef.orderBy("co2Points", Query.Direction.DESCENDING)
-                .limit(numberOfUsers)
+                .limit(10)
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {

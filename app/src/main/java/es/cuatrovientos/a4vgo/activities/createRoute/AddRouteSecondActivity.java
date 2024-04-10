@@ -1,5 +1,6 @@
 package es.cuatrovientos.a4vgo.activities.createRoute;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -182,6 +183,7 @@ public class AddRouteSecondActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private void showVehicleListDialog() {
         if (vehiclesList != null && !vehiclesList.isEmpty()) {
             String[] vehiclesArray = vehiclesList.stream()
