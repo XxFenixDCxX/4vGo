@@ -48,7 +48,7 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
     private static String currentUsername;
 
 
-    public RecyclerRoutesAdapter(String routeType, String cords, String selectedDate, int numPeople, OnItemClickListener listener) {
+    public RecyclerRoutesAdapter(String routeType, String cords, String selectedDate, int numPeople) {
         this.routeType = routeType;
         this.cords = cords;
         this.selectedDate  = selectedDate;
@@ -186,7 +186,7 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
         public void assignData(Route route) {
             itemView.setOnClickListener(v -> {
                 Intent intent = new Intent(itemView.getContext(), RouteDetailsActivity.class);
-                intent.putExtra("routeID", route.getRouteID());
+                intent.putExtra("route", route);
                 itemView.getContext().startActivity(intent);
             });
             FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();

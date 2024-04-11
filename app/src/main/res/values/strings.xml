@@ -3,7 +3,7 @@
     <string name="emailQuestion">¿Cuál es tu correo electronico?</string>
     <string name="name">Nombre</string>
     <string name="birthdate">Fecha de Nacimiento</string>
-    <string name="surname">Apellido(s)</string>
+    <string name="surname">Apellido</string>
     <string name="dni">DNI</string>
     <string name="hint_write">Escribe aqui…</string>
     <string name="email">Correo electronico</string>
@@ -28,7 +28,7 @@
     <string name="Facebook">Facebook</string>
     <string name="Google">Google</string>
     <string name="LoginButton">Iniciar sesión</string>
-    <string name="whiteString" />
+    <string name="whiteString" translatable="false" />
     <string name="errorLogName">El nombre tiene que tener mas de 3 caracteres</string>
     <string name="descriptionBackButton">Boton para ir atras</string>
     <string name="descriptionNext">Boton de Siguiente</string>
@@ -244,8 +244,8 @@
     <string name="error_message_failed_to_ban_user">Error al banear usuario</string>
     <string name="error_message_failed_to_check_user_banned">Error al verificar si el usuario está baneado</string>
 
-    <string name="adding_to_favorites_progress">Agregando a favoritos...</string>
-    <string name="banning_user_progress">Baneando usuario...</string>
+    <string name="adding_to_favorites_progress">Agregando a favoritos…</string>
+    <string name="banning_user_progress">Baneando usuario…</string>
 
     <string name="_3">3</string>
     <string name="_2">2</string>

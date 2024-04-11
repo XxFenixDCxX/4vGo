@@ -1,11 +1,13 @@
 package es.cuatrovientos.a4vgo.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Route {
+public class Route implements Parcelable{
     private  Integer id;
     private String routeType;
     private String origin;
@@ -22,14 +24,14 @@ public class Route {
     private boolean isFrequent;
     private String comments;
     public static final double EARTH_RADIUS = 6371;
-
     @SerializedName("features")
-    public List<es.cuatrovientos.a4vgo.models.Feature> features;
+    public List<Feature> features;
     public List<Feature> getFeatures() {
         return features;
     }
 
     // Constructor
+
     public Route(String routeType, String origin, String destination,String userId, String selectedDate,
                  String selectedTime, int maxSeats, String selectedVehiclePlate,
                  boolean hasIntermediateStops, boolean isFrequent, String comments) {
@@ -87,6 +89,56 @@ public class Route {
     }
     public Route() {
 
+    }
+
+    protected Route(Parcel in) {
+        routeType = in.readString();
+        origin = in.readString();
+        destination = in.readString();
+        userId = in.readString();
+        routeID = in.readString();
+        selectedDate = in.readString();
+        selectedTime = in.readString();
+        maxSeats = in.readInt();
+        selectedVehiclePlate = in.readString();
+        hasIntermediateStops = in.readByte() != 0;
+        isFrequent = in.readByte() != 0;
+        comments = in.readString();
+    }
+    // Método para crear instancias Parcelable
+    public static final Parcelable.Creator<Route> CREATOR = new Parcelable.Creator<Route>() {
+        @Override
+        public Route createFromParcel(Parcel in) {
+            return new Route(in);
+        }
+
+        @Override
+        public Route[] newArray(int size) {
+            return new Route[size];
+        }
+    };
+
+    // Método para describir contenido del Parcelable
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    // Método para escribir datos al Parcelable
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(routeType);
+        dest.writeString(origin);
+        dest.writeString(destination);
+        dest.writeString(userId);
+        dest.writeString(routeID);
+        dest.writeString(selectedDate);
+        dest.writeString(selectedTime);
+        dest.writeInt(maxSeats);
+        dest.writeString(selectedVehiclePlate);
+        dest.writeByte((byte) (hasIntermediateStops ? 1 : 0));
+        dest.writeByte((byte) (isFrequent ? 1 : 0));
+        dest.writeString(comments);
     }
 
     public String getUserId() {

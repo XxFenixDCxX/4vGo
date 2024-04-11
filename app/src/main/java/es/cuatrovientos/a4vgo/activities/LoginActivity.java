@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -28,11 +27,9 @@ import es.cuatrovientos.a4vgo.utils.DialogUtils;
 
 public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    private GoogleSignInClient mGoogleSignInClient;
 
     private EditText editTextEmail;
     private EditText editTextPassword;
-    private ActivityResultLauncher<Intent> signInIntentLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +49,10 @@ public class LoginActivity extends AppCompatActivity {
                 .requestEmail()
                 .build();
 
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        LinearLayout signInButtonbyGoogle = findViewById(R.id.linearLayoutGoogle);
-        signInButtonbyGoogle.setOnClickListener(view -> signIn());
-
-        signInIntentLauncher = registerForActivityResult(
+        // The Intent that started this activity
+        ActivityResultLauncher<Intent> signInIntentLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
                     if (result.getResultCode() == Activity.RESULT_OK) {
@@ -70,11 +65,6 @@ public class LoginActivity extends AppCompatActivity {
 
         //Autentication call
         login();
-    }
-
-    private void signIn() {
-        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        signInIntentLauncher.launch(signInIntent);
     }
 
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {

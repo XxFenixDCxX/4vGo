@@ -92,89 +92,24 @@
             android:textSize="18sp"
             tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:orientation="horizontal">
-
-            <View
-                android:id="@+id/viewHr"
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:background="@color/gris" />
-
-            <TextView
-                android:id="@+id/textViewOtherLogin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="@string/OtherLogin" />
-
-            <View
-                android:id="@+id/viewHr2"
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:background="@color/gris" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:baselineAligned="false"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:id="@+id/linearLayoutGoogle"
-                android:layout_width="0dp"
-                android:layout_height="49dp"
-                android:layout_weight="1"
-                android:background="@drawable/social_btn_background"
-                android:gravity="center"
-                android:orientation="horizontal"
-                tools:ignore="UselessParent">
-
-                <ImageView
-                    android:id="@+id/imageViewGoogle"
-                    android:layout_width="35dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="8dp"
-                    android:contentDescription="@string/Google"
-                    app:srcCompat="@drawable/google" />
-
-                <TextView
-                    android:id="@+id/textViewGoogle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:text="@string/Google"
-                    android:textColor="@color/green"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    tools:ignore="NestedWeights" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/buttonLogin"
-            style="@android:style/Widget.Button"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/button_background"
-            android:text="@string/LoginButton"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            tools:ignore="VisualLintButtonSize" />
     </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonLogin"
+        style="@android:style/Widget.Button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/button_background"
+        android:text="@string/LoginButton"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="VisualLintButtonSize" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
