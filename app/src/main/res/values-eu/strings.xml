@@ -244,10 +244,15 @@
     <string name="title">title</string>
     <string name="_1">1</string>
 
+    <string name="ic_ranking">Sailkapena</string>
     <string name="gps_alert_title">GPS Jakinarazpena</string>
     <string name="gps_alert_message">GPS seinalea gaituta ez duzu. Zure GPS seinalea orain gaitu nahi duzu?</string>
     <string name="gps_alert_positive_button">Ados</string>
     <string name="gps_alert_negative_button">Utzi</string>
+    <string name="route_details">Ibilbidearen datuak</string>
+    <string name="driver_details">Gidariaren datuak</string>
+    <string name="btn_see">Ikusi</string>
+    <string name="vehicule_color">Ibilgailuaren colorea</string>
 
 
 </resources>

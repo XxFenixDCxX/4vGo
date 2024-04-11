@@ -250,5 +250,9 @@
     <string name="title">Title</string>
     <string name="_1">1</string>
     <string name="ic_ranking">Ranking</string>
+    <string name="route_details">Route details</string>
+    <string name="driver_details">Driver details</string>
+    <string name="btn_see">Look</string>
+    <string name="vehicule_color">Veicle color</string>
 
 </resources>
