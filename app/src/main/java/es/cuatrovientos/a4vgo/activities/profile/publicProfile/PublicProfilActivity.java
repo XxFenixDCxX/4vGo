@@ -4,17 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
@@ -29,8 +28,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import es.cuatrovientos.a4vgo.R;
-import es.cuatrovientos.a4vgo.activities.MainRoutesActivity;
-import es.cuatrovientos.a4vgo.activities.createRoute.AddRouteActivity;
 import es.cuatrovientos.a4vgo.models.UserProfile;
 import es.cuatrovientos.a4vgo.utils.DialogUtils;
 
@@ -38,7 +35,7 @@ public class PublicProfilActivity extends AppCompatActivity {
     private FirebaseFirestore db;
     private String userDNI;
     private ImageView profile;
-    BottomNavigationView bottom;
+    Button back;
 
     Bundle bundle;
 
@@ -50,36 +47,14 @@ public class PublicProfilActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         userDNI = bundle.getString("dni");
         profile = findViewById(R.id.imgProfileP);
+        back = findViewById(R.id.btnBack);
 
         LinearLayout favoriteButton = findViewById(R.id.AddToFavorite);
         LinearLayout bannedButton = findViewById(R.id.BanUser);
-        bottom = findViewById(R.id.bnNavigation);
-        bottom.setSelectedItemId(R.id.navigation_profile);
         favoriteButton.setOnClickListener(view -> addToFavorites(userDNI));
         bannedButton.setOnClickListener(view -> banUser(userDNI));
-        bottom.setOnItemSelectedListener(item -> {
-                    int id = item.getItemId();
-                    if (id == R.id.navigation_trips) {
-                        overridePendingTransition(0, 0);
-                        Intent intent = new Intent(PublicProfilActivity.this , MainRoutesActivity.class);
-                        startActivity(intent);
-                        overridePendingTransition(0, 0);
-                    } else if (id == R.id.navigation_publish_route) {
-                        overridePendingTransition(0, 0);
-                        Intent intent = new Intent(PublicProfilActivity.this , AddRouteActivity.class);
-                        startActivity(intent);
-                        overridePendingTransition(0, 0);
-                    } else if (id == R.id.navigation_ranking){
-                        overridePendingTransition(0, 0);
-                        Intent intent = new Intent(PublicProfilActivity.this , PublicProfilActivity.class);
-                        startActivity(intent);
-                        overridePendingTransition(0, 0);
-                    }
-                    return true;
-                }
-        );
         retrieveUserInfo(userDNI);
-
+        back.setOnClickListener(view -> finish());
     }
     private void addToFavorites(String userDni) {
         ProgressDialog progressDialog = ProgressDialog.show(this, "", getString(R.string.adding_to_favorites_progress), true);
