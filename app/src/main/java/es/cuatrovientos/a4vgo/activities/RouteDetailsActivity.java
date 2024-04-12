@@ -59,17 +59,21 @@ public class RouteDetailsActivity extends AppCompatActivity {
         joinUnjoinRoute.setOnClickListener(v -> {
             joinedUsersDNI = route.getJoinedUsersDNI();
             if(joinUnjoinRoute.getText().equals(getString(R.string.joinRoute))){
-                if(joinedUsersDNI == null || joinedUsersDNI.isEmpty()){
-                    joinedUsersDNI = dni;
-                } else {
-                    joinedUsersDNI += ","+dni;
+                if(route.getMaxSeats() != 0){
+                    if(joinedUsersDNI == null || joinedUsersDNI.isEmpty()){
+                        joinedUsersDNI = dni;
+                    } else {
+                        joinedUsersDNI += ","+dni;
+                    }
+                    DocumentReference rutaRef = FirebaseFirestore.getInstance().collection("routes").document(route.getRouteID());
+                    rutaRef.update("joinedUsersDNI", joinedUsersDNI).addOnSuccessListener(aVoid -> {
+                        route.setJoinedUsersDNI(joinedUsersDNI);
+                        route.setMaxSeats(route.getMaxSeats()-1);
+                        rutaRef.update("maxSeats", route.getMaxSeats());
+                        joinUnjoinRoute.setText(R.string.deJoinRoute);
+                        joinUnjoinRoute.setBackgroundColor(getColor(R.color.red));
+                    });
                 }
-                DocumentReference rutaRef = FirebaseFirestore.getInstance().collection("routes").document(route.getRouteID());
-                rutaRef.update("joinedUsersDNI", joinedUsersDNI).addOnSuccessListener(aVoid -> {
-                    route.setJoinedUsersDNI(joinedUsersDNI);
-                    joinUnjoinRoute.setText(R.string.deJoinRoute);
-                    joinUnjoinRoute.setBackgroundColor(getColor(R.color.red));
-                });
             }
             if(joinUnjoinRoute.getText().equals(getString(R.string.deJoinRoute))){
                 joinedUsersDNI = null;
@@ -85,6 +89,8 @@ public class RouteDetailsActivity extends AppCompatActivity {
                 DocumentReference rutaRef = FirebaseFirestore.getInstance().collection("routes").document(route.getRouteID());
                 rutaRef.update("joinedUsersDNI", joinedUsersDNI).addOnSuccessListener(aVoid -> {
                     route.setJoinedUsersDNI(joinedUsersDNI);
+                    route.setMaxSeats(route.getMaxSeats()+1);
+                    rutaRef.update("maxSeats", route.getMaxSeats());
                     joinUnjoinRoute.setText(R.string.joinRoute);
                     joinUnjoinRoute.setBackgroundColor(getColor(R.color.green));
                 });
