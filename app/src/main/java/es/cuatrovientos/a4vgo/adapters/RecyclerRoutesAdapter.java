@@ -88,7 +88,8 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
                                         String selectedVehicle = document.getString("selectedVehicle");
                                         boolean frequent = Boolean.TRUE.equals(document.getBoolean("frequent"));
                                         String coments = document.getString("comments");
-                                        Route route = new Route(document.getId(), routeType, destination, origin, userId, selectedDate, selectedTime, numPeople, selectedVehicle, frequent, coments);
+                                        String joinedUsersDNI = document.getString("joinedUsersDNI");
+                                        Route route = new Route(document.getId(), routeType, destination, origin, userId, selectedDate, selectedTime, numPeople, selectedVehicle, frequent, coments, joinedUsersDNI);
 
                                         list.add(route);
                                         listCopy.add(route);
@@ -124,7 +125,9 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
                                         String selectedVehicle = document.getString("selectedVehicle");
                                         boolean frequent = Boolean.TRUE.equals(document.getBoolean("frequent"));
                                         String coments = document.getString("comments");
-                                        Route route = new Route(routeType, destination, origin, userId, selectedDate, selectedTime, numPeople, selectedVehicle, frequent, coments);
+                                        String joinedUsersDNI = document.getString("joinedUsersDNI");
+                                        String routeID = document.getId();
+                                        Route route = new Route(routeID, routeType, destination, origin, userId, selectedDate, selectedTime, numPeople, selectedVehicle, frequent, coments, joinedUsersDNI);
 
                                         list.add(route);
                                         listCopy.add(route);
@@ -187,6 +190,7 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
             itemView.setOnClickListener(v -> {
                 Intent intent = new Intent(itemView.getContext(), RouteDetailsActivity.class);
                 intent.putExtra("route", route);
+                intent.putExtra("dni", dni);
                 itemView.getContext().startActivity(intent);
             });
             FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();

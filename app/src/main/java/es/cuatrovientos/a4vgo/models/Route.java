@@ -23,6 +23,7 @@ public class Route implements Parcelable{
     private boolean hasIntermediateStops;
     private boolean isFrequent;
     private String comments;
+    private String joinedUsersDNI;
     public static final double EARTH_RADIUS = 6371;
     @SerializedName("features")
     public List<Feature> features;
@@ -61,6 +62,23 @@ public class Route implements Parcelable{
         this.isFrequent = isFrequent;
         this.comments = comments;
     }
+
+    public Route(String routeID, String routeType, String origin, String destination,String userId, String selectedDate,
+                 String selectedTime, int maxSeats, String selectedVehiclePlate,
+                 boolean isFrequent, String comments, String joinedUsersDNI) {
+        this.routeID = routeID;
+        this.routeType = routeType;
+        this.origin = origin;
+        this.destination = destination;
+        this.userId = userId;
+        this.selectedDate = selectedDate;
+        this.selectedTime = selectedTime;
+        this.maxSeats = maxSeats;
+        this.selectedVehiclePlate = selectedVehiclePlate;
+        this.isFrequent = isFrequent;
+        this.comments = comments;
+        this.joinedUsersDNI = joinedUsersDNI;
+    }
     public Route(String routeID, String routeType, String origin, String destination,String userId, String selectedDate,
                  String selectedTime, int maxSeats, String selectedVehiclePlate,
                  boolean isFrequent, String comments) {
@@ -92,6 +110,7 @@ public class Route implements Parcelable{
     }
 
     protected Route(Parcel in) {
+        routeID = in.readString();
         routeType = in.readString();
         origin = in.readString();
         destination = in.readString();
@@ -104,6 +123,7 @@ public class Route implements Parcelable{
         hasIntermediateStops = in.readByte() != 0;
         isFrequent = in.readByte() != 0;
         comments = in.readString();
+        joinedUsersDNI = in.readString();
     }
     // Método para crear instancias Parcelable
     public static final Parcelable.Creator<Route> CREATOR = new Parcelable.Creator<Route>() {
@@ -127,6 +147,7 @@ public class Route implements Parcelable{
     // Método para escribir datos al Parcelable
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(routeID);
         dest.writeString(routeType);
         dest.writeString(origin);
         dest.writeString(destination);
@@ -139,10 +160,19 @@ public class Route implements Parcelable{
         dest.writeByte((byte) (hasIntermediateStops ? 1 : 0));
         dest.writeByte((byte) (isFrequent ? 1 : 0));
         dest.writeString(comments);
+        dest.writeString(joinedUsersDNI);
     }
 
     public String getUserId() {
         return userId;
+    }
+
+    public String getJoinedUsersDNI() {
+        return joinedUsersDNI;
+    }
+
+    public void setJoinedUsersDNI(String joinedUsersDNI) {
+        this.joinedUsersDNI = joinedUsersDNI;
     }
 
     public void setUserId(String userId) {

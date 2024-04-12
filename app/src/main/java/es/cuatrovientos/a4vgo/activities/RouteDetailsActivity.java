@@ -4,7 +4,6 @@ package es.cuatrovientos.a4vgo.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
@@ -25,8 +24,10 @@ import es.cuatrovientos.a4vgo.models.Route;
 public class RouteDetailsActivity extends AppCompatActivity {
     Button back, joinUnjoinRoute;
     Route route;
+    Bundle bundle;
+    String dni, joinedUsersDNI;
     TextView maxSeats, origin, destination, date, time, name, surname, plate, carColor;
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "ResourceAsColor"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,11 +43,52 @@ public class RouteDetailsActivity extends AppCompatActivity {
         surname = findViewById(R.id.txtApellidos);
         plate = findViewById(R.id.txtMatricula);
         carColor = findViewById(R.id.txtVehiculeColor);
-        joinUnjoinRoute = findViewById(R.id.btnJoinUnjoin);
+        joinUnjoinRoute = findViewById(R.id.btnJoinUnJoinRoute);
+        dni = getIntent().getStringExtra("dni");
 
-        back.setOnClickListener(v -> {
-            Intent intent = new Intent(RouteDetailsActivity.this, MainRoutesActivity.class);
-            startActivity(intent);
+        if (route.getJoinedUsersDNI() != null && route.getJoinedUsersDNI().contains(dni)) {
+            joinUnjoinRoute.setText(R.string.deJoinRoute);
+            joinUnjoinRoute.setBackgroundColor(getColor(R.color.red));
+        } else {
+            joinUnjoinRoute.setText(R.string.joinRoute);
+            joinUnjoinRoute.setBackgroundColor(getColor(R.color.green));
+        }
+
+        back.setOnClickListener(v -> finish());
+
+        joinUnjoinRoute.setOnClickListener(v -> {
+            joinedUsersDNI = route.getJoinedUsersDNI();
+            if(joinUnjoinRoute.getText().equals(getString(R.string.joinRoute))){
+                if(joinedUsersDNI == null || joinedUsersDNI.isEmpty()){
+                    joinedUsersDNI = dni;
+                } else {
+                    joinedUsersDNI += ","+dni;
+                }
+                DocumentReference rutaRef = FirebaseFirestore.getInstance().collection("routes").document(route.getRouteID());
+                rutaRef.update("joinedUsersDNI", joinedUsersDNI).addOnSuccessListener(aVoid -> {
+                    route.setJoinedUsersDNI(joinedUsersDNI);
+                    joinUnjoinRoute.setText(R.string.deJoinRoute);
+                    joinUnjoinRoute.setBackgroundColor(getColor(R.color.red));
+                });
+            }
+            if(joinUnjoinRoute.getText().equals(getString(R.string.deJoinRoute))){
+                joinedUsersDNI = null;
+                for(String userDNI : route.getJoinedUsersDNI().split(",")){
+                    if(!userDNI.equals(dni)){
+                        if(joinedUsersDNI == null){
+                            joinedUsersDNI = userDNI;
+                        } else {
+                            joinedUsersDNI += ","+userDNI;
+                        }
+                    }
+                }
+                DocumentReference rutaRef = FirebaseFirestore.getInstance().collection("routes").document(route.getRouteID());
+                rutaRef.update("joinedUsersDNI", joinedUsersDNI).addOnSuccessListener(aVoid -> {
+                    route.setJoinedUsersDNI(joinedUsersDNI);
+                    joinUnjoinRoute.setText(R.string.joinRoute);
+                    joinUnjoinRoute.setBackgroundColor(getColor(R.color.green));
+                });
+            }
         });
         maxSeats.setText(route.getMaxSeats() + "");
         double latitude, longitude;
