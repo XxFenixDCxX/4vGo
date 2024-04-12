@@ -71,6 +71,7 @@ public class RouteDetailsActivity extends AppCompatActivity {
                         route.setMaxSeats(route.getMaxSeats()-1);
                         rutaRef.update("maxSeats", route.getMaxSeats());
                         joinUnjoinRoute.setText(R.string.deJoinRoute);
+                        maxSeats.setText(route.getMaxSeats() + "");
                         joinUnjoinRoute.setBackgroundColor(getColor(R.color.red));
                     });
                 }
@@ -92,6 +93,7 @@ public class RouteDetailsActivity extends AppCompatActivity {
                     route.setMaxSeats(route.getMaxSeats()+1);
                     rutaRef.update("maxSeats", route.getMaxSeats());
                     joinUnjoinRoute.setText(R.string.joinRoute);
+                    maxSeats.setText(route.getMaxSeats() + "");
                     joinUnjoinRoute.setBackgroundColor(getColor(R.color.green));
                 });
             }
