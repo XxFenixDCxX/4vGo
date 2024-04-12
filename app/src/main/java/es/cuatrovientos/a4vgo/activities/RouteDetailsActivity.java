@@ -23,7 +23,7 @@ import es.cuatrovientos.a4vgo.R;
 import es.cuatrovientos.a4vgo.models.Route;
 
 public class RouteDetailsActivity extends AppCompatActivity {
-    Button back;
+    Button back, joinUnjoinRoute;
     Route route;
     TextView maxSeats, origin, destination, date, time, name, surname, plate, carColor;
     @SuppressLint("SetTextI18n")
@@ -42,18 +42,25 @@ public class RouteDetailsActivity extends AppCompatActivity {
         surname = findViewById(R.id.txtApellidos);
         plate = findViewById(R.id.txtMatricula);
         carColor = findViewById(R.id.txtVehiculeColor);
+        joinUnjoinRoute = findViewById(R.id.btnJoinUnjoin);
 
         back.setOnClickListener(v -> {
             Intent intent = new Intent(RouteDetailsActivity.this, MainRoutesActivity.class);
             startActivity(intent);
         });
         maxSeats.setText(route.getMaxSeats() + "");
-        double latitude = Double.parseDouble(route.getOrigin().split(",")[0]);
-        double longitude = Double.parseDouble(route.getOrigin().split(",")[1]);
-        origin.setText(getStreetName(latitude, longitude));
-        latitude = Double.parseDouble(route.getDestination().split(",")[0]);
-        longitude = Double.parseDouble(route.getDestination().split(",")[1]);
-        destination.setText(getStreetName(latitude, longitude));
+        double latitude, longitude;
+        if(route.getRouteType().equals("Ida")){
+            latitude = Double.parseDouble(route.getOrigin().split(",")[0]);
+            longitude = Double.parseDouble(route.getOrigin().split(",")[1]);
+            origin.setText(getStreetName(latitude, longitude));
+            destination.setText(R.string.ci_cuatrovientos);
+        } else if (route.getRouteType().equals("Vuelta")){
+            latitude = Double.parseDouble(route.getDestination().split(",")[0]);
+            longitude = Double.parseDouble(route.getDestination().split(",")[1]);
+            destination.setText(getStreetName(latitude, longitude));
+            origin.setText(R.string.ci_cuatrovientos);
+        }
         date.setText(route.getSelectedDate());
         time.setText(route.getSelectedTime());
         DocumentReference userDoc = FirebaseFirestore.getInstance().collection("personalDetails").document(route.getUserId());

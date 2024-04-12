@@ -253,6 +253,8 @@
     <string name="driver_details">Gidariaren datuak</string>
     <string name="btn_see">Ikusi</string>
     <string name="vehicule_color">Ibilgailuaren colorea</string>
+    <string name="joinRoute">Izena eman</string>
+    <string name="deJoinRoute">Izena kendu</string>
 
 
 </resources>

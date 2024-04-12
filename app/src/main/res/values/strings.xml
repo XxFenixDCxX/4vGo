@@ -266,5 +266,8 @@
     <string name="btn_see">Ver</string>
     <string name="vehicule_color">Color de vehiculo</string>
 
+    <string name="joinRoute">Apuntarse</string>
+    <string name="deJoinRoute">Desapuntarse</string>
+
 
 </resources>

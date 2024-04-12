@@ -107,7 +107,7 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
                         String routeType = document.getString("routeType");
                         assert routeType != null;
                         if(routeType.equals(this.routeType)){
-                            String destination = document.getString("destination");
+                            String destination = document.getString("origin");
                             assert destination != null;
                             double latitud = Double.parseDouble(destination.split(",")[0]);
                             double longitud = Double.parseDouble(destination.split(",")[1]);

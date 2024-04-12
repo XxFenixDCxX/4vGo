@@ -254,5 +254,7 @@
     <string name="driver_details">Driver details</string>
     <string name="btn_see">Look</string>
     <string name="vehicule_color">Veicle color</string>
+    <string name="joinRoute">Join</string>
+    <string name="deJoinRoute">Un join</string>
 
 </resources>
