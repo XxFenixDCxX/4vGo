@@ -4,13 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".activities.GeneratedRouteActivity">
+
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="415dp"
         android:layout_height="71dp"
         android:contentDescription="@string/descriptionHeader"
         android:scaleType="fitXY"
+        android:elevation="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,6 +30,7 @@
         android:contentDescription="@string/descriptionBackButton"
         android:rotation="180"
         android:text="@string/whiteString"
+
         android:textColorHighlight="#00FFFFFF"
         android:textColorLink="#00FFFFFF"
         app:icon="@drawable/arrow_point_to_right"
@@ -44,19 +48,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toTopOf="parent"
         tools:context=".activities.GeneratedRouteActivity" />
-    <Button
-        android:id="@+id/btn2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:gravity="bottom"
-        android:text="Calcula tu ruta"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"></Button>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 
@@ -72,6 +73,13 @@ public class searchMapActivity extends AppCompatActivity implements OnMapReadyCa
         mapFragment.getMapAsync(this);
 
         autoCompleteTextViewIntroduceDirection = findViewById(R.id.autoCompleteTextViewIntroduceDirection);
+        autoCompleteTextViewIntroduceDirection.setOnEditorActionListener((textView, actionId, keyEvent) -> {
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                autoCompleteTextViewIntroduceDirection.clearFocus();
+                return true; // Consume el evento
+            }
+            return false; // No consume el evento
+        });
 
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line);
         autoCompleteTextViewIntroduceDirection.setAdapter(adapter);

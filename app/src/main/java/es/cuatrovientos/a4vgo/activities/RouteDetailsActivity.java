@@ -4,9 +4,11 @@ package es.cuatrovientos.a4vgo.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -22,7 +24,7 @@ import es.cuatrovientos.a4vgo.R;
 import es.cuatrovientos.a4vgo.models.Route;
 
 public class RouteDetailsActivity extends AppCompatActivity {
-    Button back, joinUnjoinRoute;
+    Button back, joinUnjoinRoute , mapButton;
     Route route;
     Bundle bundle;
     String dni, joinedUsersDNI;
@@ -45,6 +47,7 @@ public class RouteDetailsActivity extends AppCompatActivity {
         carColor = findViewById(R.id.txtVehiculeColor);
         joinUnjoinRoute = findViewById(R.id.btnJoinUnJoinRoute);
         dni = getIntent().getStringExtra("dni");
+        mapButton = findViewById(R.id.mapButton);
 
         if (route.getJoinedUsersDNI() != null && route.getJoinedUsersDNI().contains(dni)) {
             joinUnjoinRoute.setText(R.string.deJoinRoute);
@@ -99,6 +102,26 @@ public class RouteDetailsActivity extends AppCompatActivity {
             }
         });
         maxSeats.setText(route.getMaxSeats() + "");
+        mapButton.setOnClickListener(v -> {
+            String[] originCoordinates = route.getOrigin().split(",");
+            String longitudeOrigin = originCoordinates[0];
+            String latitudeOrigin = originCoordinates[1];
+            String origin = latitudeOrigin + "," + longitudeOrigin;
+////////////////////////////////////////////////////////////////////////
+            String[] destinationCoordinates = route.getDestination().split(",");
+            String longitudeDestination = destinationCoordinates[0];
+            String latitudeDestination = destinationCoordinates[1];
+
+            String destination = latitudeDestination + "," + longitudeDestination;
+
+            Intent intent = new Intent(RouteDetailsActivity.this, GeneratedRouteActivity.class);
+            intent.putExtra("origin", origin);
+            Log.i("moha",origin);
+            intent.putExtra("destination", destination);
+            Log.i("moha",destination);
+
+            startActivity(intent);
+        });
         double latitude, longitude;
         if(route.getRouteType().equals("Ida")){
             latitude = Double.parseDouble(route.getOrigin().split(",")[0]);

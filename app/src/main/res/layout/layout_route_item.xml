@@ -27,7 +27,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorPrimary">
+            android:background="@color/white">
 
             <ImageView
                 android:id="@+id/OriginDestinationImg"
@@ -45,21 +45,14 @@
 
             <TextView
                 android:id="@+id/OriginCity"
-                android:layout_width="0dp"
+                android:layout_width="73dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:ellipsize="end"
                 android:text="@string/OriginCity"
+                android:textColor="@color/black"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/OriginDestinationImg"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.052"
-                app:layout_constraintWidth_default="wrap"
-                app:layout_constraintWidth_max="wrap"
-                app:layout_constraintWidth_min="wrap" />
+                app:layout_constraintTop_toTopOf="@+id/OriginDestinationImg" />
 
             <TextView
                 android:id="@+id/DestinationCity"
@@ -78,17 +71,13 @@
                 android:id="@+id/elapsedTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="72dp"
                 android:text="@string/time_elapsed"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="italic"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.501"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/OriginDestinationImg"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintBottom_toBottomOf="@+id/OriginDestinationImg"
+                app:layout_constraintEnd_toEndOf="@+id/OriginDestinationImg"
+                app:layout_constraintStart_toStartOf="@+id/OriginDestinationImg" />
 
             <TextView
                 android:id="@+id/user_name"
@@ -188,12 +177,8 @@
                 android:textColor="@color/black"
                 android:textSize="14sp"
 
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/OriginDestinationImg"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/OriginCity"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toBottomOf="@+id/OriginCity" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
