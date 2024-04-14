@@ -89,7 +89,7 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
                                         boolean frequent = Boolean.TRUE.equals(document.getBoolean("frequent"));
                                         String coments = document.getString("comments");
                                         String joinedUsersDNI = document.getString("joinedUsersDNI");
-                                        Route route = new Route(document.getId(), routeType, destination, origin, userId, selectedDate, selectedTime, numPeople, selectedVehicle, frequent, coments, joinedUsersDNI);
+                                        Route route = new Route(document.getId(), routeType, origin, destination, userId, selectedDate, selectedTime, numPeople, selectedVehicle, frequent, coments, joinedUsersDNI);
 
                                         list.add(route);
                                         listCopy.add(route);
@@ -108,10 +108,10 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
                         String routeType = document.getString("routeType");
                         assert routeType != null;
                         if(routeType.equals(this.routeType)){
-                            String destination = document.getString("origin");
-                            assert destination != null;
-                            double latitud = Double.parseDouble(destination.split(",")[0]);
-                            double longitud = Double.parseDouble(destination.split(",")[1]);
+                            String origin = document.getString("origin");
+                            assert origin != null;
+                            double latitud = Double.parseDouble(origin.split(",")[0]);
+                            double longitud = Double.parseDouble(origin.split(",")[1]);
                             double distance = haversine(latitudOriginal, longitudOrginal, latitud, longitud);
                             if(distance <= 2){
                                 String selectedDate = document.getString("selectedDate");
@@ -119,7 +119,7 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
                                     Long maxSeatsLong = document.getLong("maxSeats");
                                     int numPeople = (maxSeatsLong != null) ? maxSeatsLong.intValue() : 0;
                                     if(this.numPeople <= numPeople){
-                                        String origin = document.getString("origin");
+                                        String destination = document.getString("destination");
                                         String userId = document.getString("userId");
                                         String selectedTime = document.getString("selectedTime");
                                         String selectedVehicle = document.getString("selectedVehicle");
@@ -127,7 +127,7 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
                                         String coments = document.getString("comments");
                                         String joinedUsersDNI = document.getString("joinedUsersDNI");
                                         String routeID = document.getId();
-                                        Route route = new Route(routeID, routeType, destination, origin, userId, selectedDate, selectedTime, numPeople, selectedVehicle, frequent, coments, joinedUsersDNI);
+                                        Route route = new Route(routeID, routeType, origin, destination, userId, selectedDate, selectedTime, numPeople, selectedVehicle, frequent, coments, joinedUsersDNI);
 
                                         list.add(route);
                                         listCopy.add(route);
