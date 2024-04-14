@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
@@ -14,9 +15,9 @@ import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -24,6 +25,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.Dot;
 import com.google.android.gms.maps.model.Gap;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
@@ -59,16 +61,17 @@ public class GeneratedRouteActivity extends AppCompatActivity implements OnMapRe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_generated_route);
-        Button btnCalulate = findViewById(R.id.btn2);
-        btnCalulate.setOnClickListener(view -> {
-            start = "-1.5977543559219463,42.814164000000005";
-            end = "-1.6598970153413861,42.82437339317052";
-            createRoute();
-
-        });
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        Intent intent = getIntent();
+        if (intent != null) {
+            start = intent.getStringExtra("origin");
+            end = intent.getStringExtra("destination");
+        }
+        createRoute();
+
     }
 
 
@@ -140,8 +143,18 @@ public class GeneratedRouteActivity extends AppCompatActivity implements OnMapRe
             mMap.addMarker(origenMarkerOptions);
             mMap.addMarker(destinoMarkerOptions);
             Polyline poly = mMap.addPolyline(polyLineOptions);
+
+            // Ajustar la cámara para que se acerque a la ruta
+            LatLngBounds.Builder builder = new LatLngBounds.Builder();
+            for (LatLng point : poly.getPoints()) {
+                builder.include(point);
+            }
+            LatLngBounds bounds = builder.build();
+            int padding = 100; // Padding en píxeles desde el borde del mapa
+            mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding));
         });
     }
+
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
@@ -149,5 +162,3 @@ public class GeneratedRouteActivity extends AppCompatActivity implements OnMapRe
 
     }
 }
-
-

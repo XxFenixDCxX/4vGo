@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -108,7 +109,7 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
                         String routeType = document.getString("routeType");
                         assert routeType != null;
                         if(routeType.equals(this.routeType)){
-                            String destination = document.getString("origin");
+                            String destination = document.getString("destination");
                             assert destination != null;
                             double latitud = Double.parseDouble(destination.split(",")[0]);
                             double longitud = Double.parseDouble(destination.split(",")[1]);
@@ -190,6 +191,9 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
             itemView.setOnClickListener(v -> {
                 Intent intent = new Intent(itemView.getContext(), RouteDetailsActivity.class);
                 intent.putExtra("route", route);
+                Log.i("moha1v", route.getOrigin());
+                Log.i("moha1v", route.getDestination());
+
                 intent.putExtra("dni", dni);
                 itemView.getContext().startActivity(intent);
             });
