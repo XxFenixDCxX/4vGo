@@ -100,21 +100,32 @@ public class FourthRegisterActivity extends AppCompatActivity {
             String rePasswordString = rePassword.getText().toString();
 
             if(passwordString.equals(rePasswordString)){
-                Map<String, String> personalDetailsMap = new HashMap<>();
+                Map<String, Object> personalDetailsMap = new HashMap<>();
                 personalDetailsMap.put("dni", sendDni.toUpperCase());
                 personalDetailsMap.put("username", sendEmail.toLowerCase().split("@")[0]);
                 personalDetailsMap.put("name", sendName.toLowerCase());
                 personalDetailsMap.put("surname", sendSurname.toLowerCase());
                 personalDetailsMap.put("birthdate", sendBirthdate);
-                personalDetailsMap.put("spam", String.valueOf(sendSpam));
+                personalDetailsMap.put("spam", sendSpam);
                 personalDetailsMap.put("email", sendEmail.toLowerCase());
                 db.collection("personalDetails").document(sendDni.toUpperCase()).set(personalDetailsMap);
 
                 FirebaseAuth auth = FirebaseAuth.getInstance();
-                auth.createUserWithEmailAndPassword(sendEmail, passwordString);
-                auth.signInWithEmailAndPassword(sendEmail, passwordString);
-                Intent intent = new Intent(FourthRegisterActivity.this, MainRoutesActivity.class);
-                startActivity(intent);
+                auth.createUserWithEmailAndPassword(sendEmail, passwordString)
+                        .addOnCompleteListener(FourthRegisterActivity.this, createUserTask -> {
+                            if (createUserTask.isSuccessful()) {
+                                auth.signInWithEmailAndPassword(sendEmail, passwordString)
+                                        .addOnCompleteListener(FourthRegisterActivity.this, signInTask -> {
+                                            if (signInTask.isSuccessful()) {
+                                                Intent intent = new Intent(FourthRegisterActivity.this, MainRoutesActivity.class);
+                                                startActivity(intent);
+                                            } else {
+                                                DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.errorLoginMessage));
+                                            }
+                                        });
+                            } else {
+                                DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.errorLoginMessage));
+                            }});
             }else{
                 next.setVisibility(View.INVISIBLE);
                 DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.errorLogPassword));
