@@ -72,7 +72,7 @@ public class UserProfile {
             if (value instanceof String) {
                 return (String) value;
             } else if (value instanceof Boolean) {
-                return String.valueOf(value);
+                return ((Boolean) value) ? "true" : "false";
             }
         }
         return "";
