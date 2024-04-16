@@ -67,7 +67,15 @@ public class UserProfile {
     }
 
     private static String getStringFromMap(Map<String, Object> data, String key) {
-        return data.containsKey(key) ? (String) data.get(key) : "";
+        if (data.containsKey(key)) {
+            Object value = data.get(key);
+            if (value instanceof String) {
+                return (String) value;
+            } else if (value instanceof Boolean) {
+                return String.valueOf(value);
+            }
+        }
+        return "";
     }
 
     private static boolean getBooleanFromMap(Map<String, Object> data) {
