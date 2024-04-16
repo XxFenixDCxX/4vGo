@@ -72,7 +72,8 @@ public class FavoriteUsersActivity extends AppCompatActivity {
             db.collection("personalDetails").whereEqualTo("dni", userDNI).get()
                     .addOnSuccessListener(queryDocumentSnapshots -> {
                         for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-                            UserProfile user = documentSnapshot.toObject(UserProfile.class);
+                            UserProfile user;
+                            user = documentSnapshot.toObject(UserProfile.class);
                             favoriteUsersList.add(user);
                         }
                         updateRecyclerView();

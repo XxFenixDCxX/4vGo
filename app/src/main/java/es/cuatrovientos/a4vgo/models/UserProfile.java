@@ -71,8 +71,6 @@ public class UserProfile {
             Object value = data.get(key);
             if (value instanceof String) {
                 return (String) value;
-            } else if (value instanceof Boolean) {
-                return ((Boolean) value) ? "true" : "false";
             }
         }
         return "";
