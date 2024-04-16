@@ -29,7 +29,7 @@ public class RouteDetailsActivity extends AppCompatActivity {
     Bundle bundle;
     String dni, joinedUsersDNI;
     TextView maxSeats, origin, destination, date, time, name, surname, plate, carColor;
-    @SuppressLint({"SetTextI18n", "ResourceAsColor"})
+    @SuppressLint({"SetTextI18n", "ResourceAsColor", "NotifyDataSetChanged"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +76,7 @@ public class RouteDetailsActivity extends AppCompatActivity {
                         joinUnjoinRoute.setText(R.string.deJoinRoute);
                         maxSeats.setText(route.getMaxSeats() + "");
                         joinUnjoinRoute.setBackgroundColor(getColor(R.color.red));
+                        finish();
                     });
                 }
             }
@@ -98,6 +99,7 @@ public class RouteDetailsActivity extends AppCompatActivity {
                     joinUnjoinRoute.setText(R.string.joinRoute);
                     maxSeats.setText(route.getMaxSeats() + "");
                     joinUnjoinRoute.setBackgroundColor(getColor(R.color.green));
+                    finish();
                 });
             }
         });
@@ -107,7 +109,6 @@ public class RouteDetailsActivity extends AppCompatActivity {
             String longitudeOrigin = originCoordinates[0];
             String latitudeOrigin = originCoordinates[1];
             String origin = latitudeOrigin + "," + longitudeOrigin;
-////////////////////////////////////////////////////////////////////////
             String[] destinationCoordinates = route.getDestination().split(",");
             String longitudeDestination = destinationCoordinates[0];
             String latitudeDestination = destinationCoordinates[1];

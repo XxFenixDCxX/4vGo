@@ -314,6 +314,6 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
         return hour + "h " + minute + "m";
     }
     public interface OnItemClickListener{
-        void onItemClick( Route route);
+        void onItemClick(Route route);
     }
 }

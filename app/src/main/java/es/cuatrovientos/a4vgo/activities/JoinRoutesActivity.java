@@ -22,6 +22,7 @@ public class JoinRoutesActivity extends AppCompatActivity {
     ImageView back;
     TextView destination, origin, date, peopleNum;
     Bundle bundle;
+    RecyclerRoutesAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class JoinRoutesActivity extends AppCompatActivity {
         double longitude = Double.parseDouble(bundle.getString("selectedLongitude"));
         String cords = latitude + "," + longitude;
         routes = findViewById(R.id.rvRoutes);
-        RecyclerRoutesAdapter adapter = new RecyclerRoutesAdapter(routeType, cords, selectedDate, numPeople);
+        adapter = new RecyclerRoutesAdapter(routeType, cords, selectedDate, numPeople);
         back = findViewById(R.id.btnBackRoutesJoin);
         destination = findViewById(R.id.DestinationCity);
         origin = findViewById(R.id.OriginCity);
