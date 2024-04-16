@@ -267,7 +267,9 @@
     <string name="vehicule_color">Color de vehiculo</string>
 
     <string name="joinRoute">Apuntarse</string>
+    <string name="emptyError">Los campos no pueden estar vacios</string>
     <string name="deJoinRoute">Desapuntarse</string>
+    <string name="errorSitNumber">El numero de sitios tiene que ser numerico</string>
 
 
 </resources>

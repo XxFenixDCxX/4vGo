@@ -254,6 +254,8 @@
     <string name="joinRoute">Izena eman</string>
     <string name="deJoinRoute">Izena kendu</string>
     <string name="joined_rutes">Ibilbideak</string>
+    <string name="emptyError">Eremuak ezin dira hutsik egon.</string>
+    <string name="errorSitNumber">Lekuen kopurua zenbakizkoa izan behar da.</string>
 
 
 </resources>

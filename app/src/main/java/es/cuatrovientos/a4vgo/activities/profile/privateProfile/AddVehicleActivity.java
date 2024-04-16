@@ -3,6 +3,7 @@ package es.cuatrovientos.a4vgo.activities.profile.privateProfile;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -18,6 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import es.cuatrovientos.a4vgo.R;
+import es.cuatrovientos.a4vgo.utils.DialogUtils;
 
 public class AddVehicleActivity extends AppCompatActivity {
     Button add;
@@ -51,6 +53,15 @@ public class AddVehicleActivity extends AppCompatActivity {
             String plateString = plate.getText().toString();
             String colorString = color.getText().toString();
             String numSitString = numSit.getText().toString();
+            if(plateString.isEmpty() || colorString.isEmpty() || numSitString.isEmpty()){
+                DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.emptyError));
+                return;
+            }
+
+            if(!TextUtils.isDigitsOnly(numSitString)){
+                DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.errorSitNumber));
+                return;
+            }
 
             Map<String, String> carsMap = new HashMap<>();
             carsMap.put("plate", plateString.toLowerCase());
