@@ -30,7 +30,6 @@
     import java.util.Locale;
 
     import es.cuatrovientos.a4vgo.R;
-    import es.cuatrovientos.a4vgo.activities.GeneratedRouteActivity;
     import es.cuatrovientos.a4vgo.activities.MainRoutesActivity;
     import es.cuatrovientos.a4vgo.activities.co2Points.RatingByCo2Points;
     import es.cuatrovientos.a4vgo.activities.createRoute.AddRouteActivity;
@@ -38,7 +37,7 @@
     import es.cuatrovientos.a4vgo.activities.MainActivity;
 
     public class ProfileActivity extends AppCompatActivity {
-        ConstraintLayout logout, personalDetails, languague, vehicle,co2PointsAction , favoriteUsersAction, bannedUsersAction;
+        ConstraintLayout logout, personalDetails, languague, vehicle,co2PointsAction , favoriteUsersAction, bannedUsersAction, joinedRoutes;
         CollectionReference collection;
         FirebaseUser currentUser;
         TextView username, email;
@@ -64,6 +63,7 @@
             vehicle = findViewById(R.id.vehicleAction);
             bottom = findViewById(R.id.bnNavigation);
             bottom.setSelectedItemId(R.id.navigation_profile);
+            joinedRoutes = findViewById(R.id.JoinedRoutes);
             favoriteUsersAction = findViewById(R.id.favoriteUsersAction);
             bannedUsersAction = findViewById(R.id.bannedUsersAction);
             languagues = new String[]{
@@ -71,7 +71,10 @@
                     getString(R.string.english_languague),
                     getString(R.string.basque_languauge)
             };
-
+            joinedRoutes.setOnClickListener(v -> {
+                Intent intent = new Intent(ProfileActivity.this, JoinedRoutesActivity.class);
+                startActivity(intent);
+            });
 
             query.get().addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {

@@ -42,10 +42,7 @@ public class ThirdRegisterActivity extends AppCompatActivity {
         sendEmail = bundle.getString("email");
         sendSpam = bundle.getBoolean("spam");
 
-        back.setOnClickListener(view -> {
-            Intent intent = new Intent(ThirdRegisterActivity.this, SecondRegisterActivity.class);
-            startActivity(intent);
-        });
+        back.setOnClickListener(view -> finish());
 
         birthdate.addTextChangedListener(new TextWatcher() {
             @Override

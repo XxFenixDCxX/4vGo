@@ -188,8 +188,6 @@
 
     <string name="ic_create_route">Create Route</string>
 
-    <string name="routes_favorites">Favorite Routes</string>
-
     <!-- Route History -->
     <string name="routes_history">Route History</string>
 
@@ -256,5 +254,6 @@
     <string name="vehicule_color">Veicle color</string>
     <string name="joinRoute">Join</string>
     <string name="deJoinRoute">Un join</string>
+    <string name="joined_rutes">Joined rutes</string>
 
 </resources>

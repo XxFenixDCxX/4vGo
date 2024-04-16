@@ -189,8 +189,6 @@
 
     <string name="ic_create_route">Ruta Sortu</string>
 
-    <string name="routes_favorites">Bideak Gogokoak</string>
-
     <!-- Bide Historia -->
     <string name="routes_history">Bide Historia</string>
 
@@ -255,6 +253,7 @@
     <string name="vehicule_color">Ibilgailuaren colorea</string>
     <string name="joinRoute">Izena eman</string>
     <string name="deJoinRoute">Izena kendu</string>
+    <string name="joined_rutes">Ibilbideak</string>
 
 
 </resources>

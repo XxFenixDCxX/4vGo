@@ -30,10 +30,7 @@ public class VehicleActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
 
-        back.setOnClickListener(v -> {
-            Intent intent = new Intent(VehicleActivity.this, ProfileActivity.class);
-            startActivity(intent);
-        });
+        back.setOnClickListener(v -> finish());
 
         add.setOnClickListener(v -> {
             Intent intent = new Intent(VehicleActivity.this, AddVehicleActivity.class);

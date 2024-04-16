@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
@@ -45,12 +44,9 @@ public class JoinRoutesActivity extends AppCompatActivity {
         peopleNum = findViewById(R.id.txtPeopleNum);
         routes.setAdapter(adapter);
         routes.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
-        back.setOnClickListener(v -> {
-            Intent intent = new Intent(JoinRoutesActivity.this, MainRoutesActivity.class);
-            startActivity(intent);
-        });
+        back.setOnClickListener(v -> finish());
         String streetName = getStreetName(latitude, longitude);
-        if (routeType.equals(R.string.route_type_ida)){
+        if (routeType.equals("Ida")){
             origin.setText(streetName);
             destination.setText(R.string.center);
         }else {

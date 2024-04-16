@@ -7,7 +7,6 @@
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -20,40 +19,43 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".activities.GeneratedRouteActivity"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"
+            android:name=".activities.profile.privateProfile.JoinedRoutesActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.RouteDetailsActivity"
-            android:screenOrientation="portrait"
+            android:name=".activities.GeneratedRouteActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".activities.RouteDetailsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".activities.profile.privateProfile.BannedUsersActivity"
+            android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"
-            android:exported="false" />
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".activities.profile.privateProfile.FavoriteUsersActivity"
-            android:screenOrientation="portrait"
             android:exported="false"
+            android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".activities.profile.publicProfile.PublicProfilActivity"
+            android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"
-            android:exported="false" />
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".activities.co2Points.RatingByCo2Points"
+            android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"
-            android:exported="false" />
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".maps.searchMapActivity"
+            android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"
-            android:exported="false" />
+            tools:ignore="LockedOrientationActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -62,44 +64,44 @@
 
         <activity
             android:name=".activities.JoinRoutesActivity"
+            android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"
-            android:exported="false" />
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".activities.profile.privateProfile.AddVehicleActivity"
+            android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"
-            android:exported="false" />
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".activities.profile.privateProfile.VehicleActivity"
+            android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"
-            android:exported="false" />
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".activities.profile.privateProfile.PersonalDetailsActivity"
+            android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"
-            android:exported="false" />
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".activities.createRoute.AddRouteSecondActivity"
+            android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"
-            android:exported="false" />
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".activities.profile.privateProfile.ProfileActivity"
+            android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"
-            android:exported="false" />
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".activities.createRoute.AddRouteActivity"
+            android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"
-            android:exported="false" />
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".activities.MainRoutesActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"
-            android:exported="true" />
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".activities.register.FourthRegisterActivity"
             android:exported="false"

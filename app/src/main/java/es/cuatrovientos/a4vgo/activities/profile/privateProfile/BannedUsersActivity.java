@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -37,10 +36,7 @@ public class BannedUsersActivity extends AppCompatActivity {
         setupRecyclerView();
         fetchCurrentUserDNI();
 
-        back.setOnClickListener(v -> {
-            Intent intent = new Intent(BannedUsersActivity.this, ProfileActivity.class);
-            startActivity(intent);
-        });
+        back.setOnClickListener(v -> finish());
     }
 
     private void setupRecyclerView() {

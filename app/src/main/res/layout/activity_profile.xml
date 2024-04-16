@@ -267,7 +267,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/RutasFavoritasAction"
+                android:id="@+id/JoinedRoutes"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="32dp"
@@ -291,7 +291,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="@string/routes_favorites"
+                    android:text="@string/joined_rutes"
                     android:textColor="@color/dark_green"
                     android:textSize="20sp"
                     android:textStyle="bold"

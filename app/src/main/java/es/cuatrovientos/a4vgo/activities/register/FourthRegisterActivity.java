@@ -49,10 +49,7 @@ public class FourthRegisterActivity extends AppCompatActivity {
         sendSpam = bundle.getBoolean("spam");
         db = FirebaseFirestore.getInstance();
 
-        back.setOnClickListener(view -> {
-            Intent intent = new Intent(FourthRegisterActivity.this, ThirdRegisterActivity.class);
-            startActivity(intent);
-        });
+        back.setOnClickListener(view -> finish());
 
         password.addTextChangedListener(new TextWatcher() {
             @Override

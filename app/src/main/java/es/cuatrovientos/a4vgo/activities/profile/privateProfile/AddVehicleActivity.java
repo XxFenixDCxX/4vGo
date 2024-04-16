@@ -46,10 +46,7 @@ public class AddVehicleActivity extends AppCompatActivity {
             dni = document.getString("dni");
         });
 
-        back.setOnClickListener(v -> {
-            Intent intent = new Intent(AddVehicleActivity.this, VehicleActivity.class);
-            startActivity(intent);
-        });
+        back.setOnClickListener(v -> finish());
 
         add.setOnClickListener(v -> {
             String plateString = plate.getText().toString();

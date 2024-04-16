@@ -196,7 +196,7 @@
     <string name="button_description">Float button</string>
 
     <!-- Rutas Favoritas -->
-    <string name="routes_favorites">Rutas Favoritas</string>
+    <string name="joined_rutes">Rutas</string>
 
     <!-- Historial de Rutas -->
     <string name="routes_history">Historial de Rutas</string>

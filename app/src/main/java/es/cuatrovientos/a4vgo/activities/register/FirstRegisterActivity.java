@@ -22,7 +22,6 @@ import java.util.regex.Pattern;
 
 import es.cuatrovientos.a4vgo.R;
 import es.cuatrovientos.a4vgo.utils.DialogUtils;
-import es.cuatrovientos.a4vgo.activities.MainActivity;
 
 public class FirstRegisterActivity extends AppCompatActivity {
     Button back;
@@ -42,10 +41,7 @@ public class FirstRegisterActivity extends AppCompatActivity {
         spam = findViewById(R.id.chcSpam);
         email = findViewById(R.id.txtEmail);
 
-        back.setOnClickListener(view -> {
-            Intent intent = new Intent(FirstRegisterActivity.this, MainActivity.class);
-            startActivity(intent);
-        });
+        back.setOnClickListener(view -> finish());
 
         email.addTextChangedListener(new TextWatcher() {
             @Override

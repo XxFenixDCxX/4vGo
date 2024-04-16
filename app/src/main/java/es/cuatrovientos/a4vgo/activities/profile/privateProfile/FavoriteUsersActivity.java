@@ -1,6 +1,5 @@
 package es.cuatrovientos.a4vgo.activities.profile.privateProfile;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -34,10 +33,7 @@ public class FavoriteUsersActivity extends AppCompatActivity {
         setupRecyclerView();
         fetchCurrentUserDNI();
 
-        back.setOnClickListener(v -> {
-            Intent intent = new Intent(FavoriteUsersActivity.this, ProfileActivity.class);
-            startActivity(intent);
-        });
+        back.setOnClickListener(v -> finish());
     }
 
     private void setupRecyclerView() {

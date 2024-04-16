@@ -91,10 +91,7 @@ public class PersonalDetailsActivity extends AppCompatActivity {
             }
         });
 
-        back.setOnClickListener(v -> {
-            Intent intent = new Intent(PersonalDetailsActivity.this, ProfileActivity.class);
-            startActivity(intent);
-        });
+        back.setOnClickListener(v -> finish());
 
         save.setOnClickListener(v -> {
             if (selectedImageUri != null) {

@@ -38,10 +38,7 @@ public class SecondRegisterActivity extends AppCompatActivity {
         sendEmail = bundle.getString("email");
         sendSpam = bundle.getBoolean("spam");
 
-        back.setOnClickListener(view -> {
-            Intent intent = new Intent(SecondRegisterActivity.this, FirstRegisterActivity.class);
-            startActivity(intent);
-        });
+        back.setOnClickListener(view -> finish());
 
         next.setOnClickListener(view -> {
             String dniText = dni.getText().toString();
