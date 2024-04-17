@@ -256,6 +256,14 @@ public class AddRouteSecondActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getString(R.string.success_operation));
         builder.setMessage(getString(R.string.success_creation_route));
+        db.collection("personalDetails").document(dni).get().addOnSuccessListener(user ->{
+            int points = calculateCO2Points(calculateRouteDistance(route));
+            String co2Points = user.getLong("co2Points").toString();
+            if(co2Points != null){
+                points = Integer.parseInt(co2Points) + points;
+            }
+            db.collection("personalDetails").document(dni).update("co2Points", points);
+        });
         builder.setPositiveButton(getString(R.string.ok), (dialog, which) -> {
             Intent intent = new Intent(AddRouteSecondActivity.this, MainRoutesActivity.class);
             startActivity(intent);
@@ -263,5 +271,32 @@ public class AddRouteSecondActivity extends AppCompatActivity {
 
         AlertDialog successDialog = builder.create();
         successDialog.show();
+    }
+    private double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
+        final int R = 6371; // Radio de la Tierra en kilómetros
+        double latDistance = Math.toRadians(lat2 - lat1);
+        double lonDistance = Math.toRadians(lon2 - lon1);
+        double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2)
+                + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
+                * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return R * c;
+    }
+    private double calculateRouteDistance(Route route) {
+        String[] originCoordinates = route.getOrigin().split(",");
+        String[] destinationCoordinates = route.getDestination().split(",");
+
+        // Convertir las coordenadas a valores double
+        double originLat = Double.parseDouble(originCoordinates[0]);
+        double originLon = Double.parseDouble(originCoordinates[1]);
+        double destinationLat = Double.parseDouble(destinationCoordinates[0]);
+        double destinationLon = Double.parseDouble(destinationCoordinates[1]);
+
+        // Calcular la distancia entre los puntos de origen y destino
+        return calculateDistance(originLat, originLon, destinationLat, destinationLon);
+    }
+    private int calculateCO2Points(double distance) {
+        final int POINTS_PER_KM = 5;
+        return (int) (distance * POINTS_PER_KM);
     }
 }

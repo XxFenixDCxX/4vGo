@@ -80,6 +80,14 @@ public class RouteDetailsActivity extends AppCompatActivity {
                         joinUnjoinRoute.setText(R.string.deJoinRoute);
                         maxSeats.setText(route.getMaxSeats() + "");
                         joinUnjoinRoute.setBackgroundColor(getColor(R.color.red));
+                        FirebaseFirestore.getInstance().collection("personalDetails").document(dni).get().addOnSuccessListener(user ->{
+                            int points = 1;
+                            String co2Points = user.getLong("co2Points").toString();
+                            if(co2Points != null){
+                                points = Integer.parseInt(co2Points) + points;
+                            }
+                            FirebaseFirestore.getInstance().collection("personalDetails").document(dni).update("co2Points", points);
+                        });
                         finish();
                     });
                 }
@@ -103,6 +111,14 @@ public class RouteDetailsActivity extends AppCompatActivity {
                     joinUnjoinRoute.setText(R.string.joinRoute);
                     maxSeats.setText(route.getMaxSeats() + "");
                     joinUnjoinRoute.setBackgroundColor(getColor(R.color.green));
+                    FirebaseFirestore.getInstance().collection("personalDetails").document(dni).get().addOnSuccessListener(user ->{
+                        int points = 1;
+                        String co2Points = user.getLong("co2Points").toString();
+                        if(co2Points != null){
+                            points = Integer.parseInt(co2Points) - points;
+                        }
+                        FirebaseFirestore.getInstance().collection("personalDetails").document(dni).update("co2Points", points);
+                    });
                     finish();
                 });
             }
