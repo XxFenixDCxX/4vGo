@@ -50,7 +50,6 @@ public class AddRouteSecondActivity extends AppCompatActivity {
     private Button btnBack;
     private final Activity context = this;
     private CheckBox checkBoxIntermediateStops;
-    private CheckBox checkBoxRouteFrequency;
     private EditText editTextAdditionalComments;
     private String routeType;
     private String selectedCoordinates;
@@ -69,7 +68,6 @@ public class AddRouteSecondActivity extends AppCompatActivity {
         btnNext = findViewById(R.id.btnNext);
         btnBack = findViewById(R.id.btnBack);
         checkBoxIntermediateStops = findViewById(R.id.checkBoxIntermediateStops);
-        checkBoxRouteFrequency = findViewById(R.id.checkBoxRouteFrequency);
         editTextAdditionalComments = findViewById(R.id.editTextAdditionalComments);
         btnShowVehicleList = findViewById(R.id.btnShowVehicleList);
         txtVehicle = findViewById(R.id.txtVehicle);
@@ -216,11 +214,9 @@ public class AddRouteSecondActivity extends AppCompatActivity {
                 DialogUtils.showWarningDialog(context, getString(R.string.errorLoginTitle), getString(R.string.seats_error));
             } else {
                 boolean hasIntermediateStops = checkBoxIntermediateStops.isChecked();
-                boolean isFrequentRoute = checkBoxRouteFrequency.isChecked();
                 String additionalComments = editTextAdditionalComments.getText().toString();
 
                 route.setHasIntermediateStops(hasIntermediateStops);
-                route.setFrequent(isFrequentRoute);
                 route.setComments(additionalComments);
 
                 addRouteToDB();

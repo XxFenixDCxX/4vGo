@@ -27,13 +27,15 @@ public class CustomSpinnerAdapter extends ArrayAdapter<String> {
     @Override
     public View getDropDownView(int position, View convertView, @NonNull ViewGroup parent) {
         View view = super.getDropDownView(position, convertView, parent);
-        applyCustomStyle((TextView) view);
+        applyCustomStyleDropdown((TextView) view);
         return view;
     }
 
     private void applyCustomStyle(TextView textView) {
         textView.setTextAppearance(getContext(), R.style.SpinnerTextStyle);
-        // Puedes ajustar otros atributos según tus preferencias aquí
+    }
+    private void applyCustomStyleDropdown(TextView textView) {
+        textView.setTextAppearance(getContext(), R.style.SpinnerDropDownTextStyle);
     }
 }
 

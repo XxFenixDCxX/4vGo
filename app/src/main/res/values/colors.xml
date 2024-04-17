@@ -18,6 +18,6 @@
     <color name="colorError">#FF0000</color>
     <color name="colorPrimary">#F2F2F2</color>
     <color name="light_green">#66FF66</color>
-
+    <color name="light_grey">#F5F5F5</color>
 
 </resources>

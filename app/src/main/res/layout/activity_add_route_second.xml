@@ -52,7 +52,7 @@
                 android:padding="15dp"
                 android:textColorHint="@color/gris"
                 android:textSize="14sp"
-                tools:ignore="TextSizeCheck" />
+                tools:ignore="TextSizeCheck,UseCompatTextViewDrawableXml" />
 
             <ImageButton
                 android:id="@+id/btnShowVehicleList"
@@ -78,19 +78,6 @@
             android:textSize="14sp"
             tools:ignore="VisualLintButtonSize,TextSizeCheck" />
 
-
-        <CheckBox
-            android:id="@+id/checkBoxRouteFrequency"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/white_edittext"
-            android:padding="15dp"
-            android:text="@string/routeFrequencyHint"
-            android:textColorHint="@color/gris"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            tools:ignore="VisualLintButtonSize,TextSizeCheck" />
 
         <EditText
             android:id="@+id/editTextAdditionalComments"
@@ -130,7 +117,7 @@
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                tools:ignore="VisualLintButtonSize" />
+                tools:ignore="ButtonStyle,VisualLintButtonSize" />
 
             <!-- Botón de Siguiente -->
             <Button
@@ -147,7 +134,7 @@
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                tools:ignore="VisualLintButtonSize" />
+                tools:ignore="ButtonStyle,VisualLintButtonSize" />
         </LinearLayout>
 
 
