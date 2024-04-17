@@ -142,7 +142,7 @@
     <string name="num_person_error">El número de personas debe estar entre 1 y 4</string>
     <string name="Invalid_number">Formato de número incorrecto</string>
 
-    <string name="seats_error">El número de plazas debe estar entre 1 y 10</string>
+    <string name="seats_error">El número de plazas debe estar entre 1 y las plazas maximas del vehiculo</string>
     <string name="date_time_error">La fecha seleccionada debe ser hoy o posterior, y la hora seleccionada debe ser posterior a la hora actual.</string>
     <string name="select_date_time_error">Selecciona una fecha y una hora</string>
     <string name="seats_empty_error">Por favor, ingrese el número de asientos</string>

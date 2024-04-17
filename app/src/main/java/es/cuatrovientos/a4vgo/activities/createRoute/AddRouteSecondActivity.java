@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -44,6 +45,7 @@ public class AddRouteSecondActivity extends AppCompatActivity {
     private TextView txtVehicle;
     private Route route;
     private String dni;
+    private int availableSeats;
     private Button btnNext;
     private Button btnBack;
     private final Activity context = this;
@@ -83,7 +85,7 @@ public class AddRouteSecondActivity extends AppCompatActivity {
             String date = intent.getStringExtra("date");
             String time = intent.getStringExtra("time");
 
-            int availableSeats = intent.getIntExtra("availableSeats", 0);
+            availableSeats = intent.getIntExtra("availableSeats", 0);
             route = new Route();
             route.setRouteType(routeType);
             setRouteOriginDestination();
@@ -124,10 +126,7 @@ public class AddRouteSecondActivity extends AppCompatActivity {
     private void setupClickListeners() {
         btnBack.setOnClickListener(v -> finish());
         btnShowVehicleList.setOnClickListener(this::fetchVehicleDataAndShowDialog);
-        btnNext.setOnClickListener(v -> {
-            validateAndProceed();
-            addRouteToDB();
-        });
+        btnNext.setOnClickListener(v -> validateAndProceed());
     }
 
     private void fetchVehicleDataAndShowDialog(View v) {
@@ -211,13 +210,22 @@ public class AddRouteSecondActivity extends AppCompatActivity {
             DialogUtils.showWarningDialog(this, getString(R.string.errorLoginTitle), getString(R.string.warning_vehicle_selection));
             return;
         }
-        boolean hasIntermediateStops = checkBoxIntermediateStops.isChecked();
-        boolean isFrequentRoute = checkBoxRouteFrequency.isChecked();
-        String additionalComments = editTextAdditionalComments.getText().toString();
 
-        route.setHasIntermediateStops(hasIntermediateStops);
-        route.setFrequent(isFrequentRoute);
-        route.setComments(additionalComments);
+        isPlazasValid(availableSeats, isValid -> {
+            if (!isValid) {
+                DialogUtils.showWarningDialog(context, getString(R.string.errorLoginTitle), getString(R.string.seats_error));
+            } else {
+                boolean hasIntermediateStops = checkBoxIntermediateStops.isChecked();
+                boolean isFrequentRoute = checkBoxRouteFrequency.isChecked();
+                String additionalComments = editTextAdditionalComments.getText().toString();
+
+                route.setHasIntermediateStops(hasIntermediateStops);
+                route.setFrequent(isFrequentRoute);
+                route.setComments(additionalComments);
+
+                addRouteToDB();
+            }
+        });
     }
 
     private void addRouteToDB() {
@@ -234,7 +242,7 @@ public class AddRouteSecondActivity extends AppCompatActivity {
                     showSuccessDialog();
                 })
                 .addOnFailureListener(e -> {
-                    progressDialog.dismiss();  // Cerrar el ProgressDialog en caso de error
+                    progressDialog.dismiss();
                     DialogUtils.showErrorDialog(context, getString(R.string.unkown_error), getString(R.string.route_addition_failed));
                 });
     }
@@ -299,4 +307,29 @@ public class AddRouteSecondActivity extends AppCompatActivity {
         final int POINTS_PER_KM = 5;
         return (int) (distance * POINTS_PER_KM);
     }
+    private void isPlazasValid(int plazas, PlazasValidationCallback callback) {
+        DocumentReference docRef = FirebaseFirestore.getInstance().collection("cars").document(route.getSelectedVehicle());
+        docRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot document = task.getResult();
+                if (document != null) {
+                    int availableSeats = Integer.parseInt(document.getString("numSit"));
+                    boolean isValid = plazas >= 1 && plazas <= availableSeats;
+                    callback.onValidationResult(isValid);
+                } else {
+                    // Manejar el caso en que no se encontró el documento
+                    callback.onValidationResult(false);
+                }
+            } else {
+                // Manejar errores al obtener el documento
+                callback.onValidationResult(false);
+            }
+        });
+    }
+
+    // Interfaz de devolución de llamada para manejar el resultado de la validación
+    interface PlazasValidationCallback {
+        void onValidationResult(boolean isValid);
+    }
+
 }

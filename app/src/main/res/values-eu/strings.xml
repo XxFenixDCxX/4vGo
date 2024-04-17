@@ -142,7 +142,7 @@
     <string name="route_type_ida">Irteera</string>
     <string name="route_type_vuelta">Itzulera</string>
     <string name="btn_route_creation">Sortu ibilbidea</string>
-    <string name="seats_error">Asientoen kopurua 1 eta 10 artean izan behar da</string>
+    <string name="seats_error">Asientoen kopurua 1 eta autoaren leku kopuru maximoaren artean egon behar da</string>
     <string name="date_time_error">Aukeratutako data gaurkoa edo geroa izan behar da, eta aukeratutako ordua uneko ordua baino beranduagoa izan behar da.</string>
     <string name="select_date_time_error">Hautatu data eta ordua</string>
     <string name="seats_empty_error">Mesedez, sartu asientoen zenbakia</string>

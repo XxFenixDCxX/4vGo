@@ -254,11 +254,6 @@ public class AddRouteActivity extends AppCompatActivity {
             return;
         }
 
-        if (!isPlazasValid(plazas)) {
-            showMessage(getString(R.string.seats_error));
-            return;
-        }
-
         Intent intent = new Intent(this, AddRouteSecondActivity.class);
         intent.putExtra("routeType", routeType);
         intent.putExtra("selectedCoordinates", selectedCoordinates);
@@ -291,11 +286,8 @@ public class AddRouteActivity extends AppCompatActivity {
                         selectedDate.get(Calendar.DAY_OF_MONTH) >= currentDay);
     }
 
-    private boolean isPlazasValid(int plazas) {
-        return plazas >= 1 && plazas <= 10;
-    }
-
     private void showMessage(String message) {
         DialogUtils.showWarningDialog(this, getString(R.string.errorLoginTitle), message);
     }
 }
+
