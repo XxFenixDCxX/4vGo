@@ -14,6 +14,7 @@ import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 
@@ -76,6 +77,8 @@ public class searchMapActivity extends AppCompatActivity implements OnMapReadyCa
         autoCompleteTextViewIntroduceDirection.setOnEditorActionListener((textView, actionId, keyEvent) -> {
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 autoCompleteTextViewIntroduceDirection.clearFocus();
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(autoCompleteTextViewIntroduceDirection.getWindowToken(), 0);
                 return true; // Consume el evento
             }
             return false; // No consume el evento
