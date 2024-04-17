@@ -61,6 +61,10 @@ public class MainRoutesActivity extends AppCompatActivity {
     private static final int REQUEST_MAP_GO = 1;
 
     private LinearLayout co2PointRank ;
+    @SuppressLint("MissingSuperCall")
+    @Override
+    public void onBackPressed() {
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

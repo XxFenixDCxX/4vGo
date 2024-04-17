@@ -46,6 +46,10 @@ public class AddRouteActivity extends AppCompatActivity {
     private final Context context = this;
     private String routeType;
     private String selectedCoordinates;
+    @SuppressLint("MissingSuperCall")
+    @Override
+    public void onBackPressed() {
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

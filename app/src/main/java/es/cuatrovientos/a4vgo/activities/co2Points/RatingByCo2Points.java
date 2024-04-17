@@ -38,7 +38,10 @@ public class RatingByCo2Points extends AppCompatActivity {
 
     private final List<UserProfile> userList = new ArrayList<>();
     BottomNavigationView bottom;
-
+    @SuppressLint("MissingSuperCall")
+    @Override
+    public void onBackPressed() {
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

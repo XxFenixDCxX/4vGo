@@ -46,6 +46,10 @@
         String currenUserDNI;
         BottomNavigationView bottom;
         String[] languagues;
+        @SuppressLint("MissingSuperCall")
+        @Override
+        public void onBackPressed() {
+        }
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);

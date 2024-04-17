@@ -29,6 +29,10 @@ public class RouteDetailsActivity extends AppCompatActivity {
     Bundle bundle;
     String dni, joinedUsersDNI;
     TextView maxSeats, origin, destination, date, time, name, surname, plate, carColor;
+    @SuppressLint("MissingSuperCall")
+    @Override
+    public void onBackPressed() {
+    }
     @SuppressLint({"SetTextI18n", "ResourceAsColor", "NotifyDataSetChanged"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
