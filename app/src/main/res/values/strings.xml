@@ -84,6 +84,7 @@
     <string name="seatNum">2</string>
     <string name="DestinationTime">2</string>
     <string name="OriginTime">2</string>
+    <string name="plateMaxLenght">La matricula no puede tener mas de 15 caracteres</string>
 
     <!-- Description -->
     <string name="background">background</string>
@@ -269,6 +270,7 @@
     <string name="joinRoute">Apuntarse</string>
     <string name="emptyError">Los campos no pueden estar vacios</string>
     <string name="deJoinRoute">Desapuntarse</string>
+    <string name="errorHasNUmbers">El texto no puede contener numeros</string>
     <string name="errorSitNumber">El numero de sitios tiene que ser numerico</string>
 
 

@@ -255,7 +255,9 @@
     <string name="deJoinRoute">Izena kendu</string>
     <string name="joined_rutes">Ibilbideak</string>
     <string name="emptyError">Eremuak ezin dira hutsik egon.</string>
+    <string name="errorHasNUmbers">Testua ezin du zenbakiak eduki</string>
     <string name="errorSitNumber">Lekuen kopurua zenbakizkoa izan behar da.</string>
+    <string name="plateMaxLenght">Matrikularen luzera esin da izan 15 baino gehiago</string>
 
 
 </resources>

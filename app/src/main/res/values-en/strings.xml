@@ -256,6 +256,8 @@
     <string name="deJoinRoute">Un join</string>
     <string name="joined_rutes">Joined rutes</string>
     <string name="emptyError">Fields cannot be empty.</string>
+    <string name="errorHasNUmbers">The text can´t have numbers</string>
     <string name="errorSitNumber">The site number need to be numeric</string>
+    <string name="plateMaxLenght">The plate max length is 15</string>
 
 </resources>

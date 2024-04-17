@@ -17,6 +17,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import es.cuatrovientos.a4vgo.R;
 import es.cuatrovientos.a4vgo.utils.DialogUtils;
@@ -63,6 +64,20 @@ public class AddVehicleActivity extends AppCompatActivity {
                 return;
             }
 
+            if(containsNumber(colorString)){
+                DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.errorHasNUmbers));
+                return;
+            }
+
+            if(plateString.length() < 3 || colorString.length() < 3){
+                DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.stringMinLenght));
+                return;
+            }
+
+            if(plateString.length() > 15){
+                DialogUtils.showErrorDialog(this, getString(R.string.errorLoginTitle), getString(R.string.plateMaxLenght));
+                return;
+            }
             Map<String, String> carsMap = new HashMap<>();
             carsMap.put("plate", plateString.toLowerCase());
             carsMap.put("color", colorString.toLowerCase());
@@ -71,5 +86,9 @@ public class AddVehicleActivity extends AppCompatActivity {
             db.collection("cars").document(plateString.toLowerCase()).set(carsMap);
             finish();
         });
+    }
+    private boolean containsNumber(String str) {
+        Pattern pattern = Pattern.compile(".*\\d.*");
+        return pattern.matcher(str).matches();
     }
 }
