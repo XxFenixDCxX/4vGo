@@ -30,12 +30,16 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import es.cuatrovientos.a4vgo.R;
 import es.cuatrovientos.a4vgo.activities.RouteDetailsActivity;
 import es.cuatrovientos.a4vgo.activities.profile.publicProfile.PublicProfilActivity;
 import es.cuatrovientos.a4vgo.models.Route;
 
+/** @noinspection StringOperationCanBeSimplified*/
 public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAdapter.RecyclerDataHolder> {
     private final List<Route> list;
     private final List<Route> listCopy;
@@ -46,6 +50,7 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
     private final String selectedDate;
     int numPeople;
     private static String currentUsername;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
 
 
     public RecyclerRoutesAdapter(String routeType, String cords, String selectedDate, int numPeople) {
@@ -68,75 +73,85 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
             routesCollection.get().addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : task.getResult()) {
-                        String routeType = document.getString("routeType");
-                        assert routeType != null;
-                        if(routeType.equals(this.routeType)){
-                            String destination = document.getString("destination");
-                            assert destination != null;
-                            double latitud = Double.parseDouble(destination.split(",")[0]);
-                            double longitud = Double.parseDouble(destination.split(",")[1]);
-                            double distance = haversine(latitudOriginal, longitudOrginal, latitud, longitud);
-                            if(distance <= 2){
-                                String selectedDate = document.getString("selectedDate");
-                                if (this.selectedDate.equals(selectedDate)){
-                                    Long maxSeatsLong = document.getLong("maxSeats");
-                                    int numPeople = (maxSeatsLong != null) ? maxSeatsLong.intValue() : 0;
-                                    if(this.numPeople <= numPeople){
-                                        String origin = document.getString("origin");
-                                        String userId = document.getString("userId");
-                                        String selectedTime = document.getString("selectedTime");
-                                        String selectedVehicle = document.getString("selectedVehicle");
-                                        boolean frequent = Boolean.TRUE.equals(document.getBoolean("frequent"));
-                                        String coments = document.getString("comments");
-                                        String joinedUsersDNI = document.getString("joinedUsersDNI");
-                                        Route route = new Route(document.getId(), routeType, origin, destination, userId, selectedDate, selectedTime, numPeople, selectedVehicle, frequent, coments, joinedUsersDNI);
+                        String creatorDNI = document.getString("userId");
+                        isBanned(creatorDNI).thenAccept(isBanned -> {
+                            if (!isBanned) {
+                                String routeType = document.getString("routeType");
+                                assert routeType != null;
+                                if(routeType.equals(this.routeType)){
+                                    String destination = document.getString("destination");
+                                    assert destination != null;
+                                    double latitud = Double.parseDouble(destination.split(",")[0]);
+                                    double longitud = Double.parseDouble(destination.split(",")[1]);
+                                    double distance = haversine(latitudOriginal, longitudOrginal, latitud, longitud);
+                                    if(distance <= 2){
+                                        String selectedDate = document.getString("selectedDate");
+                                        if (this.selectedDate.equals(selectedDate)){
+                                            Long maxSeatsLong = document.getLong("maxSeats");
+                                            int numPeople = (maxSeatsLong != null) ? maxSeatsLong.intValue() : 0;
+                                            if(this.numPeople <= numPeople){
+                                                String origin = document.getString("origin");
+                                                String userId = document.getString("userId");
+                                                String selectedTime = document.getString("selectedTime");
+                                                String selectedVehicle = document.getString("selectedVehicle");
+                                                boolean frequent = Boolean.TRUE.equals(document.getBoolean("frequent"));
+                                                String coments = document.getString("comments");
+                                                String joinedUsersDNI = document.getString("joinedUsersDNI");
+                                                Route route = new Route(document.getId(), routeType, origin, destination, userId, selectedDate, selectedTime, numPeople, selectedVehicle, frequent, coments, joinedUsersDNI);
 
-                                        list.add(route);
-                                        listCopy.add(route);
+                                                list.add(route);
+                                                listCopy.add(route);
+                                                notifyDataSetChanged();
+                                            }
+                                        }
                                     }
                                 }
                             }
-                        }
+                        });
                     }
-                    notifyDataSetChanged();
                 }
             });
-        }else {
+        } else {
             routesCollection.get().addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : task.getResult()) {
-                        String routeType = document.getString("routeType");
-                        assert routeType != null;
-                        if(routeType.equals(this.routeType)){
-                            String origin = document.getString("origin");
-                            assert origin != null;
-                            double latitud = Double.parseDouble(origin.split(",")[0]);
-                            double longitud = Double.parseDouble(origin.split(",")[1]);
-                            double distance = haversine(latitudOriginal, longitudOrginal, latitud, longitud);
-                            if(distance <= 2){
-                                String selectedDate = document.getString("selectedDate");
-                                if (this.selectedDate.equals(selectedDate)){
-                                    Long maxSeatsLong = document.getLong("maxSeats");
-                                    int numPeople = (maxSeatsLong != null) ? maxSeatsLong.intValue() : 0;
-                                    if(this.numPeople <= numPeople){
-                                        String destination = document.getString("destination");
-                                        String userId = document.getString("userId");
-                                        String selectedTime = document.getString("selectedTime");
-                                        String selectedVehicle = document.getString("selectedVehicle");
-                                        boolean frequent = Boolean.TRUE.equals(document.getBoolean("frequent"));
-                                        String coments = document.getString("comments");
-                                        String joinedUsersDNI = document.getString("joinedUsersDNI");
-                                        String routeID = document.getId();
-                                        Route route = new Route(routeID, routeType, origin, destination, userId, selectedDate, selectedTime, numPeople, selectedVehicle, frequent, coments, joinedUsersDNI);
+                        String creatorDNI = document.getString("userId");
+                        isBanned(creatorDNI).thenAccept(isBanned -> {
+                            if (!isBanned) {
+                                String routeType = document.getString("routeType");
+                                assert routeType != null;
+                                if(routeType.equals(this.routeType)){
+                                    String origin = document.getString("origin");
+                                    assert origin != null;
+                                    double latitud = Double.parseDouble(origin.split(",")[0]);
+                                    double longitud = Double.parseDouble(origin.split(",")[1]);
+                                    double distance = haversine(latitudOriginal, longitudOrginal, latitud, longitud);
+                                    if(distance <= 2){
+                                        String selectedDate = document.getString("selectedDate");
+                                        if (this.selectedDate.equals(selectedDate)){
+                                            Long maxSeatsLong = document.getLong("maxSeats");
+                                            int numPeople = (maxSeatsLong != null) ? maxSeatsLong.intValue() : 0;
+                                            if(this.numPeople <= numPeople){
+                                                String destination = document.getString("destination");
+                                                String userId = document.getString("userId");
+                                                String selectedTime = document.getString("selectedTime");
+                                                String selectedVehicle = document.getString("selectedVehicle");
+                                                boolean frequent = Boolean.TRUE.equals(document.getBoolean("frequent"));
+                                                String coments = document.getString("comments");
+                                                String joinedUsersDNI = document.getString("joinedUsersDNI");
+                                                String routeID = document.getId();
+                                                Route route = new Route(routeID, routeType, origin, destination, userId, selectedDate, selectedTime, numPeople, selectedVehicle, frequent, coments, joinedUsersDNI);
 
-                                        list.add(route);
-                                        listCopy.add(route);
+                                                list.add(route);
+                                                listCopy.add(route);
+                                                notifyDataSetChanged();
+                                            }
+                                        }
                                     }
                                 }
                             }
-                        }
+                        });
                     }
-                    notifyDataSetChanged();
                 }
             });
         }
@@ -315,5 +330,35 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
     }
     public interface OnItemClickListener{
         void onItemClick(Route route);
+    }
+
+    public CompletableFuture<Boolean> isBanned(String creatorDNI){
+        CompletableFuture<Boolean> future = new CompletableFuture<>();
+        CollectionReference banedReference = db.collection("bannedUsers");
+        banedReference.whereEqualTo("userDni", creatorDNI).get().addOnCompleteListener(task1 -> {
+            if (task1.isSuccessful()) {
+                for (QueryDocumentSnapshot document1 : task1.getResult()) {
+                    String bannedUser = document1.getString("bannedUser");
+                    if (bannedUser != null && creatorDNI != null && bannedUser.toLowerCase().equals(dni.toLowerCase())) {
+                        future.complete(true);
+                        return;
+                    }
+                }
+            }
+
+            banedReference.whereEqualTo("userDni", dni).get().addOnCompleteListener(task2 -> {
+                if (task2.isSuccessful()) {
+                    for (QueryDocumentSnapshot document2 : task2.getResult()) {
+                        String bannedUser = document2.getString("bannedUser");
+                        if (bannedUser != null && creatorDNI != null && bannedUser.toLowerCase().equals(creatorDNI.toLowerCase())){
+                            future.complete(true);
+                            return;
+                        }
+                    }
+                }
+                future.complete(false);
+            });
+        });
+        return future;
     }
 }

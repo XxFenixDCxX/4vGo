@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
@@ -38,6 +39,7 @@ public class PublicProfilActivity extends AppCompatActivity {
     Button back;
 
     Bundle bundle;
+    String currentUserDNI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,7 @@ public class PublicProfilActivity extends AppCompatActivity {
         setContentView(R.layout.activity_public_profil);
         bundle = getIntent().getExtras();
         db = FirebaseFirestore.getInstance();
+        fetchCurrentUserDNI();
         userDNI = bundle.getString("dni");
         profile = findViewById(R.id.imgProfileP);
         back = findViewById(R.id.btnBack);
@@ -59,10 +62,10 @@ public class PublicProfilActivity extends AppCompatActivity {
     private void addToFavorites(String userDni) {
         ProgressDialog progressDialog = ProgressDialog.show(this, "", getString(R.string.adding_to_favorites_progress), true);
 
-        String documentId = userDni + "_" + "57945210E";
+        String documentId = currentUserDNI + "_" + userDni;
         Map<String, Object> userData = new HashMap<>();
-        userData.put("userDni", userDni);
-        userData.put("favoriteUser", "57945210E");
+        userData.put("userDni", currentUserDNI);
+        userData.put("favoriteUser", userDNI);
         userData.put("timestamp", FieldValue.serverTimestamp());
 
         db.collection(getString(R.string.collection_favoritos))
@@ -96,11 +99,11 @@ public class PublicProfilActivity extends AppCompatActivity {
     private void banUser(String userDni) {
         ProgressDialog progressDialog = ProgressDialog.show(this, "", getString(R.string.banning_user_progress), true);
 
-        String documentId = userDni + "_" + "57945210E";
+        String documentId = currentUserDNI + "_" + userDni;
 
         Map<String, Object> userData = new HashMap<>();
-        userData.put("userDni", userDni);
-        userData.put("bannedUser", "57945210E");
+        userData.put("userDni", currentUserDNI);
+        userData.put("bannedUser", userDNI);
         userData.put("timestamp", FieldValue.serverTimestamp());
 
         db.collection(getString(R.string.collection_baneados))
@@ -245,6 +248,17 @@ public class PublicProfilActivity extends AppCompatActivity {
             }
         }.execute();
     }
-
+    private void fetchCurrentUserDNI() {
+        FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        db.collection("personalDetails").whereEqualTo("email", FirebaseAuth.getInstance().getCurrentUser().getEmail())
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                        currentUserDNI = documentSnapshot.getString("dni");
+                        break;
+                    }
+                })
+                .addOnFailureListener(e -> Log.e("Firestore", "Error fetching user DNI", e));
+    }
 
 }
