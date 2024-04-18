@@ -12,10 +12,13 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -58,6 +61,9 @@ public class PublicProfilActivity extends AppCompatActivity {
         bannedButton.setOnClickListener(view -> banUser(userDNI));
         retrieveUserInfo(userDNI);
         back.setOnClickListener(view -> finish());
+
+        RatingBar ratingBar = findViewById(R.id.ratingBarStatic);
+
     }
     private void addToFavorites(String userDni) {
         ProgressDialog progressDialog = ProgressDialog.show(this, "", getString(R.string.adding_to_favorites_progress), true);
@@ -93,6 +99,10 @@ public class PublicProfilActivity extends AppCompatActivity {
                     DialogUtils.showErrorDialog(this, getString(R.string.error), getString(R.string.error_message_failed_to_check_user_in_favorites));
                 });
     }
+
+
+
+
 
 
 
@@ -141,6 +151,8 @@ public class PublicProfilActivity extends AppCompatActivity {
                 .get()
                 .addOnSuccessListener(documentSnapshot -> {
                     if (documentSnapshot.exists()) {
+                        float rating = documentSnapshot.getDouble("rating") != null ? documentSnapshot.getDouble("rating").floatValue() : 0.0f;
+
                         int co2Points = documentSnapshot.getLong("co2Points").intValue();
                         String email = documentSnapshot.getString("email");
                         String phoneNumber = documentSnapshot.getString("phoneNumber");
@@ -149,6 +161,8 @@ public class PublicProfilActivity extends AppCompatActivity {
                         updateUI(username, email , co2Points, profileImage);
                         getUserRanking(userDni);
                         loadProfileImage(userDni);
+                        updateRatingBar(rating);
+
 
                     } else {
                         Log.e("retrieveUserInfo", "No existe el documento para el usuario con DNI: " + userDni);
@@ -156,7 +170,11 @@ public class PublicProfilActivity extends AppCompatActivity {
                 })
                 .addOnFailureListener(e -> Log.e("retrieveUserInfo", "Error al recuperar la información del usuario", e));
     }
-
+    private void updateRatingBar(float rating) {
+        RatingBar ratingBar = findViewById(R.id.ratingBarStatic);
+        ratingBar.setRating(rating);
+        ratingBar.setIsIndicator(true);
+    }
     private void updateUI(String username, String email, int co2Points, String profileImage) {
         // Accede a los elementos del layout
         TextView usernameTextView = findViewById(R.id.txtUsername);

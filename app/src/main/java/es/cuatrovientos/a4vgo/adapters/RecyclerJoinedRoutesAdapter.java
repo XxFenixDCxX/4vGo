@@ -130,6 +130,7 @@ public class RecyclerJoinedRoutesAdapter extends RecyclerView.Adapter<RecyclerJo
                 Intent intent = new Intent(itemView.getContext(), RouteDetailsActivity.class);
                 intent.putExtra("route", route);
                 intent.putExtra("dni", dni);
+                intent.putExtra("ShowRatingBar", "true");
                 itemView.getContext().startActivity(intent);
             });
         }

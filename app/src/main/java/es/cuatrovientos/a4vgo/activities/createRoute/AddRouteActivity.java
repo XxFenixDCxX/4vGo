@@ -264,27 +264,21 @@ public class AddRouteActivity extends AppCompatActivity {
     }
 
     private boolean isDateValid(String dateStr, String timeStr) {
-        Calendar currentDate = Calendar.getInstance();
-        int currentYear = currentDate.get(Calendar.YEAR);
-        int currentMonth = currentDate.get(Calendar.MONTH) + 1;
-        int currentDay = currentDate.get(Calendar.DAY_OF_MONTH);
+        Calendar currentDateTime = Calendar.getInstance();
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-        Calendar selectedDate = Calendar.getInstance();
+        SimpleDateFormat dateTimeFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
+
+        Calendar selectedDateTime = Calendar.getInstance();
         try {
-            selectedDate.setTime(dateFormat.parse(dateStr));
+            selectedDateTime.setTime(dateTimeFormat.parse(dateStr + " " + timeStr));
         } catch (ParseException e) {
             e.printStackTrace();
             return false;
         }
 
-        return selectedDate.get(Calendar.YEAR) > currentYear ||
-                (selectedDate.get(Calendar.YEAR) == currentYear &&
-                        (selectedDate.get(Calendar.MONTH) + 1) > currentMonth) ||
-                (selectedDate.get(Calendar.YEAR) == currentYear &&
-                        (selectedDate.get(Calendar.MONTH) + 1) == currentMonth &&
-                        selectedDate.get(Calendar.DAY_OF_MONTH) >= currentDay);
+        return selectedDateTime.after(currentDateTime);
     }
+
 
     private void showMessage(String message) {
         DialogUtils.showWarningDialog(this, getString(R.string.errorLoginTitle), message);

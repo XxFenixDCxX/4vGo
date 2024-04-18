@@ -9,8 +9,12 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -27,8 +31,9 @@ public class RouteDetailsActivity extends AppCompatActivity {
     Button back, joinUnjoinRoute , mapButton;
     Route route;
     Bundle bundle;
-    String dni, joinedUsersDNI;
+    String dni, joinedUsersDNI , showRating;
     TextView maxSeats, origin, destination, date, time, name, surname, plate, carColor;
+    LinearLayout layoutRating;
     @SuppressLint("MissingSuperCall")
     @Override
     public void onBackPressed() {
@@ -51,8 +56,9 @@ public class RouteDetailsActivity extends AppCompatActivity {
         carColor = findViewById(R.id.txtVehiculeColor);
         joinUnjoinRoute = findViewById(R.id.btnJoinUnJoinRoute);
         dni = getIntent().getStringExtra("dni");
+        showRating = getIntent().getStringExtra("ShowRatingBar");
         mapButton = findViewById(R.id.mapButton);
-
+        layoutRating = findViewById(R.id.valorarLayout);
         if (route.getJoinedUsersDNI() != null && route.getJoinedUsersDNI().contains(dni)) {
             joinUnjoinRoute.setText(R.string.deJoinRoute);
             joinUnjoinRoute.setBackgroundColor(getColor(R.color.red));
@@ -60,7 +66,11 @@ public class RouteDetailsActivity extends AppCompatActivity {
             joinUnjoinRoute.setText(R.string.joinRoute);
             joinUnjoinRoute.setBackgroundColor(getColor(R.color.green));
         }
-
+        if(showRating == null ){
+            layoutRating.setVisibility(View.INVISIBLE);
+        }else{
+            layoutRating.setVisibility(View.VISIBLE);
+        }
         back.setOnClickListener(v -> finish());
 
         joinUnjoinRoute.setOnClickListener(v -> {
@@ -177,6 +187,12 @@ public class RouteDetailsActivity extends AppCompatActivity {
                 }
             }
         });
+        RatingBar ratingBar = findViewById(R.id.ratingBarDynamic);
+        ratingBar.setOnRatingBarChangeListener((ratingBar1, rating, fromUser) -> {
+            if (fromUser) {
+                updateRatingInDatabase(dni, rating);
+            }
+        });
 
     }
     private String getStreetName(double latitude, double longitude) {
@@ -202,5 +218,42 @@ public class RouteDetailsActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         return "";
+    }
+    private void updateRatingInDatabase(String userDNI, float newRating) {
+        FirebaseFirestore db;
+        db = FirebaseFirestore.getInstance();
+        DocumentReference userRef = db.collection("personalDetails").document(userDNI);
+
+        userRef.get().addOnSuccessListener(documentSnapshot -> {
+            if (documentSnapshot.exists()) {
+                if (documentSnapshot.contains("rating")) {
+                    Double existingRatingDouble = documentSnapshot.getDouble("rating");
+
+                    if (existingRatingDouble != null) {
+                        float existingRating = existingRatingDouble.floatValue();
+
+                        float updatedRating = (existingRating + newRating) / 2;
+
+                        userRef.update("rating", updatedRating)
+                                .addOnSuccessListener(aVoid -> {
+                                    Toast.makeText(this, R.string.rating_thank_you_message, Toast.LENGTH_SHORT).show();
+                                    Log.d("Firestore", "Rating updated successfully");
+                                })
+                                .addOnFailureListener(e -> Log.e("Firestore", "Error updating rating", e));
+                    } else {
+                        Log.e("Firestore", "Existing rating is null");
+                    }
+                } else {
+                    userRef.update("rating", newRating)
+                            .addOnSuccessListener(aVoid -> {
+                                Toast.makeText(this, R.string.rating_thank_you_message, Toast.LENGTH_SHORT).show();
+                                Log.d("Firestore", "Rating added successfully");
+                            })
+                            .addOnFailureListener(e -> Log.e("Firestore", "Error adding rating", e));
+                }
+            } else {
+                Log.e("Firestore", "Document does not exist for user with DNI: " + userDNI);
+            }
+        }).addOnFailureListener(e -> Log.e("Firestore", "Error getting document", e));
     }
 }

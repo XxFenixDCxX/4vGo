@@ -101,6 +101,25 @@
                 android:layout_height="wrap_content"
                 android:text="@string/email"
                 android:textAlignment="center" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RatingBar
+                    android:id="@+id/ratingBarStatic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numStars="5"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginBottom="5dp"
+                    android:stepSize="0.5"
+                    android:gravity="center"
+                    android:progressTint="@color/green"
+                    android:rating="3.5" />
+            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -217,6 +236,7 @@
                             android:id="@+id/co2PointsTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/black"
                             android:gravity="center"
                             android:padding="5dp"
                             android:text="@string/userInfoText" />
@@ -242,68 +262,14 @@
                             android:id="@+id/rankTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/black"
                             android:gravity="center"
                             android:padding="5dp"
                             android:text="@string/userInfoText" />
                     </LinearLayout>
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:baselineAligned="false"
-                    android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="80dp"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/edittext_background"
-                        android:gravity="center">
-
-                        <ImageView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:contentDescription="@string/userIconDescription"
-
-                            android:padding="5dp"
-                            android:src="@drawable/starimg"
-                            tools:ignore="ImageContrastCheck,ImageContrastCheck" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-
-                            android:padding="5dp"
-                            android:text="@string/userInfoText" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="80dp"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/edittext_background"
-                        android:gravity="center">
-
-                        <ImageView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:contentDescription="@string/userIconDescription"
-
-                            android:padding="5dp"
-                            android:src="@drawable/ic_copoints"
-                            tools:ignore="ImageContrastCheck" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="5dp"
-                            android:text="@string/userInfoText" />
-                    </LinearLayout>
-                </LinearLayout>
             </LinearLayout>
 
 

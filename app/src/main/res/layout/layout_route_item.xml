@@ -45,7 +45,7 @@
 
             <TextView
                 android:id="@+id/OriginCity"
-                android:layout_width="73dp"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:text="@string/OriginCity"
@@ -133,29 +133,6 @@
                 app:layout_constraintTop_toTopOf="@+id/user_valoration"
                 tools:ignore="ImageContrastCheck,MissingConstraints" />
 
-            <ImageView
-                android:id="@+id/carSeatsImg"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="8dp"
-                android:contentDescription="@string/pasagers"
-                android:src="@drawable/car_seat"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:ignore="ImageContrastCheck" />
-
-            <ImageView
-                android:id="@+id/carSeatsImg2"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:contentDescription="@string/pasagers"
-                android:src="@drawable/car_seat"
-                app:layout_constraintBottom_toBottomOf="@+id/carSeatsImg"
-                app:layout_constraintStart_toEndOf="@+id/carSeatsImg"
-                app:layout_constraintTop_toTopOf="@+id/carSeatsImg"
-                tools:ignore="ImageContrastCheck" />
-
             <TextView
                 android:id="@+id/DestinationTime"
                 android:layout_width="wrap_content"
@@ -179,6 +156,28 @@
 
                 app:layout_constraintEnd_toStartOf="@+id/OriginDestinationImg"
                 app:layout_constraintTop_toBottomOf="@+id/OriginCity" />
+
+            <TextView
+                android:id="@+id/carSeatsNum"
+                android:layout_width="31dp"
+                android:layout_height="20dp"
+                android:textColor="@color/black"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/txtSeats"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:textColor="@color/black"
+                android:layout_marginStart="0dp"
+                android:text="@string/plazas_word"
+                app:layout_constraintBottom_toBottomOf="@+id/carSeatsNum"
+                app:layout_constraintStart_toEndOf="@+id/carSeatsNum"
+                app:layout_constraintTop_toTopOf="@+id/carSeatsNum" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

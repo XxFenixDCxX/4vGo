@@ -126,6 +126,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_weight="3"
                     android:autofillHints=""
+                    android:textColor="@color/black"
                     android:background="@drawable/white_edittext"
                     android:drawablePadding="10dp"
                     android:focusable="false"

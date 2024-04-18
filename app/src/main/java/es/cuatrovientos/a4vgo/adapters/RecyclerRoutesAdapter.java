@@ -1,6 +1,9 @@
 package es.cuatrovientos.a4vgo.adapters;
 
+import static android.provider.Settings.System.getString;
+
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.location.Address;
@@ -62,6 +65,7 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
         list = new ArrayList<>();
         listCopy = new ArrayList<>();
         getCurrentUserDNI();
+
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -187,7 +191,7 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
     }
 
     public static class RecyclerDataHolder extends RecyclerView.ViewHolder {
-        TextView origin, destination, originTime, destinaionTime, seatNum, elapsedTime, username;
+        TextView origin, destination, originTime, destinaionTime, seatNum, elapsedTime, username, carSeatsNum;
         ImageView profileImg;
         public RecyclerDataHolder(@NonNull View itemView) {
             super(itemView);
@@ -198,6 +202,7 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
             elapsedTime = itemView.findViewById(R.id.elapsedTime);
             username = itemView.findViewById(R.id.user_name);
             profileImg = itemView.findViewById(R.id.profileImg);
+            carSeatsNum = itemView.findViewById(R.id.carSeatsNum);
         }
 
         @SuppressLint({"NotifyDataSetChanged", "SetTextI18n", "StaticFieldLeak"})
@@ -242,6 +247,7 @@ public class RecyclerRoutesAdapter extends RecyclerView.Adapter<RecyclerRoutesAd
                         destination.setText(streetName);
                     }
                     username.setText(currentUsername);
+                    carSeatsNum.setText("" + route.getMaxSeats() );
                     profileImg.setOnClickListener(v -> {
                         Intent intent = new Intent(itemView.getContext(), PublicProfilActivity.class);
                         intent.putExtra("dni", dni);

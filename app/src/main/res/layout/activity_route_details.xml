@@ -226,6 +226,7 @@
                             android:layout_marginEnd="5dp"
                             android:background="@drawable/white_edittext"
                             android:drawablePadding="10dp"
+                            android:textColor="@color/black"
                             android:hint="@string/dateHint"
                             android:inputType="none"
                             android:padding="15dp"
@@ -262,6 +263,7 @@
                             android:layout_marginStart="5dp"
                             android:background="@drawable/white_edittext"
                             android:drawablePadding="10dp"
+                            android:textColor="@color/black"
                             android:hint="@string/dateHint"
                             android:inputType="none"
                             android:padding="15dp"
@@ -354,9 +356,11 @@
                             android:layout_marginEnd="5dp"
                             android:background="@drawable/white_edittext"
                             android:drawablePadding="10dp"
-                            android:hint="@string/dateHint"
+                            android:hint="@string/name"
                             android:inputType="none"
                             android:padding="15dp"
+                            android:textColor="@color/black"
+
                             android:textColorHint="@color/gris"
                             android:textSize="14sp"
                             tools:ignore="TextSizeCheck" />
@@ -389,9 +393,11 @@
                             android:layout_marginStart="5dp"
                             android:background="@drawable/white_edittext"
                             android:drawablePadding="10dp"
-                            android:hint="@string/dateHint"
+                            android:hint="@string/surname"
                             android:inputType="none"
                             android:padding="15dp"
+                            android:textColor="@color/black"
+
                             android:textColorHint="@color/gris"
                             android:textSize="14sp"
                             tools:ignore="TextSizeCheck" />
@@ -431,7 +437,9 @@
                             android:layout_marginStart="5dp"
                             android:background="@drawable/white_edittext"
                             android:drawablePadding="10dp"
-                            android:hint="@string/dateHint"
+                            android:hint="@string/plate"
+                            android:textColor="@color/black"
+
                             android:inputType="none"
                             android:padding="15dp"
                             android:textColorHint="@color/gris"
@@ -466,7 +474,9 @@
                             android:layout_marginStart="5dp"
                             android:background="@drawable/white_edittext"
                             android:drawablePadding="10dp"
-                            android:hint="@string/dateHint"
+                            android:textColor="@color/black"
+
+                            android:hint="@string/color"
                             android:inputType="none"
                             android:padding="15dp"
                             android:textColorHint="@color/gris"
@@ -478,6 +488,36 @@
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/valorarLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/valorar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="@string/rate_driver_title"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        tools:ignore="TextSizeCheck" />
+
+                    <RatingBar
+                        android:id="@+id/ratingBarDynamic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:numStars="5"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="5dp"
+                        android:stepSize="0.5"
+                        android:gravity="center"
+                        android:progressTint="@color/green"
+                        android:rating="0" />
+                </LinearLayout>
+
 
             </LinearLayout>
 
@@ -486,6 +526,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
+                android:layout_marginBottom="30dp"
                 android:layout_marginEnd="32dp"
                 android:gravity="center"
                 android:text="@string/joinRoute"
