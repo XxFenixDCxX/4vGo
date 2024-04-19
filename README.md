@@ -38,6 +38,7 @@ La aplicación sigue un esquema de colores consistente que refleja la identidad 
 ### 7. Perfiles de Usuarios
 
 - Sistema de perfiles de usuario con información como nombre, apellido, contraseña segura, teléfono, foto de perfil, puntuación y CO2 points (solo visible en la vista del perfil).
+- Existe un usuario para realizar pruebas el cual se identifica con correo: prueba@gmail.com  contraseña: Prueba2003
 
 ### 8. Clasificación por CO2 Points
 
