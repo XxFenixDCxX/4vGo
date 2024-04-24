@@ -262,5 +262,7 @@
     <string name="rating_thank_you_message">Mila esker zure balorazioagatik!</string>
     <string name="rate_driver_title">Konduktorea baloratu</string>
     <string name="plazas_word">Plazak</string>
+    <string name="searchRoutes">Ruta bilatzailea</string>
+    <string name="rankingHeader">Klasifikazioak</string>
 
 </resources>

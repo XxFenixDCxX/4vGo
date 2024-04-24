@@ -276,5 +276,6 @@
     <string name="rating_thank_you_message">¡Gracias por su valoración!</string>
     <string name="rate_driver_title">Valora al conductor</string>
     <string name="plazas_word">Plazas</string>
-
+    <string name="searchRoutes">Buscador de rutas</string>
+    <string name="rankingHeader">Clasificaciones</string>
 </resources>
