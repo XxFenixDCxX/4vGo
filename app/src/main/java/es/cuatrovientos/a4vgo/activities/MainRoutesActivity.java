@@ -278,6 +278,7 @@ public class MainRoutesActivity extends AppCompatActivity {
         // All conditions are met
     }
 
+
     private boolean isDateValid() {
         String selectedDateString = txtDateTime.getText().toString().trim();
 
@@ -288,12 +289,14 @@ public class MainRoutesActivity extends AppCompatActivity {
             return false;
         }
 
-        // Get the current date
         Calendar today = Calendar.getInstance();
+        today.set(Calendar.HOUR_OF_DAY, 0);
+        today.set(Calendar.MINUTE, 0);
+        today.set(Calendar.SECOND, 0);
+        today.set(Calendar.MILLISECOND, 0);
 
-        // Compare the selected date with today
         if (selectedDate.before(today)) {
-               DialogUtils.showWarningDialog(this, getString(R.string.warning), getString(R.string.error_past_date));
+            DialogUtils.showWarningDialog(this, getString(R.string.warning), getString(R.string.error_past_date));
             return false;
         }
         return true;

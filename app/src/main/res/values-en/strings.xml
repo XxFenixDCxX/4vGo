@@ -259,5 +259,8 @@
     <string name="errorHasNUmbers">The text can´t have numbers</string>
     <string name="errorSitNumber">The site number need to be numeric</string>
     <string name="plateMaxLenght">The plate max length is 15</string>
+    <string name="rating_thank_you_message">Thank you for your rating!</string>
+    <string name="rate_driver_title">Rate the driver</string>
+    <string name="plazas_word">Seats</string>
 
 </resources>

@@ -7,7 +7,7 @@
     <string name="dni">DNI</string>
     <string name="hint_write">Escribe aqui…</string>
     <string name="email">Correo electronico</string>
-    <string name="disclaimerEmail">No quiero recibir noticias, promociones ni contenido gratiuito de 4V GO.</string>
+    <string name="disclaimerEmail">No quiero recibir noticias, promociones ni contenido gratuito de 4V GO.</string>
     <string name="disclaimerEmailSuscription" tools:ignore="Typos">Una vez suscrito, puedo cancelar mi suscripción en cualquier momento contactando con 4V GO o a través del enlace que se encuentra en el boletin del noticias.</string>
     <string name="passwordQuestion">Define tu contraseña</string>
     <string name="password">Contraseña</string>
@@ -17,7 +17,7 @@
     <string name="descriptionHeader">Imagen de cabecera</string>
     <string name="descriptionCuatrovientos">Imagen de cuatrovientos</string>
     <string name="doneBy">Realizado por:</string>
-    <string name="appDescription">Fomentar el transporte compartido, la eficiencia energética y la reducción de emisiones de CO2</string>
+    <string name="appDescription">Fomentar el transporte compartido y la reducción de emisiones de CO2</string>
     <string name="login">Inicia sesión</string>
     <string name="Email">Email</string>
     <string name="PutEmail">Introduzca el correo electrónico</string>
@@ -273,5 +273,8 @@
     <string name="errorHasNUmbers">El texto no puede contener numeros</string>
     <string name="errorSitNumber">El numero de sitios tiene que ser numerico</string>
 
+    <string name="rating_thank_you_message">¡Gracias por su valoración!</string>
+    <string name="rate_driver_title">Valora al conductor</string>
+    <string name="plazas_word">Plazas</string>
 
 </resources>

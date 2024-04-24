@@ -88,4 +88,5 @@ public class FavoriteUsersActivity extends AppCompatActivity {
             rvFavoriteUsers.setAdapter(adapter);
         }
     }
+
 }
