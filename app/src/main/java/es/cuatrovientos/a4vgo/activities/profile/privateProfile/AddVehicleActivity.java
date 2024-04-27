@@ -2,6 +2,7 @@ package es.cuatrovientos.a4vgo.activities.profile.privateProfile;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
@@ -84,6 +85,9 @@ public class AddVehicleActivity extends AppCompatActivity {
             carsMap.put("numSit", numSitString.toLowerCase());
             carsMap.put("userDNI", dni.toUpperCase());
             db.collection("cars").document(plateString.toLowerCase()).set(carsMap);
+            Intent intent = new Intent();
+            setResult(RESULT_OK, intent);
+            finish();
             finish();
         });
     }

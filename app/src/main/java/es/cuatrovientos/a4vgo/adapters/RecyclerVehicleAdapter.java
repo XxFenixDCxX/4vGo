@@ -38,7 +38,7 @@ public class RecyclerVehicleAdapter extends RecyclerView.Adapter<RecyclerVehicle
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    private void fetchDataFromFirebase() {
+    public void fetchDataFromFirebase() {
         db.collection("cars").whereEqualTo("userDNI", dni).get().addOnCompleteListener(task -> {
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         String plate = document.getString("plate");
